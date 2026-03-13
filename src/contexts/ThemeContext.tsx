@@ -14,15 +14,20 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     if (typeof window !== 'undefined') {
       const saved = localStorage.getItem('theme') as Theme;
       if (saved) return saved;
-      return 'dark';
+      
+      // Default to system preference if no saved preference
+      if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        return 'dark';
+      }
+      return 'light';
     }
     return 'dark';
   });
 
   useEffect(() => {
-    const root = window.document.documentElement;
-    root.classList.remove('light', 'dark');
-    root.classList.add(theme);
+    const body = window.document.body;
+    body.classList.remove('light-mode', 'dark-mode');
+    body.classList.add(`${theme}-mode`);
     localStorage.setItem('theme', theme);
   }, [theme]);
 

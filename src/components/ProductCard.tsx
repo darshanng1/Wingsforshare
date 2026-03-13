@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ExternalLink, ArrowRight, Sparkles, TrendingUp } from 'lucide-react';
+import { ExternalLink, ArrowRight, Sparkles, TrendingUp, CheckCircle } from 'lucide-react';
 import { Product } from '../types';
 import { motion } from 'motion/react';
 
@@ -65,30 +65,36 @@ export default function ProductCard({ product }: ProductCardProps) {
         </p>
 
         {/* Features/Badges */}
-        <div className="flex flex-wrap gap-2 mb-8">
-          {product.features.slice(0, 3).map((feature, idx) => (
-            <span key={idx} className="text-[9px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-full bg-black/[0.03] dark:bg-white/[0.03] text-black/40 dark:text-white/40 border border-black/5 dark:border-white/5">
-              {feature}
-            </span>
+        <div className="space-y-3 mb-8">
+          {product.features.slice(0, 4).map((feature, idx) => (
+            <div key={idx} className="flex items-center space-x-3 group/feat">
+              <div className="w-5 h-5 rounded-full bg-emerald-500/10 flex items-center justify-center flex-shrink-0 group-hover/feat:bg-emerald-500/20 transition-colors">
+                <CheckCircle size={10} className="text-emerald-500" />
+              </div>
+              <span className="text-xs font-medium text-black/60 dark:text-white/60 group-hover/feat:text-black dark:group-hover/feat:text-white transition-colors">
+                {feature}
+              </span>
+            </div>
           ))}
         </div>
         
-        <div className="flex items-center justify-between pt-8 border-t border-black/5 dark:border-white/10">
+        <div className="grid grid-cols-2 gap-4 pt-8 border-t border-black/5 dark:border-white/10">
           <a 
             href={product.demoLink} 
             target="_blank" 
             rel="noreferrer"
-            className="group/link inline-flex items-center space-x-2 text-sm font-bold text-black dark:text-white"
+            className="flex items-center justify-center space-x-2 px-4 py-3 bg-emerald-500 text-white rounded-xl text-xs font-bold hover:bg-emerald-600 transition-all shadow-lg shadow-emerald-500/20"
           >
-            <span className="border-b-2 border-emerald-500/30 group-hover/link:border-emerald-500 transition-all">View Live Demo</span>
-            <ExternalLink size={14} className="opacity-40 group-hover/link:opacity-100 transition-opacity" />
+            <span>Live Demo</span>
+            <ExternalLink size={14} />
           </a>
           
           <Link 
             to={`/products/${product.slug}`}
-            className="w-12 h-12 rounded-2xl bg-black dark:bg-white text-white dark:text-black flex items-center justify-center hover:scale-110 active:scale-95 transition-all shadow-xl shadow-black/10 dark:shadow-white/10"
+            className="flex items-center justify-center space-x-2 px-4 py-3 bg-black dark:bg-white text-white dark:text-black rounded-xl text-xs font-bold hover:opacity-80 transition-all shadow-lg shadow-black/10 dark:shadow-white/10"
           >
-            <ArrowRight size={20} />
+            <span>View Details</span>
+            <ArrowRight size={14} />
           </Link>
         </div>
       </div>

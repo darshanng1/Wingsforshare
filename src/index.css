@@ -6,9 +6,19 @@
   --font-display: "Poppins", sans-serif;
 }
 
+@variant dark (&:where(.dark-mode, .dark-mode *));
+
 @layer base {
   body {
-    @apply font-sans antialiased;
+    @apply font-sans antialiased transition-colors duration-500;
+  }
+  
+  body.light-mode {
+    @apply bg-white text-black;
+  }
+  
+  body.dark-mode {
+    @apply bg-[#0a0a0a] text-white;
   }
   
   h1, h2, h3, h4, h5, h6 {
@@ -25,7 +35,12 @@
   animation: marquee 30s linear infinite;
 }
 
-.dark {
+.dark-mode {
   --background: 0 0% 3.9%;
   --foreground: 0 0% 98%;
+}
+
+.light-mode {
+  --background: 0 0% 100%;
+  --foreground: 0 0% 3.9%;
 }
