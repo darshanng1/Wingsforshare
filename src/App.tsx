@@ -11,6 +11,7 @@ import ArchitectPortfolio from './pages/ArchitectPortfolio';
 import Payment from './pages/Payment';
 import SEOPage from './pages/SEOPage';
 import Login from './pages/Login';
+import Dashboard from './pages/Dashboard';
 
 export default function App() {
   return (
@@ -18,18 +19,25 @@ export default function App() {
       <Router>
         <ScrollToTop />
         <div className="min-h-screen bg-white dark:bg-[#0a0a0a] text-black dark:text-white flex flex-col transition-colors duration-300">
-          <Navbar />
-          <main className="flex-grow">
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/products/:slug" element={<ProductDetail />} />
-              <Route path="/architect-portfolio" element={<ArchitectPortfolio />} />
-              <Route path="/payment" element={<Payment />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/:slug" element={<SEOPage />} />
-            </Routes>
-          </main>
-          <Footer />
+          <Routes>
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="*" element={
+              <>
+                <Navbar />
+                <main className="flex-grow">
+                  <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/products/:slug" element={<ProductDetail />} />
+                    <Route path="/architect-portfolio" element={<ArchitectPortfolio />} />
+                    <Route path="/payment" element={<Payment />} />
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/:slug" element={<SEOPage />} />
+                  </Routes>
+                </main>
+                <Footer />
+              </>
+            } />
+          </Routes>
           <FloatingActions />
           <MobileCTA />
         </div>

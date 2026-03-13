@@ -11,8 +11,9 @@ declare global {
 export default function Payment() {
   const [step, setStep] = React.useState(1);
   const [paymentMethod, setPaymentMethod] = React.useState<'upi' | 'gateway' | null>(null);
-  const upiId = "yourupi@bank";
-  const upiLink = `upi://pay?pa=${upiId}&pn=WingsForShare&cu=INR`;
+  const upiId = "darshanng@okicici";
+  const upiLink = `upi://pay?pa=${upiId}&pn=Darshan%20N%20G&cu=INR`;
+  // For testing ₹1 payment: upi://pay?pa=darshanng@okicici&pn=Darshan%20N%20G&am=1&cu=INR
 
   const handleRazorpay = () => {
     const options = {
@@ -153,24 +154,38 @@ export default function Payment() {
                   </div>
                   <div>
                     <h2 className="text-3xl font-bold text-black dark:text-white">Pay via UPI</h2>
-                    <p className="text-sm text-black/60 dark:text-white/60">Scan the QR or click the button below.</p>
+                    <p className="text-sm text-black/60 dark:text-white/60">Scan the QR or click the button below to pay via GPay, PhonePe, or Paytm.</p>
                   </div>
                 </div>
 
                 <div className="bg-black/[0.02] dark:bg-white/[0.02] p-10 rounded-3xl text-center mb-10 border border-black/5 dark:border-white/10">
-                  <div className="w-56 h-56 bg-white mx-auto mb-8 rounded-3xl border border-black/5 flex items-center justify-center shadow-inner">
-                    <div className="text-[10px] text-black/20 font-bold uppercase tracking-tighter">UPI QR CODE</div>
+                  <h3 className="text-lg font-bold text-black dark:text-white mb-6">Scan to Pay via UPI</h3>
+                  <div className="w-64 h-64 bg-white mx-auto mb-8 rounded-3xl border border-black/5 flex items-center justify-center shadow-xl p-4">
+                    <img 
+                      src={`https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${encodeURIComponent(upiLink)}`} 
+                      alt="UPI QR Code" 
+                      className="w-full h-full"
+                      referrerPolicy="no-referrer"
+                    />
                   </div>
-                  <p className="text-2xl font-bold text-black dark:text-white mb-1 tracking-tight">{upiId}</p>
-                  <p className="text-xs font-bold uppercase tracking-widest text-black/40 dark:text-white/40 mb-8">WingsForShare Digital Services</p>
                   
-                  <a 
-                    href={upiLink}
+                  <div className="flex justify-center gap-6 mb-8">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/f/f2/Google_Pay_Logo.svg" alt="GPay" className="h-5 opacity-40 dark:opacity-60" referrerPolicy="no-referrer" />
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/71/PhonePe_Logo.svg" alt="PhonePe" className="h-5 opacity-40 dark:opacity-60" referrerPolicy="no-referrer" />
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/24/Paytm_Logo_%28standalone%29.svg" alt="Paytm" className="h-5 opacity-40 dark:opacity-60" referrerPolicy="no-referrer" />
+                  </div>
+
+                  <p className="text-xl font-bold text-black dark:text-white mb-1 tracking-tight">UPI ID: {upiId}</p>
+                  <p className="text-lg font-bold text-black/80 dark:text-white/80 mb-2">Name: Darshan N G</p>
+                  <p className="text-sm font-bold text-black/60 dark:text-white/60 mb-2">Phone: +91 8618764541</p>
+                  
+                  <button 
+                    onClick={() => window.location.href = upiLink}
                     className="inline-flex items-center space-x-3 bg-black dark:bg-white text-white dark:text-black px-10 py-5 rounded-2xl font-bold text-lg hover:opacity-80 transition-all w-full justify-center active:scale-95 shadow-xl shadow-black/10 dark:shadow-white/5"
                   >
-                    <span>Pay with UPI App</span>
+                    <span>Continue to Payment</span>
                     <ArrowRight size={20} />
-                  </a>
+                  </button>
                 </div>
 
                 <div className="flex space-x-4">
@@ -203,6 +218,7 @@ export default function Payment() {
                 <h2 className="text-4xl md:text-5xl font-bold text-black dark:text-white mb-6 tracking-tight">Payment Successful!</h2>
                 <p className="text-lg text-black/60 dark:text-white/60 mb-12 leading-relaxed max-w-xl mx-auto">
                   Thank you for choosing WingsForShare. Our team has been notified of your payment. 
+                  After completing payment, please share the transaction ID with us for confirmation.
                   We will contact you on WhatsApp within 2-4 hours to begin the setup process.
                 </p>
                 

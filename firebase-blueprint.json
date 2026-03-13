@@ -1,0 +1,77 @@
+{
+  "entities": {
+    "users": {
+      "title": "User",
+      "description": "User profile and role information",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "description": "Firebase Auth UID" },
+        "username": { "type": "string", "description": "Username for login" },
+        "email": { "type": "string", "description": "Email address" },
+        "role": { "type": "string", "enum": ["admin", "client"], "description": "User role" },
+        "companyName": { "type": "string", "description": "Client's company name" },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Account creation timestamp" }
+      },
+      "required": ["uid", "username", "role"]
+    },
+    "projects": {
+      "title": "Project",
+      "description": "Client project progress and status",
+      "type": "object",
+      "properties": {
+        "clientId": { "type": "string", "description": "UID of the client" },
+        "stage": { "type": "string", "description": "Current stage (e.g., Discovery, Design, Dev)" },
+        "designStatus": { "type": "number", "description": "Percentage complete" },
+        "devStatus": { "type": "number", "description": "Percentage complete" },
+        "deploymentTimeline": { "type": "string", "description": "Estimated launch date" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      }
+    },
+    "performance": {
+      "title": "Performance",
+      "description": "Website and marketing metrics",
+      "type": "object",
+      "properties": {
+        "clientId": { "type": "string" },
+        "websiteStatus": { "type": "string", "enum": ["Live", "Maintenance"] },
+        "pageSpeed": { "type": "number" },
+        "monthlyVisitors": { "type": "number" },
+        "seoHealth": { "type": "number" },
+        "leadsGenerated": { "type": "number" },
+        "trafficGrowth": { "type": "string" }
+      }
+    },
+    "requests": {
+      "title": "Support Request",
+      "description": "Client support or feature requests",
+      "type": "object",
+      "properties": {
+        "clientId": { "type": "string" },
+        "type": { "type": "string", "enum": ["Website Change", "Marketing", "Feature", "Bug"] },
+        "subject": { "type": "string" },
+        "description": { "type": "string" },
+        "status": { "type": "string", "enum": ["Open", "In Progress", "Resolved"] },
+        "createdAt": { "type": "string", "format": "date-time" }
+      }
+    },
+    "payments": {
+      "title": "Payment",
+      "description": "Billing and invoice information",
+      "type": "object",
+      "properties": {
+        "clientId": { "type": "string" },
+        "amount": { "type": "number" },
+        "status": { "type": "string", "enum": ["Paid", "Pending", "Overdue"] },
+        "description": { "type": "string" },
+        "date": { "type": "string", "format": "date" }
+      }
+    }
+  },
+  "firestore": {
+    "/users/{userId}": { "schema": "users", "description": "User profiles" },
+    "/projects/{projectId}": { "schema": "projects", "description": "Project tracking" },
+    "/performance/{perfId}": { "schema": "performance", "description": "Metrics" },
+    "/requests/{requestId}": { "schema": "requests", "description": "Support tickets" },
+    "/payments/{paymentId}": { "schema": "payments", "description": "Invoices" }
+  }
+}

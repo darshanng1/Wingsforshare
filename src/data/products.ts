@@ -59,24 +59,6 @@ export const products: Product[] = [
     fullDescription: 'Our Garment Ecommerce Store is built for the fashion industry. It handles complex product variations with ease, providing a smooth shopping experience for your customers and a robust management system for you.'
   },
   {
-    id: '4',
-    slug: 'wooden-door-manufacturer',
-    name: 'Wooden Door Manufacturer Website',
-    shortDescription: 'Professional business website for manufacturers to showcase products and generate B2B leads.',
-    description: 'A specialized website for manufacturing businesses to display catalogs and manage inquiries.',
-    category: 'Websites',
-    screenshot: 'https://picsum.photos/seed/door/800/600',
-    demoLink: 'https://darshanngsipcvcard.pages.dev', // Placeholder or real demo
-    features: [
-      'Product catalog with categories',
-      'B2B inquiry management',
-      'Manufacturing process showcase',
-      'Client testimonials',
-      'Contact & location integration'
-    ],
-    fullDescription: 'Designed for manufacturers, this website helps you transition your B2B operations online. Showcase your full product range, explain your manufacturing process, and capture high-quality leads from business clients.'
-  },
-  {
     id: '5',
     slug: 'business-intelligence-dashboard',
     name: 'Business Intelligence Dashboard',

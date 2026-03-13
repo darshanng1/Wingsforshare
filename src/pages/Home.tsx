@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { motion, useScroll, useTransform, useSpring, AnimatePresence } from 'motion/react';
+import { motion, useScroll, useTransform, useSpring } from 'motion/react';
 import { 
   ArrowRight, Sparkles, Zap, Shield, Globe, Play, Layers, 
   Users, MessageSquare, CheckCircle, Star, TrendingUp, 
@@ -7,7 +7,7 @@ import {
   Monitor, Smartphone, Rocket, Search, Target, Briefcase,
   Building2, ShoppingBag, HardHat, Store, Laptop, Tablet,
   Phone, Video, Send, ChevronRight, Layout, Cpu, Database,
-  BarChart, ShoppingCart, MessageCircle
+  BarChart, ShoppingCart, MessageCircle, Bell, Activity
 } from 'lucide-react';
 import { products } from '../data/products';
 import ProductCard from '../components/ProductCard';
@@ -17,7 +17,7 @@ import ConsultationForm from '../components/ConsultationForm';
 import MeetingBooking from '../components/MeetingBooking';
 
 export default function Home() {
-  const heroRef = useRef(null);
+  const heroRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
     target: heroRef,
     offset: ["start start", "end start"]
@@ -30,20 +30,6 @@ export default function Home() {
 
   const springY1 = useSpring(y1, { stiffness: 100, damping: 30 });
   const springY2 = useSpring(y2, { stiffness: 100, damping: 30 });
-
-  const [heroTextIndex, setHeroTextIndex] = useState(0);
-  const heroTexts = [
-    "Custom Apps.",
-    "Ready-Made Tools.",
-    "Powerful Websites."
-  ];
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setHeroTextIndex((prev) => (prev + 1) % heroTexts.length);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, []);
 
   const solutions = [
     {
@@ -74,19 +60,53 @@ export default function Home() {
   ];
 
   const industries = [
-    { icon: <HardHat />, name: 'Pest Control', desc: 'Operational dashboards & field team tracking.' },
-    { icon: <Building2 />, name: 'Manufacturing', desc: 'Inventory management & process automation.' },
-    { icon: <ShoppingBag />, name: 'Retail', desc: 'Omnichannel eCommerce & customer loyalty.' },
-    { icon: <Briefcase />, name: 'Architects', desc: 'Visual-first portfolios & project showcases.' },
-    { icon: <Store />, name: 'Small Businesses', desc: 'Digital presence & local SEO optimization.' }
+    { 
+      icon: <HardHat />, 
+      name: 'Pest Control', 
+      desc: 'Field service automation, route tracking, customer CRM, and reporting dashboards.',
+      tech: ['Business Automation', 'CRM System', 'Analytics Dashboard']
+    },
+    { 
+      icon: <Building2 />, 
+      name: 'Manufacturing', 
+      desc: 'Inventory systems, production tracking, supplier management, and analytics dashboards.',
+      tech: ['Web Platform', 'Analytics Dashboard', 'Business Automation']
+    },
+    { 
+      icon: <ShoppingBag />, 
+      name: 'Retail', 
+      desc: 'E-commerce platforms, digital marketing automation, and customer analytics.',
+      tech: ['Web Platform', 'CRM System', 'Analytics Dashboard']
+    },
+    { 
+      icon: <Briefcase />, 
+      name: 'Professional Services', 
+      desc: 'CRM systems, lead tracking, and marketing performance dashboards.',
+      tech: ['CRM System', 'Analytics Dashboard', 'Web Platform']
+    }
   ];
 
   const whyChooseUs = [
-    { title: 'Fast Development', desc: 'Launch your project in weeks, not months, with our optimized workflows.' },
-    { title: 'Affordable Solutions', desc: 'Premium quality software at prices that make sense for growing businesses.' },
-    { title: 'Custom Business Software', desc: 'We build tools that solve your specific operational challenges.' },
-    { title: 'SEO Ready Websites', desc: 'Every site we build is engineered to rank high on search engines.' },
-    { title: 'Automation & CRM Tools', desc: 'Reduce manual work with smart systems that handle the heavy lifting.' }
+    { 
+      title: 'Website Development for Business Growth', 
+      desc: 'Modern business website development designed to attract customers and generate high-quality leads.' 
+    },
+    { 
+      title: 'SEO & Digital Marketing Systems', 
+      desc: 'Comprehensive SEO optimization services, content strategy, and marketing automation to scale your reach.' 
+    },
+    { 
+      title: 'Business Automation Tools', 
+      desc: 'Automate operations, customer workflows, and internal processes with our custom business automation tools.' 
+    },
+    { 
+      title: 'Custom Business Applications', 
+      desc: 'Tailored custom business software solutions built to solve your unique operational challenges.' 
+    },
+    { 
+      title: 'Data Analytics & Performance Tracking', 
+      desc: 'Interactive data analytics dashboards to measure growth, track KPIs, and improve business decisions.' 
+    }
   ];
 
   return (
@@ -94,11 +114,36 @@ export default function Home() {
       <ScrollToTopButton />
       
       {/* Hero Section */}
-      <section ref={heroRef} className="relative min-h-screen flex items-center pt-32 pb-24 overflow-hidden">
-        <motion.div style={{ opacity }} className="absolute inset-0 -z-10">
+      <section ref={heroRef} className="relative min-h-screen flex items-center pt-32 pb-24 overflow-visible">
+        <motion.div style={{ opacity }} className="absolute inset-0 -z-20 pointer-events-none">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-emerald-500/10 dark:from-emerald-500/5 via-transparent to-transparent blur-3xl opacity-50" />
-          <motion.div style={{ y: springY1 }} className="absolute top-20 left-10 w-64 h-64 bg-emerald-500/10 rounded-full blur-3xl" />
-          <motion.div style={{ y: springY2 }} className="absolute bottom-20 right-10 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
+          <motion.div 
+            animate={{ 
+              y: [0, 50, 0],
+              x: [0, 30, 0],
+              scale: [1, 1.1, 1]
+            }}
+            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute top-20 left-10 w-64 h-64 bg-emerald-500/5 rounded-full blur-3xl" 
+          />
+          <motion.div 
+            animate={{ 
+              y: [0, -70, 0],
+              x: [0, 40, 0],
+              scale: [1, 1.2, 1]
+            }}
+            transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute top-1/2 -left-64 w-[40rem] h-[40rem] bg-blue-500/5 rounded-full blur-[160px]" 
+          />
+          <motion.div 
+            animate={{ 
+              y: [0, -70, 0],
+              x: [0, -40, 0],
+              scale: [1, 1.2, 1]
+            }}
+            transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute bottom-20 right-10 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl" 
+          />
         </motion.div>
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -107,114 +152,334 @@ export default function Home() {
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
+              className="relative z-10"
             >
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 className="inline-flex items-center space-x-2 bg-black/5 dark:bg-white/5 px-4 py-2 rounded-full mb-8 border border-black/5 dark:border-white/10 backdrop-blur-sm"
               >
-                <Rocket size={16} className="text-emerald-500" />
-                <span className="text-[10px] font-bold uppercase tracking-widest text-black/60 dark:text-white/60">WingsForShare Digital Solutions</span>
+                <ShieldCheck size={16} className="text-emerald-500" />
+                <span className="text-[10px] font-bold uppercase tracking-widest text-black/60 dark:text-white/60">WingsForShare Business Technology Partner</span>
               </motion.div>
               
-              <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-black dark:text-white mb-8 leading-[0.85]">
-                Custom Apps, <br />
-                <span className="text-black/40 dark:text-white/40">Ready-Made Software</span> <br />
-                & Modern Websites
-              </h1>
+              <div className="mb-8">
+                <motion.h1 
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, ease: "easeOut" }}
+                  className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-black dark:text-white leading-[0.9] mb-4"
+                >
+                  Technology Systems That <br />
+                  <span className="relative inline-block">
+                    <span className="text-emerald-500 italic">Grow Your Business</span>
+                    <motion.div 
+                      initial={{ scaleX: 0 }}
+                      animate={{ scaleX: 1 }}
+                      transition={{ delay: 1, duration: 0.8, ease: "circOut" }}
+                      className="absolute -bottom-2 left-0 w-full h-3 bg-emerald-500/20 origin-left rounded-full -z-10"
+                    />
+                  </span>
+                </motion.h1>
+              </div>
               
               <motion.p 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
                 className="text-xl md:text-2xl text-black/60 dark:text-white/60 max-w-xl mb-12 leading-relaxed"
               >
-                We design powerful websites and business applications tailored to your needs.
+                We help businesses scale using modern websites, digital marketing systems, automation tools, analytics platforms, and custom applications.
               </motion.p>
               
-              <div className="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-4 mb-16">
-                <a href="#products" className="w-full sm:w-auto bg-black dark:bg-white text-white dark:text-black px-8 py-4 rounded-2xl font-bold text-base hover:scale-105 active:scale-95 transition-all flex items-center justify-center space-x-2 shadow-2xl shadow-black/20 dark:shadow-white/10">
-                  <span>View Live Demo</span>
-                  <ArrowRight size={18} />
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+                className="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-4 mb-16"
+              >
+                <a 
+                  href="#consultation" 
+                  className="group relative w-full sm:w-auto bg-black dark:bg-white text-white dark:text-black px-8 py-4 rounded-2xl font-bold text-base transition-all flex items-center justify-center space-x-2 shadow-2xl shadow-black/20 dark:shadow-white/10 overflow-hidden hover:scale-[1.02] active:scale-95"
+                >
+                  <div className="absolute inset-0 bg-gradient-to-r from-emerald-500 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <span className="relative z-10">Start Your Project</span>
+                  <ArrowRight size={18} className="relative z-10 group-hover:translate-x-1 transition-transform" />
                 </a>
-                <a href="#consultation" className="w-full sm:w-auto bg-white dark:bg-black border border-black/10 dark:border-white/10 text-black dark:text-white px-8 py-4 rounded-2xl font-bold text-base hover:bg-black/5 dark:hover:bg-white/5 transition-all flex items-center justify-center space-x-2">
-                  <MessageSquare size={18} className="text-emerald-500" />
-                  <span>Book Consultation</span>
+                <a 
+                  href="#products" 
+                  className="group w-full sm:w-auto bg-white dark:bg-black border border-black/10 dark:border-white/10 text-black dark:text-white px-8 py-4 rounded-2xl font-bold text-base hover:bg-black/5 dark:hover:bg-white/5 transition-all flex items-center justify-center space-x-2 hover:scale-[1.02] active:scale-95"
+                >
+                  <Layout size={18} className="text-emerald-500 group-hover:rotate-12 transition-transform" />
+                  <span>View Live Product Demos</span>
                 </a>
-                <a href="https://wa.me/918618764541" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto bg-[#25D366] text-white px-8 py-4 rounded-2xl font-bold text-base hover:scale-105 active:scale-95 transition-all flex items-center justify-center space-x-2 shadow-xl shadow-emerald-500/20">
-                  <MessageCircle size={18} />
-                  <span>WhatsApp Chat</span>
-                </a>
-              </div>
+              </motion.div>
 
-              <div className="flex items-center space-x-8 border-t border-black/5 dark:border-white/10 pt-12">
-                <div className="flex -space-x-4">
-                  {[1, 2, 3, 4].map((i) => (
-                    <div key={i} className="w-12 h-12 rounded-full border-4 border-white dark:border-[#0a0a0a] overflow-hidden bg-gray-200">
-                      <img src={`https://picsum.photos/seed/user${i}/100/100`} alt="User" referrerPolicy="no-referrer" />
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 border-t border-black/5 dark:border-white/10 pt-12">
+                {[
+                  { label: 'Website Development', icon: <Globe size={12} /> },
+                  { label: 'SEO Optimization', icon: <Search size={12} /> },
+                  { label: 'Digital Marketing', icon: <Target size={12} /> },
+                  { label: 'Business Automation', icon: <Zap size={12} /> },
+                  { label: 'Analytics Dashboards', icon: <BarChart3 size={12} /> },
+                  { label: 'Custom Applications', icon: <Cpu size={12} /> }
+                ].map((cap, i) => (
+                  <motion.div 
+                    key={i}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.8 + (i * 0.1) }}
+                    className="flex items-center space-x-2 text-black/60 dark:text-white/60"
+                  >
+                    <div className="w-5 h-5 rounded-md bg-black/5 dark:bg-white/5 flex items-center justify-center text-emerald-500">
+                      {cap.icon}
                     </div>
-                  ))}
-                </div>
-                <div>
-                  <div className="flex items-center space-x-1 text-yellow-500 mb-1">
-                    {[1, 2, 3, 4, 5].map((i) => <Star key={i} size={14} fill="currentColor" />)}
-                  </div>
-                  <p className="text-xs font-bold text-black/40 dark:text-white/40 uppercase tracking-widest">Trusted by 500+ Businesses</p>
-                </div>
+                    <span className="text-[10px] font-bold uppercase tracking-wider">{cap.label}</span>
+                  </motion.div>
+                ))}
               </div>
             </motion.div>
 
             <motion.div
               style={{ scale }}
-              initial={{ opacity: 0, scale: 0.8, rotate: 5 }}
-              animate={{ opacity: 1, scale: 1, rotate: 0 }}
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1, ease: "easeOut" }}
               className="relative hidden lg:block"
             >
-              <div className="relative z-10 rounded-[3rem] overflow-hidden shadow-2xl shadow-black/20 dark:shadow-white/20 border-8 border-white dark:border-[#111] bg-gray-100 dark:bg-[#1a1a1a] aspect-[4/5]">
-                <img 
-                  src="https://picsum.photos/seed/software/1000/1250" 
-                  alt="Software Development" 
-                  className="w-full h-full object-cover opacity-90"
-                  referrerPolicy="no-referrer"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                <div className="absolute bottom-10 left-10 right-10">
-                  <div className="bg-white/10 backdrop-blur-md border border-white/20 p-6 rounded-3xl">
-                    <p className="text-white font-bold text-lg mb-2">Customized Solutions</p>
-                    <p className="text-white/60 text-sm">We build tools that solve your specific operational challenges.</p>
+              {/* Code Editor + Live Preview Visual */}
+              <div className="relative z-10 rounded-[2.5rem] overflow-hidden shadow-2xl shadow-black/20 dark:shadow-white/20 border border-black/5 dark:border-white/10 bg-[#0d1117] aspect-[4/3] flex flex-col">
+                {/* Editor Header */}
+                <div className="h-10 bg-[#161b22] border-b border-white/5 flex items-center justify-between px-4">
+                  <div className="flex space-x-2">
+                    <div className="w-3 h-3 rounded-full bg-[#ff5f56]" />
+                    <div className="w-3 h-3 rounded-full bg-[#ffbd2e]" />
+                    <div className="w-3 h-3 rounded-full bg-[#27c93f]" />
+                  </div>
+                  <div className="text-[10px] text-white/40 font-mono">GrowthEngine.ts — wings-biz-pro</div>
+                  <div className="w-12" />
+                </div>
+                
+                <div className="flex-grow flex overflow-hidden">
+                  {/* Code Area */}
+                  <div className="w-1/2 p-6 font-mono text-[11px] leading-relaxed border-r border-white/5 overflow-hidden">
+                    <div className="flex space-x-4">
+                      <span className="text-white/20 select-none">1</span>
+                      <span className="text-purple-400">import</span>
+                      <span className="text-blue-300">{" { "}</span>
+                      <span className="text-emerald-400">GrowthEngine</span>
+                      <span className="text-blue-300">{" } "}</span>
+                      <span className="text-purple-400">from</span>
+                      <span className="text-orange-300">"@wings/growth"</span>
+                    </div>
+                    <div className="flex space-x-4">
+                      <span className="text-white/20 select-none">2</span>
+                    </div>
+                    <div className="flex space-x-4">
+                      <span className="text-white/20 select-none">3</span>
+                      <span className="text-purple-400">const</span>
+                      <span className="text-emerald-400">bizConfig</span>
+                      <span className="text-blue-300">=</span>
+                      <span className="text-blue-300">{" { "}</span>
+                    </div>
+                    <div className="flex space-x-4 pl-8">
+                      <span className="text-white/20 select-none">4</span>
+                      <span className="text-blue-300">seo:</span>
+                      <span className="text-orange-300">"optimized"</span>
+                      <span className="text-blue-300">,</span>
+                    </div>
+                    <div className="flex space-x-4 pl-8">
+                      <span className="text-white/20 select-none">5</span>
+                      <span className="text-blue-300">marketing:</span>
+                      <span className="text-orange-300">"automated"</span>
+                      <span className="text-blue-300">,</span>
+                    </div>
+                    <div className="flex space-x-4 pl-8">
+                      <span className="text-white/20 select-none">6</span>
+                      <span className="text-blue-300">analytics:</span>
+                      <span className="text-orange-300">"real-time"</span>
+                    </div>
+                    <div className="flex space-x-4">
+                      <span className="text-white/20 select-none">7</span>
+                      <span className="text-blue-300">{" } "}</span>
+                    </div>
+                    <div className="flex space-x-4">
+                      <span className="text-white/20 select-none">8</span>
+                    </div>
+                    <div className="flex space-x-4">
+                      <span className="text-white/20 select-none">9</span>
+                      <span className="text-purple-400">export default function</span>
+                      <span className="text-emerald-400">GrowthApp</span>
+                      <span className="text-blue-300">() {" { "}</span>
+                    </div>
+                    <div className="flex space-x-4 pl-8">
+                      <span className="text-white/20 select-none">10</span>
+                      <span className="text-purple-400">return</span>
+                      <span className="text-blue-300">{" ( "}</span>
+                    </div>
+                    <div className="flex space-x-4 pl-12">
+                      <span className="text-white/20 select-none">11</span>
+                      <span className="text-blue-300">{" < "}</span>
+                      <span className="text-emerald-400">GrowthEngine</span>
+                      <span className="text-blue-300">{" {...bizConfig} /> "}</span>
+                    </div>
+                    <div className="flex space-x-4 pl-8">
+                      <span className="text-white/20 select-none">12</span>
+                      <span className="text-blue-300">{" ) "}</span>
+                    </div>
+                    <div className="flex space-x-4">
+                      <span className="text-white/20 select-none">13</span>
+                      <span className="text-blue-300">{" } "}</span>
+                    </div>
+                  </div>
+
+
+                  {/* Live Preview Area */}
+                  <div className="w-1/2 bg-white dark:bg-[#0a0a0a] p-4 flex flex-col relative overflow-hidden border-l border-black/5 dark:border-white/5">
+                    {/* Dashboard Header */}
+                    <div className="flex items-center justify-between mb-4 pb-2 border-b border-black/5 dark:border-white/5">
+                      <div className="flex items-center space-x-2">
+                        <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                        <span className="text-[10px] font-bold text-black/40 dark:text-white/40 uppercase tracking-wider">Live Growth Engine</span>
+                      </div>
+                      <div className="flex space-x-1">
+                        <div className="w-4 h-4 rounded bg-black/5 dark:bg-white/5 flex items-center justify-center">
+                          <Users size={8} className="text-black/40 dark:text-white/40" />
+                        </div>
+                        <div className="w-4 h-4 rounded bg-black/5 dark:bg-white/5 flex items-center justify-center">
+                          <Bell size={8} className="text-black/40 dark:text-white/40" />
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Dashboard Content */}
+                    <div className="flex-grow flex flex-col space-y-3 overflow-hidden">
+                      {/* Top Stats Row */}
+                      <div className="grid grid-cols-3 gap-2">
+                        <div className="p-2 rounded-lg bg-emerald-500/5 border border-emerald-500/10">
+                          <p className="text-[8px] font-bold text-emerald-600 dark:text-emerald-400 uppercase">Leads</p>
+                          <p className="text-xs font-bold text-black dark:text-white">+124</p>
+                        </div>
+                        <div className="p-2 rounded-lg bg-blue-500/5 border border-blue-500/10">
+                          <p className="text-[8px] font-bold text-blue-600 dark:text-blue-400 uppercase">Conv.</p>
+                          <p className="text-xs font-bold text-black dark:text-white">18.2%</p>
+                        </div>
+                        <div className="p-2 rounded-lg bg-purple-500/5 border border-purple-500/10">
+                          <p className="text-[8px] font-bold text-purple-600 dark:text-purple-400 uppercase">SEO</p>
+                          <p className="text-xs font-bold text-black dark:text-white">#1</p>
+                        </div>
+                      </div>
+
+                      {/* Main Chart Section */}
+                      <div className="flex-grow p-3 rounded-xl border border-black/5 dark:border-white/5 bg-gray-50/50 dark:bg-white/5 flex flex-col">
+                        <div className="flex justify-between items-center mb-2">
+                          <span className="text-[8px] font-bold text-black/40 dark:text-white/40 uppercase">Growth Trend</span>
+                          <TrendingUp size={10} className="text-emerald-500" />
+                        </div>
+                        <div className="flex-grow flex items-end space-x-1 pt-2">
+                          {[30, 45, 35, 60, 50, 80, 65, 90, 75].map((h, i) => (
+                            <motion.div 
+                              key={i} 
+                              initial={{ height: 0 }}
+                              animate={{ height: `${h}%` }}
+                              transition={{ delay: 0.5 + i * 0.1, duration: 0.8 }}
+                              className="flex-grow bg-gradient-to-t from-emerald-500/40 to-emerald-500/10 rounded-t-[2px]" 
+                            />
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Bottom Row: Leads & Workflows */}
+                      <div className="grid grid-cols-2 gap-3">
+                        {/* Recent Activity */}
+                        <div className="p-2 rounded-xl border border-black/5 dark:border-white/5 bg-gray-50/50 dark:bg-white/5">
+                          <p className="text-[7px] font-bold text-black/40 dark:text-white/40 uppercase mb-2">Recent Leads</p>
+                          <div className="space-y-1.5">
+                            {[1, 2, 3].map(i => (
+                              <div key={i} className="flex items-center space-x-2">
+                                <div className="w-3 h-3 rounded-full bg-black/10 dark:bg-white/10" />
+                                <div className="h-1 w-full bg-black/5 dark:bg-white/5 rounded" />
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                        {/* Workflows */}
+                        <div className="p-2 rounded-xl border border-black/5 dark:border-white/5 bg-gray-50/50 dark:bg-white/5">
+                          <p className="text-[7px] font-bold text-black/40 dark:text-white/40 uppercase mb-2">Workflows</p>
+                          <div className="space-y-1.5">
+                            <div className="flex items-center justify-between">
+                              <div className="h-1 w-8 bg-emerald-500/20 rounded" />
+                              <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                            </div>
+                            <div className="flex items-center justify-between">
+                              <div className="h-1 w-10 bg-blue-500/20 rounded" />
+                              <div className="w-1.5 h-1.5 rounded-full bg-blue-500" />
+                            </div>
+                            <div className="flex items-center justify-between">
+                              <div className="h-1 w-6 bg-purple-500/20 rounded" />
+                              <div className="w-1.5 h-1.5 rounded-full bg-purple-500" />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Floating Connection Lines (Subtle) */}
+                    <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-20">
+                      <motion.path 
+                        d="M 0 100 Q 100 50 200 100" 
+                        stroke="url(#grad)" 
+                        strokeWidth="1" 
+                        fill="none"
+                        animate={{ pathLength: [0, 1], opacity: [0, 1, 0] }}
+                        transition={{ duration: 3, repeat: Infinity }}
+                      />
+                      <defs>
+                        <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                          <stop offset="0%" stopColor="#10b981" />
+                          <stop offset="100%" stopColor="#3b82f6" />
+                        </linearGradient>
+                      </defs>
+                    </svg>
                   </div>
                 </div>
               </div>
               
-              {/* Floating Elements */}
+              {/* Floating UI Panels */}
               <motion.div 
-                animate={{ y: [0, -20, 0] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -top-10 -right-10 bg-white dark:bg-[#111] p-6 rounded-3xl shadow-2xl border border-black/5 dark:border-white/10 z-20"
-              >
-                <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-emerald-500 rounded-2xl flex items-center justify-center text-white">
-                    <TrendingUp size={24} />
-                  </div>
-                  <div>
-                    <p className="text-sm font-bold text-black dark:text-white">+140% Lead Gen</p>
-                    <p className="text-[10px] text-black/40 dark:text-white/40">Marketing Results</p>
-                  </div>
-                </div>
-              </motion.div>
-              <motion.div 
-                animate={{ y: [0, 20, 0] }}
+                animate={{ y: [0, -15, 0] }}
                 transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -bottom-10 -left-10 bg-white dark:bg-[#111] p-6 rounded-3xl shadow-2xl border border-black/5 dark:border-white/10 z-20"
+                className="absolute -top-10 -right-10 glass-card p-4 rounded-2xl shadow-2xl z-20 w-48 border border-white/10"
               >
-                <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-blue-500 rounded-2xl flex items-center justify-center text-white">
-                    <Smartphone size={24} />
+                <div className="flex items-center space-x-3 mb-3">
+                  <div className="w-8 h-8 bg-emerald-500 rounded-lg flex items-center justify-center text-white">
+                    <Target size={16} />
                   </div>
-                  <div>
-                    <p className="text-sm font-bold text-black dark:text-white">Mobile Ready</p>
-                    <p className="text-[10px] text-black/40 dark:text-white/40">iOS & Android Apps</p>
-                  </div>
+                  <p className="text-[10px] font-bold text-black dark:text-white uppercase tracking-widest">Marketing ROI</p>
+                </div>
+                <div className="h-1.5 w-full bg-black/5 dark:bg-white/5 rounded-full overflow-hidden">
+                  <div className="h-full bg-emerald-500 w-3/4" />
                 </div>
               </motion.div>
+
+              <motion.div 
+                animate={{ y: [0, 15, 0] }}
+                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute -bottom-10 -left-10 glass-card p-4 rounded-2xl shadow-2xl z-20 w-48 border border-white/10"
+              >
+                <div className="flex items-center space-x-3 mb-3">
+                  <div className="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center text-white">
+                    <TrendingUp size={16} />
+                  </div>
+                  <p className="text-[10px] font-bold text-black dark:text-white uppercase tracking-widest">Growth Analytics</p>
+                </div>
+                <div className="flex space-x-1">
+                  {[1, 2, 3, 4, 5].map(i => <div key={i} className="h-4 w-1 bg-blue-500/40 rounded-full" />)}
+                </div>
+              </motion.div>
+
+              {/* Decorative Tech Overlay */}
+              <div className="absolute -inset-4 bg-emerald-500/5 blur-3xl -z-10 rounded-full" />
             </motion.div>
           </div>
         </div>
@@ -294,18 +559,21 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Portfolio Section */}
-      <section id="portfolio" className="py-32 bg-white dark:bg-[#0a0a0a]">
+      {/* Across Industries Section */}
+      <section id="portfolio" className="py-32 bg-white dark:bg-[#0a0a0a] overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
             <div>
-              <h2 className="text-sm font-bold uppercase tracking-widest text-black/40 dark:text-white/40 mb-6">Our Portfolio</h2>
-              <h3 className="text-4xl md:text-6xl font-bold tracking-tighter text-black dark:text-white mb-8 leading-tight">Delivering Results <br /> <span className="text-black/40 dark:text-white/40">Across Industries</span></h3>
+              <h2 className="text-sm font-bold uppercase tracking-widest text-emerald-500 mb-6">Industry Expertise</h2>
+              <h3 className="text-4xl md:text-6xl font-bold tracking-tighter text-black dark:text-white mb-8 leading-tight">
+                How We Transform <br /> 
+                <span className="text-black/40 dark:text-white/40">Businesses with Technology</span>
+              </h3>
               <p className="text-xl text-black/60 dark:text-white/60 mb-12 leading-relaxed">
-                We've helped businesses across various sectors transform their digital presence and streamline their operations.
+                We build systems that help businesses automate operations, analyze data, and grow faster through digital platforms.
               </p>
               
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div className="space-y-6">
                 {industries.map((ind, idx) => (
                   <motion.div 
                     key={idx}
@@ -313,35 +581,194 @@ export default function Home() {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: idx * 0.1 }}
-                    className="p-6 bg-black/[0.02] dark:bg-white/[0.02] rounded-3xl border border-black/5 dark:border-white/10"
+                    whileHover={{ scale: 1.02, x: 10 }}
+                    className="p-8 bg-black/[0.02] dark:bg-white/[0.02] rounded-[2rem] border border-black/5 dark:border-white/10 hover:bg-white dark:hover:bg-white/5 hover:shadow-xl transition-all duration-300 group"
                   >
-                    <div className="w-10 h-10 bg-black dark:bg-white text-white dark:text-black rounded-xl flex items-center justify-center mb-4">
-                      {ind.icon}
+                    <div className="flex items-start space-x-6">
+                      <div className="w-14 h-14 bg-black dark:bg-white text-white dark:text-black rounded-2xl flex items-center justify-center shrink-0 group-hover:rotate-12 transition-transform">
+                        {React.cloneElement(ind.icon as React.ReactElement, { size: 24 })}
+                      </div>
+                      <div className="flex-grow">
+                        <div className="flex items-center justify-between mb-2">
+                          <h4 className="text-xl font-bold text-black dark:text-white">{ind.name}</h4>
+                          <div className="flex flex-wrap gap-2">
+                            {ind.tech.map((t, i) => (
+                              <span key={i} className="text-[8px] font-bold uppercase tracking-widest px-2 py-1 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 rounded-full">
+                                {t}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                        <p className="text-sm text-black/60 dark:text-white/60 leading-relaxed">{ind.desc}</p>
+                      </div>
                     </div>
-                    <p className="text-lg font-bold text-black dark:text-white mb-1">{ind.name}</p>
-                    <p className="text-xs text-black/40 dark:text-white/40 leading-relaxed">{ind.desc}</p>
                   </motion.div>
                 ))}
               </div>
             </div>
             
-            <div className="grid grid-cols-2 gap-6">
-              <div className="space-y-6 mt-12">
-                <div className="aspect-[3/4] rounded-[3rem] overflow-hidden grayscale hover:grayscale-0 transition-all duration-700 border border-black/5 dark:border-white/10 shadow-xl">
-                  <img src="https://picsum.photos/seed/ind1/600/800" alt="Industry 1" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+            <div className="relative">
+              {/* Dynamic Business Software Visual - Wings Growth Engine */}
+              <div className="relative z-10 aspect-square rounded-[3rem] bg-white dark:bg-[#0a0a0a] border border-black/10 dark:border-white/10 overflow-hidden shadow-2xl flex flex-col">
+                {/* App Header */}
+                <div className="h-12 border-b border-black/5 dark:border-white/5 flex items-center justify-between px-6 bg-gray-50/50 dark:bg-white/5">
+                  <div className="flex items-center space-x-3">
+                    <div className="w-6 h-6 bg-emerald-500 rounded-lg flex items-center justify-center">
+                      <Cpu size={12} className="text-white" />
+                    </div>
+                    <span className="text-[10px] font-bold uppercase tracking-widest text-black/60 dark:text-white/60">Wings Growth Engine</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <div className="w-24 h-6 bg-black/5 dark:bg-white/5 rounded-full flex items-center px-2">
+                      <Search size={10} className="text-black/20 dark:text-white/20 mr-2" />
+                      <div className="h-1 w-12 bg-black/10 dark:bg-white/10 rounded" />
+                    </div>
+                    <div className="w-6 h-6 rounded-full bg-emerald-500/20" />
+                  </div>
                 </div>
-                <div className="aspect-square rounded-[3rem] overflow-hidden grayscale hover:grayscale-0 transition-all duration-700 border border-black/5 dark:border-white/10 shadow-xl">
-                  <img src="https://picsum.photos/seed/ind2/600/600" alt="Industry 2" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+
+                <div className="flex-grow flex overflow-hidden">
+                  {/* Sidebar */}
+                  <div className="w-12 border-r border-black/5 dark:border-white/5 flex flex-col items-center py-6 space-y-6 bg-gray-50/30 dark:bg-white/[0.02]">
+                    <Layout size={14} className="text-emerald-500" />
+                    <Users size={14} className="text-black/20 dark:text-white/20" />
+                    <Target size={14} className="text-black/20 dark:text-white/20" />
+                    <Search size={14} className="text-black/20 dark:text-white/20" />
+                    <Cpu size={14} className="text-black/20 dark:text-white/20" />
+                    <div className="flex-grow" />
+                    <Bell size={14} className="text-black/20 dark:text-white/20" />
+                  </div>
+
+                  {/* Main Dashboard Area */}
+                  <div className="flex-grow p-6 overflow-hidden flex flex-col space-y-4">
+                    {/* Top Stats */}
+                    <div className="grid grid-cols-3 gap-3">
+                      <div className="p-3 rounded-2xl bg-emerald-500/5 border border-emerald-500/10">
+                        <div className="flex items-center justify-between mb-2">
+                          <span className="text-[8px] font-bold text-emerald-600 dark:text-emerald-400 uppercase">Traffic</span>
+                          <TrendingUp size={10} className="text-emerald-500" />
+                        </div>
+                        <p className="text-sm font-bold text-black dark:text-white">+42.5%</p>
+                      </div>
+                      <div className="p-3 rounded-2xl bg-blue-500/5 border border-blue-500/10">
+                        <div className="flex items-center justify-between mb-2">
+                          <span className="text-[8px] font-bold text-blue-600 dark:text-blue-400 uppercase">Leads</span>
+                          <Users size={10} className="text-blue-500" />
+                        </div>
+                        <p className="text-sm font-bold text-black dark:text-white">1,284</p>
+                      </div>
+                      <div className="p-3 rounded-2xl bg-purple-500/5 border border-purple-500/10">
+                        <div className="flex items-center justify-between mb-2">
+                          <span className="text-[8px] font-bold text-purple-600 dark:text-purple-400 uppercase">ROI</span>
+                          <Activity size={10} className="text-purple-500" />
+                        </div>
+                        <p className="text-sm font-bold text-black dark:text-white">3.8x</p>
+                      </div>
+                    </div>
+
+                    {/* Main Chart: Growth Analytics */}
+                    <div className="flex-grow p-4 rounded-2xl border border-black/5 dark:border-white/5 bg-gray-50/50 dark:bg-white/5 flex flex-col">
+                      <div className="flex justify-between items-center mb-4">
+                        <div className="flex flex-col">
+                          <span className="text-[10px] font-bold text-black dark:text-white">Growth Analytics</span>
+                          <span className="text-[8px] text-black/40 dark:text-white/40">Marketing Performance Tracker</span>
+                        </div>
+                        <div className="flex space-x-1">
+                          <div className="px-2 py-1 rounded bg-black/5 dark:bg-white/5 text-[8px] font-bold">7D</div>
+                          <div className="px-2 py-1 rounded bg-emerald-500 text-white text-[8px] font-bold">30D</div>
+                        </div>
+                      </div>
+                      <div className="flex-grow flex items-end space-x-1.5 pt-2">
+                        {[35, 55, 40, 75, 60, 95, 80, 100, 85, 110, 90, 120].map((h, i) => (
+                          <motion.div 
+                            key={i}
+                            initial={{ height: 0 }}
+                            whileInView={{ height: `${(h/120)*100}%` }}
+                            transition={{ delay: i * 0.05, duration: 0.8 }}
+                            className={`flex-grow rounded-t-sm ${i === 11 ? 'bg-emerald-500' : 'bg-emerald-500/20'}`}
+                          />
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Bottom Row: CRM & Automation */}
+                    <div className="grid grid-cols-2 gap-4 h-32">
+                      {/* CRM List */}
+                      <div className="p-4 rounded-2xl border border-black/5 dark:border-white/5 bg-gray-50/50 dark:bg-white/5 overflow-hidden">
+                        <span className="text-[8px] font-bold text-black/40 dark:text-white/40 uppercase block mb-3">Recent Leads</span>
+                        <div className="space-y-2">
+                          {[1, 2, 3].map(i => (
+                            <div key={i} className="flex items-center justify-between">
+                              <div className="flex items-center space-x-2">
+                                <div className="w-5 h-5 rounded-full bg-black/5 dark:bg-white/5" />
+                                <div className="h-1.5 w-12 bg-black/10 dark:bg-white/10 rounded" />
+                              </div>
+                              <div className={`w-1.5 h-1.5 rounded-full ${i === 1 ? 'bg-emerald-500' : 'bg-blue-500'}`} />
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                      {/* Automation Workflow */}
+                      <div className="p-4 rounded-2xl border border-black/5 dark:border-white/5 bg-gray-50/50 dark:bg-white/5 flex flex-col">
+                        <span className="text-[8px] font-bold text-black/40 dark:text-white/40 uppercase block mb-3">Active Workflows</span>
+                        <div className="flex-grow flex flex-col justify-center space-y-3">
+                          <div className="flex items-center space-x-3">
+                            <div className="w-6 h-6 rounded-lg bg-purple-500/10 flex items-center justify-center text-purple-500">
+                              <Zap size={10} />
+                            </div>
+                            <div className="flex-grow h-1 bg-black/5 dark:bg-white/5 rounded-full overflow-hidden">
+                              <motion.div 
+                                animate={{ x: [-50, 100] }}
+                                transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                                className="h-full w-1/3 bg-purple-500"
+                              />
+                            </div>
+                          </div>
+                          <div className="flex items-center space-x-3">
+                            <div className="w-6 h-6 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-500">
+                              <MessageCircle size={10} />
+                            </div>
+                            <div className="flex-grow h-1 bg-black/5 dark:bg-white/5 rounded-full overflow-hidden">
+                              <motion.div 
+                                animate={{ x: [-50, 100] }}
+                                transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                                className="h-full w-1/4 bg-blue-500"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
+
+                {/* Floating SEO Tracker Overlay */}
+                <motion.div 
+                  animate={{ y: [0, -10, 0] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                  className="absolute top-1/2 -right-8 w-40 p-4 bg-white dark:bg-[#1a1a1a] rounded-2xl shadow-2xl border border-black/5 dark:border-white/10 z-20"
+                >
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="text-[8px] font-bold uppercase tracking-widest text-emerald-500">SEO Ranking</span>
+                    <Search size={10} className="text-emerald-500" />
+                  </div>
+                  <div className="space-y-2">
+                    <div className="flex justify-between items-center">
+                      <div className="h-1 w-12 bg-black/10 dark:bg-white/10 rounded" />
+                      <span className="text-[10px] font-bold text-emerald-500">#1</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <div className="h-1 w-16 bg-black/10 dark:bg-white/10 rounded" />
+                      <span className="text-[10px] font-bold text-emerald-500">#3</span>
+                    </div>
+                  </div>
+                </motion.div>
               </div>
-              <div className="space-y-6">
-                <div className="aspect-square rounded-[3rem] overflow-hidden grayscale hover:grayscale-0 transition-all duration-700 border border-black/5 dark:border-white/10 shadow-xl">
-                  <img src="https://picsum.photos/seed/ind3/600/600" alt="Industry 3" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
-                </div>
-                <div className="aspect-[3/4] rounded-[3rem] overflow-hidden grayscale hover:grayscale-0 transition-all duration-700 border border-black/5 dark:border-white/10 shadow-xl">
-                  <img src="https://picsum.photos/seed/ind4/600/800" alt="Industry 4" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
-                </div>
-              </div>
+
+              {/* Decorative Background */}
+              <div className="absolute -inset-10 bg-emerald-500/5 blur-[100px] -z-10 rounded-full" />
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] border border-black/[0.03] dark:border-white/[0.03] rounded-full -z-10" />
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] h-[140%] border border-black/[0.02] dark:border-white/[0.02] rounded-full -z-10" />
             </div>
           </div>
         </div>
@@ -353,24 +780,37 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
             <div className="order-2 lg:order-1 relative">
               <motion.div 
-                initial={{ opacity: 0, rotate: -10 }}
-                whileInView={{ opacity: 1, rotate: 0 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="aspect-square bg-gradient-to-br from-emerald-500/20 to-blue-500/20 rounded-[4rem] border border-white/10 flex items-center justify-center p-12"
+                className="aspect-square bg-gradient-to-br from-white/5 to-white/[0.02] rounded-[3rem] border border-white/10 p-12 flex flex-col justify-center"
               >
-                <div className="text-center">
-                  <div className="w-24 h-24 bg-white text-black rounded-[2rem] flex items-center justify-center mx-auto mb-8 shadow-2xl">
-                    <TrendingUp size={48} />
+                <div className="relative z-10">
+                  <h4 className="text-4xl font-bold mb-6 tracking-tight text-emerald-500">Business Growth Systems</h4>
+                  <p className="text-xl text-white/80 leading-relaxed mb-10">
+                    We design digital systems that help businesses generate leads, streamline operations, and scale using modern technology.
+                  </p>
+                  
+                  <div className="space-y-4">
+                    {[
+                      'Lead Generation Systems',
+                      'Digital Marketing Infrastructure',
+                      'Business Process Automation',
+                      'Custom Business Applications'
+                    ].map((item, i) => (
+                      <div key={i} className="flex items-center space-x-3">
+                        <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                        <span className="text-lg font-medium text-white/90">{item}</span>
+                      </div>
+                    ))}
                   </div>
-                  <p className="text-5xl font-bold mb-4 tracking-tighter">Save 90%</p>
-                  <p className="text-xl text-white/60">On development costs and time-to-market compared to traditional agencies.</p>
                 </div>
               </motion.div>
             </div>
             
             <div className="order-1 lg:order-2">
-              <h2 className="text-sm font-bold uppercase tracking-widest text-white/40 mb-6">Why Clients Choose Us</h2>
-              <h3 className="text-5xl md:text-7xl font-bold tracking-tighter mb-10 leading-[0.9]">The WingsForShare <br /> <span className="text-white/40">Advantage</span></h3>
+              <h2 className="text-sm font-bold uppercase tracking-widest text-emerald-500 mb-6">Why Businesses Choose Us</h2>
+              <h3 className="text-5xl md:text-7xl font-bold tracking-tighter mb-10 leading-[0.9]">Technology Systems <br /> <span className="text-white/40">That Help Businesses Grow</span></h3>
               
               <div className="space-y-8">
                 {whyChooseUs.map((item, idx) => (
@@ -380,13 +820,13 @@ export default function Home() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: idx * 0.1 }}
-                    className="flex items-start space-x-6"
+                    className="flex items-start space-x-6 group"
                   >
-                    <div className="w-8 h-8 rounded-full bg-emerald-500/20 flex items-center justify-center flex-shrink-0 mt-1">
-                      <CheckCircle size={18} className="text-emerald-500" />
+                    <div className="w-10 h-10 rounded-2xl bg-emerald-500/10 flex items-center justify-center flex-shrink-0 mt-1 group-hover:bg-emerald-500 transition-colors duration-300">
+                      <CheckCircle size={20} className="text-emerald-500 group-hover:text-white transition-colors duration-300" />
                     </div>
                     <div>
-                      <h4 className="text-xl font-bold mb-2">{item.title}</h4>
+                      <h4 className="text-xl font-bold mb-2 group-hover:text-emerald-400 transition-colors duration-300">{item.title}</h4>
                       <p className="text-white/60 leading-relaxed">{item.desc}</p>
                     </div>
                   </motion.div>
@@ -427,7 +867,7 @@ export default function Home() {
           >
             <h2 className="text-6xl md:text-9xl font-bold tracking-tighter text-black dark:text-white mb-12 leading-[0.85]">Ready to Launch Your <br /> <span className="text-black/40 dark:text-white/40 italic">Business Online?</span></h2>
             <p className="text-xl md:text-2xl text-black/60 dark:text-white/60 mb-16 leading-relaxed">
-              Join 500+ successful businesses. Get your custom software, website, or marketing system setup in record time.
+              Join numerous successful businesses. Get your custom software, website, or marketing system setup in record time.
             </p>
             
             <div className="bg-black/5 dark:bg-white/5 p-12 rounded-[3rem] border border-black/5 dark:border-white/10 mb-16">
