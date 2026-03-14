@@ -9,7 +9,7 @@ export default function ArchitectPortfolio() {
       <section className="py-32 bg-black text-white overflow-hidden relative min-h-[80vh] flex items-center">
         <div className="absolute inset-0 opacity-30">
           <img 
-            src="https://picsum.photos/seed/architecture-hero/1920/1080?blur=10" 
+            src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=1920&h=1080" 
             alt="Architecture Background" 
             className="w-full h-full object-cover scale-110"
             referrerPolicy="no-referrer"
@@ -123,7 +123,7 @@ export default function ArchitectPortfolio() {
             <div className="relative">
               <div className="aspect-[4/5] rounded-[3rem] overflow-hidden shadow-2xl shadow-black/20 dark:shadow-white/5 group">
                 <img 
-                  src="https://picsum.photos/seed/arch-showcase/800/1000" 
+                  src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&q=80&w=800&h=1000" 
                   alt="Architect Portfolio Showcase" 
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
                   referrerPolicy="no-referrer"

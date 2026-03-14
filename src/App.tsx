@@ -5,6 +5,7 @@ import Footer from './components/Footer';
 import FloatingActions from './components/FloatingActions';
 import MobileCTA from './components/MobileCTA';
 import ScrollToTop from './components/ScrollToTop';
+import ScrollToTopButton from './components/ScrollToTopButton';
 import Home from './pages/Home';
 import ProductDetail from './pages/ProductDetail';
 import ArchitectPortfolio from './pages/ArchitectPortfolio';
@@ -40,6 +41,7 @@ export default function App() {
           </Routes>
           <FloatingActions />
           <MobileCTA />
+          <ScrollToTopButton />
         </div>
       </Router>
     </ThemeProvider>

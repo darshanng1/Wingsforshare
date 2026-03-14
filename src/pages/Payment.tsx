@@ -22,7 +22,7 @@ export default function Payment() {
       currency: "INR",
       name: "WingsForShare",
       description: "Digital Solution Advance Payment",
-      image: "https://picsum.photos/seed/wings/200/200",
+      image: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&q=80&w=200&h=200",
       handler: function (response: any) {
         console.log("Payment Success:", response.razorpay_payment_id);
         setStep(3);

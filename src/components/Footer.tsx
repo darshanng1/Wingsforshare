@@ -5,19 +5,19 @@ export default function Footer() {
   return (
     <footer className="bg-white dark:bg-[#0a0a0a] border-t border-black/5 dark:border-white/10 transition-colors duration-300">
       {/* Consultation CTA Section */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 border-b border-black/5 dark:border-white/10">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-          <div>
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tighter text-black dark:text-white mb-2">
+      <div className="container-custom py-12 md:py-20 border-b border-black/5 dark:border-white/10">
+        <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-8 text-center md:text-left">
+          <div className="max-w-2xl">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
               Start Growing Your Business with Technology
             </h2>
-            <p className="text-black/60 dark:text-white/60 text-lg">
+            <p className="text-black/60 dark:text-white/60 text-base md:text-lg">
               Partner with us to build systems that scale your operations and revenue.
             </p>
           </div>
           <Link 
             to="/#contact" 
-            className="inline-flex items-center space-x-3 bg-black dark:bg-white text-white dark:text-black px-8 py-4 rounded-2xl font-bold text-lg hover:opacity-80 transition-all active:scale-95 shadow-xl shadow-black/10 dark:shadow-white/5"
+            className="w-full sm:w-auto inline-flex items-center justify-center space-x-3 bg-black dark:bg-white text-white dark:text-black px-8 py-4 rounded-2xl font-bold text-lg hover:opacity-80 transition-all active:scale-95 shadow-xl shadow-black/10 dark:shadow-white/5"
           >
             <span>Book a Consultation</span>
             <ArrowRight size={20} />
@@ -25,11 +25,11 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16">
+      <div className="container-custom py-16 md:py-24">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16">
           {/* Column 1: Company Overview */}
-          <div className="flex flex-col">
-            <Link to="/" className="flex items-center space-x-2 mb-8 group">
+          <div className="flex flex-col items-center sm:items-start text-center sm:text-left">
+            <Link to="/" className="flex items-center space-x-2 mb-6 group">
               <div className="w-10 h-10 bg-black dark:bg-white rounded-xl flex items-center justify-center group-hover:rotate-12 transition-transform duration-300">
                 <span className="text-white dark:text-black font-bold text-xl">W</span>
               </div>
@@ -38,62 +38,62 @@ export default function Footer() {
                 <span className="text-[10px] font-bold uppercase tracking-[0.1em] text-black/40 dark:text-white/40">Business Tech & Growth</span>
               </div>
             </Link>
-            <p className="text-black/60 dark:text-white/60 text-base leading-relaxed">
+            <p className="text-black/60 dark:text-white/60 text-sm md:text-base leading-relaxed max-w-xs">
               We help businesses grow through modern websites, automation tools, digital marketing systems, and custom business applications.
             </p>
           </div>
           
           {/* Column 2: Solutions */}
-          <div>
-            <h3 className="text-sm font-bold text-black dark:text-white uppercase tracking-widest mb-8">Solutions</h3>
-            <ul className="space-y-4">
-              <li><Link to="/#services" className="text-black/60 dark:text-white/60 hover:text-black dark:hover:text-white transition-colors font-medium">Business Website Development</Link></li>
-              <li><Link to="/#services" className="text-black/60 dark:text-white/60 hover:text-black dark:hover:text-white transition-colors font-medium">SEO & Digital Marketing Systems</Link></li>
-              <li><Link to="/#services" className="text-black/60 dark:text-white/60 hover:text-black dark:hover:text-white transition-colors font-medium">Business Automation Tools</Link></li>
-              <li><Link to="/#services" className="text-black/60 dark:text-white/60 hover:text-black dark:hover:text-white transition-colors font-medium">Custom Business Applications</Link></li>
-              <li><Link to="/#services" className="text-black/60 dark:text-white/60 hover:text-black dark:hover:text-white transition-colors font-medium">Analytics & Data Dashboards</Link></li>
+          <div className="text-center sm:text-left">
+            <h3 className="text-xs font-bold text-black dark:text-white uppercase tracking-widest mb-6 md:mb-8">Solutions</h3>
+            <ul className="space-y-3 md:space-y-4">
+              <li><Link to="/#services" className="text-sm md:text-base text-black/60 dark:text-white/60 hover:text-black dark:hover:text-white transition-colors font-medium">Business Website Development</Link></li>
+              <li><Link to="/#services" className="text-sm md:text-base text-black/60 dark:text-white/60 hover:text-black dark:hover:text-white transition-colors font-medium">SEO & Digital Marketing Systems</Link></li>
+              <li><Link to="/#services" className="text-sm md:text-base text-black/60 dark:text-white/60 hover:text-black dark:hover:text-white transition-colors font-medium">Business Automation Tools</Link></li>
+              <li><Link to="/#services" className="text-sm md:text-base text-black/60 dark:text-white/60 hover:text-black dark:hover:text-white transition-colors font-medium">Custom Business Applications</Link></li>
+              <li><Link to="/#services" className="text-sm md:text-base text-black/60 dark:text-white/60 hover:text-black dark:hover:text-white transition-colors font-medium">Analytics & Data Dashboards</Link></li>
             </ul>
           </div>
 
           {/* Column 3: Industries */}
-          <div>
-            <h3 className="text-sm font-bold text-black dark:text-white uppercase tracking-widest mb-8">Industries</h3>
-            <ul className="space-y-4">
-              <li><span className="text-black/60 dark:text-white/60 font-medium">Pest Control Systems</span></li>
-              <li><span className="text-black/60 dark:text-white/60 font-medium">Manufacturing Solutions</span></li>
-              <li><span className="text-black/60 dark:text-white/60 font-medium">Retail & E-commerce Platforms</span></li>
-              <li><span className="text-black/60 dark:text-white/60 font-medium">Professional Service Automation</span></li>
+          <div className="text-center sm:text-left">
+            <h3 className="text-xs font-bold text-black dark:text-white uppercase tracking-widest mb-6 md:mb-8">Industries</h3>
+            <ul className="space-y-3 md:space-y-4">
+              <li><span className="text-sm md:text-base text-black/60 dark:text-white/60 font-medium">Pest Control Systems</span></li>
+              <li><span className="text-sm md:text-base text-black/60 dark:text-white/60 font-medium">Manufacturing Solutions</span></li>
+              <li><span className="text-sm md:text-base text-black/60 dark:text-white/60 font-medium">Retail & E-commerce Platforms</span></li>
+              <li><span className="text-sm md:text-base text-black/60 dark:text-white/60 font-medium">Professional Service Automation</span></li>
             </ul>
           </div>
 
           {/* Column 4: Contact */}
-          <div>
-            <h3 className="text-sm font-bold text-black dark:text-white uppercase tracking-widest mb-8">Contact</h3>
-            <ul className="space-y-6">
+          <div className="text-center sm:text-left">
+            <h3 className="text-xs font-bold text-black dark:text-white uppercase tracking-widest mb-6 md:mb-8">Contact</h3>
+            <ul className="space-y-4 md:space-y-6">
               <li>
-                <Link to="/#contact" className="text-black/60 dark:text-white/60 hover:text-black dark:hover:text-white transition-colors font-medium block mb-1">Business Consultation</Link>
+                <Link to="/#contact" className="text-sm md:text-base text-black/60 dark:text-white/60 hover:text-black dark:hover:text-white transition-colors font-medium block mb-1">Business Consultation</Link>
               </li>
-              <li className="flex items-center space-x-3 text-black/60 dark:text-white/60">
-                <MessageCircle size={18} className="text-emerald-500" />
-                <a href="https://wa.me/918618764541" target="_blank" rel="noopener noreferrer" className="hover:text-black dark:hover:text-white transition-colors font-medium">WhatsApp: +91 86187 64541</a>
+              <li className="flex items-center justify-center sm:justify-start space-x-3 text-black/60 dark:text-white/60">
+                <MessageCircle size={16} className="text-emerald-500" />
+                <a href="https://wa.me/918618764541" target="_blank" rel="noopener noreferrer" className="text-sm md:text-base hover:text-black dark:hover:text-white transition-colors font-medium">WhatsApp: +91 86187 64541</a>
               </li>
-              <li className="flex items-center space-x-3 text-black/60 dark:text-white/60">
-                <Mail size={18} className="text-emerald-500" />
-                <a href="mailto:contact@wingsforshare.com" className="hover:text-black dark:hover:text-white transition-colors font-medium">contact@wingsforshare.com</a>
+              <li className="flex items-center justify-center sm:justify-start space-x-3 text-black/60 dark:text-white/60">
+                <Mail size={16} className="text-emerald-500" />
+                <a href="mailto:contact@wingsforshare.com" className="text-sm md:text-base hover:text-black dark:hover:text-white transition-colors font-medium">contact@wingsforshare.com</a>
               </li>
             </ul>
           </div>
         </div>
         
         {/* Footer Bottom Bar */}
-        <div className="mt-24 pt-12 border-t border-black/5 dark:border-white/10 flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
-          <p className="text-sm text-black/40 dark:text-white/40 font-medium">
+        <div className="mt-16 md:mt-24 pt-8 md:pt-12 border-t border-black/5 dark:border-white/10 flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
+          <p className="text-xs md:text-sm text-black/40 dark:text-white/40 font-medium text-center md:text-left">
             © {new Date().getFullYear()} WingsForShare Digital Solutions.
           </p>
-          <div className="flex space-x-10">
-            <Link to="/" className="text-sm text-black/40 dark:text-white/40 hover:text-black dark:hover:text-white transition-colors font-medium">Privacy Policy</Link>
-            <Link to="/" className="text-sm text-black/40 dark:text-white/40 hover:text-black dark:hover:text-white transition-colors font-medium">Terms of Service</Link>
-            <Link to="/#contact" className="text-sm text-black/40 dark:text-white/40 hover:text-black dark:hover:text-white transition-colors font-medium">Contact</Link>
+          <div className="flex flex-wrap justify-center gap-6 md:gap-10">
+            <Link to="/" className="text-xs md:text-sm text-black/40 dark:text-white/40 hover:text-black dark:hover:text-white transition-colors font-medium">Privacy Policy</Link>
+            <Link to="/" className="text-xs md:text-sm text-black/40 dark:text-white/40 hover:text-black dark:hover:text-white transition-colors font-medium">Terms of Service</Link>
+            <Link to="/#contact" className="text-xs md:text-sm text-black/40 dark:text-white/40 hover:text-black dark:hover:text-white transition-colors font-medium">Contact</Link>
           </div>
         </div>
       </div>

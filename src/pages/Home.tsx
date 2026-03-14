@@ -12,7 +12,6 @@ import {
 import { products } from '../data/products';
 import ProductCard from '../components/ProductCard';
 import { Link } from 'react-router-dom';
-import ScrollToTopButton from '../components/ScrollToTopButton';
 import ConsultationForm from '../components/ConsultationForm';
 import MeetingBooking from '../components/MeetingBooking';
 
@@ -111,10 +110,9 @@ export default function Home() {
 
   return (
     <div className="bg-white dark:bg-[#0a0a0a] transition-colors duration-300 overflow-hidden">
-      <ScrollToTopButton />
       
       {/* Hero Section */}
-      <section ref={heroRef} className="relative min-h-screen flex items-center pt-32 pb-24 overflow-visible">
+      <section ref={heroRef} className="relative min-h-screen flex items-center pt-24 md:pt-32 pb-20 md:pb-24 overflow-visible">
         <motion.div style={{ opacity }} className="absolute inset-0 -z-20 pointer-events-none">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-emerald-500/10 dark:from-emerald-500/5 via-transparent to-transparent blur-3xl opacity-50" />
           <motion.div 
@@ -124,7 +122,7 @@ export default function Home() {
               scale: [1, 1.1, 1]
             }}
             transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute top-20 left-10 w-64 h-64 bg-emerald-500/5 rounded-full blur-3xl" 
+            className="absolute top-20 left-10 w-48 md:w-64 h-48 md:h-64 bg-emerald-500/5 rounded-full blur-3xl" 
           />
           <motion.div 
             animate={{ 
@@ -133,7 +131,7 @@ export default function Home() {
               scale: [1, 1.2, 1]
             }}
             transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute top-1/2 -left-64 w-[40rem] h-[40rem] bg-blue-500/5 rounded-full blur-[160px]" 
+            className="absolute top-1/2 -left-64 w-[30rem] md:w-[40rem] h-[30rem] md:h-[40rem] bg-blue-500/5 rounded-full blur-[160px]" 
           />
           <motion.div 
             animate={{ 
@@ -142,12 +140,12 @@ export default function Home() {
               scale: [1, 1.2, 1]
             }}
             transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute bottom-20 right-10 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl" 
+            className="absolute bottom-20 right-10 w-64 md:w-96 h-64 md:h-96 bg-blue-500/5 rounded-full blur-3xl" 
           />
         </motion.div>
         
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div className="container-custom">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
@@ -157,27 +155,27 @@ export default function Home() {
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="inline-flex items-center space-x-2 bg-black/5 dark:bg-white/5 px-4 py-2 rounded-full mb-8 border border-black/5 dark:border-white/10 backdrop-blur-sm"
+                className="inline-flex items-center space-x-2 bg-black/5 dark:bg-white/5 px-4 py-2 rounded-full mb-6 md:mb-8 border border-black/5 dark:border-white/10 backdrop-blur-sm"
               >
-                <ShieldCheck size={16} className="text-emerald-500" />
-                <span className="text-[10px] font-bold uppercase tracking-widest text-black/60 dark:text-white/60">WingsForShare Business Technology Partner</span>
+                <ShieldCheck size={14} className="text-emerald-500" />
+                <span className="text-[9px] md:text-[10px] font-bold uppercase tracking-widest text-black/60 dark:text-white/60">WingsForShare Business Technology Partner</span>
               </motion.div>
               
-              <div className="mb-8">
+              <div className="mb-6 md:mb-8">
                 <motion.h1 
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, ease: "easeOut" }}
-                  className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-black dark:text-white leading-[0.9] mb-4"
+                  className="mb-4"
                 >
-                  Technology Systems That <br />
+                  Technology Systems That <br className="hidden md:block" />
                   <span className="relative inline-block">
                     <span className="text-emerald-500 italic">Grow Your Business</span>
                     <motion.div 
                       initial={{ scaleX: 0 }}
                       animate={{ scaleX: 1 }}
                       transition={{ delay: 1, duration: 0.8, ease: "circOut" }}
-                      className="absolute -bottom-2 left-0 w-full h-3 bg-emerald-500/20 origin-left rounded-full -z-10"
+                      className="absolute -bottom-1 md:-bottom-2 left-0 w-full h-2 md:h-3 bg-emerald-500/20 origin-left rounded-full -z-10"
                     />
                   </span>
                 </motion.h1>
@@ -187,7 +185,7 @@ export default function Home() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
-                className="text-xl md:text-2xl text-black/60 dark:text-white/60 max-w-xl mb-12 leading-relaxed"
+                className="text-black/60 dark:text-white/60 max-w-xl mb-10 md:mb-12 leading-relaxed"
               >
                 We help businesses scale using modern websites, digital marketing systems, automation tools, analytics platforms, and custom applications.
               </motion.p>
@@ -196,11 +194,11 @@ export default function Home() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.6 }}
-                className="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-4 mb-16"
+                className="flex flex-col sm:flex-row items-stretch sm:items-center space-y-4 sm:space-y-0 sm:space-x-4 mb-12 md:mb-16"
               >
                 <a 
                   href="#consultation" 
-                  className="group relative w-full sm:w-auto bg-black dark:bg-white text-white dark:text-black px-8 py-4 rounded-2xl font-bold text-base transition-all flex items-center justify-center space-x-2 shadow-2xl shadow-black/20 dark:shadow-white/10 overflow-hidden hover:scale-[1.02] active:scale-95"
+                  className="group relative bg-black dark:bg-white text-white dark:text-black px-8 py-4 md:py-5 rounded-2xl font-bold text-base transition-all flex items-center justify-center space-x-2 shadow-2xl shadow-black/20 dark:shadow-white/10 overflow-hidden hover:scale-[1.02] active:scale-95"
                 >
                   <div className="absolute inset-0 bg-gradient-to-r from-emerald-500 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   <span className="relative z-10">Start Your Project</span>
@@ -208,14 +206,14 @@ export default function Home() {
                 </a>
                 <a 
                   href="#products" 
-                  className="group w-full sm:w-auto bg-white dark:bg-black border border-black/10 dark:border-white/10 text-black dark:text-white px-8 py-4 rounded-2xl font-bold text-base hover:bg-black/5 dark:hover:bg-white/5 transition-all flex items-center justify-center space-x-2 hover:scale-[1.02] active:scale-95"
+                  className="group bg-white dark:bg-black border border-black/10 dark:border-white/10 text-black dark:text-white px-8 py-4 md:py-5 rounded-2xl font-bold text-base hover:bg-black/5 dark:hover:bg-white/5 transition-all flex items-center justify-center space-x-2 hover:scale-[1.02] active:scale-95"
                 >
                   <Layout size={18} className="text-emerald-500 group-hover:rotate-12 transition-transform" />
                   <span>View Live Product Demos</span>
                 </a>
               </motion.div>
 
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 border-t border-black/5 dark:border-white/10 pt-12">
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 border-t border-black/5 dark:border-white/10 pt-8 md:pt-12">
                 {[
                   { label: 'Website Development', icon: <Globe size={12} /> },
                   { label: 'SEO Optimization', icon: <Search size={12} /> },
@@ -234,7 +232,7 @@ export default function Home() {
                     <div className="w-5 h-5 rounded-md bg-black/5 dark:bg-white/5 flex items-center justify-center text-emerald-500">
                       {cap.icon}
                     </div>
-                    <span className="text-[10px] font-bold uppercase tracking-wider">{cap.label}</span>
+                    <span className="text-[9px] md:text-[10px] font-bold uppercase tracking-wider">{cap.label}</span>
                   </motion.div>
                 ))}
               </div>
@@ -486,29 +484,29 @@ export default function Home() {
       </section>
 
       {/* Featured Demos Ticker */}
-      <section className="py-12 bg-black text-white border-y border-white/10 overflow-hidden">
+      <section className="py-8 md:py-12 bg-black text-white border-y border-white/10 overflow-hidden">
         <div className="flex whitespace-nowrap animate-marquee">
           {[...products, ...products].map((product, idx) => (
-            <div key={idx} className="flex items-center space-x-4 px-12 border-r border-white/10">
-              <div className="w-2 h-2 rounded-full bg-emerald-500" />
-              <span className="text-sm font-bold uppercase tracking-widest opacity-60">{product.name}</span>
+            <div key={idx} className="flex items-center space-x-4 px-8 md:px-12 border-r border-white/10">
+              <div className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-emerald-500" />
+              <span className="text-xs md:text-sm font-bold uppercase tracking-widest opacity-60">{product.name}</span>
             </div>
           ))}
         </div>
       </section>
 
       {/* Solutions Section */}
-      <section id="solutions" className="py-32 relative border-y border-black/5 dark:border-white/10 bg-black/[0.01] dark:bg-white/[0.01]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-24">
-            <h2 className="text-sm font-bold uppercase tracking-widest text-black/40 dark:text-white/40 mb-6">Our Solutions</h2>
-            <h3 className="text-4xl md:text-6xl font-bold tracking-tight text-black dark:text-white mb-6">Customized & <span className="text-black/40 dark:text-white/40">Ready-Made</span></h3>
-            <p className="text-xl text-black/60 dark:text-white/60 max-w-2xl mx-auto">
+      <section id="solutions" className="section-padding relative border-y border-black/5 dark:border-white/10 bg-black/[0.01] dark:bg-white/[0.01]">
+        <div className="container-custom">
+          <div className="text-center mb-16 md:mb-24">
+            <h2 className="text-xs md:text-sm font-bold uppercase tracking-widest text-black/40 dark:text-white/40 mb-4 md:mb-6">Our Solutions</h2>
+            <h3 className="mb-4 md:mb-6">Customized & <span className="text-black/40 dark:text-white/40">Ready-Made</span></h3>
+            <p className="text-black/60 dark:text-white/60 max-w-2xl mx-auto">
               We provide a full spectrum of digital tools to power your business growth.
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {solutions.map((sol, idx) => (
               <motion.div 
                 key={idx}
@@ -516,14 +514,14 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1 }}
-                className="p-10 bg-white dark:bg-[#111] rounded-[3rem] border border-black/5 dark:border-white/10 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 group"
+                className="p-8 md:p-10 bg-white dark:bg-[#111] rounded-[2.5rem] md:rounded-[3rem] border border-black/5 dark:border-white/10 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 group"
               >
-                <div className="w-16 h-16 bg-black/5 dark:bg-white/5 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
-                  {React.cloneElement(sol.icon as React.ReactElement, { size: 32 })}
+                <div className="w-14 h-14 md:w-16 md:h-16 bg-black/5 dark:bg-white/5 rounded-2xl flex items-center justify-center mb-6 md:mb-8 group-hover:scale-110 transition-transform">
+                  {React.cloneElement(sol.icon as React.ReactElement, { size: 28 })}
                 </div>
-                <h3 className="text-2xl font-bold text-black dark:text-white mb-4 tracking-tight">{sol.title}</h3>
-                <p className="text-black/60 dark:text-white/60 leading-relaxed mb-8">{sol.desc}</p>
-                <div className="flex items-center space-x-2 text-sm font-bold uppercase tracking-widest text-black/40 dark:text-white/40 group-hover:text-black dark:group-hover:text-white transition-colors">
+                <h4 className="text-xl md:text-2xl font-bold text-black dark:text-white mb-3 md:mb-4 tracking-tight">{sol.title}</h4>
+                <p className="text-sm md:text-base text-black/60 dark:text-white/60 leading-relaxed mb-6 md:mb-8">{sol.desc}</p>
+                <div className="flex items-center space-x-2 text-xs md:text-sm font-bold uppercase tracking-widest text-black/40 dark:text-white/40 group-hover:text-black dark:group-hover:text-white transition-colors">
                   <span>Learn More</span>
                   <ChevronRight size={16} />
                 </div>
@@ -534,7 +532,7 @@ export default function Home() {
       </section>
 
       {/* Live Demo Showcase Section */}
-      <section id="products" className="py-32 bg-black text-white relative overflow-hidden">
+      <section id="products" className="section-padding bg-black text-white relative overflow-hidden">
         <motion.div 
           style={{ y: springY1, opacity: 0.1 }}
           className="absolute inset-0 z-0"
@@ -542,16 +540,16 @@ export default function Home() {
           <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white via-transparent to-transparent" />
         </motion.div>
         
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center mb-24">
-            <h2 className="text-sm font-bold uppercase tracking-widest text-white/40 mb-4">Live Demo Showcase</h2>
-            <h3 className="text-5xl md:text-7xl font-bold tracking-tight mb-8">Explore Our <br /> <span className="text-white/40">Working Apps</span></h3>
-            <p className="text-xl text-white/60 max-w-2xl mx-auto">
+        <div className="container-custom relative z-10">
+          <div className="text-center mb-16 md:mb-24">
+            <h2 className="text-xs md:text-sm font-bold uppercase tracking-widest text-white/40 mb-4">Live Demo Showcase</h2>
+            <h3 className="mb-6 md:mb-8">Explore Our <br /> <span className="text-white/40">Working Apps</span></h3>
+            <p className="text-white/60 max-w-2xl mx-auto">
               Don't just take our word for it. Interact with our live demos and see the quality of our work firsthand.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
             {products.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
@@ -560,20 +558,20 @@ export default function Home() {
       </section>
 
       {/* Across Industries Section */}
-      <section id="portfolio" className="py-32 bg-white dark:bg-[#0a0a0a] overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+      <section id="portfolio" className="section-padding bg-white dark:bg-[#0a0a0a] overflow-hidden">
+        <div className="container-custom">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
             <div>
-              <h2 className="text-sm font-bold uppercase tracking-widest text-emerald-500 mb-6">Industry Expertise</h2>
-              <h3 className="text-4xl md:text-6xl font-bold tracking-tighter text-black dark:text-white mb-8 leading-tight">
+              <h2 className="text-xs md:text-sm font-bold uppercase tracking-widest text-emerald-500 mb-6">Industry Expertise</h2>
+              <h3 className="mb-8 leading-tight">
                 How We Transform <br /> 
                 <span className="text-black/40 dark:text-white/40">Businesses with Technology</span>
               </h3>
-              <p className="text-xl text-black/60 dark:text-white/60 mb-12 leading-relaxed">
+              <p className="text-black/60 dark:text-white/60 mb-10 md:mb-12 leading-relaxed">
                 We build systems that help businesses automate operations, analyze data, and grow faster through digital platforms.
               </p>
               
-              <div className="space-y-6">
+              <div className="space-y-4 md:space-y-6">
                 {industries.map((ind, idx) => (
                   <motion.div 
                     key={idx}
@@ -582,15 +580,15 @@ export default function Home() {
                     viewport={{ once: true }}
                     transition={{ delay: idx * 0.1 }}
                     whileHover={{ scale: 1.02, x: 10 }}
-                    className="p-8 bg-black/[0.02] dark:bg-white/[0.02] rounded-[2rem] border border-black/5 dark:border-white/10 hover:bg-white dark:hover:bg-white/5 hover:shadow-xl transition-all duration-300 group"
+                    className="p-6 md:p-8 bg-black/[0.02] dark:bg-white/[0.02] rounded-[1.5rem] md:rounded-[2rem] border border-black/5 dark:border-white/10 hover:bg-white dark:hover:bg-white/5 hover:shadow-xl transition-all duration-300 group"
                   >
-                    <div className="flex items-start space-x-6">
-                      <div className="w-14 h-14 bg-black dark:bg-white text-white dark:text-black rounded-2xl flex items-center justify-center shrink-0 group-hover:rotate-12 transition-transform">
+                    <div className="flex items-start space-x-4 md:space-x-6">
+                      <div className="w-12 h-12 md:w-14 md:h-14 bg-black dark:bg-white text-white dark:text-black rounded-xl md:rounded-2xl flex items-center justify-center shrink-0 group-hover:rotate-12 transition-transform">
                         {React.cloneElement(ind.icon as React.ReactElement, { size: 24 })}
                       </div>
                       <div className="flex-grow">
-                        <div className="flex items-center justify-between mb-2">
-                          <h4 className="text-xl font-bold text-black dark:text-white">{ind.name}</h4>
+                        <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-2 gap-2">
+                          <h4 className="text-lg md:text-xl font-bold text-black dark:text-white">{ind.name}</h4>
                           <div className="flex flex-wrap gap-2">
                             {ind.tech.map((t, i) => (
                               <span key={i} className="text-[8px] font-bold uppercase tracking-widest px-2 py-1 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 rounded-full">
@@ -607,9 +605,9 @@ export default function Home() {
               </div>
             </div>
             
-            <div className="relative">
+            <div className="relative mt-12 lg:mt-0">
               {/* Dynamic Business Software Visual - Wings Growth Engine */}
-              <div className="relative z-10 aspect-square rounded-[3rem] bg-white dark:bg-[#0a0a0a] border border-black/10 dark:border-white/10 overflow-hidden shadow-2xl flex flex-col">
+              <div className="relative z-10 aspect-square rounded-[2rem] md:rounded-[3rem] bg-white dark:bg-[#0a0a0a] border border-black/10 dark:border-white/10 overflow-hidden shadow-2xl flex flex-col">
                 {/* App Header */}
                 <div className="h-12 border-b border-black/5 dark:border-white/5 flex items-center justify-between px-6 bg-gray-50/50 dark:bg-white/5">
                   <div className="flex items-center space-x-3">
@@ -775,23 +773,23 @@ export default function Home() {
       </section>
 
       {/* Why Choose Us Section */}
-      <section className="py-32 bg-black text-white overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+      <section className="section-padding bg-black text-white overflow-hidden">
+        <div className="container-custom">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
             <div className="order-2 lg:order-1 relative">
               <motion.div 
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="aspect-square bg-gradient-to-br from-white/5 to-white/[0.02] rounded-[3rem] border border-white/10 p-12 flex flex-col justify-center"
+                className="aspect-square bg-gradient-to-br from-white/5 to-white/[0.02] rounded-[2rem] md:rounded-[3rem] border border-white/10 p-8 md:p-12 flex flex-col justify-center"
               >
                 <div className="relative z-10">
-                  <h4 className="text-4xl font-bold mb-6 tracking-tight text-emerald-500">Business Growth Systems</h4>
-                  <p className="text-xl text-white/80 leading-relaxed mb-10">
+                  <h4 className="text-2xl md:text-4xl font-bold mb-4 md:mb-6 tracking-tight text-emerald-500">Business Growth Systems</h4>
+                  <p className="text-base md:text-xl text-white/80 leading-relaxed mb-8 md:mb-10">
                     We design digital systems that help businesses generate leads, streamline operations, and scale using modern technology.
                   </p>
                   
-                  <div className="space-y-4">
+                  <div className="space-y-3 md:space-y-4">
                     {[
                       'Lead Generation Systems',
                       'Digital Marketing Infrastructure',
@@ -800,7 +798,7 @@ export default function Home() {
                     ].map((item, i) => (
                       <div key={i} className="flex items-center space-x-3">
                         <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                        <span className="text-lg font-medium text-white/90">{item}</span>
+                        <span className="text-base md:text-lg font-medium text-white/90">{item}</span>
                       </div>
                     ))}
                   </div>
@@ -809,10 +807,10 @@ export default function Home() {
             </div>
             
             <div className="order-1 lg:order-2">
-              <h2 className="text-sm font-bold uppercase tracking-widest text-emerald-500 mb-6">Why Businesses Choose Us</h2>
-              <h3 className="text-5xl md:text-7xl font-bold tracking-tighter mb-10 leading-[0.9]">Technology Systems <br /> <span className="text-white/40">That Help Businesses Grow</span></h3>
+              <h2 className="text-xs md:text-sm font-bold uppercase tracking-widest text-emerald-500 mb-6">Why Businesses Choose Us</h2>
+              <h3 className="mb-8 md:mb-10 leading-[1.1] md:leading-[0.9]">Technology Systems <br /> <span className="text-white/40">That Help Businesses Grow</span></h3>
               
-              <div className="space-y-8">
+              <div className="space-y-6 md:space-y-8">
                 {whyChooseUs.map((item, idx) => (
                   <motion.div 
                     key={idx}
@@ -820,14 +818,14 @@ export default function Home() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: idx * 0.1 }}
-                    className="flex items-start space-x-6 group"
+                    className="flex items-start space-x-4 md:space-x-6 group"
                   >
-                    <div className="w-10 h-10 rounded-2xl bg-emerald-500/10 flex items-center justify-center flex-shrink-0 mt-1 group-hover:bg-emerald-500 transition-colors duration-300">
+                    <div className="w-10 h-10 rounded-xl md:rounded-2xl bg-emerald-500/10 flex items-center justify-center flex-shrink-0 mt-1 group-hover:bg-emerald-500 transition-colors duration-300">
                       <CheckCircle size={20} className="text-emerald-500 group-hover:text-white transition-colors duration-300" />
                     </div>
                     <div>
-                      <h4 className="text-xl font-bold mb-2 group-hover:text-emerald-400 transition-colors duration-300">{item.title}</h4>
-                      <p className="text-white/60 leading-relaxed">{item.desc}</p>
+                      <h4 className="text-lg md:text-xl font-bold mb-2 group-hover:text-emerald-400 transition-colors duration-300">{item.title}</h4>
+                      <p className="text-sm md:text-base text-white/60 leading-relaxed">{item.desc}</p>
                     </div>
                   </motion.div>
                 ))}
@@ -838,74 +836,187 @@ export default function Home() {
       </section>
 
       {/* Consultation & Meeting Section */}
-      <section id="consultation" className="py-32 bg-black/[0.02] dark:bg-white/[0.02] relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+      <section id="consultation" className="section-padding bg-black/[0.01] dark:bg-white/[0.01] relative overflow-hidden border-y border-black/5 dark:border-white/5">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue-500/5 via-transparent to-transparent blur-3xl pointer-events-none" />
+        
+        <div className="container-custom relative z-10">
+          <div className="text-center mb-16 md:mb-24">
+            <h2 className="text-xs md:text-sm font-bold uppercase tracking-widest text-black/40 dark:text-white/40 mb-4 md:mb-6">Project Planning</h2>
+            <h3 className="mb-4 md:mb-6">Start Your <span className="text-black/40 dark:text-white/40">Digital Transformation</span></h3>
+            <p className="text-black/60 dark:text-white/60 max-w-2xl mx-auto">
+              Choose the best way to start your project. Fill out our inquiry form for a quick quote or book a direct strategy session.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
             <ConsultationForm />
             <MeetingBooking />
           </div>
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section id="contact" className="py-40 bg-white dark:bg-[#0a0a0a] relative overflow-hidden">
+      {/* Contact & Final CTA Section */}
+      <section id="contact" className="section-padding bg-white dark:bg-[#0a0a0a] relative overflow-hidden">
+        {/* Background Elements */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-emerald-500/5 via-transparent to-transparent blur-3xl pointer-events-none" />
         <motion.div 
-          style={{ y: springY2 }}
-          className="absolute -top-24 -right-24 w-96 h-96 bg-black/5 dark:bg-white/5 rounded-full blur-3xl" 
+          animate={{ 
+            scale: [1, 1.2, 1],
+            opacity: [0.3, 0.5, 0.3]
+          }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute -top-24 -right-24 w-96 h-96 bg-blue-500/10 rounded-full blur-[100px] pointer-events-none" 
         />
         <motion.div 
-          style={{ y: springY1 }}
-          className="absolute -bottom-24 -left-24 w-96 h-96 bg-black/5 dark:bg-white/5 rounded-full blur-3xl" 
+          animate={{ 
+            scale: [1.2, 1, 1.2],
+            opacity: [0.3, 0.5, 0.3]
+          }}
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute -bottom-24 -left-24 w-96 h-96 bg-emerald-500/10 rounded-full blur-[100px] pointer-events-none" 
         />
         
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="max-w-4xl mx-auto"
-          >
-            <h2 className="text-6xl md:text-9xl font-bold tracking-tighter text-black dark:text-white mb-12 leading-[0.85]">Ready to Launch Your <br /> <span className="text-black/40 dark:text-white/40 italic">Business Online?</span></h2>
-            <p className="text-xl md:text-2xl text-black/60 dark:text-white/60 mb-16 leading-relaxed">
-              Join numerous successful businesses. Get your custom software, website, or marketing system setup in record time.
-            </p>
+        <div className="container-custom relative z-10">
+          <div className="max-w-6xl mx-auto">
+            {/* Main CTA Header */}
+            <div className="text-center mb-20 md:mb-32">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="inline-flex items-center space-x-2 bg-emerald-500/10 px-4 py-2 rounded-full mb-8 border border-emerald-500/20"
+              >
+                <Rocket size={14} className="text-emerald-500" />
+                <span className="text-[10px] font-bold uppercase tracking-widest text-emerald-600 dark:text-emerald-400">Ready to Scale?</span>
+              </motion.div>
+              
+              <motion.h2 
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.1 }}
+                className="mb-8 leading-[1.1] md:leading-[0.85] text-5xl md:text-8xl font-bold tracking-tighter"
+              >
+                Let's Build Your <br /> 
+                <span className="relative inline-block">
+                  <span className="text-black/40 dark:text-white/40 italic serif">Digital Future</span>
+                  <div className="absolute -bottom-2 left-0 w-full h-1 bg-emerald-500/30 rounded-full" />
+                </span>
+              </motion.h2>
+              
+              <motion.p 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2 }}
+                className="text-lg md:text-2xl text-black/50 dark:text-white/50 max-w-2xl mx-auto leading-relaxed"
+              >
+                Join successful businesses using our technology systems to automate, analyze, and grow. 
+                Choose your preferred way to connect.
+              </motion.p>
+            </div>
             
-            <div className="bg-black/5 dark:bg-white/5 p-12 rounded-[3rem] border border-black/5 dark:border-white/10 mb-16">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-                <div className="space-y-4">
-                  <p className="text-sm font-bold uppercase tracking-widest text-black/40 dark:text-white/40">Direct Call</p>
-                  <p className="text-3xl font-bold text-black dark:text-white">+91 86187 64541</p>
-                  <a href="tel:+918618764541" className="inline-flex items-center space-x-2 bg-black dark:bg-white text-white dark:text-black px-8 py-4 rounded-2xl font-bold hover:opacity-80 transition-all">
-                    <Phone size={20} />
+            {/* Contact Cards Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 mb-24 md:mb-32">
+              {/* Call Card */}
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                whileHover={{ y: -10 }}
+                className="group relative p-10 md:p-16 bg-white dark:bg-[#111] rounded-[3rem] border border-black/5 dark:border-white/10 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.05)] dark:shadow-[0_32px_64px_-16px_rgba(255,255,255,0.02)] overflow-hidden"
+              >
+                <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-500/5 rounded-full blur-3xl -mr-32 -mt-32 group-hover:bg-emerald-500/10 transition-colors" />
+                
+                <div className="relative z-10">
+                  <div className="w-16 h-16 bg-black dark:bg-white text-white dark:text-black rounded-2xl flex items-center justify-center mb-10 shadow-xl group-hover:rotate-6 transition-transform duration-500">
+                    <Phone size={28} />
+                  </div>
+                  
+                  <h4 className="text-sm font-bold uppercase tracking-widest text-black/40 dark:text-white/40 mb-4">Direct Consultation</h4>
+                  <p className="text-3xl md:text-4xl font-bold text-black dark:text-white mb-10 tracking-tighter">+91 86187 64541</p>
+                  
+                  <div className="space-y-4 mb-12">
+                    {['Instant response', 'Technical guidance', 'Project scoping'].map((item, i) => (
+                      <div key={i} className="flex items-center space-x-3">
+                        <CheckCircle size={16} className="text-emerald-500" />
+                        <span className="text-sm font-medium text-black/60 dark:text-white/60">{item}</span>
+                      </div>
+                    ))}
+                  </div>
+                  
+                  <a 
+                    href="tel:+918618764541" 
+                    className="inline-flex items-center justify-center space-x-3 w-full bg-black dark:bg-white text-white dark:text-black px-8 py-5 rounded-2xl font-bold text-lg hover:scale-[1.02] active:scale-95 transition-all shadow-xl shadow-black/10 dark:shadow-white/10"
+                  >
                     <span>Call Now</span>
+                    <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
                   </a>
                 </div>
-                <div className="space-y-4">
-                  <p className="text-sm font-bold uppercase tracking-widest text-black/40 dark:text-white/40">WhatsApp Chat</p>
-                  <p className="text-3xl font-bold text-black dark:text-white">+91 86187 64541</p>
-                  <a href="https://wa.me/918618764541" target="_blank" rel="noopener noreferrer" className="inline-flex items-center space-x-2 bg-[#25D366] text-white px-8 py-4 rounded-2xl font-bold hover:opacity-80 transition-all">
-                    <MessageSquare size={20} />
-                    <span>WhatsApp Chat</span>
+              </motion.div>
+
+              {/* WhatsApp Card */}
+              <motion.div
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                whileHover={{ y: -10 }}
+                className="group relative p-10 md:p-16 bg-white dark:bg-[#111] rounded-[3rem] border border-black/5 dark:border-white/10 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.05)] dark:shadow-[0_32px_64px_-16px_rgba(255,255,255,0.02)] overflow-hidden"
+              >
+                <div className="absolute top-0 right-0 w-64 h-64 bg-[#25D366]/5 rounded-full blur-3xl -mr-32 -mt-32 group-hover:bg-[#25D366]/10 transition-colors" />
+                
+                <div className="relative z-10">
+                  <div className="w-16 h-16 bg-[#25D366] text-white rounded-2xl flex items-center justify-center mb-10 shadow-xl group-hover:-rotate-6 transition-transform duration-500">
+                    <MessageSquare size={28} />
+                  </div>
+                  
+                  <h4 className="text-sm font-bold uppercase tracking-widest text-black/40 dark:text-white/40 mb-4">WhatsApp Support</h4>
+                  <p className="text-3xl md:text-4xl font-bold text-black dark:text-white mb-10 tracking-tighter">+91 86187 64541</p>
+                  
+                  <div className="space-y-4 mb-12">
+                    {['24/7 Availability', 'Quick queries', 'Portfolio sharing'].map((item, i) => (
+                      <div key={i} className="flex items-center space-x-3">
+                        <CheckCircle size={16} className="text-[#25D366]" />
+                        <span className="text-sm font-medium text-black/60 dark:text-white/60">{item}</span>
+                      </div>
+                    ))}
+                  </div>
+                  
+                  <a 
+                    href="https://wa.me/918618764541" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="inline-flex items-center justify-center space-x-3 w-full bg-[#25D366] text-white px-8 py-5 rounded-2xl font-bold text-lg hover:scale-[1.02] active:scale-95 transition-all shadow-xl shadow-[#25D366]/20"
+                  >
+                    <span>Message on WhatsApp</span>
+                    <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
                   </a>
                 </div>
-              </div>
+              </motion.div>
             </div>
             
-            <div className="flex flex-wrap justify-center gap-12 opacity-40">
-              <div className="flex items-center space-x-2">
-                <CheckCircle size={20} className="text-emerald-500" />
-                <span className="text-sm font-bold uppercase tracking-widest">Fast Delivery</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <CheckCircle size={20} className="text-emerald-500" />
-                <span className="text-sm font-bold uppercase tracking-widest">SEO Optimized</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <CheckCircle size={20} className="text-emerald-500" />
-                <span className="text-sm font-bold uppercase tracking-widest">24/7 Support</span>
-              </div>
+            {/* Trust Badges Bar */}
+            <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 py-12 border-t border-black/5 dark:border-white/10">
+              {[
+                { icon: <ShieldCheck size={18} />, text: 'Secure Systems' },
+                { icon: <Zap size={18} />, text: 'Fast Deployment' },
+                { icon: <TrendingUp size={18} />, text: 'Growth Focused' },
+                { icon: <Globe size={18} />, text: 'Global Support' }
+              ].map((badge, i) => (
+                <motion.div 
+                  key={i}
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1 }}
+                  className="flex items-center space-x-3 text-black/40 dark:text-white/40"
+                >
+                  <div className="text-emerald-500">{badge.icon}</div>
+                  <span className="text-xs md:text-sm font-bold uppercase tracking-widest">{badge.text}</span>
+                </motion.div>
+              ))}
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
     </div>

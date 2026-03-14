@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { MessageCircle, Play, Share2, X, Link as LinkIcon, Facebook, Linkedin, Twitter } from 'lucide-react';
+import { MessageCircle, Play, Share2, X, Link as LinkIcon, Facebook, Linkedin, Twitter, CheckCircle } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Link } from 'react-router-dom';
 
 export default function FloatingActions() {
   const [isShareOpen, setIsShareOpen] = useState(false);
+  const [copied, setCopied] = useState(false);
 
   const shareLinks = [
     { icon: <Facebook size={18} />, name: 'Facebook', url: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}` },
@@ -14,11 +15,12 @@ export default function FloatingActions() {
 
   const copyLink = () => {
     navigator.clipboard.writeText(window.location.href);
-    alert('Link copied to clipboard!');
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
   };
 
   return (
-    <div className="fixed bottom-28 right-8 z-[60] flex flex-col items-end space-y-4">
+    <div className="fixed bottom-20 md:bottom-28 right-4 md:right-8 z-[60] flex flex-col items-end space-y-3 md:space-y-4">
       {/* Share Menu */}
       <AnimatePresence>
         {isShareOpen && (
@@ -26,7 +28,7 @@ export default function FloatingActions() {
             initial={{ opacity: 0, scale: 0.8, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.8, y: 20 }}
-            className="bg-white dark:bg-[#111] border border-black/5 dark:border-white/10 rounded-2xl p-2 shadow-2xl flex flex-col space-y-2 mb-2"
+            className="bg-white dark:bg-[#111] border border-black/5 dark:border-white/10 rounded-2xl p-1.5 md:p-2 shadow-2xl flex flex-col space-y-1.5 md:space-y-2 mb-2"
           >
             {shareLinks.map((link, idx) => (
               <a
@@ -34,29 +36,39 @@ export default function FloatingActions() {
                 href={link.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-3 hover:bg-black/5 dark:hover:bg-white/5 rounded-xl transition-colors text-black/60 dark:text-white/60 hover:text-black dark:hover:text-white"
+                className="p-2.5 md:p-3 hover:bg-black/5 dark:hover:bg-white/5 rounded-xl transition-colors text-black/60 dark:text-white/60 hover:text-black dark:hover:text-white"
                 title={link.name}
               >
-                {link.icon}
+                {React.cloneElement(link.icon as React.ReactElement, { size: 16 })}
               </a>
             ))}
             <button
               onClick={copyLink}
-              className="p-3 hover:bg-black/5 dark:hover:bg-white/5 rounded-xl transition-colors text-black/60 dark:text-white/60 hover:text-black dark:hover:text-white"
+              className="p-2.5 md:p-3 hover:bg-black/5 dark:hover:bg-white/5 rounded-xl transition-colors text-black/60 dark:text-white/60 hover:text-black dark:hover:text-white relative"
               title="Copy Link"
             >
-              <LinkIcon size={18} />
+              {copied ? <CheckCircle size={16} className="text-emerald-500" /> : <LinkIcon size={16} />}
+              {copied && (
+                <motion.span 
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  className="absolute right-full mr-2 px-2 py-1 bg-black dark:bg-white text-white dark:text-black text-[10px] rounded-md whitespace-nowrap"
+                >
+                  Copied!
+                </motion.span>
+              )}
             </button>
           </motion.div>
         )}
       </AnimatePresence>
 
-      <div className="flex flex-col space-y-4">
+      <div className="flex flex-col items-end space-y-3 md:space-y-4">
         {/* Quick Demo Request */}
         <motion.div
           initial={{ x: 100, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ delay: 1 }}
+          className="hidden sm:block"
         >
           <a
             href="#consultation"
@@ -67,15 +79,15 @@ export default function FloatingActions() {
           </a>
         </motion.div>
 
-        <div className="flex space-x-4">
+        <div className="flex space-x-3 md:space-x-4">
           {/* Share Button */}
           <motion.button
             onClick={() => setIsShareOpen(!isShareOpen)}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
-            className="w-14 h-14 bg-white dark:bg-[#111] text-black dark:text-white rounded-2xl flex items-center justify-center shadow-2xl border border-black/5 dark:border-white/10"
+            className="w-12 h-12 md:w-14 md:h-14 bg-white dark:bg-[#111] text-black dark:text-white rounded-xl md:rounded-2xl flex items-center justify-center shadow-2xl border border-black/5 dark:border-white/10"
           >
-            {isShareOpen ? <X size={24} /> : <Share2 size={24} />}
+            {isShareOpen ? <X size={20} md:size={24} /> : <Share2 size={20} md:size={24} />}
           </motion.button>
 
           {/* WhatsApp Button */}
@@ -85,7 +97,7 @@ export default function FloatingActions() {
             rel="noopener noreferrer"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
-            className="w-14 h-14 bg-[#25D366] text-white rounded-2xl flex items-center justify-center shadow-2xl shadow-emerald-500/20 relative group"
+            className="w-12 h-12 md:w-14 md:h-14 bg-[#25D366] text-white rounded-xl md:rounded-2xl flex items-center justify-center shadow-2xl shadow-emerald-500/20 relative group"
           >
             <motion.div
               animate={{
@@ -97,9 +109,9 @@ export default function FloatingActions() {
                 repeat: Infinity,
                 ease: "easeInOut",
               }}
-              className="absolute inset-0 bg-[#25D366] rounded-2xl -z-10"
+              className="absolute inset-0 bg-[#25D366] rounded-xl md:rounded-2xl -z-10"
             />
-            <MessageCircle size={28} className="group-hover:rotate-12 transition-transform" />
+            <MessageCircle size={24} md:size={28} className="group-hover:rotate-12 transition-transform" />
           </motion.a>
         </div>
       </div>

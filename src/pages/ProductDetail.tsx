@@ -93,17 +93,6 @@ export default function ProductDetail() {
           </motion.div>
         </div>
       </div>
-      
-      {/* WhatsApp Floating Button */}
-      <a 
-        href="https://wa.me/yournumber" 
-        target="_blank" 
-        rel="noreferrer"
-        className="fixed bottom-8 right-8 bg-[#25D366] text-white p-5 rounded-full shadow-2xl hover:scale-110 active:scale-95 transition-all z-50 flex items-center space-x-3 border-4 border-white dark:border-black"
-      >
-        <MessageCircle size={28} />
-        <span className="hidden md:inline font-bold text-lg">Chat with Us</span>
-      </a>
     </div>
   );
 }

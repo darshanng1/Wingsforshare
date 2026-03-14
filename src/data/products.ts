@@ -8,7 +8,7 @@ export const products: Product[] = [
     shortDescription: 'High-end, visual-first portfolio system for architects and design firms.',
     description: 'A premium showcase platform that highlights architectural vision with minimalist elegance.',
     category: 'Websites',
-    screenshot: 'https://picsum.photos/seed/architect/800/600',
+    screenshot: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800&auto=format&fit=crop',
     demoLink: 'https://architectswebsite.online/',
     features: [
       'Project gallery with high-res support',
@@ -26,7 +26,7 @@ export const products: Product[] = [
     shortDescription: 'A modern digital business card website designed for professionals and businesses to share their contact details, services, and online presence through a single smart link.',
     description: 'A smart digital identity solution for modern professionals.',
     category: 'Websites',
-    screenshot: 'https://picsum.photos/seed/vcard/800/600',
+    screenshot: 'https://images.unsplash.com/photo-1512428559087-560fa5ceab42?auto=format&fit=crop&q=80&w=800&h=600',
     demoLink: 'https://darshanngsipcvcard.pages.dev/',
     features: [
       'Professional digital business card for businesses and professionals',
@@ -45,7 +45,7 @@ export const products: Product[] = [
     shortDescription: 'Premium fashion eCommerce platform with advanced filtering and secure checkout.',
     description: 'A specialized online store solution for fashion brands and garment manufacturers.',
     category: 'Ecommerce',
-    screenshot: 'https://picsum.photos/seed/fashion/800/600',
+    screenshot: 'https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&q=80&w=800&h=600',
     demoLink: 'https://vastra-one.vercel.app',
     adminLogin: 'https://vastra-one.vercel.app/admin',
     userLogin: 'https://vastra-one.vercel.app/login',
@@ -65,7 +65,7 @@ export const products: Product[] = [
     shortDescription: 'A powerful data intelligence and analytics platform that transforms raw business data into actionable insights through interactive dashboards and automation.',
     description: 'A comprehensive BI dashboard that turns raw data into actionable business insights.',
     category: 'Business Apps',
-    screenshot: 'https://picsum.photos/seed/dashboard/800/600',
+    screenshot: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800&h=600',
     demoLink: 'https://pest-nine.vercel.app', // Placeholder
     features: [
       'Real-time data visualization and analytics',
