@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Smartphone, CheckCircle, Upload, MessageCircle, ArrowRight, CreditCard, ShieldCheck, Zap } from 'lucide-react';
+import SEO from '../components/SEO';
 
 declare global {
   interface Window {
@@ -42,9 +43,15 @@ export default function Payment() {
   };
 
   return (
-    <div className="pt-32 pb-32 bg-white dark:bg-[#0a0a0a] min-h-screen transition-colors duration-300">
+    <div className="pt-20 md:pt-32 pb-12 md:pb-32 bg-white dark:bg-[#0a0a0a] min-h-screen transition-colors duration-300">
+      <SEO 
+        title="Secure Payment – WingsForShare Digital Solutions"
+        description="Complete your payment securely for custom software development, business automation tools, or SEO services from WingsForShare."
+        keywords="secure payment, digital solutions payment, WingsForShare payment"
+        canonical="https://wingsforshare.com/payment"
+      />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+        <div className="text-center mb-8 md:mb-16">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -53,12 +60,12 @@ export default function Payment() {
             <ShieldCheck size={16} className="text-black dark:text-white" />
             <span className="text-xs font-bold uppercase tracking-widest text-black/60 dark:text-white/60">Secure Checkout</span>
           </motion.div>
-          <h1 className="text-5xl md:text-7xl font-bold tracking-tighter text-black dark:text-white mb-6">Complete Your <span className="text-black/40 dark:text-white/40">Setup</span></h1>
-          <p className="text-lg text-black/60 dark:text-white/60 max-w-2xl mx-auto">Follow the simple steps below to start your digital business setup with our premium systems.</p>
+          <h1 className="tracking-tighter text-black dark:text-white">Complete Your <span className="text-black/40 dark:text-white/40">Setup</span></h1>
+          <p className="text-black/60 dark:text-white/60 max-w-2xl mx-auto">Follow the simple steps below to start your digital business setup with our premium systems.</p>
         </div>
 
         {/* Progress Bar */}
-        <div className="flex justify-between mb-16 relative">
+        <div className="flex justify-between mb-10 relative">
           <div className="absolute top-1/2 left-0 w-full h-1 bg-black/5 dark:bg-white/5 -translate-y-1/2 -z-10" />
           {[1, 2, 3].map((s) => (
             <div 
@@ -74,7 +81,7 @@ export default function Payment() {
           ))}
         </div>
 
-        <div className="bg-white dark:bg-[#111] border border-black/5 dark:border-white/10 rounded-[2.5rem] p-8 md:p-16 shadow-2xl shadow-black/5 dark:shadow-white/5">
+        <div className="bg-white dark:bg-[#111] border border-black/5 dark:border-white/10 rounded-[2.5rem] p-6 md:p-16 shadow-2xl shadow-black/5 dark:shadow-white/5">
           <AnimatePresence mode="wait">
             {step === 1 && (
               <motion.div 
@@ -88,8 +95,8 @@ export default function Payment() {
                     <CreditCard size={28} />
                   </div>
                   <div>
-                    <h2 className="text-3xl font-bold text-black dark:text-white">Select Payment Method</h2>
-                    <p className="text-sm text-black/60 dark:text-white/60">Choose your preferred way to pay the advance.</p>
+                    <h2 className="text-black dark:text-white">Select Payment Method</h2>
+                    <p className="text-black/60 dark:text-white/60">Choose your preferred way to pay the advance.</p>
                   </div>
                 </div>
 
@@ -105,8 +112,8 @@ export default function Payment() {
                     <div className="w-12 h-12 bg-black dark:bg-white text-white dark:text-black rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                       <Smartphone size={24} />
                     </div>
-                    <h3 className="text-xl font-bold text-black dark:text-white mb-2">UPI Payment</h3>
-                    <p className="text-sm text-black/60 dark:text-white/60">Pay instantly via Google Pay, PhonePe, or Paytm.</p>
+                    <h3 className="text-black dark:text-white tracking-tight">UPI Payment</h3>
+                    <p className="text-black/60 dark:text-white/60">Pay instantly via Google Pay, PhonePe, or Paytm.</p>
                   </button>
 
                   <button 
@@ -120,8 +127,8 @@ export default function Payment() {
                     <div className="w-12 h-12 bg-black dark:bg-white text-white dark:text-black rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                       <Zap size={24} />
                     </div>
-                    <h3 className="text-xl font-bold text-black dark:text-white mb-2">Online Payment</h3>
-                    <p className="text-sm text-black/60 dark:text-white/60">Securely pay via Credit Card, Debit Card, or Net Banking.</p>
+                    <h3 className="text-black dark:text-white tracking-tight">Online Payment</h3>
+                    <p className="text-black/60 dark:text-white/60">Securely pay via Credit Card, Debit Card, or Net Banking.</p>
                   </button>
                 </div>
 
@@ -153,18 +160,18 @@ export default function Payment() {
                     <Smartphone size={28} />
                   </div>
                   <div>
-                    <h2 className="text-3xl font-bold text-black dark:text-white">Pay via UPI</h2>
-                    <p className="text-sm text-black/60 dark:text-white/60">Scan the QR or click the button below to pay via GPay, PhonePe, or Paytm.</p>
+                    <h2 className="text-black dark:text-white">Pay via UPI</h2>
+                    <p className="text-black/60 dark:text-white/60">Scan the QR or click the button below to pay via GPay, PhonePe, or Paytm.</p>
                   </div>
                 </div>
 
                 <div className="bg-black/[0.02] dark:bg-white/[0.02] p-10 rounded-3xl text-center mb-10 border border-black/5 dark:border-white/10">
                   <h3 className="text-lg font-bold text-black dark:text-white mb-6">Scan to Pay via UPI</h3>
-                  <div className="w-64 h-64 bg-white mx-auto mb-8 rounded-3xl border border-black/5 flex items-center justify-center shadow-xl p-4">
+                  <div className="w-full max-w-[220px] sm:max-w-64 aspect-square bg-white mx-auto mb-8 rounded-3xl border border-black/5 flex items-center justify-center shadow-xl p-4 overflow-hidden">
                     <img 
                       src={`https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${encodeURIComponent(upiLink)}`} 
                       alt="UPI QR Code" 
-                      className="w-full h-full"
+                      className="w-full h-full object-contain"
                       referrerPolicy="no-referrer"
                     />
                   </div>
@@ -215,8 +222,8 @@ export default function Payment() {
                 <div className="w-24 h-24 bg-emerald-500 text-white rounded-[2rem] flex items-center justify-center mx-auto mb-10 shadow-2xl shadow-emerald-500/20">
                   <CheckCircle size={48} />
                 </div>
-                <h2 className="text-4xl md:text-5xl font-bold text-black dark:text-white mb-6 tracking-tight">Payment Successful!</h2>
-                <p className="text-lg text-black/60 dark:text-white/60 mb-12 leading-relaxed max-w-xl mx-auto">
+                <h2 className="tracking-tight">Payment Successful!</h2>
+                <p className="text-black/60 dark:text-white/60 leading-relaxed max-w-xl mx-auto">
                   Thank you for choosing WingsForShare. Our team has been notified of your payment. 
                   After completing payment, please share the transaction ID with us for confirmation.
                   We will contact you on WhatsApp within 2-4 hours to begin the setup process.
@@ -242,7 +249,7 @@ export default function Payment() {
           </AnimatePresence>
         </div>
 
-        <div className="mt-20 text-center">
+        <div className="mt-12 text-center">
           <p className="text-xs text-black/40 dark:text-white/40 mb-8 uppercase tracking-widest font-bold">Secured by Industry Leaders</p>
           <div className="flex flex-wrap justify-center gap-8 opacity-30 dark:opacity-20 grayscale transition-all hover:grayscale-0 hover:opacity-100">
             <img src="https://upload.wikimedia.org/wikipedia/commons/e/e1/UPI-Logo-vector.svg" alt="UPI" className="h-8" referrerPolicy="no-referrer" />

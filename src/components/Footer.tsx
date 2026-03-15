@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <footer className="bg-white dark:bg-[#0a0a0a] border-t border-black/5 dark:border-white/10 transition-colors duration-300">
       {/* Consultation CTA Section */}
-      <div className="container-custom py-12 md:py-20 border-b border-black/5 dark:border-white/10">
+      <div className="container-custom py-10 md:py-20 border-b border-black/5 dark:border-white/10">
         <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-8 text-center md:text-left">
           <div className="max-w-2xl">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
@@ -16,16 +16,16 @@ export default function Footer() {
             </p>
           </div>
           <Link 
-            to="/#contact" 
+            to="/start-project" 
             className="w-full sm:w-auto inline-flex items-center justify-center space-x-3 bg-black dark:bg-white text-white dark:text-black px-8 py-4 rounded-2xl font-bold text-lg hover:opacity-80 transition-all active:scale-95 shadow-xl shadow-black/10 dark:shadow-white/5"
           >
-            <span>Book a Consultation</span>
+            <span>Start Your Project</span>
             <ArrowRight size={20} />
           </Link>
         </div>
       </div>
 
-      <div className="container-custom py-16 md:py-24">
+      <div className="container-custom py-10 md:py-24">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16">
           {/* Column 1: Company Overview */}
           <div className="flex flex-col items-center sm:items-start text-center sm:text-left">
@@ -66,12 +66,12 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Column 4: Contact */}
+          {/* Column 4: Start Project */}
           <div className="text-center sm:text-left">
-            <h3 className="text-xs font-bold text-black dark:text-white uppercase tracking-widest mb-6 md:mb-8">Contact</h3>
+            <h3 className="text-xs font-bold text-black dark:text-white uppercase tracking-widest mb-6 md:mb-8">Start Project</h3>
             <ul className="space-y-4 md:space-y-6">
               <li>
-                <Link to="/#contact" className="text-sm md:text-base text-black/60 dark:text-white/60 hover:text-black dark:hover:text-white transition-colors font-medium block mb-1">Business Consultation</Link>
+                <Link to="/start-project" className="text-sm md:text-base text-black/60 dark:text-white/60 hover:text-black dark:hover:text-white transition-colors font-medium block mb-1">Project Intake Form</Link>
               </li>
               <li className="flex items-center justify-center sm:justify-start space-x-3 text-black/60 dark:text-white/60">
                 <MessageCircle size={16} className="text-emerald-500" />
@@ -86,14 +86,14 @@ export default function Footer() {
         </div>
         
         {/* Footer Bottom Bar */}
-        <div className="mt-16 md:mt-24 pt-8 md:pt-12 border-t border-black/5 dark:border-white/10 flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
+        <div className="mt-10 md:mt-24 pt-8 md:pt-12 border-t border-black/5 dark:border-white/10 flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
           <p className="text-xs md:text-sm text-black/40 dark:text-white/40 font-medium text-center md:text-left">
             © {new Date().getFullYear()} WingsForShare Digital Solutions.
           </p>
           <div className="flex flex-wrap justify-center gap-6 md:gap-10">
             <Link to="/" className="text-xs md:text-sm text-black/40 dark:text-white/40 hover:text-black dark:hover:text-white transition-colors font-medium">Privacy Policy</Link>
             <Link to="/" className="text-xs md:text-sm text-black/40 dark:text-white/40 hover:text-black dark:hover:text-white transition-colors font-medium">Terms of Service</Link>
-            <Link to="/#contact" className="text-xs md:text-sm text-black/40 dark:text-white/40 hover:text-black dark:hover:text-white transition-colors font-medium">Contact</Link>
+            <Link to="/start-project" className="text-xs md:text-sm text-black/40 dark:text-white/40 hover:text-black dark:hover:text-white transition-colors font-medium">Start Project</Link>
           </div>
         </div>
       </div>

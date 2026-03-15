@@ -70,13 +70,13 @@ export default function FloatingActions() {
           transition={{ delay: 1 }}
           className="hidden sm:block"
         >
-          <a
-            href="#consultation"
+          <Link
+            to="/start-project"
             className="flex items-center space-x-3 bg-black dark:bg-white text-white dark:text-black px-6 py-3 rounded-2xl shadow-2xl hover:scale-105 transition-transform group"
           >
             <Play size={18} className="fill-current" />
-            <span className="text-sm font-bold">Book Consultation</span>
-          </a>
+            <span className="text-sm font-bold">Start Project</span>
+          </Link>
         </motion.div>
 
         <div className="flex space-x-3 md:space-x-4">

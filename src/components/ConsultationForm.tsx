@@ -59,21 +59,21 @@ Message: ${formData.message}`;
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className="bg-white dark:bg-[#111] p-8 md:p-12 rounded-[3rem] border border-black/5 dark:border-white/10 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.05)] dark:shadow-[0_32px_64px_-16px_rgba(255,255,255,0.02)] relative overflow-hidden group"
+      className="bg-white dark:bg-[#111] p-5 md:p-12 rounded-[3rem] border border-black/5 dark:border-white/10 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.05)] dark:shadow-[0_32px_64px_-16px_rgba(255,255,255,0.02)] relative overflow-hidden group"
     >
       <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-500/5 rounded-full blur-3xl -mr-32 -mt-32 group-hover:bg-emerald-500/10 transition-colors" />
       
-      <div className="mb-10 relative z-10">
+      <div className="mb-4 relative z-10">
         <div className="inline-flex items-center space-x-2 bg-emerald-500/10 px-3 py-1.5 rounded-full mb-4">
           <Sparkles size={14} className="text-emerald-500" />
           <span className="text-[10px] font-bold uppercase tracking-widest text-emerald-600 dark:text-emerald-400">Quick Inquiry</span>
         </div>
-        <h3 className="text-3xl md:text-4xl font-bold text-black dark:text-white mb-3 tracking-tighter">Book a Consultation</h3>
+        <h3 className="tracking-tighter">Book a Consultation</h3>
         <p className="text-black/40 dark:text-white/40 font-medium leading-relaxed">Let's discuss how we can help your business grow with custom technology.</p>
       </div>
 
-      <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <form onSubmit={handleSubmit} className="space-y-4 relative z-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           <div className="space-y-2">
             <label className="text-xs font-bold uppercase tracking-widest text-black/40 dark:text-white/40 ml-4">Full Name</label>
             <div className="relative">
@@ -105,7 +105,7 @@ Message: ${formData.message}`;
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           <div className="space-y-2">
             <label className="text-xs font-bold uppercase tracking-widest text-black/40 dark:text-white/40 ml-4">Business Type</label>
             <div className="relative">

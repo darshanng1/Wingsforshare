@@ -35,11 +35,11 @@ export default function MobileCTA() {
               <span className="text-sm">WhatsApp</span>
             </a>
             <Link
-              to="/#contact"
+              to="/start-project"
               className="flex-1 flex items-center justify-center space-x-2 bg-black dark:bg-white text-white dark:text-black py-3.5 rounded-xl font-bold shadow-lg shadow-black/10 dark:shadow-white/10 active:scale-95 transition-transform"
             >
               <Phone size={20} />
-              <span className="text-sm">Consultation</span>
+              <span className="text-sm">Start Project</span>
             </Link>
           </div>
         </motion.div>

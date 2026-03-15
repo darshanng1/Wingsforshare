@@ -13,6 +13,7 @@ import Payment from './pages/Payment';
 import SEOPage from './pages/SEOPage';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
+import StartProject from './pages/StartProject';
 
 export default function App() {
   return (
@@ -32,6 +33,7 @@ export default function App() {
                     <Route path="/architect-portfolio" element={<ArchitectPortfolio />} />
                     <Route path="/payment" element={<Payment />} />
                     <Route path="/login" element={<Login />} />
+                    <Route path="/start-project" element={<StartProject />} />
                     <Route path="/:slug" element={<SEOPage />} />
                   </Routes>
                 </main>

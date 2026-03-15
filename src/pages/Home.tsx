@@ -14,6 +14,7 @@ import ProductCard from '../components/ProductCard';
 import { Link } from 'react-router-dom';
 import ConsultationForm from '../components/ConsultationForm';
 import MeetingBooking from '../components/MeetingBooking';
+import SEO from '../components/SEO';
 
 export default function Home() {
   const heroRef = useRef<HTMLElement>(null);
@@ -110,9 +111,14 @@ export default function Home() {
 
   return (
     <div className="bg-white dark:bg-[#0a0a0a] transition-colors duration-300 overflow-hidden">
+      <SEO 
+        title="WingsForShare – Digital Solutions Agency & Custom Software Development"
+        description="WingsForShare is a premier digital solutions agency. We specialize in custom software development, business automation tools, and SEO services to help your business scale and succeed in the digital landscape."
+        keywords="digital solutions agency, custom software development, business automation, SEO services, digital marketing, WingsForShare, software marketplace, ecommerce development"
+      />
       
       {/* Hero Section */}
-      <section ref={heroRef} className="relative min-h-screen flex items-center pt-24 md:pt-32 pb-20 md:pb-24 overflow-visible">
+      <section ref={heroRef} className="relative min-h-[80vh] md:min-h-screen flex items-center pt-12 md:pt-32 pb-8 md:pb-24 overflow-hidden hero-text">
         <motion.div style={{ opacity }} className="absolute inset-0 -z-20 pointer-events-none">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-emerald-500/10 dark:from-emerald-500/5 via-transparent to-transparent blur-3xl opacity-50" />
           <motion.div 
@@ -166,7 +172,6 @@ export default function Home() {
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, ease: "easeOut" }}
-                  className="mb-4"
                 >
                   Technology Systems That <br className="hidden md:block" />
                   <span className="relative inline-block">
@@ -185,7 +190,7 @@ export default function Home() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
-                className="text-black/60 dark:text-white/60 max-w-xl mb-10 md:mb-12 leading-relaxed"
+                className="text-black/60 dark:text-white/60 max-w-xl leading-relaxed"
               >
                 We help businesses scale using modern websites, digital marketing systems, automation tools, analytics platforms, and custom applications.
               </motion.p>
@@ -196,14 +201,14 @@ export default function Home() {
                 transition={{ duration: 0.8, delay: 0.6 }}
                 className="flex flex-col sm:flex-row items-stretch sm:items-center space-y-4 sm:space-y-0 sm:space-x-4 mb-12 md:mb-16"
               >
-                <a 
-                  href="#consultation" 
+                <Link 
+                  to="/start-project" 
                   className="group relative bg-black dark:bg-white text-white dark:text-black px-8 py-4 md:py-5 rounded-2xl font-bold text-base transition-all flex items-center justify-center space-x-2 shadow-2xl shadow-black/20 dark:shadow-white/10 overflow-hidden hover:scale-[1.02] active:scale-95"
                 >
                   <div className="absolute inset-0 bg-gradient-to-r from-emerald-500 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   <span className="relative z-10">Start Your Project</span>
                   <ArrowRight size={18} className="relative z-10 group-hover:translate-x-1 transition-transform" />
-                </a>
+                </Link>
                 <a 
                   href="#products" 
                   className="group bg-white dark:bg-black border border-black/10 dark:border-white/10 text-black dark:text-white px-8 py-4 md:py-5 rounded-2xl font-bold text-base hover:bg-black/5 dark:hover:bg-white/5 transition-all flex items-center justify-center space-x-2 hover:scale-[1.02] active:scale-95"
@@ -498,9 +503,9 @@ export default function Home() {
       {/* Solutions Section */}
       <section id="solutions" className="section-padding relative border-y border-black/5 dark:border-white/10 bg-black/[0.01] dark:bg-white/[0.01]">
         <div className="container-custom">
-          <div className="text-center mb-16 md:mb-24">
-            <h2 className="text-xs md:text-sm font-bold uppercase tracking-widest text-black/40 dark:text-white/40 mb-4 md:mb-6">Our Solutions</h2>
-            <h3 className="mb-4 md:mb-6">Customized & <span className="text-black/40 dark:text-white/40">Ready-Made</span></h3>
+          <div className="text-center mb-8 md:mb-24">
+            <p className="text-[10px] md:text-[12px] font-bold uppercase tracking-widest text-black/40 dark:text-white/40 mb-4 md:mb-6">Our Solutions</p>
+            <h3>Customized & <span className="text-black/40 dark:text-white/40">Ready-Made</span></h3>
             <p className="text-black/60 dark:text-white/60 max-w-2xl mx-auto">
               We provide a full spectrum of digital tools to power your business growth.
             </p>
@@ -519,8 +524,8 @@ export default function Home() {
                 <div className="w-14 h-14 md:w-16 md:h-16 bg-black/5 dark:bg-white/5 rounded-2xl flex items-center justify-center mb-6 md:mb-8 group-hover:scale-110 transition-transform">
                   {React.cloneElement(sol.icon as React.ReactElement, { size: 28 })}
                 </div>
-                <h4 className="text-xl md:text-2xl font-bold text-black dark:text-white mb-3 md:mb-4 tracking-tight">{sol.title}</h4>
-                <p className="text-sm md:text-base text-black/60 dark:text-white/60 leading-relaxed mb-6 md:mb-8">{sol.desc}</p>
+                <h4 className="text-black dark:text-white tracking-tight">{sol.title}</h4>
+                <p className="text-black/60 dark:text-white/60">{sol.desc}</p>
                 <div className="flex items-center space-x-2 text-xs md:text-sm font-bold uppercase tracking-widest text-black/40 dark:text-white/40 group-hover:text-black dark:group-hover:text-white transition-colors">
                   <span>Learn More</span>
                   <ChevronRight size={16} />
@@ -541,9 +546,9 @@ export default function Home() {
         </motion.div>
         
         <div className="container-custom relative z-10">
-          <div className="text-center mb-16 md:mb-24">
-            <h2 className="text-xs md:text-sm font-bold uppercase tracking-widest text-white/40 mb-4">Live Demo Showcase</h2>
-            <h3 className="mb-6 md:mb-8">Explore Our <br /> <span className="text-white/40">Working Apps</span></h3>
+          <div className="text-center mb-8 md:mb-24">
+            <p className="text-[10px] md:text-[12px] font-bold uppercase tracking-widest text-white/40 mb-4">Live Demo Showcase</p>
+            <h3>Explore Our <br /> <span className="text-white/40">Working Apps</span></h3>
             <p className="text-white/60 max-w-2xl mx-auto">
               Don't just take our word for it. Interact with our live demos and see the quality of our work firsthand.
             </p>
@@ -562,12 +567,12 @@ export default function Home() {
         <div className="container-custom">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
             <div>
-              <h2 className="text-xs md:text-sm font-bold uppercase tracking-widest text-emerald-500 mb-6">Industry Expertise</h2>
+              <p className="text-emerald-500 font-bold uppercase tracking-widest mb-6">Industry Expertise</p>
               <h3 className="mb-8 leading-tight">
                 How We Transform <br /> 
                 <span className="text-black/40 dark:text-white/40">Businesses with Technology</span>
               </h3>
-              <p className="text-black/60 dark:text-white/60 mb-10 md:mb-12 leading-relaxed">
+              <p className="text-black/60 dark:text-white/60 mb-10 md:mb-12">
                 We build systems that help businesses automate operations, analyze data, and grow faster through digital platforms.
               </p>
               
@@ -588,7 +593,7 @@ export default function Home() {
                       </div>
                       <div className="flex-grow">
                         <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-2 gap-2">
-                          <h4 className="text-lg md:text-xl font-bold text-black dark:text-white">{ind.name}</h4>
+                          <h4 className="text-black dark:text-white">{ind.name}</h4>
                           <div className="flex flex-wrap gap-2">
                             {ind.tech.map((t, i) => (
                               <span key={i} className="text-[8px] font-bold uppercase tracking-widest px-2 py-1 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 rounded-full">
@@ -597,7 +602,7 @@ export default function Home() {
                             ))}
                           </div>
                         </div>
-                        <p className="text-sm text-black/60 dark:text-white/60 leading-relaxed">{ind.desc}</p>
+                        <p className="text-black/60 dark:text-white/60">{ind.desc}</p>
                       </div>
                     </div>
                   </motion.div>
@@ -836,19 +841,26 @@ export default function Home() {
       </section>
 
       {/* Consultation & Meeting Section */}
-      <section id="consultation" className="section-padding bg-black/[0.01] dark:bg-white/[0.01] relative overflow-hidden border-y border-black/5 dark:border-white/5">
+      <section id="start-project" className="section-padding bg-black/[0.01] dark:bg-white/[0.01] relative overflow-hidden border-y border-black/5 dark:border-white/5">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue-500/5 via-transparent to-transparent blur-3xl pointer-events-none" />
         
         <div className="container-custom relative z-10">
-          <div className="text-center mb-16 md:mb-24">
+          <div className="text-center mb-8 md:mb-24">
             <h2 className="text-xs md:text-sm font-bold uppercase tracking-widest text-black/40 dark:text-white/40 mb-4 md:mb-6">Project Planning</h2>
             <h3 className="mb-4 md:mb-6">Start Your <span className="text-black/40 dark:text-white/40">Digital Transformation</span></h3>
-            <p className="text-black/60 dark:text-white/60 max-w-2xl mx-auto">
+            <p className="text-black/60 dark:text-white/60 max-w-2xl mx-auto mb-6">
               Choose the best way to start your project. Fill out our inquiry form for a quick quote or book a direct strategy session.
             </p>
+            <Link 
+              to="/start-project"
+              className="inline-flex items-center space-x-2 bg-emerald-500 text-white px-8 py-4 rounded-2xl font-bold hover:scale-105 transition-all shadow-xl shadow-emerald-500/20"
+            >
+              <Rocket size={20} />
+              <span>Use Universal Intake Form</span>
+            </Link>
           </div>
           
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-16">
             <ConsultationForm />
             <MeetingBooking />
           </div>
@@ -856,7 +868,7 @@ export default function Home() {
       </section>
 
       {/* Contact & Final CTA Section */}
-      <section id="contact" className="section-padding bg-white dark:bg-[#0a0a0a] relative overflow-hidden">
+      <section id="contact" className="section-padding bg-white dark:bg-[#0a0a0a] relative overflow-hidden hero-text">
         {/* Background Elements */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-emerald-500/5 via-transparent to-transparent blur-3xl pointer-events-none" />
         <motion.div 
@@ -879,7 +891,7 @@ export default function Home() {
         <div className="container-custom relative z-10">
           <div className="max-w-6xl mx-auto">
             {/* Main CTA Header */}
-            <div className="text-center mb-20 md:mb-32">
+            <div className="text-center mb-10 md:mb-32">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -895,7 +907,7 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.1 }}
-                className="mb-8 leading-[1.1] md:leading-[0.85] text-5xl md:text-8xl font-bold tracking-tighter"
+                className="mb-8 tracking-tighter"
               >
                 Let's Build Your <br /> 
                 <span className="relative inline-block">
@@ -909,7 +921,7 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.2 }}
-                className="text-lg md:text-2xl text-black/50 dark:text-white/50 max-w-2xl mx-auto leading-relaxed"
+                className="text-black/50 dark:text-white/50 mx-auto"
               >
                 Join successful businesses using our technology systems to automate, analyze, and grow. 
                 Choose your preferred way to connect.
@@ -934,7 +946,7 @@ export default function Home() {
                   </div>
                   
                   <h4 className="text-sm font-bold uppercase tracking-widest text-black/40 dark:text-white/40 mb-4">Direct Consultation</h4>
-                  <p className="text-3xl md:text-4xl font-bold text-black dark:text-white mb-10 tracking-tighter">+91 86187 64541</p>
+                  <p className="font-bold text-black dark:text-white mb-10 tracking-tighter">+91 86187 64541</p>
                   
                   <div className="space-y-4 mb-12">
                     {['Instant response', 'Technical guidance', 'Project scoping'].map((item, i) => (
@@ -971,7 +983,7 @@ export default function Home() {
                   </div>
                   
                   <h4 className="text-sm font-bold uppercase tracking-widest text-black/40 dark:text-white/40 mb-4">WhatsApp Support</h4>
-                  <p className="text-3xl md:text-4xl font-bold text-black dark:text-white mb-10 tracking-tighter">+91 86187 64541</p>
+                  <p className="font-bold text-black dark:text-white mb-10 tracking-tighter">+91 86187 64541</p>
                   
                   <div className="space-y-4 mb-12">
                     {['24/7 Availability', 'Quick queries', 'Portfolio sharing'].map((item, i) => (

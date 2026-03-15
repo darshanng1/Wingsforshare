@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X, Sun, Moon, Facebook, Linkedin, Link as LinkIcon, MessageCircle, Share2 } from 'lucide-react';
 import { useTheme } from '../contexts/ThemeContext';
 import { motion, AnimatePresence } from 'motion/react';
@@ -8,6 +8,33 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = React.useState(false);
   const { theme, toggleTheme } = useTheme();
   const [scrolled, setScrolled] = React.useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const handleNavClick = (e: React.MouseEvent, href: string) => {
+    if (href.startsWith('#')) {
+      e.preventDefault();
+      if (location.pathname !== '/') {
+        navigate('/' + href);
+      } else {
+        const targetId = href.replace('#', '');
+        const element = document.getElementById(targetId);
+        if (element) {
+          const offset = 80;
+          const bodyRect = document.body.getBoundingClientRect().top;
+          const elementRect = element.getBoundingClientRect().top;
+          const elementPosition = elementRect - bodyRect;
+          const offsetPosition = elementPosition - offset;
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+        }
+      }
+      setIsOpen(false);
+    }
+  };
 
   const shareUrl = window.location.href;
   const shareTitle = "WingsForShare Digital Solutions – Premium Software & Marketing";
@@ -27,7 +54,7 @@ export default function Navbar() {
     { name: 'Solutions', href: '#solutions' },
     { name: 'Demos', href: '#products' },
     { name: 'Portfolio', href: '#portfolio' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'Start Project', href: '/start-project' },
   ];
 
   const shareButtons = [
@@ -91,13 +118,24 @@ export default function Navbar() {
           {/* Desktop Menu */}
           <div className="hidden lg:flex space-x-8 items-center">
             {navLinks.map((link) => (
-              <a 
-                key={link.name} 
-                href={link.href} 
-                className="text-xs font-bold uppercase tracking-widest text-black/60 dark:text-white/60 hover:text-black dark:hover:text-white transition-colors"
-              >
-                {link.name}
-              </a>
+              link.href.startsWith('#') ? (
+                <a 
+                  key={link.name} 
+                  href={link.href} 
+                  onClick={(e) => handleNavClick(e, link.href)}
+                  className="text-xs font-bold uppercase tracking-widest text-black/60 dark:text-white/60 hover:text-black dark:hover:text-white transition-colors"
+                >
+                  {link.name}
+                </a>
+              ) : (
+                <Link
+                  key={link.name}
+                  to={link.href}
+                  className="text-xs font-bold uppercase tracking-widest text-black/60 dark:text-white/60 hover:text-black dark:hover:text-white transition-colors"
+                >
+                  {link.name}
+                </Link>
+              )
             ))}
             
             <div className="h-4 w-[1px] bg-black/10 dark:bg-white/10" />
@@ -113,8 +151,8 @@ export default function Navbar() {
               Login
             </Link>
             
-            <Link to="/payment" className="bg-black dark:bg-white text-white dark:text-black px-6 py-2.5 rounded-xl text-xs font-bold uppercase tracking-widest hover:opacity-80 transition-all shadow-xl shadow-black/10 dark:shadow-white/5">
-              Get Started
+            <Link to="/start-project" className="bg-black dark:bg-white text-white dark:text-black px-6 py-2.5 rounded-xl text-xs font-bold uppercase tracking-widest hover:opacity-80 transition-all shadow-xl shadow-black/10 dark:shadow-white/5">
+              Start Project
             </Link>
           </div>
 
@@ -142,16 +180,27 @@ export default function Navbar() {
             exit={{ opacity: 0, height: 0 }}
             className="lg:hidden bg-white dark:bg-black border-b border-black/5 dark:border-white/10 overflow-hidden"
           >
-            <div className="px-4 py-8 space-y-4">
+            <div className="container-custom py-8 space-y-6">
               {navLinks.map((link) => (
-                <a 
-                  key={link.name} 
-                  href={link.href} 
-                  onClick={() => setIsOpen(false)}
-                  className="block px-4 py-3 text-lg font-bold text-black dark:text-white hover:bg-black/5 dark:hover:bg-white/5 rounded-2xl transition-colors"
-                >
-                  {link.name}
-                </a>
+                link.href.startsWith('#') ? (
+                  <a 
+                    key={link.name} 
+                    href={link.href} 
+                    onClick={(e) => handleNavClick(e, link.href)}
+                    className="block px-4 py-3 text-lg font-bold text-black dark:text-white hover:bg-black/5 dark:hover:bg-white/5 rounded-2xl transition-colors"
+                  >
+                    {link.name}
+                  </a>
+                ) : (
+                  <Link
+                    key={link.name}
+                    to={link.href}
+                    onClick={() => setIsOpen(false)}
+                    className="block px-4 py-3 text-lg font-bold text-black dark:text-white hover:bg-black/5 dark:hover:bg-white/5 rounded-2xl transition-colors"
+                  >
+                    {link.name}
+                  </Link>
+                )
               ))}
               
               <div className="pt-4 border-t border-black/5 dark:border-white/10">
@@ -192,11 +241,11 @@ export default function Navbar() {
                   Login
                 </Link>
                 <Link 
-                  to="/payment" 
+                  to="/start-project" 
                   onClick={() => setIsOpen(false)}
                   className="w-full py-4 text-center text-lg font-bold bg-black dark:bg-white text-white dark:text-black rounded-2xl shadow-xl"
                 >
-                  Get Started
+                  Start Project
                 </Link>
               </div>
             </div>

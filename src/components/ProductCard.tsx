@@ -49,9 +49,9 @@ export default function ProductCard({ product }: ProductCardProps) {
       </div>
       
       {/* Content */}
-      <div className="p-10">
+      <div className="p-6 sm:p-10">
         <div className="flex justify-between items-start mb-4">
-          <h3 className="text-2xl font-bold text-black dark:text-white tracking-tighter leading-none">
+          <h3 className="tracking-tighter leading-none">
             {product.name}
           </h3>
           <div className="flex items-center space-x-1 text-emerald-500 bg-emerald-500/10 px-2 py-1 rounded-md">
@@ -60,7 +60,7 @@ export default function ProductCard({ product }: ProductCardProps) {
           </div>
         </div>
         
-        <p className="text-sm text-black/50 dark:text-white/50 mb-8 line-clamp-2 leading-relaxed font-medium">
+        <p className="text-black/50 dark:text-white/50 line-clamp-2 leading-relaxed font-medium">
           {product.shortDescription}
         </p>
 
