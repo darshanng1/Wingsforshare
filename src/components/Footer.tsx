@@ -47,11 +47,11 @@ export default function Footer() {
           <div className="text-center sm:text-left">
             <h3 className="text-xs font-bold text-black dark:text-white uppercase tracking-widest mb-6 md:mb-8">Solutions</h3>
             <ul className="space-y-3 md:space-y-4">
-              <li><Link to="/#services" className="text-sm md:text-base text-black/60 dark:text-white/60 hover:text-black dark:hover:text-white transition-colors font-medium">Business Website Development</Link></li>
-              <li><Link to="/#services" className="text-sm md:text-base text-black/60 dark:text-white/60 hover:text-black dark:hover:text-white transition-colors font-medium">SEO & Digital Marketing Systems</Link></li>
-              <li><Link to="/#services" className="text-sm md:text-base text-black/60 dark:text-white/60 hover:text-black dark:hover:text-white transition-colors font-medium">Business Automation Tools</Link></li>
-              <li><Link to="/#services" className="text-sm md:text-base text-black/60 dark:text-white/60 hover:text-black dark:hover:text-white transition-colors font-medium">Custom Business Applications</Link></li>
-              <li><Link to="/#services" className="text-sm md:text-base text-black/60 dark:text-white/60 hover:text-black dark:hover:text-white transition-colors font-medium">Analytics & Data Dashboards</Link></li>
+              <li><Link to="/services/web-development" className="text-sm md:text-base text-black/60 dark:text-white/60 hover:text-black dark:hover:text-white transition-colors font-medium">Web Development Company</Link></li>
+              <li><Link to="/services/app-development" className="text-sm md:text-base text-black/60 dark:text-white/60 hover:text-black dark:hover:text-white transition-colors font-medium">Mobile App Development</Link></li>
+              <li><Link to="/services/business-intelligence" className="text-sm md:text-base text-black/60 dark:text-white/60 hover:text-black dark:hover:text-white transition-colors font-medium">Business Intelligence Solutions</Link></li>
+              <li><Link to="/services/business-consulting" className="text-sm md:text-base text-black/60 dark:text-white/60 hover:text-black dark:hover:text-white transition-colors font-medium">Business Development Consulting</Link></li>
+              <li><Link to="/services/digital-transformation" className="text-sm md:text-base text-black/60 dark:text-white/60 hover:text-black dark:hover:text-white transition-colors font-medium">Digital Transformation Services</Link></li>
             </ul>
           </div>
 
@@ -68,10 +68,10 @@ export default function Footer() {
 
           {/* Column 4: Start Project */}
           <div className="text-center sm:text-left">
-            <h3 className="text-xs font-bold text-black dark:text-white uppercase tracking-widest mb-6 md:mb-8">Start Project</h3>
+            <h3 className="text-xs font-bold text-black dark:text-white uppercase tracking-widest mb-6 md:mb-8">Connect</h3>
             <ul className="space-y-4 md:space-y-6">
               <li>
-                <Link to="/start-project" className="text-sm md:text-base text-black/60 dark:text-white/60 hover:text-black dark:hover:text-white transition-colors font-medium block mb-1">Project Intake Form</Link>
+                <Link to="/contact" className="text-sm md:text-base text-black/60 dark:text-white/60 hover:text-black dark:hover:text-white transition-colors font-medium block mb-1">Contact Us</Link>
               </li>
               <li className="flex items-center justify-center sm:justify-start space-x-3 text-black/60 dark:text-white/60">
                 <MessageCircle size={16} className="text-emerald-500" />
@@ -79,7 +79,7 @@ export default function Footer() {
               </li>
               <li className="flex items-center justify-center sm:justify-start space-x-3 text-black/60 dark:text-white/60">
                 <Mail size={16} className="text-emerald-500" />
-                <a href="mailto:contact@wingsforshare.com" className="text-sm md:text-base hover:text-black dark:hover:text-white transition-colors font-medium">contact@wingsforshare.com</a>
+                <a href="mailto:darshanng@gmail.com" className="text-sm md:text-base hover:text-black dark:hover:text-white transition-colors font-medium">darshanng@gmail.com</a>
               </li>
             </ul>
           </div>

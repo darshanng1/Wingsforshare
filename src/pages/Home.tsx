@@ -34,28 +34,39 @@ export default function Home() {
   const solutions = [
     {
       icon: <Cpu className="text-blue-500" />,
-      title: 'Custom App Development',
-      desc: 'Tailored software solutions built from the ground up to solve your unique business challenges.'
+      title: 'Custom Software Development',
+      desc: 'Scalable and secure custom software development services tailored to your specific business requirements and goals.',
+      href: '/services/custom-software'
     },
     {
-      icon: <Layers className="text-emerald-500" />,
-      title: 'Ready-Made Apps',
-      desc: 'Pre-built, high-performance SaaS tools and applications ready for instant deployment.'
+      icon: <Globe className="text-emerald-500" />,
+      title: 'Web Development Company',
+      desc: 'Professional web development company providing high-performance, SEO-optimized websites that convert visitors into leads.',
+      href: '/services/web-development'
+    },
+    {
+      icon: <Smartphone className="text-yellow-500" />,
+      title: 'Mobile App Development Services',
+      desc: 'Expert mobile app development services for iOS and Android, focusing on user experience and business performance.',
+      href: '/services/app-development'
+    },
+    {
+      icon: <BarChart className="text-purple-500" />,
+      title: 'Business Intelligence Solutions',
+      desc: 'Advanced business intelligence solutions and data analytics for business to drive informed decision-making.',
+      href: '/services/business-intelligence'
+    },
+    {
+      icon: <Briefcase className="text-pink-500" />,
+      title: 'Business Development Consulting',
+      desc: 'Strategic business development consulting to help you identify growth opportunities and optimize your operations.',
+      href: '/services/business-consulting'
     },
     {
       icon: <Zap className="text-yellow-500" />,
-      title: 'Business Automation Tools',
-      desc: 'Smart systems that automate repetitive tasks, reducing manual work and increasing efficiency.'
-    },
-    {
-      icon: <ShoppingCart className="text-purple-500" />,
-      title: 'Ecommerce Websites',
-      desc: 'Scalable online stores with advanced product management and secure payment integrations.'
-    },
-    {
-      icon: <BarChart className="text-pink-500" />,
-      title: 'Business Intelligence Dashboards',
-      desc: 'Powerful data visualization tools that turn raw information into actionable business insights.'
+      title: 'Digital Transformation Services',
+      desc: 'Comprehensive digital transformation services to modernize your business processes and technology stack.',
+      href: '/services/digital-transformation'
     }
   ];
 
@@ -83,38 +94,44 @@ export default function Home() {
       name: 'Professional Services', 
       desc: 'CRM systems, lead tracking, and marketing performance dashboards.',
       tech: ['CRM System', 'Analytics Dashboard', 'Web Platform']
+    },
+    { 
+      icon: <ShoppingBag />, 
+      name: 'Agriculture & Nursery', 
+      desc: 'Online nursery platforms, inventory management for live plants, and seasonal sales automation.',
+      tech: ['Ecommerce', 'Inventory System', 'Business Automation']
     }
   ];
 
   const whyChooseUs = [
     { 
-      title: 'Website Development for Business Growth', 
-      desc: 'Modern business website development designed to attract customers and generate high-quality leads.' 
+      title: 'Expert Custom Software Development', 
+      desc: 'Our custom software development team builds robust, scalable applications designed to solve complex business problems.' 
     },
     { 
-      title: 'SEO & Digital Marketing Systems', 
-      desc: 'Comprehensive SEO optimization services, content strategy, and marketing automation to scale your reach.' 
+      title: 'Data Analytics for Business', 
+      desc: 'Leverage our data analytics for business to gain a competitive edge with real-time insights and performance tracking.' 
     },
     { 
-      title: 'Business Automation Tools', 
-      desc: 'Automate operations, customer workflows, and internal processes with our custom business automation tools.' 
+      title: 'Strategic Digital Transformation', 
+      desc: 'We guide your digital transformation services journey, ensuring your technology stack supports your long-term growth.' 
     },
     { 
-      title: 'Custom Business Applications', 
-      desc: 'Tailored custom business software solutions built to solve your unique operational challenges.' 
+      title: 'Conversion-Focused Web Development', 
+      desc: 'As a leading web development company, we focus on creating websites that are not just beautiful, but also drive results.' 
     },
     { 
-      title: 'Data Analytics & Performance Tracking', 
-      desc: 'Interactive data analytics dashboards to measure growth, track KPIs, and improve business decisions.' 
+      title: 'Scalable Business Intelligence', 
+      desc: 'Our business intelligence solutions provide the clarity you need to make data-driven decisions with confidence.' 
     }
   ];
 
   return (
     <div className="bg-white dark:bg-[#0a0a0a] transition-colors duration-300 overflow-hidden">
       <SEO 
-        title="WingsForShare – Digital Solutions Agency & Custom Software Development"
-        description="WingsForShare is a premier digital solutions agency. We specialize in custom software development, business automation tools, and SEO services to help your business scale and succeed in the digital landscape."
-        keywords="digital solutions agency, custom software development, business automation, SEO services, digital marketing, WingsForShare, software marketplace, ecommerce development"
+        title="WingsForShare – Custom Software Development & Digital Transformation Services"
+        description="WingsForShare is a leading web development company and mobile app development services provider. We offer business intelligence solutions, data analytics for business, and digital transformation services to help you scale."
+        keywords="custom software development, web development company, mobile app development services, business intelligence solutions, data analytics for business, digital transformation services, business development consulting"
       />
       
       {/* Hero Section */}
@@ -173,9 +190,9 @@ export default function Home() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, ease: "easeOut" }}
                 >
-                  Technology Systems That <br className="hidden md:block" />
+                  Custom Software & <br className="hidden md:block" />
                   <span className="relative inline-block">
-                    <span className="text-emerald-500 italic">Grow Your Business</span>
+                    <span className="text-emerald-500 italic">Digital Transformation</span>
                     <motion.div 
                       initial={{ scaleX: 0 }}
                       animate={{ scaleX: 1 }}
@@ -192,7 +209,7 @@ export default function Home() {
                 transition={{ duration: 0.8, delay: 0.4 }}
                 className="text-black/60 dark:text-white/60 max-w-xl leading-relaxed"
               >
-                We help businesses scale using modern websites, digital marketing systems, automation tools, analytics platforms, and custom applications.
+                WingsForShare is a premier web development company and mobile app development services provider. We deliver custom software development and business intelligence solutions to drive your business growth.
               </motion.p>
               
               <motion.div 
@@ -519,17 +536,20 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1 }}
-                className="p-8 md:p-10 bg-white dark:bg-[#111] rounded-[2.5rem] md:rounded-[3rem] border border-black/5 dark:border-white/10 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 group"
+                className="p-8 md:p-10 bg-white dark:bg-[#111] rounded-[2.5rem] md:rounded-[3rem] border border-black/5 dark:border-white/10 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 group flex flex-col"
               >
                 <div className="w-14 h-14 md:w-16 md:h-16 bg-black/5 dark:bg-white/5 rounded-2xl flex items-center justify-center mb-6 md:mb-8 group-hover:scale-110 transition-transform">
                   {React.cloneElement(sol.icon as React.ReactElement, { size: 28 })}
                 </div>
                 <h4 className="text-black dark:text-white tracking-tight">{sol.title}</h4>
-                <p className="text-black/60 dark:text-white/60">{sol.desc}</p>
-                <div className="flex items-center space-x-2 text-xs md:text-sm font-bold uppercase tracking-widest text-black/40 dark:text-white/40 group-hover:text-black dark:group-hover:text-white transition-colors">
+                <p className="text-black/60 dark:text-white/60 flex-grow mb-6">{sol.desc}</p>
+                <Link 
+                  to={sol.href}
+                  className="inline-flex items-center space-x-2 text-xs md:text-sm font-bold uppercase tracking-widest text-black/40 dark:text-white/40 group-hover:text-black dark:group-hover:text-white transition-colors"
+                >
                   <span>Learn More</span>
                   <ChevronRight size={16} />
-                </div>
+                </Link>
               </motion.div>
             ))}
           </div>
@@ -845,10 +865,10 @@ export default function Home() {
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue-500/5 via-transparent to-transparent blur-3xl pointer-events-none" />
         
         <div className="container-custom relative z-10">
-          <div className="text-center mb-8 md:mb-24">
-            <h2 className="text-xs md:text-sm font-bold uppercase tracking-widest text-black/40 dark:text-white/40 mb-4 md:mb-6">Project Planning</h2>
-            <h3 className="mb-4 md:mb-6">Start Your <span className="text-black/40 dark:text-white/40">Digital Transformation</span></h3>
-            <p className="text-black/60 dark:text-white/60 max-w-2xl mx-auto mb-6">
+          <div className="text-center mb-6 md:mb-16">
+            <h2 className="text-xs md:text-sm font-bold uppercase tracking-widest text-black/40 dark:text-white/40 mb-2 md:mb-4">Project Planning</h2>
+            <h3 className="mb-2 md:mb-4">Start Your <span className="text-black/40 dark:text-white/40">Digital Transformation</span></h3>
+            <p className="text-black/60 dark:text-white/60 max-w-2xl mx-auto mb-4">
               Choose the best way to start your project. Fill out our inquiry form for a quick quote or book a direct strategy session.
             </p>
             <Link 

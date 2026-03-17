@@ -35,21 +35,25 @@ Message: ${formData.message}`;
       <motion.div 
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
+        role="alert"
+        aria-live="polite"
         className="bg-white dark:bg-[#111] p-12 rounded-[3rem] border border-black/5 dark:border-white/10 text-center shadow-2xl"
       >
         <div className="w-20 h-20 bg-emerald-500/10 text-emerald-500 rounded-full flex items-center justify-center mx-auto mb-6">
-          <CheckCircle size={40} />
+          <CheckCircle size={40} aria-hidden="true" />
         </div>
         <h3 className="text-3xl font-bold text-black dark:text-white mb-4">Request Received!</h3>
         <p className="text-black/60 dark:text-white/60 mb-8">
           Thank you for reaching out. Our team will contact you within 24 hours to discuss your project.
         </p>
-        <button 
+        <motion.button 
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
           onClick={() => setIsSubmitted(false)}
           className="bg-black dark:bg-white text-white dark:text-black px-8 py-3 rounded-xl font-bold hover:opacity-80 transition-all"
         >
           Send Another Request
-        </button>
+        </motion.button>
       </motion.div>
     );
   }
@@ -63,8 +67,8 @@ Message: ${formData.message}`;
     >
       <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-500/5 rounded-full blur-3xl -mr-32 -mt-32 group-hover:bg-emerald-500/10 transition-colors" />
       
-      <div className="mb-4 relative z-10">
-        <div className="inline-flex items-center space-x-2 bg-emerald-500/10 px-3 py-1.5 rounded-full mb-4">
+      <div className="mb-2 relative z-10">
+        <div className="inline-flex items-center space-x-2 bg-emerald-500/10 px-3 py-1.5 rounded-full mb-2" aria-hidden="true">
           <Sparkles size={14} className="text-emerald-500" />
           <span className="text-[10px] font-bold uppercase tracking-widest text-emerald-600 dark:text-emerald-400">Quick Inquiry</span>
         </div>
@@ -75,11 +79,12 @@ Message: ${formData.message}`;
       <form onSubmit={handleSubmit} className="space-y-4 relative z-10">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           <div className="space-y-2">
-            <label className="text-xs font-bold uppercase tracking-widest text-black/40 dark:text-white/40 ml-4">Full Name</label>
+            <label htmlFor="consult-name" className="text-xs font-bold uppercase tracking-widest text-black/40 dark:text-white/40 ml-4">Full Name</label>
             <div className="relative">
-              <User className="absolute left-4 top-1/2 -translate-y-1/2 text-black/20 dark:text-white/20" size={18} />
+              <User className="absolute left-4 top-1/2 -translate-y-1/2 text-black/20 dark:text-white/20" size={18} aria-hidden="true" />
               <input 
                 required
+                id="consult-name"
                 type="text" 
                 placeholder="John Doe"
                 value={formData.name}
@@ -90,11 +95,12 @@ Message: ${formData.message}`;
           </div>
 
           <div className="space-y-2">
-            <label className="text-xs font-bold uppercase tracking-widest text-black/40 dark:text-white/40 ml-4">Phone Number</label>
+            <label htmlFor="consult-phone" className="text-xs font-bold uppercase tracking-widest text-black/40 dark:text-white/40 ml-4">Phone Number</label>
             <div className="relative">
-              <Phone className="absolute left-4 top-1/2 -translate-y-1/2 text-black/20 dark:text-white/20" size={18} />
+              <Phone className="absolute left-4 top-1/2 -translate-y-1/2 text-black/20 dark:text-white/20" size={18} aria-hidden="true" />
               <input 
                 required
+                id="consult-phone"
                 type="tel" 
                 placeholder="+91 86187 64541"
                 value={formData.phone}
@@ -107,11 +113,12 @@ Message: ${formData.message}`;
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           <div className="space-y-2">
-            <label className="text-xs font-bold uppercase tracking-widest text-black/40 dark:text-white/40 ml-4">Business Type</label>
+            <label htmlFor="consult-business" className="text-xs font-bold uppercase tracking-widest text-black/40 dark:text-white/40 ml-4">Business Type</label>
             <div className="relative">
-              <Building2 className="absolute left-4 top-1/2 -translate-y-1/2 text-black/20 dark:text-white/20" size={18} />
+              <Building2 className="absolute left-4 top-1/2 -translate-y-1/2 text-black/20 dark:text-white/20" size={18} aria-hidden="true" />
               <input 
                 required
+                id="consult-business"
                 type="text" 
                 placeholder="e.g. Retail, Healthcare"
                 value={formData.businessType}
@@ -122,10 +129,11 @@ Message: ${formData.message}`;
           </div>
 
           <div className="space-y-2">
-            <label className="text-xs font-bold uppercase tracking-widest text-black/40 dark:text-white/40 ml-4">Project Requirement</label>
+            <label htmlFor="consult-requirement" className="text-xs font-bold uppercase tracking-widest text-black/40 dark:text-white/40 ml-4">Project Requirement</label>
             <div className="relative">
-              <Briefcase className="absolute left-4 top-1/2 -translate-y-1/2 text-black/20 dark:text-white/20" size={18} />
+              <Briefcase className="absolute left-4 top-1/2 -translate-y-1/2 text-black/20 dark:text-white/20" size={18} aria-hidden="true" />
               <select 
+                id="consult-requirement"
                 value={formData.projectRequirement}
                 onChange={(e) => setFormData({...formData, projectRequirement: e.target.value})}
                 className="w-full bg-black/5 dark:bg-white/5 border border-transparent focus:border-black/10 dark:focus:border-white/10 rounded-2xl py-4 pl-12 pr-6 outline-none transition-all text-black dark:text-white font-medium appearance-none"
@@ -141,11 +149,12 @@ Message: ${formData.message}`;
         </div>
 
         <div className="space-y-2">
-          <label className="text-xs font-bold uppercase tracking-widest text-black/40 dark:text-white/40 ml-4">Message</label>
+          <label htmlFor="consult-message" className="text-xs font-bold uppercase tracking-widest text-black/40 dark:text-white/40 ml-4">Message</label>
           <div className="relative">
-            <MessageSquare className="absolute left-4 top-6 text-black/20 dark:text-white/20" size={18} />
+            <MessageSquare className="absolute left-4 top-6 text-black/20 dark:text-white/20" size={18} aria-hidden="true" />
             <textarea 
               required
+              id="consult-message"
               rows={4}
               placeholder="Tell us about your project goals..."
               value={formData.message}
@@ -155,13 +164,16 @@ Message: ${formData.message}`;
           </div>
         </div>
 
-        <button 
+        <motion.button 
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
           type="submit"
+          aria-label="Submit consultation request"
           className="w-full bg-black dark:bg-white text-white dark:text-black py-5 rounded-2xl font-bold text-lg hover:opacity-80 transition-all flex items-center justify-center space-x-2 shadow-xl"
         >
           <span>Submit Request</span>
-          <Send size={20} />
-        </button>
+          <Send size={20} aria-hidden="true" />
+        </motion.button>
       </form>
     </motion.div>
   );

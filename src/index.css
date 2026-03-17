@@ -118,7 +118,7 @@
   }
   
   .section-padding {
-    @apply py-8 md:py-24 lg:py-32;
+    @apply py-4 md:py-24 lg:py-32;
   }
   
   .glass-card {

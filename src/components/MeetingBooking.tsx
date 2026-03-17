@@ -51,12 +51,14 @@ export default function MeetingBooking() {
           </a>
         </div>
 
-        <button 
+        <motion.button 
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
           onClick={() => setIsBooked(false)}
           className="bg-white dark:bg-black text-black dark:text-white px-8 py-3 rounded-xl font-bold hover:opacity-80 transition-all"
         >
           Book Another Slot
-        </button>
+        </motion.button>
       </motion.div>
     );
   }
@@ -71,13 +73,13 @@ export default function MeetingBooking() {
       <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-500/20 rounded-full blur-3xl -z-10 group-hover:bg-emerald-500/30 transition-colors" />
       <div className="absolute bottom-0 left-0 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl -z-10" />
       
-      <div className="mb-4 relative z-10">
-        <div className="inline-flex items-center space-x-2 bg-white/10 dark:bg-black/10 px-4 py-2 rounded-full mb-6 border border-white/5 dark:border-black/5">
+      <div className="mb-2 relative z-10">
+        <div className="inline-flex items-center space-x-2 bg-white/10 dark:bg-black/10 px-4 py-2 rounded-full mb-4 border border-white/5 dark:border-black/5">
           <Video size={16} className="text-emerald-500" />
           <span className="text-[10px] font-bold uppercase tracking-widest opacity-60">1-on-1 Strategy Call</span>
         </div>
-        <h3 className="text-4xl md:text-5xl font-bold tracking-tighter mb-4 leading-tight">Book a Project <br /> Strategy Session</h3>
-        <p className="opacity-60 max-w-md leading-relaxed font-medium">
+        <h3 className="text-4xl md:text-5xl font-bold tracking-tighter mb-2 leading-tight">Book a Project <br /> Strategy Session</h3>
+        <p className="text-[#F3F4F6] text-base md:text-lg leading-[1.6] font-normal mt-2 mb-4 max-w-[90%] md:max-w-md">
           Select a time that works for you. We'll discuss your project requirements and provide a technical roadmap.
         </p>
       </div>
@@ -112,13 +114,15 @@ export default function MeetingBooking() {
         </div>
 
         <div className="flex flex-col justify-end">
-          <button 
+          <motion.button 
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
             onClick={handleBooking}
             className="w-full bg-emerald-500 text-white py-5 rounded-2xl font-bold text-lg hover:bg-emerald-600 transition-all flex items-center justify-center space-x-2 shadow-xl shadow-emerald-500/20"
           >
             <span>Confirm Meeting</span>
             <ArrowRight size={20} />
-          </button>
+          </motion.button>
           <p className="text-center mt-4 text-xs opacity-40 font-medium uppercase tracking-widest">
             Instant Confirmation & Link Generation
           </p>

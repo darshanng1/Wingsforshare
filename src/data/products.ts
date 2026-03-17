@@ -75,5 +75,23 @@ export const products: Product[] = [
       'Decision-support insights for business growth'
     ],
     fullDescription: 'Our Business Intelligence Dashboard provides a central hub for all your business data. Monitor KPIs in real-time, generate detailed reports with a click, and use automation to stay ahead of the competition.'
+  },
+  {
+    id: '6',
+    slug: 'gardenwalla-nursery',
+    name: 'GardenWalla Nursery Store',
+    shortDescription: 'A comprehensive online nursery platform for selling plants, seeds, and gardening supplies.',
+    description: 'A specialized eCommerce solution for plant nurseries and gardening businesses.',
+    category: 'Ecommerce',
+    screenshot: 'https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?auto=format&fit=crop&q=80&w=800&h=600',
+    demoLink: 'https://gardenwalla-17rug0fdy-darshanng1s-projects.vercel.app/',
+    features: [
+      'Plant category management',
+      'Seasonal availability tracking',
+      'Gardening tips & blog integration',
+      'Secure payment gateway',
+      'Order tracking for live plants'
+    ],
+    fullDescription: 'GardenWalla is a dedicated eCommerce platform designed specifically for the nursery industry. It features specialized product management for live plants, including care instructions and seasonal availability, ensuring a premium experience for gardening enthusiasts.'
   }
 ];
