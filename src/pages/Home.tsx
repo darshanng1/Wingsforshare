@@ -100,6 +100,12 @@ export default function Home() {
       name: 'Agriculture & Nursery', 
       desc: 'Online nursery platforms, inventory management for live plants, and seasonal sales automation.',
       tech: ['Ecommerce', 'Inventory System', 'Business Automation']
+    },
+    { 
+      icon: <Laptop />, 
+      name: 'Electronics & Appliances', 
+      desc: 'Inventory showcases for refurbished goods, lead generation for showrooms, and WhatsApp sales automation.',
+      tech: ['Retail Solution', 'Lead Gen', 'WhatsApp Integration']
     }
   ];
 

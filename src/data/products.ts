@@ -93,5 +93,23 @@ export const products: Product[] = [
       'Order tracking for live plants'
     ],
     fullDescription: 'GardenWalla is a dedicated eCommerce platform designed specifically for the nursery industry. It features specialized product management for live plants, including care instructions and seasonal availability, ensuring a premium experience for gardening enthusiasts.'
+  },
+  {
+    id: '7',
+    slug: 'green-nest-electronics',
+    name: 'Green Nest – Refurbished Appliances',
+    shortDescription: 'Modern, conversion-focused website for refurbished electronics and household appliances.',
+    description: 'A high-trust marketplace solution for factory seconds and surplus electronics.',
+    category: 'Retail',
+    screenshot: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=800&auto=format&fit=crop',
+    demoLink: 'https://green-nest-lime.vercel.app/',
+    features: [
+      'Premium hero section with appliance visuals',
+      'Category-based browsing (TV, AC, Fridge)',
+      'WhatsApp integration for quick enquiries',
+      'Trust-building product presentation',
+      'Lead generation for store visits'
+    ],
+    fullDescription: 'Green Nest is a modern website solution tailored for electronics resellers and refurbished appliance stores. It focuses on building user trust through clean design and provides seamless enquiry paths via WhatsApp, helping businesses drive both online interest and offline store visits.'
   }
 ];

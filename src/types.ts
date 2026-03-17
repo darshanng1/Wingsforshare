@@ -4,7 +4,7 @@ export interface Product {
   name: string;
   description: string;
   shortDescription: string;
-  category: 'Websites' | 'Business Apps' | 'Ecommerce' | 'Marketing Services' | 'Automation Tools' | 'BI Tools';
+  category: 'Websites' | 'Business Apps' | 'Ecommerce' | 'Marketing Services' | 'Automation Tools' | 'BI Tools' | 'Retail';
   screenshot: string;
   demoLink: string;
   adminLogin?: string;
