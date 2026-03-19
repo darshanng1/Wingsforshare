@@ -203,6 +203,10 @@ export default function Home() {
           >
             <source src={ASSETS.VIDEOS.TECH_BACKGROUND} type="video/mp4" />
           </video>
+          
+          {/* Whiteboard / Design Grid Overlay */}
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:60px_60px] opacity-20" />
+          
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-emerald-500/10 dark:from-emerald-500/5 via-transparent to-transparent blur-3xl opacity-50" />
         </motion.div>
         
@@ -257,42 +261,36 @@ export default function Home() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.6 }}
-                className="flex flex-col sm:flex-row items-stretch sm:items-center gap-5 mb-10"
+                className="flex flex-col sm:flex-row items-stretch sm:items-center gap-6 mb-12"
               >
                 <Link 
                   to="/start-project" 
-                  className="group relative px-10 py-4 md:py-5 rounded-2xl font-bold text-lg transition-all flex items-center justify-center space-x-3 overflow-hidden hover:scale-[1.02] active:scale-95 shadow-xl shadow-emerald-500/20"
+                  className="group relative px-10 py-5 rounded-2xl font-black text-lg transition-all flex items-center justify-center space-x-4 overflow-hidden hover:scale-[1.05] active:scale-95 shadow-[0_20px_50px_rgba(16,185,129,0.4)] dark:shadow-[0_20px_50px_rgba(16,185,129,0.2)]"
                 >
                   {/* Primary Background Gradient */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-emerald-500 via-teal-500 to-emerald-600 transition-transform duration-500 group-hover:scale-110" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-emerald-400 via-emerald-500 to-teal-600 transition-transform duration-500 group-hover:scale-110" />
                   
                   {/* Shimmer Effect */}
                   <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none">
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 ease-in-out" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent -skew-x-20 translate-x-[-150%] group-hover:translate-x-[150%] transition-transform duration-1000 ease-in-out" />
                   </div>
                   
-                  {/* Subtle Glow Effect */}
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white/10 via-transparent to-transparent" />
-                  
                   <span className="relative z-10 text-white tracking-tight">Get Free Consultation</span>
-                  <ArrowRight size={20} className="relative z-10 text-white group-hover:translate-x-1.5 transition-transform duration-300" />
+                  <ArrowRight size={22} className="relative z-10 text-white group-hover:translate-x-2 transition-transform duration-300" />
                   
                   {/* Outer Glow Bloom */}
-                  <div className="absolute -inset-1 bg-emerald-500/25 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10" />
+                  <div className="absolute -inset-2 bg-emerald-500/40 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10" />
                 </Link>
 
                 <a 
                   href="#products" 
-                  className="group relative px-10 py-4 md:py-5 rounded-2xl font-bold text-lg transition-all flex items-center justify-center space-x-3 overflow-hidden border border-black/10 dark:border-white/10 hover:border-emerald-500/30 dark:hover:border-emerald-500/30 hover:scale-[1.02] active:scale-95"
+                  className="group relative px-10 py-5 rounded-2xl font-black text-lg transition-all flex items-center justify-center space-x-4 overflow-hidden border-2 border-black/10 dark:border-white/10 hover:border-emerald-500/50 dark:hover:border-emerald-500/50 hover:scale-[1.02] active:scale-95 bg-white/10 dark:bg-white/5 backdrop-blur-2xl shadow-2xl hover:shadow-emerald-500/20"
                 >
-                  {/* Glassmorphism Background */}
-                  <div className="absolute inset-0 bg-black/[0.02] dark:bg-white/[0.02] backdrop-blur-xl transition-all duration-300 group-hover:bg-black/[0.05] dark:group-hover:bg-white/[0.05]" />
-                  
-                  {/* Subtle Inner Border Highlight */}
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 border border-white/10 dark:border-white/5 rounded-2xl pointer-events-none" />
-                  
                   <span className="relative z-10 text-black dark:text-white tracking-tight">View Our Work</span>
-                  <ChevronRight size={18} className="relative z-10 text-black/40 dark:text-white/40 group-hover:text-emerald-500 dark:group-hover:text-emerald-400 group-hover:translate-x-1 transition-all duration-300" />
+                  <ChevronRight size={20} className="relative z-10 text-black/40 dark:text-white/40 group-hover:text-emerald-500 dark:group-hover:text-emerald-400 group-hover:translate-x-1 transition-all duration-300" />
+                  
+                  {/* Subtle Background Hover */}
+                  <div className="absolute inset-0 bg-emerald-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </a>
               </motion.div>
 
@@ -324,167 +322,201 @@ export default function Home() {
                 rotateX,
                 rotateY,
                 transformStyle: "preserve-3d",
-                perspective: 1000
+                perspective: 1200
               }}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1, ease: "easeOut" }}
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
               className="relative hidden lg:block"
             >
-              {/* Floating Elements for 3D Depth */}
-              <motion.div 
-                style={{ translateZ: 100 }}
-                animate={{ y: [0, -20, 0] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -top-10 -right-10 w-32 h-32 bg-emerald-500/10 rounded-full blur-xl z-20 border border-emerald-500/10"
-              />
-              <motion.div 
-                style={{ translateZ: 150 }}
-                animate={{ y: [0, 20, 0] }}
-                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                className="absolute -bottom-10 -left-10 w-40 h-40 bg-blue-500/10 rounded-full blur-xl z-20 border border-blue-500/10"
-              />
+              {/* Whiteboard / Design Elements Background */}
+              <div className="absolute inset-0 -z-10 overflow-visible">
+                <motion.div 
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                  className="absolute -top-20 -right-20 w-64 h-64 border border-emerald-500/10 rounded-full border-dashed"
+                />
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-[radial-gradient(circle_at_center,rgba(16,185,129,0.05)_0%,transparent_70%)]" />
+              </div>
 
-              {/* Website & Mobile App Mockup Visual */}
-              <div className="relative w-full aspect-[4/3] max-w-2xl mx-auto">
-                {/* Desktop Screen Mockup (Website) - PRIMARY FOCUS */}
+              {/* Main Composition Container */}
+              <div className="relative w-full aspect-[4/3] max-w-2xl mx-auto flex items-center justify-center">
+                
+                {/* 1. Desktop Screen Mockup (Website) - PRIMARY FOCUS */}
                 <motion.div 
                   style={{ translateZ: 50 }}
-                  className="absolute inset-0 z-10 rounded-[2.5rem] overflow-hidden shadow-2xl shadow-black/40 dark:shadow-white/20 border border-black/10 dark:border-white/10 bg-white dark:bg-[#0d1117] flex flex-col scale-110"
+                  className="relative z-20 w-[90%] aspect-[16/10] rounded-2xl overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)] dark:shadow-[0_50px_100px_-20px_rgba(0,0,0,0.8)] border border-white/20 dark:border-white/5 bg-white dark:bg-[#0d1117] flex flex-col"
                 >
                   {/* Browser Header */}
-                  <div className="h-12 bg-gray-100 dark:bg-[#161b22] border-b border-black/5 dark:border-white/5 flex items-center px-6 space-x-3">
-                    <div className="flex space-x-2">
-                      <div className="w-3 h-3 rounded-full bg-red-400" />
-                      <div className="w-3 h-3 rounded-full bg-yellow-400" />
-                      <div className="w-3 h-3 rounded-full bg-green-400" />
+                  <div className="h-10 bg-gray-100 dark:bg-[#161b22] border-b border-black/5 dark:border-white/5 flex items-center px-4 space-x-2">
+                    <div className="flex space-x-1.5">
+                      <div className="w-2.5 h-2.5 rounded-full bg-[#ff5f56]" />
+                      <div className="w-2.5 h-2.5 rounded-full bg-[#ffbd2e]" />
+                      <div className="w-2.5 h-2.5 rounded-full bg-[#27c93f]" />
                     </div>
                     <div className="flex-grow flex justify-center">
-                      <div className="bg-white/50 dark:bg-white/5 px-4 py-1.5 rounded-lg text-[10px] text-black/40 dark:text-white/40 font-medium w-64 text-center truncate">
-                        wingsforshare.com/solutions
+                      <div className="bg-white/80 dark:bg-white/5 px-3 py-1 rounded text-[9px] text-black/40 dark:text-white/40 font-medium w-48 text-center truncate border border-black/5 dark:border-white/5">
+                        wingsforshare.com/agency
                       </div>
                     </div>
                   </div>
                   
-                  {/* Website Content Mockup - REAL LAYOUT */}
-                  <div className="flex-grow p-10 overflow-hidden bg-gray-50 dark:bg-[#0a0a0a]">
-                    <div className="max-w-lg mx-auto space-y-10">
-                      {/* Navbar */}
-                      <div className="flex items-center justify-between">
-                        <div className="h-5 w-32 bg-emerald-500/20 rounded-full" />
-                        <div className="flex space-x-4">
-                          <div className="h-2.5 w-10 bg-black/5 dark:bg-white/5 rounded-full" />
-                          <div className="h-2.5 w-10 bg-black/5 dark:bg-white/5 rounded-full" />
-                          <div className="h-2.5 w-10 bg-black/5 dark:bg-white/10 rounded-full" />
-                        </div>
+                  {/* Website Content Mockup */}
+                  <div className="flex-grow overflow-hidden bg-white dark:bg-[#0a0a0a] relative">
+                    {/* Mockup Navbar */}
+                    <div className="h-12 px-6 flex items-center justify-between border-b border-black/5 dark:border-white/5">
+                      <div className="w-20 h-3 bg-emerald-500/20 rounded-full" />
+                      <div className="flex space-x-3">
+                        <div className="w-8 h-2 bg-black/5 dark:bg-white/5 rounded-full" />
+                        <div className="w-8 h-2 bg-black/5 dark:bg-white/5 rounded-full" />
+                        <div className="w-12 h-4 bg-emerald-500/20 rounded-lg" />
+                      </div>
+                    </div>
+                    
+                    {/* Mockup Hero */}
+                    <div className="p-8 space-y-6">
+                      <div className="space-y-3">
+                        <div className="h-8 w-3/4 bg-black/5 dark:bg-white/5 rounded-lg" />
+                        <div className="h-8 w-1/2 bg-black/5 dark:bg-white/5 rounded-lg" />
+                      </div>
+                      <div className="flex space-x-3">
+                        <div className="h-8 w-24 bg-emerald-500/20 rounded-lg" />
+                        <div className="h-8 w-24 bg-black/5 dark:bg-white/5 rounded-lg" />
                       </div>
                       
-                      {/* Hero Banner */}
-                      <div className="space-y-4 text-center py-4">
-                        <div className="h-12 w-full bg-black/5 dark:bg-white/5 rounded-xl" />
-                        <div className="h-12 w-4/5 mx-auto bg-black/5 dark:bg-white/5 rounded-xl" />
-                        <div className="h-4 w-2/3 mx-auto bg-black/5 dark:bg-white/5 rounded-full" />
-                        <div className="h-10 w-40 mx-auto bg-emerald-500/20 rounded-xl border border-emerald-500/30" />
-                      </div>
-
-                      {/* Feature Grid */}
-                      <div className="grid grid-cols-3 gap-6">
-                        {[Globe, Smartphone, BarChart3].map((Icon, i) => (
-                          <div key={i} className="aspect-square bg-white dark:bg-[#161b22] rounded-3xl border border-black/5 dark:border-white/5 flex flex-col items-center justify-center p-4 space-y-3 shadow-sm">
-                            <Icon size={28} className="text-emerald-500/40" />
-                            <div className="h-2 w-12 bg-black/5 dark:bg-white/5 rounded-full" />
+                      {/* Mockup Cards */}
+                      <div className="grid grid-cols-3 gap-4 pt-4">
+                        {[1, 2, 3].map((i) => (
+                          <div key={i} className="aspect-square bg-gray-50 dark:bg-white/5 rounded-xl border border-black/5 dark:border-white/5 p-3 space-y-2">
+                            <div className="w-6 h-6 bg-emerald-500/20 rounded-lg" />
+                            <div className="h-2 w-full bg-black/5 dark:bg-white/5 rounded-full" />
+                            <div className="h-2 w-2/3 bg-black/5 dark:bg-white/5 rounded-full" />
                           </div>
                         ))}
                       </div>
                     </div>
-                  </div>
 
-                  {/* Label */}
-                  <div className="absolute top-16 right-8 bg-emerald-500 text-white text-[11px] font-bold px-4 py-1.5 rounded-full shadow-xl z-20 uppercase tracking-widest">
-                    Website
+                    {/* Design Overlay (Whiteboard feel) */}
+                    <div className="absolute inset-0 pointer-events-none opacity-20">
+                      <div className="absolute top-10 left-10 w-20 h-20 border border-emerald-500/30 rounded-lg rotate-12" />
+                      <div className="absolute bottom-10 right-10 w-32 h-32 border border-blue-500/30 rounded-full -rotate-12" />
+                    </div>
                   </div>
                 </motion.div>
 
-                {/* Mobile App Mockup - SECONDARY FOCUS (Smaller & Overlapping) */}
+                {/* 2. Mobile Device Mockup (App) - SECONDARY FOCUS */}
                 <motion.div 
-                  style={{ translateZ: 180 }}
-                  animate={{ y: [0, -15, 0], rotateZ: [-5, -2, -5] }}
-                  transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-                  className="absolute -bottom-12 -right-4 z-30 w-48 aspect-[9/19] rounded-[3rem] bg-black p-3.5 shadow-[0_40px_80px_rgba(0,0,0,0.7)] ring-1 ring-white/20"
+                  style={{ translateZ: 150 }}
+                  animate={{ 
+                    y: [0, -10, 0],
+                    rotateZ: [-8, -6, -8]
+                  }}
+                  transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                  className="absolute -bottom-10 -right-4 z-30 w-44 aspect-[9/19] rounded-[2.5rem] bg-[#1a1a1a] p-2.5 shadow-[0_40px_80px_rgba(0,0,0,0.6)] border border-white/10"
                 >
-                  <div className="relative w-full h-full rounded-[2.5rem] overflow-hidden bg-white dark:bg-[#0a0a0a] flex flex-col">
-                    {/* App Header */}
-                    <div className="h-14 bg-emerald-500 p-4 flex items-center justify-between">
-                      <div className="w-8 h-8 rounded-full bg-white/20" />
-                      <div className="w-16 h-2.5 bg-white/40 rounded-full" />
-                      <div className="w-8 h-8 rounded-full bg-white/20" />
+                  <div className="relative w-full h-full rounded-[2rem] overflow-hidden bg-white dark:bg-[#0a0a0a] flex flex-col">
+                    <div className="h-10 bg-emerald-500 flex items-center justify-center">
+                      <div className="w-12 h-1 bg-white/30 rounded-full" />
                     </div>
-                    {/* App Content */}
-                    <div className="p-5 space-y-5">
-                      <div className="h-28 w-full bg-emerald-500/10 rounded-[2rem] border border-emerald-500/20 flex items-center justify-center">
-                        <Smartphone size={32} className="text-emerald-500" />
+                    <div className="p-4 space-y-4">
+                      <div className="h-24 w-full bg-emerald-500/10 rounded-2xl border border-emerald-500/20 flex items-center justify-center">
+                        <Smartphone size={24} className="text-emerald-500" />
                       </div>
-                      <div className="space-y-3">
-                        <div className="h-3 w-full bg-black/5 dark:bg-white/5 rounded-full" />
-                        <div className="h-3 w-3/4 bg-black/5 dark:bg-white/5 rounded-full" />
+                      <div className="space-y-2">
+                        <div className="h-2 w-full bg-black/5 dark:bg-white/5 rounded-full" />
+                        <div className="h-2 w-3/4 bg-black/5 dark:bg-white/5 rounded-full" />
                       </div>
-                      <div className="grid grid-cols-2 gap-3">
-                        <div className="h-16 bg-black/5 dark:bg-white/5 rounded-2xl" />
-                        <div className="h-16 bg-black/5 dark:bg-white/5 rounded-2xl" />
+                      <div className="grid grid-cols-2 gap-2">
+                        <div className="h-12 bg-black/5 dark:bg-white/5 rounded-xl" />
+                        <div className="h-12 bg-black/5 dark:bg-white/5 rounded-xl" />
                       </div>
-                      <div className="h-10 w-full bg-emerald-500 rounded-2xl shadow-lg shadow-emerald-500/20" />
                     </div>
-                    {/* Home Indicator */}
-                    <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-20 h-1.5 bg-black/20 dark:bg-white/20 rounded-full" />
                   </div>
-                  {/* Label */}
-                  <div className="absolute -top-4 -left-4 bg-blue-500 text-white text-[10px] font-bold px-3 py-1 rounded-full shadow-lg z-40 uppercase tracking-widest">
-                    App
+                  {/* Notch */}
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-20 h-5 bg-[#1a1a1a] rounded-b-xl" />
+                </motion.div>
+
+                {/* 3. SEO Visualization Cards - FLOATING */}
+                
+                {/* Traffic Growth Card */}
+                <motion.div 
+                  style={{ translateZ: 200 }}
+                  animate={{ y: [0, -15, 0], x: [0, 5, 0] }}
+                  transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+                  className="absolute -top-10 -left-10 z-40 bg-white dark:bg-[#161b22] p-4 rounded-2xl shadow-2xl border border-black/5 dark:border-white/10 w-48"
+                >
+                  <div className="flex items-center space-x-3 mb-2">
+                    <div className="w-8 h-8 bg-emerald-500/10 rounded-lg flex items-center justify-center text-emerald-500">
+                      <TrendingUp size={16} />
+                    </div>
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-black/40 dark:text-white/40">Traffic</span>
+                  </div>
+                  <div className="flex items-end space-x-2">
+                    <span className="text-xl font-black text-black dark:text-white">+120%</span>
+                    <span className="text-[10px] text-emerald-500 font-bold mb-1">Growth</span>
+                  </div>
+                  {/* Mini Sparkline */}
+                  <div className="mt-3 h-8 flex items-end space-x-1">
+                    {[30, 45, 35, 60, 50, 80, 70, 90].map((h, i) => (
+                      <motion.div 
+                        key={i}
+                        initial={{ height: 0 }}
+                        animate={{ height: `${h}%` }}
+                        transition={{ duration: 1, delay: i * 0.1 }}
+                        className="flex-grow bg-emerald-500/30 rounded-t-sm"
+                      />
+                    ))}
                   </div>
                 </motion.div>
 
-                {/* Floating Analytics Card (Business Growth) - SUPPORTING ELEMENT */}
+                {/* Keyword Ranking Card */}
                 <motion.div 
-                  style={{ translateZ: 280 }}
-                  animate={{ y: [0, 15, 0], x: [0, 10, 0] }}
-                  transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                  className="absolute -top-12 -left-12 z-40 bg-white dark:bg-[#161b22] p-5 rounded-3xl shadow-[0_30px_60px_rgba(0,0,0,0.3)] border border-black/5 dark:border-white/10 w-56"
+                  style={{ translateZ: 250 }}
+                  animate={{ y: [0, 20, 0], x: [0, -10, 0] }}
+                  transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                  className="absolute top-1/2 -left-20 z-40 bg-white dark:bg-[#161b22] p-4 rounded-2xl shadow-2xl border border-black/5 dark:border-white/10 w-44"
                 >
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="flex items-center space-x-3">
-                      <div className="w-10 h-10 bg-emerald-500 rounded-2xl flex items-center justify-center text-white shadow-xl shadow-emerald-500/30">
-                        <BarChart3 size={20} />
-                      </div>
-                      <div>
-                        <span className="text-[10px] font-bold uppercase tracking-widest text-black/40 dark:text-white/40">Growth</span>
-                        <p className="text-lg font-extrabold text-black dark:text-white">+142%</p>
-                      </div>
+                  <div className="flex items-center space-x-3 mb-2">
+                    <div className="w-8 h-8 bg-blue-500/10 rounded-lg flex items-center justify-center text-blue-500">
+                      <Target size={16} />
                     </div>
-                    <TrendingUp size={20} className="text-emerald-500" />
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-black/40 dark:text-white/40">SEO Ranking</span>
                   </div>
-                  <div className="space-y-3">
+                  <div className="flex items-center space-x-2">
+                    <span className="text-2xl font-black text-black dark:text-white">#1</span>
+                    <span className="text-[10px] text-blue-500 font-bold">Spot</span>
+                  </div>
+                  <p className="text-[9px] text-black/60 dark:text-white/60 mt-2 font-medium">Top 1% in Industry</p>
+                </motion.div>
+
+                {/* Performance Card */}
+                <motion.div 
+                  style={{ translateZ: 300 }}
+                  animate={{ y: [0, -10, 0], x: [0, 15, 0] }}
+                  transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
+                  className="absolute -bottom-16 left-10 z-40 bg-white dark:bg-[#161b22] p-4 rounded-2xl shadow-2xl border border-black/5 dark:border-white/10 w-52"
+                >
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-black/40 dark:text-white/40">Performance</span>
+                    <Zap size={14} className="text-yellow-500" />
+                  </div>
+                  <div className="space-y-2">
+                    <div className="flex justify-between text-[10px] font-bold">
+                      <span className="text-black/60 dark:text-white/60">Speed Score</span>
+                      <span className="text-emerald-500">98/100</span>
+                    </div>
                     <div className="h-1.5 w-full bg-black/5 dark:bg-white/5 rounded-full overflow-hidden">
                       <motion.div 
                         initial={{ width: 0 }}
-                        animate={{ width: "75%" }}
-                        transition={{ duration: 2, delay: 1 }}
-                        className="h-full bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.5)]" 
+                        animate={{ width: "98%" }}
+                        transition={{ duration: 1.5, delay: 2 }}
+                        className="h-full bg-emerald-500"
                       />
                     </div>
-                    <div className="flex justify-between items-center">
-                      <p className="text-[9px] text-black/60 dark:text-white/60 font-bold uppercase tracking-tight">Conversion</p>
-                      <span className="text-[9px] font-bold text-emerald-500">Optimized</span>
-                    </div>
-                  </div>
-                  {/* Label */}
-                  <div className="absolute -bottom-3 -right-3 bg-purple-500 text-white text-[9px] font-bold px-3 py-1 rounded-full shadow-xl uppercase tracking-widest">
-                    Growth
                   </div>
                 </motion.div>
+
               </div>
-              
-              {/* Decorative Tech Overlay */}
-              <div className="absolute -inset-4 bg-emerald-500/5 blur-3xl -z-10 rounded-full" />
             </motion.div>
           </div>
 

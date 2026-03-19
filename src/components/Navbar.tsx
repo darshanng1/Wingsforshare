@@ -106,11 +106,8 @@ export default function Navbar() {
       }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
-          <Link to="/" className="flex items-center space-x-3 group">
-            <Logo className="h-10 md:h-12" showText={true} />
-            <div className="flex flex-col">
-              <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-black/40 dark:text-white/40">Business Technology Growth</span>
-            </div>
+          <Link to="/" className="flex items-center group">
+            <Logo className="h-10 md:h-12" />
           </Link>
 
           {/* Desktop Menu */}
