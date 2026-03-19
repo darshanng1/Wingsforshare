@@ -102,12 +102,12 @@ export default function Navbar() {
       <nav className={`${
         scrolled 
           ? 'bg-white/90 dark:bg-black/90 backdrop-blur-xl border-b border-black/5 dark:border-white/10 py-2' 
-          : 'bg-transparent py-4 md:py-6'
+          : 'bg-transparent py-3 md:py-4'
       }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
-          <Link to="/" className="flex items-center group">
-            <Logo className="h-28 md:h-20 w-auto" />
+          <Link to="/" className="flex items-center group leading-none">
+            <Logo className="h-16 md:h-14 w-auto" />
           </Link>
 
           {/* Desktop Menu */}
