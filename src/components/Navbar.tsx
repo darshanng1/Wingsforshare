@@ -106,8 +106,8 @@ export default function Navbar() {
       }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
-          <Link to="/" className="flex items-center group leading-none">
-            <Logo className="h-16 md:h-14 w-auto" />
+          <Link to="/" className="flex items-center group leading-none -mt-1">
+            <Logo className="h-14 md:h-12 w-auto" />
           </Link>
 
           {/* Desktop Menu */}
