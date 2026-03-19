@@ -1,7 +1,7 @@
 export const ASSETS = {
   LOGO: {
-    PRIMARY: 'https://drive.google.com/uc?export=view&id=1uoJPkATVnUfb8dOKSm-X28t8ZjW3Trpk',
-    SYMBOL: 'https://drive.google.com/uc?export=view&id=1uoJPkATVnUfb8dOKSm-X28t8ZjW3Trpk',
+    PRIMARY: 'https://raw.githubusercontent.com/darshanng1/Wingsforshare/main/logo.png',
+    SYMBOL: 'https://raw.githubusercontent.com/darshanng1/Wingsforshare/main/logo.png',
   },
 
   HERO: {
