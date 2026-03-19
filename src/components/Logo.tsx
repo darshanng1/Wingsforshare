@@ -7,7 +7,7 @@ interface LogoProps {
 }
 
 export const Logo: React.FC<LogoProps> = ({
-  className = "h-28 w-auto", // 👈 increased size here
+  className = "h-16 w-auto", // 👈 increased size here
   variant = 'primary'
 }) => {
 
