@@ -6,8 +6,10 @@
 export const ASSETS = {
   LOGO: {
     // Replace with the uploaded logo URL
-    PRIMARY: 'https://ais-dev-5nx7d23qzsizxwkhujw4h6-45023050426.asia-southeast1.run.app/logo.png', // Updated to the provided logo
-    SYMBOL: 'https://ais-dev-5nx7d23qzsizxwkhujw4h6-45023050426.asia-southeast1.run.app/logo.png',
+    PRIMARY: 'https://drive.google.com/uc?export=view&id=1uoJPkATVnUfb8dOKSm-X28t8ZjW3Trpk',
+    SYMBOL: 'https://drive.google.com/uc?export=view&id=1uoJPkATVnUfb8dOKSm-X28t8ZjW3Trpk',
+  }, // Updated to the provided logo
+    
   },
   HERO: {
     VIDEO: 'https://assets.mixkit.co/videos/preview/mixkit-digital-animation-of-a-circuit-board-1544-large.mp4',
