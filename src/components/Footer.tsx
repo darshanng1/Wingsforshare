@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 import { Mail, MessageCircle, ArrowRight } from 'lucide-react';
 
+import { Logo } from './Logo';
+
 export default function Footer() {
   return (
     <footer className="bg-white dark:bg-[#0a0a0a] border-t border-black/5 dark:border-white/10 transition-colors duration-300">
@@ -29,13 +31,10 @@ export default function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16">
           {/* Column 1: Company Overview */}
           <div className="flex flex-col items-center sm:items-start text-center sm:text-left">
-            <Link to="/" className="flex items-center space-x-2 mb-6 group">
-              <div className="w-10 h-10 bg-black dark:bg-white rounded-xl flex items-center justify-center group-hover:rotate-12 transition-transform duration-300">
-                <span className="text-white dark:text-black font-bold text-xl">W</span>
-              </div>
+            <Link to="/" className="flex items-center space-x-3 mb-6 group">
+              <Logo className="h-10" showText={true} />
               <div className="flex flex-col">
-                <span className="text-xl font-bold tracking-tighter text-black dark:text-white leading-none">WingsForShare</span>
-                <span className="text-[10px] font-bold uppercase tracking-[0.1em] text-black/40 dark:text-white/40">Business Tech & Growth</span>
+                <span className="text-[10px] font-bold uppercase tracking-[0.1em] text-black/40 dark:text-white/40">Business Technology Growth</span>
               </div>
             </Link>
             <p className="text-black/60 dark:text-white/60 text-sm md:text-base leading-relaxed max-w-xs">

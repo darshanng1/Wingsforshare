@@ -4,6 +4,8 @@ import { Menu, X, Sun, Moon, Facebook, Linkedin, Link as LinkIcon, MessageCircle
 import { useTheme } from '../contexts/ThemeContext';
 import { motion, AnimatePresence } from 'motion/react';
 
+import { Logo } from './Logo';
+
 export default function Navbar() {
   const [isOpen, setIsOpen] = React.useState(false);
   const { theme, toggleTheme } = useTheme();
@@ -104,13 +106,10 @@ export default function Navbar() {
       }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
-          <Link to="/" className="flex items-center space-x-2 group">
-            <div className="w-9 h-9 md:w-10 md:h-10 bg-black dark:bg-white rounded-xl flex items-center justify-center group-hover:rotate-6 transition-transform duration-300">
-              <span className="text-white dark:text-black font-bold text-lg md:text-xl">W</span>
-            </div>
+          <Link to="/" className="flex items-center space-x-3 group">
+            <Logo className="h-10 md:h-12" showText={true} />
             <div className="flex flex-col">
-              <span className="text-lg md:text-xl font-bold tracking-tighter text-black dark:text-white leading-none">WingsForShare</span>
-              <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-black/40 dark:text-white/40">Digital Systems</span>
+              <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-black/40 dark:text-white/40">Business Technology Growth</span>
             </div>
           </Link>
 
@@ -122,17 +121,19 @@ export default function Navbar() {
                   key={link.name} 
                   href={link.href} 
                   onClick={(e) => handleNavClick(e, link.href)}
-                  className="text-xs font-bold uppercase tracking-widest text-black/60 dark:text-white/60 hover:text-black dark:hover:text-white transition-colors"
+                  className="group relative py-1 text-xs font-bold uppercase tracking-widest text-black/60 dark:text-white/60 hover:text-black dark:hover:text-white transition-colors"
                 >
-                  {link.name}
+                  <span>{link.name}</span>
+                  <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-emerald-500 transition-all duration-300 group-hover:w-full" />
                 </a>
               ) : (
                 <Link
                   key={link.name}
                   to={link.href}
-                  className="text-xs font-bold uppercase tracking-widest text-black/60 dark:text-white/60 hover:text-black dark:hover:text-white transition-colors"
+                  className="group relative py-1 text-xs font-bold uppercase tracking-widest text-black/60 dark:text-white/60 hover:text-black dark:hover:text-white transition-colors"
                 >
-                  {link.name}
+                  <span>{link.name}</span>
+                  <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-emerald-500 transition-all duration-300 group-hover:w-full" />
                 </Link>
               )
             ))}
@@ -146,8 +147,9 @@ export default function Navbar() {
               {theme === 'light' ? <Moon size={18} /> : <Sun size={18} />}
             </button>
 
-            <Link to="/login" className="text-xs font-bold uppercase tracking-widest text-black/60 dark:text-white/60 hover:text-black dark:hover:text-white transition-colors">
-              Login
+            <Link to="/login" className="group relative py-1 text-xs font-bold uppercase tracking-widest text-black/60 dark:text-white/60 hover:text-black dark:hover:text-white transition-colors">
+              <span>Login</span>
+              <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-emerald-500 transition-all duration-300 group-hover:w-full" />
             </Link>
             
             <Link to="/start-project" className="bg-black dark:bg-white text-white dark:text-black px-6 py-2.5 rounded-xl text-xs font-bold uppercase tracking-widest hover:opacity-80 transition-all shadow-xl shadow-black/10 dark:shadow-white/5">
@@ -186,18 +188,18 @@ export default function Navbar() {
                     key={link.name} 
                     href={link.href} 
                     onClick={(e) => handleNavClick(e, link.href)}
-                    className="block px-4 py-3 text-lg font-bold text-black dark:text-white hover:bg-black/5 dark:hover:bg-white/5 rounded-2xl transition-colors"
+                    className="group block px-4 py-3 text-lg font-bold text-black dark:text-white hover:bg-black/5 dark:hover:bg-white/5 rounded-2xl transition-all duration-300"
                   >
-                    {link.name}
+                    <span className="inline-block group-hover:translate-x-2 transition-transform duration-300">{link.name}</span>
                   </a>
                 ) : (
                   <Link
                     key={link.name}
                     to={link.href}
                     onClick={() => setIsOpen(false)}
-                    className="block px-4 py-3 text-lg font-bold text-black dark:text-white hover:bg-black/5 dark:hover:bg-white/5 rounded-2xl transition-colors"
+                    className="group block px-4 py-3 text-lg font-bold text-black dark:text-white hover:bg-black/5 dark:hover:bg-white/5 rounded-2xl transition-all duration-300"
                   >
-                    {link.name}
+                    <span className="inline-block group-hover:translate-x-2 transition-transform duration-300">{link.name}</span>
                   </Link>
                 )
               ))}
