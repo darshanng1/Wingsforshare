@@ -6,32 +6,25 @@ interface LogoProps {
 }
 
 export const Logo: React.FC<LogoProps> = ({
-  className = "h-16 md:h-14 w-auto", // slightly bigger for better visibility
+  className = "h-[56px] w-auto", // balanced size for navbar
 }) => {
-
   const { theme } = useTheme();
 
-  // ✅ Correct mapping
+  // ✅ Correct logo mapping (fixed)
   const logoUrl =
     theme === 'dark'
-      ? '/assets/logo-light.png'   // dark mode → light logo
-      : '/assets/logo-dark.png';  // light mode → dark logo
+      ? '/assets/logo-dark.png'   // for dark background
+      : '/assets/logo-light.png'; // for light background
 
   return (
-    <div className={`flex flex-col items-start leading-tight`}>
-
-      {/* Logo Image */}
+    <div className="flex items-center">
       <img
         src={logoUrl}
         alt="Wingsforshare Logo"
-        className={`${className} object-contain`}
+        className={`${className} object-contain transition-all duration-300`}
+        loading="eager"
+        draggable={false}
       />
-
-      {/* Tagline (VISIBLE ALWAYS) */}
-      <span className="text-[11px] tracking-wide text-black/70 dark:text-white/70 mt-1">
-        Business Technology Growth
-      </span>
-
     </div>
   );
 };

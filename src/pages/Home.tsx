@@ -209,7 +209,7 @@ export default function Home() {
           
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-emerald-500/10 dark:from-emerald-500/5 via-transparent to-transparent blur-3xl opacity-50" />
         </motion.div>
-        
+
         <div className="container-custom">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <motion.div
@@ -219,15 +219,7 @@ export default function Home() {
               transition={{ duration: 0.8, ease: "easeOut" }}
               className="relative z-10"
             >
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                className="inline-flex items-center space-x-2 bg-black/5 dark:bg-white/5 px-4 py-2 rounded-full mb-6 md:mb-8 border border-black/5 dark:border-white/10 backdrop-blur-sm"
-              >
-                <ShieldCheck size={14} className="text-emerald-500" />
-                <span className="text-[9px] md:text-[10px] font-bold uppercase tracking-widest text-black/60 dark:text-white/60">WingsForShare Business Technology Partner</span>
-              </motion.div>
-              
+             {/* Removed badge line */}
               <div className="mb-6 md:mb-8">
                 <motion.h1 
                   initial={{ opacity: 0, y: 30 }}

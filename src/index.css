@@ -1,38 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
-@import "tailwindcss";
 
-@theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Inter", sans-serif;
+/* ✅ Tailwind base */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =========================
+   🎨 THEME VARIABLES
+========================= */
+
+:root {
+  --bg-light: #ffffff;
+  --text-light: #0a0a0a;
+
+  --bg-dark: #0b0f14;
+  --text-dark: #f5f5f5;
+
+  --primary: #22c55e;
 }
 
-@keyframes gradient-x {
-  0%, 100% {
-    background-size: 200% 200%;
-    background-position: left center;
-  }
-  50% {
-    background-size: 200% 200%;
-    background-position: right center;
-  }
-}
-
-.animate-gradient-x {
-  animation: gradient-x 3s ease infinite;
-}
-
-.glass-card {
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.dark-mode .glass-card {
-  background: rgba(0, 0, 0, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-@variant dark (&:where(.dark-mode, .dark-mode *));
+/* =========================
+   🌐 BASE STYLES
+========================= */
 
 @layer base {
   html {
@@ -41,106 +30,99 @@
   }
 
   body {
-    @apply font-sans antialiased transition-colors duration-500 overflow-x-hidden;
-    width: 100%;
-    position: relative;
-  }
-  
-  /* Global overflow prevention */
-  * {
-    max-width: 100%;
-    box-sizing: border-box;
+    @apply font-sans antialiased overflow-x-hidden transition-colors duration-500;
+    background: var(--bg-light);
+    color: var(--text-light);
   }
 
-  img, video, canvas, svg {
-    max-width: 100%;
-    height: auto;
-    display: block;
+  /* ✅ Tailwind dark mode */
+  .dark body {
+    background: var(--bg-dark);
+    color: var(--text-dark);
   }
-  
-  body.light-mode {
-    @apply bg-white text-black;
-  }
-  
-  body.dark-mode {
-    @apply bg-[#0a0a0a] text-white;
-  }
-  
+
+  /* Typography */
   h1, h2, h3, h4, h5, h6 {
-    @apply font-display tracking-tight font-bold text-black dark:text-white;
+    @apply font-bold tracking-tight;
   }
 
-  /* Responsive Typography Scaling */
-  h1 { @apply text-[32px] md:text-[48px] leading-[1.1] mb-6; }
-  h2 { @apply text-[26px] md:text-[36px] leading-[1.2] mb-4; }
-  h3 { @apply text-[22px] md:text-[28px] leading-[1.3] mb-3; }
-  h4 { @apply text-xl font-bold mb-2; }
-  
-  p { 
-    @apply text-[16px] md:text-[18px] leading-[1.6] mb-6 last:mb-0 px-4 md:px-0;
-    max-width: 90%;
+  h1 {
+    @apply text-4xl md:text-6xl leading-tight;
   }
 
-  @screen md {
-    p {
-      max-width: 700px;
-    }
+  h2 {
+    @apply text-3xl md:text-4xl;
   }
 
-  /* Hero text specific alignment */
-  .hero-text p, .text-center p {
-    @apply text-center mx-auto;
+  h3 {
+    @apply text-xl md:text-2xl;
   }
 
-  .hero-text h1, .hero-text h2, .hero-text h3 {
-    @apply text-center;
+  p {
+    @apply text-[16px] md:text-[18px] leading-[1.6];
   }
 
-  @screen lg {
-    .hero-text p, .hero-text h1, .hero-text h2, .hero-text h3 {
-      @apply text-left mx-0;
-    }
-  }
-
-  button {
-    @apply text-[16px] font-semibold tracking-tight;
-  }
-
-  /* Consistent spacing between headings and paragraphs */
-  h1 + p, h2 + p, h3 + p {
-    @apply mt-0;
+  /* Smooth transitions globally */
+  * {
+    @apply transition-colors duration-300;
   }
 }
 
+/* =========================
+   ✨ COMPONENTS
+========================= */
+
 @layer components {
+
+  /* Container */
   .container-custom {
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
   }
-  
+
+  /* Section spacing */
   .section-padding {
-    @apply py-4 md:py-24 lg:py-32;
+    @apply py-8 md:py-24 lg:py-32;
   }
-  
-  .glass-card {
-    @apply bg-white/5 backdrop-blur-xl border border-white/10 shadow-2xl;
+
+  /* Glass card (premium UI) */
+  .glass {
+    @apply backdrop-blur-xl border rounded-2xl shadow-xl transition-all duration-300;
+  }
+
+  body .glass {
+    background: rgba(255, 255, 255, 0.6);
+    border-color: rgba(0, 0, 0, 0.05);
+  }
+
+  .dark .glass {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  /* Button (premium) */
+  .btn-primary {
+    @apply bg-emerald-500 hover:bg-emerald-600 text-white px-6 py-3 rounded-xl font-semibold shadow-lg transition-all duration-300;
+  }
+
+  .btn-primary:hover {
+    box-shadow: 0 10px 30px rgba(34, 197, 94, 0.3);
   }
 }
 
-@keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+/* =========================
+   🎬 ANIMATIONS
+========================= */
+
+@keyframes gradient-x {
+  0%, 100% {
+    background-size: 200% 200%;
+    background-position: left center;
+  }
+  50% {
+    background-position: right center;
+  }
 }
 
-.animate-marquee {
-  animation: marquee 30s linear infinite;
-}
-
-.dark-mode {
-  --background: 0 0% 3.9%;
-  --foreground: 0 0% 98%;
-}
-
-.light-mode {
-  --background: 0 0% 100%;
-  --foreground: 0 0% 3.9%;
+.animate-gradient-x {
+  animation: gradient-x 3s ease infinite;
 }

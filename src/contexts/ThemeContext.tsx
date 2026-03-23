@@ -13,21 +13,31 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setTheme] = useState<Theme>(() => {
     if (typeof window !== 'undefined') {
       const saved = localStorage.getItem('theme') as Theme;
-      if (saved) return saved;
-      
-      // Default to system preference if no saved preference
+
+      if (saved === 'light' || saved === 'dark') {
+        return saved;
+      }
+
+      // fallback to system preference
       if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
         return 'dark';
       }
+
       return 'light';
     }
-    return 'dark';
+    return 'light';
   });
 
   useEffect(() => {
-    const body = window.document.body;
-    body.classList.remove('light-mode', 'dark-mode');
-    body.classList.add(`${theme}-mode`);
+    const root = window.document.documentElement;
+
+    // remove both first (safe reset)
+    root.classList.remove('light', 'dark');
+
+    // add correct class
+    root.classList.add(theme);
+
+    // save preference
     localStorage.setItem('theme', theme);
   }, [theme]);
 
@@ -44,8 +54,8 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
 export function useTheme() {
   const context = useContext(ThemeContext);
-  if (context === undefined) {
-    throw new Error('useTheme must be used within a ThemeProvider');
+  if (!context) {
+    throw new Error('useTheme must be used within ThemeProvider');
   }
   return context;
 }
