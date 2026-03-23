@@ -15,9 +15,9 @@ export const Logo: React.FC<LogoProps> = ({
   const { theme } = useTheme();
 
   const logoUrl =
-    variant === 'primary'
-      ? ASSETS.LOGO.PRIMARY
-      : ASSETS.LOGO.SYMBOL;
+  theme === 'dark'
+    ? '/assets/logo-light.png'   // for dark background
+    : '/assets/logo-dark.png';  // for light background
 
   return (
     <div className={`flex items-center ${className}`}>
