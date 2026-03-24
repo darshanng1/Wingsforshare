@@ -178,39 +178,39 @@ export default function Home() {
       />
       
       {/* Hero Section */}
-      <section 
-        ref={heroRef} 
+      <section
+        ref={heroRef}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
         className="relative min-h-[80vh] md:min-h-screen flex items-center pt-12 md:pt-32 pb-8 md:pb-24 overflow-hidden hero-text"
       >
         {/* Background Video/Effects */}
-        <motion.div 
-          style={{ 
+        <motion.div
+          style={{
             opacity,
             x: bgX,
             y: bgY
-          }} 
+          }}
           className="absolute inset-0 -z-20 pointer-events-none scale-110"
         >
           <div className="absolute inset-0 bg-black/20 dark:bg-black/60 z-10" />
-          <video 
-            autoPlay 
-            muted 
-            loop 
-            playsInline 
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
             className="absolute inset-0 w-full h-full object-cover opacity-30 dark:opacity-20"
           >
             <source src={ASSETS.VIDEOS.TECH_BACKGROUND} type="video/mp4" />
           </video>
-          
+
           {/* Whiteboard / Design Grid Overlay */}
           <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:60px_60px] opacity-20" />
-          
+
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-emerald-500/10 dark:from-emerald-500/5 via-transparent to-transparent blur-3xl opacity-50" />
         </motion.div>
 
-        <div className="container-custom">
+        <div className="container-custom mt-10 md:mt-0">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <motion.div
               style={{ x: textX, y: textY }}
@@ -221,7 +221,7 @@ export default function Home() {
             >
              {/* Removed badge line */}
               <div className="mb-6 md:mb-8">
-                <motion.h1 
+                <motion.h1
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, ease: "easeOut" }}
@@ -230,7 +230,7 @@ export default function Home() {
                   Grow Your Business with <br className="hidden md:block" />
                   <span className="relative inline-block">
                     <span className="text-emerald-500">Smart Digital Solutions</span>
-                    <motion.div 
+                    <motion.div
                       initial={{ scaleX: 0 }}
                       animate={{ scaleX: 1 }}
                       transition={{ delay: 1, duration: 0.8, ease: "circOut" }}
@@ -239,8 +239,8 @@ export default function Home() {
                   </span>
                 </motion.h1>
               </div>
-              
-              <motion.p 
+
+              <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
@@ -248,39 +248,39 @@ export default function Home() {
               >
                 We help businesses scale using websites, mobile apps, SEO, and data-driven analytics.
               </motion.p>
-              
-              <motion.div 
+
+              <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.6 }}
                 className="flex flex-col sm:flex-row items-stretch sm:items-center gap-6 mb-12"
               >
-                <Link 
-                  to="/start-project" 
+                <Link
+                  to="/start-project"
                   className="group relative px-10 py-5 rounded-2xl font-black text-lg transition-all flex items-center justify-center space-x-4 overflow-hidden hover:scale-[1.05] active:scale-95 shadow-[0_20px_50px_rgba(16,185,129,0.4)] dark:shadow-[0_20px_50px_rgba(16,185,129,0.2)]"
                 >
                   {/* Primary Background Gradient */}
                   <div className="absolute inset-0 bg-gradient-to-br from-emerald-400 via-emerald-500 to-teal-600 transition-transform duration-500 group-hover:scale-110" />
-                  
+
                   {/* Shimmer Effect */}
                   <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none">
                     <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent -skew-x-20 translate-x-[-150%] group-hover:translate-x-[150%] transition-transform duration-1000 ease-in-out" />
                   </div>
-                  
+
                   <span className="relative z-10 text-white tracking-tight">Get Free Consultation</span>
                   <ArrowRight size={22} className="relative z-10 text-white group-hover:translate-x-2 transition-transform duration-300" />
-                  
+
                   {/* Outer Glow Bloom */}
                   <div className="absolute -inset-2 bg-emerald-500/40 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10" />
                 </Link>
 
-                <a 
-                  href="#products" 
+                <a
+                  href="#products"
                   className="group relative px-10 py-5 rounded-2xl font-black text-lg transition-all flex items-center justify-center space-x-4 overflow-hidden border-2 border-black/10 dark:border-white/10 hover:border-emerald-500/50 dark:hover:border-emerald-500/50 hover:scale-[1.02] active:scale-95 bg-white/10 dark:bg-white/5 backdrop-blur-2xl shadow-2xl hover:shadow-emerald-500/20"
                 >
                   <span className="relative z-10 text-black dark:text-white tracking-tight">View Our Work</span>
                   <ChevronRight size={20} className="relative z-10 text-black/40 dark:text-white/40 group-hover:text-emerald-500 dark:group-hover:text-emerald-400 group-hover:translate-x-1 transition-all duration-300" />
-                  
+
                   {/* Subtle Background Hover */}
                   <div className="absolute inset-0 bg-emerald-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </a>
@@ -309,7 +309,7 @@ export default function Home() {
             </motion.div>
 
             <motion.div
-              style={{ 
+              style={{
                 scale,
                 rotateX,
                 rotateY,
@@ -323,7 +323,7 @@ export default function Home() {
             >
               {/* Whiteboard / Design Elements Background */}
               <div className="absolute inset-0 -z-10 overflow-visible">
-                <motion.div 
+                <motion.div
                   animate={{ rotate: 360 }}
                   transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
                   className="absolute -top-20 -right-20 w-64 h-64 border border-emerald-500/10 rounded-full border-dashed"
@@ -333,9 +333,9 @@ export default function Home() {
 
               {/* Main Composition Container */}
               <div className="relative w-full aspect-[4/3] max-w-2xl mx-auto flex items-center justify-center">
-                
+
                 {/* 1. Desktop Screen Mockup (Website) - PRIMARY FOCUS */}
-                <motion.div 
+                <motion.div
                   style={{ translateZ: 50 }}
                   className="relative z-20 w-[90%] aspect-[16/10] rounded-2xl overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)] dark:shadow-[0_50px_100px_-20px_rgba(0,0,0,0.8)] border border-white/20 dark:border-white/5 bg-white dark:bg-[#0d1117] flex flex-col"
                 >
@@ -352,7 +352,7 @@ export default function Home() {
                       </div>
                     </div>
                   </div>
-                  
+
                   {/* Website Content Mockup */}
                   <div className="flex-grow overflow-hidden bg-white dark:bg-[#0a0a0a] relative">
                     {/* Mockup Navbar */}
@@ -364,7 +364,7 @@ export default function Home() {
                         <div className="w-12 h-4 bg-emerald-500/20 rounded-lg" />
                       </div>
                     </div>
-                    
+
                     {/* Mockup Hero */}
                     <div className="p-8 space-y-6">
                       <div className="space-y-3">
@@ -375,7 +375,7 @@ export default function Home() {
                         <div className="h-8 w-24 bg-emerald-500/20 rounded-lg" />
                         <div className="h-8 w-24 bg-black/5 dark:bg-white/5 rounded-lg" />
                       </div>
-                      
+
                       {/* Mockup Cards */}
                       <div className="grid grid-cols-3 gap-4 pt-4">
                         {[1, 2, 3].map((i) => (
@@ -397,9 +397,9 @@ export default function Home() {
                 </motion.div>
 
                 {/* 2. Mobile Device Mockup (App) - SECONDARY FOCUS */}
-                <motion.div 
+                <motion.div
                   style={{ translateZ: 150 }}
-                  animate={{ 
+                  animate={{
                     y: [0, -10, 0],
                     rotateZ: [-8, -6, -8]
                   }}
@@ -429,9 +429,9 @@ export default function Home() {
                 </motion.div>
 
                 {/* 3. SEO Visualization Cards - FLOATING */}
-                
+
                 {/* Traffic Growth Card */}
-                <motion.div 
+                <motion.div
                   style={{ translateZ: 200 }}
                   animate={{ y: [0, -15, 0], x: [0, 5, 0] }}
                   transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
@@ -450,7 +450,7 @@ export default function Home() {
                   {/* Mini Sparkline */}
                   <div className="mt-3 h-8 flex items-end space-x-1">
                     {[30, 45, 35, 60, 50, 80, 70, 90].map((h, i) => (
-                      <motion.div 
+                      <motion.div
                         key={i}
                         initial={{ height: 0 }}
                         animate={{ height: `${h}%` }}
@@ -462,7 +462,7 @@ export default function Home() {
                 </motion.div>
 
                 {/* Keyword Ranking Card */}
-                <motion.div 
+                <motion.div
                   style={{ translateZ: 250 }}
                   animate={{ y: [0, 20, 0], x: [0, -10, 0] }}
                   transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1 }}
@@ -482,7 +482,7 @@ export default function Home() {
                 </motion.div>
 
                 {/* Performance Card */}
-                <motion.div 
+                <motion.div
                   style={{ translateZ: 300 }}
                   animate={{ y: [0, -10, 0], x: [0, 15, 0] }}
                   transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
@@ -498,7 +498,7 @@ export default function Home() {
                       <span className="text-emerald-500">98/100</span>
                     </div>
                     <div className="h-1.5 w-full bg-black/5 dark:bg-white/5 rounded-full overflow-hidden">
-                      <motion.div 
+                      <motion.div
                         initial={{ width: 0 }}
                         animate={{ width: "98%" }}
                         transition={{ duration: 1.5, delay: 2 }}
@@ -521,7 +521,7 @@ export default function Home() {
                 { label: 'Growth Marketing', icon: <Target size={24} />, desc: 'SEO & lead generation systems' },
                 { label: 'Data & Analytics', icon: <BarChart3 size={24} />, desc: 'Actionable business insights' }
               ].map((cap, i) => (
-                <motion.div 
+                <motion.div
                   key={i}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
