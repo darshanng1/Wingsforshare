@@ -13,26 +13,34 @@ export default function Navbar() {
   const location = useLocation();
   const navigate = useNavigate();
 
+  const scrollToSection = (targetId: string) => {
+    const element = document.getElementById(targetId);
+    if (element) {
+      const offset = 80;
+      const bodyRect = document.body.getBoundingClientRect().top;
+      const elementRect = element.getBoundingClientRect().top;
+      const elementPosition = elementRect - bodyRect;
+      const offsetPosition = elementPosition - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   const handleNavClick = (e: React.MouseEvent, href: string) => {
     if (href.startsWith('#')) {
       e.preventDefault();
+      const targetId = href.replace('#', '');
+
       if (location.pathname !== '/') {
         navigate('/' + href);
+        setTimeout(() => {
+          scrollToSection(targetId);
+        }, 500);
       } else {
-        const targetId = href.replace('#', '');
-        const element = document.getElementById(targetId);
-        if (element) {
-          const offset = 80;
-          const bodyRect = document.body.getBoundingClientRect().top;
-          const elementRect = element.getBoundingClientRect().top;
-          const elementPosition = elementRect - bodyRect;
-          const offsetPosition = elementPosition - offset;
-
-          window.scrollTo({
-            top: offsetPosition,
-            behavior: 'smooth'
-          });
-        }
+        scrollToSection(targetId);
       }
       setIsOpen(false);
     }
@@ -100,23 +108,23 @@ export default function Navbar() {
       </div>
 
       <nav className={`${
-        scrolled 
-          ? 'bg-white/90 dark:bg-black/90 backdrop-blur-xl border-b border-black/5 dark:border-white/10 py-2' 
-          : 'bg-transparent py-3'
+        scrolled
+          ? 'bg-white/90 dark:bg-black/90 backdrop-blur-xl border-b border-black/5 dark:border-white/10 py-2'
+          : 'bg-transparent py-4 md:py-6'
       }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
           <Link to="/" className="flex items-center group">
-  <Logo className="h-[56px] w-auto" />
-</Link>
+            <Logo className="h-10 md:h-12" />
+          </Link>
 
           {/* Desktop Menu */}
           <div className="hidden lg:flex space-x-8 items-center">
             {navLinks.map((link) => (
               link.href.startsWith('#') ? (
-                <a 
-                  key={link.name} 
-                  href={link.href} 
+                <a
+                  key={link.name}
+                  href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
                   className="group relative py-1 text-xs font-bold uppercase tracking-widest text-black/60 dark:text-white/60 hover:text-black dark:hover:text-white transition-colors"
                 >
@@ -134,10 +142,10 @@ export default function Navbar() {
                 </Link>
               )
             ))}
-            
+
             <div className="h-4 w-[1px] bg-black/10 dark:bg-white/10" />
-            
-            <button 
+
+            <button
               onClick={toggleTheme}
               className="p-2 rounded-full hover:bg-black/5 dark:hover:bg-white/5 transition-colors text-black dark:text-white"
             >
@@ -148,7 +156,7 @@ export default function Navbar() {
               <span>Login</span>
               <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-emerald-500 transition-all duration-300 group-hover:w-full" />
             </Link>
-            
+
             <Link to="/start-project" className="bg-black dark:bg-white text-white dark:text-black px-6 py-2.5 rounded-xl text-xs font-bold uppercase tracking-widest hover:opacity-80 transition-all shadow-xl shadow-black/10 dark:shadow-white/5">
               Start Project
             </Link>
@@ -156,7 +164,7 @@ export default function Navbar() {
 
           {/* Mobile Menu Button */}
           <div className="lg:hidden flex items-center space-x-3">
-            <button 
+            <button
               onClick={toggleTheme}
               className="p-2 rounded-full hover:bg-black/5 dark:hover:bg-white/5 transition-colors text-black dark:text-white"
             >
@@ -172,7 +180,7 @@ export default function Navbar() {
       {/* Mobile Menu */}
       <AnimatePresence>
         {isOpen && (
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
@@ -181,9 +189,9 @@ export default function Navbar() {
             <div className="container-custom py-8 space-y-6">
               {navLinks.map((link) => (
                 link.href.startsWith('#') ? (
-                  <a 
-                    key={link.name} 
-                    href={link.href} 
+                  <a
+                    key={link.name}
+                    href={link.href}
                     onClick={(e) => handleNavClick(e, link.href)}
                     className="group block px-4 py-3 text-lg font-bold text-black dark:text-white hover:bg-black/5 dark:hover:bg-white/5 rounded-2xl transition-all duration-300"
                   >
@@ -200,7 +208,7 @@ export default function Navbar() {
                   </Link>
                 )
               ))}
-              
+
               <div className="pt-4 border-t border-black/5 dark:border-white/10">
                 <p className="px-4 text-[10px] font-bold uppercase tracking-widest text-black/40 dark:text-white/40 mb-4">Share WingsForShare</p>
                 <div className="flex px-4 space-x-3">
@@ -231,15 +239,15 @@ export default function Navbar() {
               </div>
 
               <div className="pt-4 flex flex-col space-y-4">
-                <Link 
-                  to="/login" 
+                <Link
+                  to="/login"
                   onClick={() => setIsOpen(false)}
                   className="w-full py-4 text-center text-lg font-bold text-black dark:text-white border border-black/10 dark:border-white/10 rounded-2xl"
                 >
                   Login
                 </Link>
-                <Link 
-                  to="/start-project" 
+                <Link
+                  to="/start-project"
                   onClick={() => setIsOpen(false)}
                   className="w-full py-4 text-center text-lg font-bold bg-black dark:bg-white text-white dark:text-black rounded-2xl shadow-xl"
                 >
