@@ -1,6 +1,23 @@
-ssh -i "D:\Documents\ssh-key-2026-03-11.key" ubuntu@80.225.197.212import { Product } from '../types';
+// 👇 ADD THIS AT VERY TOP (line 1)
 
-export const products: Product[] = [
+type Product = {
+  id: string;
+  slug: string;
+  name: string;
+  shortDescription: string;
+  description: string;
+  category: string;
+  screenshot: string;
+  demoLink: string;
+  features: string[];
+  fullDescription: string;
+  adminLogin?: string;
+  userLogin?: string;
+};
+
+// 👇 YOUR EXISTING CODE
+
+export const products = [
   {
     id: '1',
     slug: 'architect-portfolio',
