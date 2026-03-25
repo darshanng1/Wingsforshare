@@ -353,7 +353,7 @@ export default function Home() {
                 </Link>
 
                 <a
-                  href="#products"
+                  href="#portfolio"
                   className="group relative px-8 py-4 rounded-xl font-black text-lg transition-all flex items-center justify-center space-x-3 overflow-hidden border border-black/10 dark:border-white/10 hover:border-emerald-500/40 dark:hover:border-emerald-500/40 hover:scale-[1.02] active:scale-95 bg-white/10 dark:bg-white/5 backdrop-blur-2xl shadow-xl hover:shadow-emerald-500/10 tracking-tighter"
                 >
                   <span className="relative z-10 text-gray-900 dark:text-white">View Our Work</span>
@@ -659,7 +659,7 @@ export default function Home() {
         </div>
       </section>
       {/* Live Demo Showcase Section */}
-      <section id="products" className="section-padding bg-gray-50 dark:bg-black text-gray-900 dark:text-white relative overflow-hidden">
+      <section id="portfolio" className="section-padding bg-gray-50 dark:bg-black text-gray-900 dark:text-white relative overflow-hidden">
         <motion.div
           style={{ y: springY1, opacity: 0.1 }}
           className="absolute inset-0 z-0"
@@ -685,7 +685,7 @@ export default function Home() {
       </section>
 
       {/* Across Industries Section */}
-      <section id="portfolio" className="section-padding bg-white dark:bg-[#0a0a0a] overflow-hidden">
+      <section id="industries" className="section-padding bg-white dark:bg-[#0a0a0a] overflow-hidden">
         <div className="container-custom">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
             <div>
