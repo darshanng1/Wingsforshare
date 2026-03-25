@@ -1,4 +1,4 @@
-import { Product } from '../types';
+ssh -i "D:\Documents\ssh-key-2026-03-11.key" ubuntu@80.225.197.212import { Product } from '../types';
 
 export const products: Product[] = [
   {
