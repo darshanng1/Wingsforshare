@@ -1,23 +1,6 @@
-// 👇 ADD THIS AT VERY TOP (line 1)
+import { Product } from '../types';
 
-type Product = {
-  id: string;
-  slug: string;
-  name: string;
-  shortDescription: string;
-  description: string;
-  category: string;
-  screenshot: string;
-  demoLink: string;
-  features: string[];
-  fullDescription: string;
-  adminLogin?: string;
-  userLogin?: string;
-};
-
-// 👇 YOUR EXISTING CODE
-
-export const products = [
+export const products: Product[] = [
   {
     id: '1',
     slug: 'architect-portfolio',
@@ -39,10 +22,10 @@ export const products = [
   {
     id: '2',
     slug: 'digital-vcard-website',
-    name: 'Digital Business vCard Website',
+    name: 'Digital Business vCard',
     shortDescription: 'A modern digital business card website designed for professionals and businesses to share their contact details, services, and online presence through a single smart link.',
     description: 'A smart digital identity solution for modern professionals.',
-    category: 'Websites',
+    category: 'Digital Visiting Card-Web Based',
     screenshot: 'https://images.unsplash.com/photo-1512428559087-560fa5ceab42?auto=format&fit=crop&q=80&w=800&h=600',
     demoLink: 'https://darshanngsipcvcard.pages.dev/',
     features: [
@@ -59,13 +42,11 @@ export const products = [
     id: '3',
     slug: 'garment-ecommerce',
     name: 'Garment Ecommerce Store',
-    shortDescription: 'Premium fashion eCommerce platform with advanced filtering and secure checkout.',
+    shortDescription: 'A premium fashion eCommerce platform designed for garment manufacturers and retail brands, featuring advanced product filtering, secure checkout, and full inventory management.',
     description: 'A specialized online store solution for fashion brands and garment manufacturers.',
     category: 'Ecommerce',
     screenshot: 'https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&q=80&w=800&h=600',
     demoLink: 'https://vastra-one.vercel.app',
-    adminLogin: 'https://vastra-one.vercel.app/admin',
-    userLogin: 'https://vastra-one.vercel.app/login',
     features: [
       'Advanced product filtering',
       'Size & color variations',
@@ -84,6 +65,7 @@ export const products = [
     category: 'Business Apps',
     screenshot: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800&h=600',
     demoLink: 'https://pest-nine.vercel.app', // Placeholder
+    userLogin: 'Password: googlepehai1@',
     features: [
       'Real-time data visualization and analytics',
       'Customizable reporting widgets and KPI dashboards',
@@ -96,12 +78,12 @@ export const products = [
   {
     id: '6',
     slug: 'gardenwalla-nursery',
-    name: 'GardenWalla Nursery Store',
+    name: 'GardenWalla Nursery',
     shortDescription: 'A comprehensive online nursery platform for selling plants, seeds, and gardening supplies.',
     description: 'A specialized eCommerce solution for plant nurseries and gardening businesses.',
     category: 'Ecommerce',
     screenshot: 'https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?auto=format&fit=crop&q=80&w=800&h=600',
-    demoLink: 'https://gardenwalla-17rug0fdy-darshanng1s-projects.vercel.app/',
+    demoLink: 'https://gardenwalla.vercel.app/',
     features: [
       'Plant category management',
       'Seasonal availability tracking',
@@ -114,11 +96,11 @@ export const products = [
   {
     id: '7',
     slug: 'green-nest-electronics',
-    name: 'Green Nest – Refurbished Appliances',
+    name: 'Green Nest – Refurbished',
     shortDescription: 'Modern, conversion-focused website for refurbished electronics and household appliances.',
     description: 'A high-trust marketplace solution for factory seconds and surplus electronics.',
     category: 'Retail',
-    screenshot: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=800&auto=format&fit=crop',
+    screenshot: 'https://images.unsplash.com/photo-1593784991095-a205069470b6?q=80&w=800&auto=format&fit=crop',
     demoLink: 'https://green-nest-lime.vercel.app/',
     features: [
       'Premium hero section with appliance visuals',
