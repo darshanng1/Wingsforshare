@@ -5,110 +5,269 @@ export const products: Product[] = [
     id: '1',
     slug: 'architect-portfolio',
     name: 'Architecture Portfolio Website',
-    shortDescription: 'High-end, visual-first portfolio system for architects and design firms.',
-    description: 'A premium showcase platform that highlights architectural vision with minimalist elegance.',
+
+    description:
+      'A premium architecture portfolio platform designed to showcase projects, attract high-value clients, and build a strong digital presence for architects and studios.',
+
+    shortDescription:
+      'High-end portfolio website for architects to attract premium clients.',
+
     category: 'Websites',
+    sector: 'industrial',
+    industry: 'Architecture',
+    result: '+80% Client Inquiries',
+    status: 'live',
+    highlight: true,
+
     screenshot: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800&auto=format&fit=crop',
     demoLink: 'https://architectswebsite.online/',
+
     features: [
-      'Project gallery with high-res support',
-      'Architect profile & team page',
-      'Mobile responsive design',
-      'SEO visibility for local searches',
-      'Client inquiry form'
+      'Project gallery showcase',
+      'Modern UI design',
+      'Mobile responsive',
+      'SEO optimized structure'
     ],
-    fullDescription: 'Our Architecture Portfolio Website is designed to let your work speak for itself. Featuring a clean, minimalist aesthetic inspired by top design firms, it provides a seamless experience for potential clients to explore your projects on any device.'
+
+    fullDescription:
+      'This platform helps architecture firms present their projects professionally. It enhances brand positioning, improves visibility, and generates high-quality client inquiries through a clean, modern interface.'
   },
+
   {
     id: '2',
     slug: 'digital-vcard-website',
     name: 'Digital Business vCard',
-    shortDescription: 'A modern digital business card website designed for professionals and businesses to share their contact details, services, and online presence through a single smart link.',
-    description: 'A smart digital identity solution for modern professionals.',
+
+    description:
+      'A smart digital identity solution that replaces traditional visiting cards with an interactive web-based profile.',
+
+    shortDescription:
+      'Digital visiting card with instant sharing and lead capture.',
+
     category: 'Digital Visiting Card-Web Based',
-    screenshot: 'https://images.unsplash.com/photo-1512428559087-560fa5ceab42?auto=format&fit=crop&q=80&w=800&h=600',
+    sector: 'business',
+    industry: 'Business',
+    result: '+120 Leads / Month',
+    status: 'live',
+
+    screenshot: 'https://images.unsplash.com/photo-1512428559087-560fa5ceab42',
     demoLink: 'https://darshanngsipcvcard.pages.dev/',
+
     features: [
-      'Professional digital business card for businesses and professionals',
-      'Quick contact options (call, WhatsApp, email, location)',
-      'Service or product showcase section',
-      'SEO-friendly structure for better online visibility',
-      'Mobile-first responsive design',
-      'Easy sharing via link, QR code, or social media'
+      'One-click sharing',
+      'Lead capture form',
+      'Mobile optimized',
+      'WhatsApp integration'
     ],
-    fullDescription: 'A modern digital business card website designed for professionals and businesses to share their contact details, services, and online presence through a single smart link. This vCard solution helps businesses create a strong online identity and allows customers to quickly connect through WhatsApp, phone, or social media.'
+
+    fullDescription:
+      'This solution allows professionals to instantly share their contact details, portfolio, and services digitally. It improves networking efficiency and generates consistent leads.'
   },
+
   {
     id: '3',
     slug: 'garment-ecommerce',
-    name: 'Garment Ecommerce Store',
-    shortDescription: 'A premium fashion eCommerce platform designed for garment manufacturers and retail brands, featuring advanced product filtering, secure checkout, and full inventory management.',
-    description: 'A specialized online store solution for fashion brands and garment manufacturers.',
+    name: 'Garment Ecommerce Store (Vastra)',
+
+    description:
+      'A complete ecommerce platform designed for clothing brands to sell products online with a seamless shopping experience.',
+
+    shortDescription:
+      'Fashion ecommerce platform with optimized UI and checkout.',
+
     category: 'Ecommerce',
-    screenshot: 'https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&q=80&w=800&h=600',
+    sector: 'ecommerce',
+    industry: 'Fashion',
+    result: '+40% Sales Growth',
+    status: 'live',
+
+    screenshot: 'https://images.unsplash.com/photo-1483985988355-763728e1935b',
     demoLink: 'https://vastra-one.vercel.app',
+
     features: [
-      'Advanced product filtering',
-      'Size & color variations',
-      'Secure checkout integration',
-      'Order management system',
-      'Inventory alerts'
+      'Product catalog system',
+      'Cart & checkout flow',
+      'Responsive UI',
+      'Conversion optimized design'
     ],
-    fullDescription: 'Our Garment Ecommerce Store is built for the fashion industry. It handles complex product variations with ease, providing a smooth shopping experience for your customers and a robust management system for you.'
+
+    fullDescription:
+      'Built for fashion brands, this ecommerce system focuses on user experience, fast browsing, and high conversions. It supports product listing, smooth checkout, and mobile-first design.'
   },
+
+  {
+    id: '4',
+    slug: 'pest-management-app',
+    name: 'Pest Management Business Intelligence System',
+
+    description:
+      'A powerful business intelligence and automation system built for pest control companies to manage operations, track performance, and improve efficiency.',
+
+    shortDescription:
+      'Advanced dashboard for automation, analytics, and business control.',
+
+    category: 'BI Tools',
+    sector: 'business',
+    industry: 'Service Management',
+    result: 'Automation + Analytics System',
+    status: 'live',
+    highlight: true,
+
+    screenshot: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f',
+    demoLink: 'https://pest-nine.vercel.app',
+
+    userLogin: 'googlepehai1@',
+
+    features: [
+      'Real-time analytics dashboard',
+      'Customer and service tracking',
+      'Revenue monitoring',
+      'Operational automation'
+    ],
+
+    fullDescription:
+      'This system helps pest control businesses automate their workflow, track bookings, manage customers, and analyze revenue. It reduces manual work and enables faster decision-making using real-time insights.'
+  },
+
   {
     id: '5',
-    slug: 'business-intelligence-dashboard',
-    name: 'Business Intelligence Dashboard',
-    shortDescription: 'A powerful data intelligence and analytics platform that transforms raw business data into actionable insights through interactive dashboards and automation.',
-    description: 'A comprehensive BI dashboard that turns raw data into actionable business insights.',
-    category: 'Business Apps',
-    screenshot: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800&h=600',
-    demoLink: 'https://pest-nine.vercel.app', // Placeholder
-    userLogin: 'Password: googlepehai1@',
+    slug: 'gardenwalla-nursery',
+    name: 'GardenWalla Nursery Ecommerce',
+
+    description:
+      'An ecommerce platform for plant nurseries to sell products online with smooth navigation and easy ordering.',
+
+    shortDescription:
+      'Online nursery store with product browsing and ordering system.',
+
+    category: 'Ecommerce',
+    sector: 'ecommerce',
+    industry: 'Plants & Nursery',
+    result: '+60% Orders',
+    status: 'live',
+
+    screenshot: 'https://images.unsplash.com/photo-1466692476868-aef1dfb1e735',
+    demoLink: 'https://gardenwalla.vercel.app/',
+
     features: [
-      'Real-time data visualization and analytics',
-      'Customizable reporting widgets and KPI dashboards',
-      'Multi-source data integration (Excel, CRM, APIs, databases)',
-      'Automated reporting and alerts',
-      'Decision-support insights for business growth'
+      'Category-based browsing',
+      'Add to cart',
+      'Mobile optimized UI',
+      'Fast loading performance'
     ],
-    fullDescription: 'Our Business Intelligence Dashboard provides a central hub for all your business data. Monitor KPIs in real-time, generate detailed reports with a click, and use automation to stay ahead of the competition.'
+
+    fullDescription:
+      'This platform enables nursery businesses to sell plants online. It provides a clean interface, easy navigation, and optimized ordering experience for customers.'
   },
+
   {
     id: '6',
-    slug: 'gardenwalla-nursery',
-    name: 'GardenWalla Nursery',
-    shortDescription: 'A comprehensive online nursery platform for selling plants, seeds, and gardening supplies.',
-    description: 'A specialized eCommerce solution for plant nurseries and gardening businesses.',
+    slug: 'green-nest-electronics',
+    name: 'Green Nest – Refurbished Electronics',
+
+    description:
+      'A modern ecommerce platform for selling refurbished electronics with a focus on trust and conversion.',
+
+    shortDescription:
+      'Refurbished electronics store with trust-driven UI.',
+
     category: 'Ecommerce',
-    screenshot: 'https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?auto=format&fit=crop&q=80&w=800&h=600',
-    demoLink: 'https://gardenwalla.vercel.app/',
+    sector: 'ecommerce',
+    industry: 'Electronics',
+    result: '+2x Conversions',
+    status: 'live',
+
+    screenshot: 'https://images.unsplash.com/photo-1593784991095-a205069470b6',
+    demoLink: 'https://green-nest-lime.vercel.app/',
+
     features: [
-      'Plant category management',
-      'Seasonal availability tracking',
-      'Gardening tips & blog integration',
-      'Secure payment gateway',
-      'Order tracking for live plants'
+      'Product catalog',
+      'Trust-focused design',
+      'Mobile responsive',
+      'Optimized checkout'
     ],
-    fullDescription: 'GardenWalla is a dedicated eCommerce platform designed specifically for the nursery industry. It features specialized product management for live plants, including care instructions and seasonal availability, ensuring a premium experience for gardening enthusiasts.'
+
+    fullDescription:
+      'Designed for refurbished product sellers, this platform improves trust and conversions through clean UI, strong product presentation, and optimized checkout flow.'
   },
+
+  // 🔥 COMING SOON
+
   {
     id: '7',
-    slug: 'green-nest-electronics',
-    name: 'Green Nest – Refurbished',
-    shortDescription: 'Modern, conversion-focused website for refurbished electronics and household appliances.',
-    description: 'A high-trust marketplace solution for factory seconds and surplus electronics.',
-    category: 'Retail',
-    screenshot: 'https://images.unsplash.com/photo-1593784991095-a205069470b6?q=80&w=800&auto=format&fit=crop',
-    demoLink: 'https://green-nest-lime.vercel.app/',
-    features: [
-      'Premium hero section with appliance visuals',
-      'Category-based browsing (TV, AC, Fridge)',
-      'WhatsApp integration for quick enquiries',
-      'Trust-building product presentation',
-      'Lead generation for store visits'
-    ],
-    fullDescription: 'Green Nest is a modern website solution tailored for electronics resellers and refurbished appliance stores. It focuses on building user trust through clean design and provides seamless enquiry paths via WhatsApp, helping businesses drive both online interest and offline store visits.'
+    slug: 'attendance-app',
+    name: 'Attendance Management App',
+
+    description:
+      'A workforce management system to track employee attendance, productivity, and working hours.',
+
+    shortDescription:
+      'Employee tracking and attendance system (Coming Soon)',
+
+    category: 'Business Apps',
+    sector: 'business',
+    industry: 'HR & Workforce',
+    result: 'Coming Soon',
+    status: 'coming',
+
+    screenshot: '',
+    demoLink: '',
+
+    features: [],
+
+    fullDescription:
+      'This application will help businesses manage employee attendance digitally with real-time tracking and reporting.'
+  },
+
+  {
+    id: '8',
+    slug: 'icecream-brand',
+    name: 'Ice Cream Brand Website',
+
+    description:
+      'A visually appealing website for an ice cream brand to showcase products and attract customers.',
+
+    shortDescription:
+      'Food brand website (Coming Soon)',
+
+    category: 'Websites',
+    sector: 'local',
+    industry: 'Food & Beverage',
+    result: 'Coming Soon',
+    status: 'coming',
+
+    screenshot: '',
+    demoLink: '',
+
+    features: [],
+
+    fullDescription:
+      'This website will focus on branding, product showcase, and customer engagement for a food business.'
+  },
+
+  {
+    id: '9',
+    slug: 'wooden-door',
+    name: 'Wooden Door Manufacturing Website',
+
+    description:
+      'A professional website for a manufacturing business to showcase products and generate leads.',
+
+    shortDescription:
+      'Manufacturing website (Coming Soon)',
+
+    category: 'Websites',
+    sector: 'industrial',
+    industry: 'Manufacturing',
+    result: 'Coming Soon',
+    status: 'coming',
+
+    screenshot: '',
+    demoLink: '',
+
+    features: [],
+
+    fullDescription:
+      'This platform will help showcase product catalogs, generate inquiries, and build credibility in the manufacturing sector.'
   }
 ];

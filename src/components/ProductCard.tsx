@@ -55,13 +55,13 @@ export default function ProductCard({ product }: ProductCardProps) {
             {product.name}
           </h3>
           <p className="text-sm text-zinc-500 dark:text-zinc-400 line-clamp-3 leading-snug min-h-[3.75rem]">
-            {product.shortDescription}
+            {product.shortDescription || ''}
           </p>
         </div>
 
         {/* Feature Highlights */}
         <div className="mb-6 space-y-1.5">
-          {product.features.slice(0, 5).map((feature, idx) => (
+          {(product.features || []).slice(0, 5).map((feature, idx) => (
             <motion.div
               key={idx}
               initial={{ opacity: 0, x: -10 }}
