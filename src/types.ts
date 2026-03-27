@@ -4,7 +4,7 @@ export interface Product {
   name: string;
   description: string;
   shortDescription: string;
-  category: 'Websites' | 'Business Apps' | 'Ecommerce' | 'Marketing Services' | 'Automation Tools' | 'BI Tools' | 'Retail';
+  category: 'Websites' | 'Business Apps' | 'Ecommerce' | 'Marketing Services' | 'Automation Tools' | 'BI Tools' | 'Retail' | 'Digital Visiting Card-Web Based';
   screenshot: string;
   demoLink: string;
   adminLogin?: string;

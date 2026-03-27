@@ -21,6 +21,8 @@ export default function ProductCard({ product }: ProductCardProps) {
       transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
       className="group flex flex-col h-full bg-white dark:bg-zinc-900 rounded-2xl overflow-hidden border border-zinc-200 dark:border-zinc-800 shadow-sm hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] dark:hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.3)] transition-all duration-500"
     >
+      {/* Version Indicator for Debugging */}
+      <div className="hidden">ProductCard v2.1</div>
       {/* Screenshot */}
       <div className="aspect-[16/10] w-full overflow-hidden relative cursor-pointer">
         <img

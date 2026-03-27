@@ -16,7 +16,7 @@ import Dashboard from './pages/Dashboard';
 import StartProject from './pages/StartProject';
 import ServiceDetail from './pages/ServiceDetail';
 import Contact from './pages/Contact';
-
+import Portfolio from './pages/Portfolio';
 export default function App() {
   return (
     <ThemeProvider>

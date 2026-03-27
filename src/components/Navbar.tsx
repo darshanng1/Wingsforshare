@@ -10,8 +10,33 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = React.useState(false);
   const { theme, toggleTheme } = useTheme();
   const [scrolled, setScrolled] = React.useState(false);
+  const [activeSection, setActiveSection] = React.useState('');
   const location = useLocation();
   const navigate = useNavigate();
+
+  React.useEffect(() => {
+    const sections = document.querySelectorAll('section[id]');
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      {
+        rootMargin: '-40% 0px -50% 0px',
+        threshold: 0
+      }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+
+    return () => {
+      sections.forEach((section) => observer.unobserve(section));
+    };
+  }, []);
 
   const scrollToSection = (targetId: string) => {
     const element = document.getElementById(targetId);
@@ -35,15 +60,21 @@ export default function Navbar() {
       const targetId = href.replace('#', '');
 
       if (location.pathname !== '/') {
-        navigate('/' + href);
+        navigate('/');
+
         setTimeout(() => {
           scrollToSection(targetId);
-        }, 500);
+        }, 300);
       } else {
         scrollToSection(targetId);
       }
       setIsOpen(false);
     }
+  };
+
+  const handleMobileNav = (targetId: string) => {
+    navigate('/', { state: { scrollTo: targetId } });
+    setIsOpen(false);
   };
 
   const shareUrl = window.location.href;
@@ -60,10 +91,11 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { name: 'Home', href: '/' },
-    { name: 'Services', href: '/services/web-development' },
+    { name: 'Home', href: '#home' },
+    { name: 'Solutions', href: '#solutions' },
     { name: 'Portfolio', href: '#portfolio' },
-    { name: 'Contact', href: '/contact' },
+    { name: 'Industries', href: '#industries' },
+    { name: 'Contact', href: '#contact' },
   ];
 
   const shareButtons = [
@@ -120,28 +152,41 @@ export default function Navbar() {
 
           {/* Desktop Menu */}
           <div className="hidden lg:flex space-x-8 items-center">
-            {navLinks.map((link) => (
-              link.href.startsWith('#') ? (
+            {navLinks.map((link) => {
+              const isActive = activeSection === link.href.replace('#', '');
+              return link.href.startsWith('#') ? (
                 <a
                   key={link.name}
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
-                  className="group relative py-1 text-xs font-bold uppercase tracking-widest text-black/60 dark:text-white/60 hover:text-black dark:hover:text-white transition-colors"
+                  className={`group relative py-1 text-xs font-bold uppercase tracking-widest transition-colors ${
+                    isActive
+                      ? 'text-emerald-500'
+                      : 'text-black/60 dark:text-white/60 hover:text-black dark:hover:text-white'
+                  }`}
                 >
                   <span>{link.name}</span>
-                  <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-emerald-500 transition-all duration-300 group-hover:w-full" />
+                  <span className={`absolute bottom-0 left-0 h-[2px] bg-emerald-500 transition-all duration-300 ${
+                    isActive ? 'w-full' : 'w-0 group-hover:w-full'
+                  }`} />
                 </a>
               ) : (
                 <Link
                   key={link.name}
                   to={link.href}
-                  className="group relative py-1 text-xs font-bold uppercase tracking-widest text-black/60 dark:text-white/60 hover:text-black dark:hover:text-white transition-colors"
+                  className={`group relative py-1 text-xs font-bold uppercase tracking-widest transition-colors ${
+                    isActive
+                      ? 'text-emerald-500'
+                      : 'text-black/60 dark:text-white/60 hover:text-black dark:hover:text-white'
+                  }`}
                 >
                   <span>{link.name}</span>
-                  <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-emerald-500 transition-all duration-300 group-hover:w-full" />
+                  <span className={`absolute bottom-0 left-0 h-[2px] bg-emerald-500 transition-all duration-300 ${
+                    isActive ? 'w-full' : 'w-0 group-hover:w-full'
+                  }`} />
                 </Link>
-              )
-            ))}
+              );
+            })}
 
             <div className="h-4 w-[1px] bg-black/10 dark:bg-white/10" />
 
@@ -187,27 +232,25 @@ export default function Navbar() {
             className="lg:hidden bg-white dark:bg-black border-b border-black/5 dark:border-white/10 overflow-hidden"
           >
             <div className="container-custom py-8 space-y-6">
-              {navLinks.map((link) => (
-                link.href.startsWith('#') ? (
-                  <a
+              {navLinks.map((link) => {
+                const targetId = link.href.replace('#', '');
+                const isActive = activeSection === targetId;
+                return (
+                  <button
                     key={link.name}
-                    href={link.href}
-                    onClick={(e) => handleNavClick(e, link.href)}
-                    className="group block px-4 py-3 text-lg font-bold text-black dark:text-white hover:bg-black/5 dark:hover:bg-white/5 rounded-2xl transition-all duration-300"
+                    onClick={() => handleMobileNav(targetId)}
+                    className={`w-full text-left group block px-4 py-3 text-lg font-bold rounded-2xl transition-all duration-300 ${
+                      isActive
+                        ? 'text-emerald-500 bg-emerald-500/5'
+                        : 'text-black dark:text-white hover:bg-black/5 dark:hover:bg-white/5'
+                    }`}
                   >
-                    <span className="inline-block group-hover:translate-x-2 transition-transform duration-300">{link.name}</span>
-                  </a>
-                ) : (
-                  <Link
-                    key={link.name}
-                    to={link.href}
-                    onClick={() => setIsOpen(false)}
-                    className="group block px-4 py-3 text-lg font-bold text-black dark:text-white hover:bg-black/5 dark:hover:bg-white/5 rounded-2xl transition-all duration-300"
-                  >
-                    <span className="inline-block group-hover:translate-x-2 transition-transform duration-300">{link.name}</span>
-                  </Link>
-                )
-              ))}
+                    <span className={`inline-block transition-transform duration-300 ${
+                      isActive ? 'translate-x-2' : 'group-hover:translate-x-2'
+                    }`}>{link.name}</span>
+                  </button>
+                );
+              })}
 
               <div className="pt-4 border-t border-black/5 dark:border-white/10">
                 <p className="px-4 text-[10px] font-bold uppercase tracking-widest text-black/40 dark:text-white/40 mb-4">Share WingsForShare</p>
