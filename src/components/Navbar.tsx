@@ -2,7 +2,6 @@ import React from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X, Sun, Moon, Facebook, Linkedin, Link as LinkIcon, MessageCircle, Share2, ArrowRight } from 'lucide-react';
 import { useTheme } from '../contexts/ThemeContext';
-import { useScrollSpy } from '../contexts/ScrollContext';
 import { motion, AnimatePresence } from 'motion/react';
 
 import { Logo } from './Logo';
@@ -11,9 +10,33 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = React.useState(false);
   const { theme, toggleTheme } = useTheme();
   const [scrolled, setScrolled] = React.useState(false);
-  const { activeSection } = useScrollSpy();
+  const [activeSection, setActiveSection] = React.useState('');
   const location = useLocation();
   const navigate = useNavigate();
+
+  React.useEffect(() => {
+    const sections = document.querySelectorAll('section[id]');
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      {
+        rootMargin: '-40% 0px -50% 0px',
+        threshold: 0
+      }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+
+    return () => {
+      sections.forEach((section) => observer.unobserve(section));
+    };
+  }, []);
 
   const scrollToSection = (targetId: string) => {
     const element = document.getElementById(targetId);

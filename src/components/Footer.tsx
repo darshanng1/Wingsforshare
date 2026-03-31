@@ -1,6 +1,5 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { Link } from 'react-router-dom';
 import { Mail, Phone, MessageSquare, MapPin, Globe, Github, Twitter, Linkedin, Instagram, ArrowUpRight } from 'lucide-react';
 
 export default function Footer() {
@@ -60,13 +59,13 @@ export default function Footer() {
             <ul className="space-y-4">
               {services.map((service, i) => (
                 <li key={i}>
-                  <Link
-                    to={service.link}
+                  <a
+                    href={service.link}
                     className="text-sm text-zinc-500 dark:text-zinc-400 hover:text-emerald-500 transition-colors flex items-center gap-2 group"
                   >
                     {service.name}
                     <ArrowUpRight size={14} className="opacity-0 group-hover:opacity-100 transition-all" />
-                  </Link>
+                  </a>
                 </li>
               ))}
             </ul>
@@ -118,9 +117,9 @@ export default function Footer() {
             © {currentYear} WingsForShare Digital Solutions. All rights reserved.
           </p>
           <div className="flex items-center gap-8">
-            <Link to="/privacy" className="text-xs text-zinc-500 hover:text-emerald-500 transition-colors">Privacy Policy</Link>
-            <Link to="/terms" className="text-xs text-zinc-500 hover:text-emerald-500 transition-colors">Terms of Service</Link>
-            <Link to="/sitemap" className="text-xs text-zinc-500 hover:text-emerald-500 transition-colors">Sitemap</Link>
+            <a href="/privacy" className="text-xs text-zinc-500 hover:text-emerald-500 transition-colors">Privacy Policy</a>
+            <a href="/terms" className="text-xs text-zinc-500 hover:text-emerald-500 transition-colors">Terms of Service</a>
+            <a href="/sitemap" className="text-xs text-zinc-500 hover:text-emerald-500 transition-colors">Sitemap</a>
           </div>
         </div>
       </div>

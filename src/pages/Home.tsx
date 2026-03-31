@@ -5,11 +5,9 @@ import {
   BarChart3, Rocket, Building2, ShoppingCart, HardHat, CheckCircle2
 } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
-import { InView } from 'react-intersection-observer';
 import ProjectIntakeForm from '../components/ProjectIntakeForm';
 import SEO from '../components/SEO';
 import { products } from '../data/products';
-import { useScrollSpy } from '../contexts/ScrollContext';
 
 // --- Imported Hero Components ---
 import { ProductCard } from '../components/home/MiniMockups';
@@ -60,7 +58,6 @@ export default function Home() {
   const [search, setSearch] = useState('');
   const [filter, setFilter] = useState('All');
   const [visibleItems, setVisibleItems] = useState(6);
-  const { setActiveSection } = useScrollSpy();
 
   const allProjects = React.useMemo(() => {
     // Prepend featured apps to the project list
@@ -204,18 +201,12 @@ export default function Home() {
       />
 
       {/* Hero Section */}
-      <InView
-        as="section"
-        id="hero"
-        threshold={0.5}
-        onChange={(inView) => { if (inView) setActiveSection('hero'); }}
+      <section
+        ref={heroRef}
+        className="relative min-h-screen flex items-center pt-32 pb-24 overflow-hidden"
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
       >
-        <section
-          ref={heroRef}
-          className="relative min-h-screen flex items-center pt-32 pb-24 overflow-hidden"
-          onMouseMove={handleMouseMove}
-          onMouseLeave={handleMouseLeave}
-        >
         {/* Background Elements */}
         <div className="absolute inset-0 -z-10 overflow-hidden">
           <AnimatePresence mode="wait">
@@ -288,15 +279,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      </InView>
-
       {/* Start Project Section */}
-      <InView
-        as="section"
-        id="start-project-hero"
-        threshold={0.5}
-        onChange={(inView) => { if (inView) setActiveSection('start-project-hero'); }}
-      >
       <section id="start-project-hero" className="section-padding bg-zinc-50 dark:bg-[#050505] relative overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-emerald-500/20 to-transparent" />
         <div className="container-custom">
@@ -352,44 +335,25 @@ export default function Home() {
           </div>
         </div>
       </section>
-      </InView>
 
       {/* Solutions Section */}
-      <InView
-        as="div"
-        threshold={0.3}
-        onChange={(inView) => { if (inView) setActiveSection('solutions'); }}
-      >
-        <SolutionsSection />
-      </InView>
+      <SolutionsSection />
 
       {/* Live Demo Showcase Section */}
-      <InView
-        as="div"
-        threshold={0.3}
-        onChange={(inView) => { if (inView) setActiveSection('portfolio'); }}
-      >
-        <LiveDemoSection 
-          search={search}
-          setSearch={setSearch}
-          filter={filter}
-          setFilter={setFilter}
-          categories={categories}
-          displayedProjects={displayedProjects}
-          filteredProjects={filteredProjects}
-          visibleItems={visibleItems}
-          setVisibleItems={setVisibleItems}
-        />
-      </InView>
+      <LiveDemoSection 
+        search={search}
+        setSearch={setSearch}
+        filter={filter}
+        setFilter={setFilter}
+        categories={categories}
+        displayedProjects={displayedProjects}
+        filteredProjects={filteredProjects}
+        visibleItems={visibleItems}
+        setVisibleItems={setVisibleItems}
+      />
 
       {/* Across Industries Section */}
-      <InView
-        as="div"
-        threshold={0.3}
-        onChange={(inView) => { if (inView) setActiveSection('industries'); }}
-      >
-        <IndustriesSection wordIndex={wordIndex} words={words} />
-      </InView>
+      <IndustriesSection wordIndex={wordIndex} words={words} />
 
       {/* Why Choose Us Section */}
       <WhyChooseUsSection />

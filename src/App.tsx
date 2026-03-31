@@ -10,26 +10,23 @@ import StartProject from './pages/StartProject';
 import Login from './pages/Login';
 import SEOPage from './pages/SEOPage';
 import ArchitectPortfolio from './pages/ArchitectPortfolio';
-import { ScrollProvider } from './contexts/ScrollContext';
 
 export default function App() {
   return (
     <Router>
-      <ScrollProvider>
-        <Layout>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/portfolio" element={<Portfolio />} />
-            <Route path="/product/:id" element={<ProductDetail />} />
-            <Route path="/start-project" element={<StartProject />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/seo" element={<SEOPage />} />
-            <Route path="/architect" element={<ArchitectPortfolio />} />
-          </Routes>
-        </Layout>
-      </ScrollProvider>
+      <Layout>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/portfolio" element={<Portfolio />} />
+          <Route path="/product/:id" element={<ProductDetail />} />
+          <Route path="/start-project" element={<StartProject />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/seo" element={<SEOPage />} />
+          <Route path="/architect" element={<ArchitectPortfolio />} />
+        </Routes>
+      </Layout>
     </Router>
   );
 }
