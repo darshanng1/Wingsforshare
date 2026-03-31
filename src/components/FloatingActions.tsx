@@ -8,9 +8,9 @@ export default function FloatingActions() {
   const [copied, setCopied] = useState(false);
 
   const shareLinks = [
-    { icon: <Facebook size={18} />, name: 'Facebook', url: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}` },
-    { icon: <Twitter size={18} />, name: 'Twitter', url: `https://twitter.com/intent/tweet?url=${encodeURIComponent(window.location.href)}` },
-    { icon: <Linkedin size={18} />, name: 'LinkedIn', url: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(window.location.href)}` },
+    { icon: Facebook, name: 'Facebook', url: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}` },
+    { icon: Twitter, name: 'Twitter', url: `https://twitter.com/intent/tweet?url=${encodeURIComponent(window.location.href)}` },
+    { icon: Linkedin, name: 'LinkedIn', url: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(window.location.href)}` },
   ];
 
   const copyLink = () => {
@@ -39,7 +39,7 @@ export default function FloatingActions() {
                 className="p-2.5 md:p-3 hover:bg-black/5 dark:hover:bg-white/5 rounded-xl transition-colors text-black/60 dark:text-white/60 hover:text-black dark:hover:text-white"
                 title={link.name}
               >
-                {React.cloneElement(link.icon as React.ReactElement, { size: 16 })}
+                <link.icon size={16} />
               </a>
             ))}
             <button
@@ -80,14 +80,13 @@ export default function FloatingActions() {
         </motion.div>
 
         <div className="flex space-x-3 md:space-x-4">
-          {/* Share Button */}
           <motion.button
             onClick={() => setIsShareOpen(!isShareOpen)}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             className="w-12 h-12 md:w-14 md:h-14 bg-white dark:bg-[#111] text-black dark:text-white rounded-xl md:rounded-2xl flex items-center justify-center shadow-2xl border border-black/5 dark:border-white/10"
           >
-            {isShareOpen ? <X size={20} md:size={24} /> : <Share2 size={20} md:size={24} />}
+            {isShareOpen ? <X className="w-5 h-5 md:w-6 md:h-6" /> : <Share2 className="w-5 h-5 md:w-6 md:h-6" />}
           </motion.button>
 
           {/* WhatsApp Button */}
@@ -111,7 +110,7 @@ export default function FloatingActions() {
               }}
               className="absolute inset-0 bg-[#25D366] rounded-xl md:rounded-2xl -z-10"
             />
-            <MessageCircle size={24} md:size={28} className="group-hover:rotate-12 transition-transform" />
+            <MessageCircle className="w-6 h-6 md:w-7 md:h-7 group-hover:rotate-12 transition-transform" />
           </motion.a>
         </div>
       </div>

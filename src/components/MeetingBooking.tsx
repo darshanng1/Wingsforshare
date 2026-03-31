@@ -92,7 +92,7 @@ export default function MeetingBooking() {
               <CalendarIcon className="absolute left-4 top-1/2 -translate-y-1/2 opacity-20 z-10" size={18} />
               <DatePicker
                 selected={selectedDate}
-                onChange={(date) => setSelectedDate(date)}
+                onChange={(date: Date | null) => setSelectedDate(date)}
                 showTimeSelect
                 dateFormat="MMMM d, yyyy h:mm aa"
                 minDate={new Date()}

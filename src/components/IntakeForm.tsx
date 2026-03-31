@@ -57,8 +57,8 @@ const FileUploadField: React.FC<FileUploadProps> = ({ label, required, onFileSel
 
   return (
     <div className="space-y-2">
-      <div className="flex justify-between items-center ml-4">
-        <label className="text-[10px] font-bold uppercase tracking-widest text-black/40 dark:text-white/40">
+      <div className="flex justify-between items-center ml-1">
+        <label className="text-xs font-semibold text-zinc-700 dark:text-zinc-300">
           {label} {required && <span className="text-red-500">*</span>}
         </label>
         {selectedFile && (
@@ -74,12 +74,12 @@ const FileUploadField: React.FC<FileUploadProps> = ({ label, required, onFileSel
       
       <div 
         onClick={() => !selectedFile && inputRef.current?.click()}
-        className={`relative border-2 border-dashed rounded-2xl p-4 transition-all ${
+        className={`relative border border-dashed rounded-xl p-3 transition-all ${
           selectedFile 
-            ? 'border-emerald-500/50 bg-emerald-500/5' 
+            ? 'border-emerald-500 bg-emerald-500/5' 
             : error 
               ? 'border-red-500/30 bg-red-500/5' 
-              : 'border-black/10 dark:border-white/10 hover:border-emerald-500/30 bg-black/5 dark:bg-white/5 cursor-pointer'
+              : 'border-zinc-200 dark:border-zinc-800 hover:border-emerald-500/50 bg-zinc-50 dark:bg-zinc-900/50 cursor-pointer'
         }`}
       >
         <input 
@@ -99,20 +99,20 @@ const FileUploadField: React.FC<FileUploadProps> = ({ label, required, onFileSel
         />
         
         <div className="flex items-center space-x-3">
-          <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${
-            selectedFile ? 'bg-emerald-500 text-white' : 'bg-black/10 dark:bg-white/10 text-black/40 dark:text-white/40'
+          <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${
+            selectedFile ? 'bg-emerald-500 text-white' : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-400'
           }`}>
-            {selectedFile ? <CheckCircle size={20} /> : <Upload size={20} />}
+            {selectedFile ? <CheckCircle size={16} /> : <Upload size={16} />}
           </div>
           <div className="flex-1 min-w-0">
-            <p className={`text-sm font-bold truncate ${selectedFile ? 'text-emerald-600 dark:text-emerald-400' : 'text-black/60 dark:text-white/60'}`}>
+            <p className={`text-xs font-semibold truncate ${selectedFile ? 'text-emerald-600 dark:text-emerald-400' : 'text-zinc-700 dark:text-zinc-300'}`}>
               {selectedFile ? selectedFile.name : `Upload ${label}`}
             </p>
-            {!selectedFile && <p className="text-[10px] text-black/40 dark:text-white/40 uppercase tracking-widest">Max 20MB</p>}
+            {!selectedFile && <p className="text-[10px] text-zinc-400">Max 20MB</p>}
           </div>
         </div>
       </div>
-      {error && <p className="text-[10px] text-red-500 font-bold uppercase tracking-widest ml-4">{error}</p>}
+      {error && <p className="text-[10px] text-red-500 font-semibold ml-1">{error}</p>}
     </div>
   );
 };
@@ -326,89 +326,89 @@ export default function IntakeForm() {
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                  <label className="text-[10px] font-bold uppercase tracking-widest text-black/40 dark:text-white/40 ml-4">Full Name *</label>
+                <div className="space-y-1.5">
+                  <label className="text-xs font-semibold text-zinc-700 dark:text-zinc-300 ml-1">Full Name *</label>
                   <div className="relative">
-                    <User className="absolute left-4 top-1/2 -translate-y-1/2 text-black/20 dark:text-white/20" size={18} />
+                    <User className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-400" size={14} />
                     <input 
                       type="text" 
-                      placeholder="John Doe"
+                      placeholder="Enter your full name"
                       value={formData.fullName}
                       onChange={(e) => setFormData({...formData, fullName: e.target.value})}
-                      className={`w-full bg-black/5 dark:bg-white/5 border rounded-2xl py-4 pl-12 pr-6 outline-none transition-all text-black dark:text-white font-medium ${errors.fullName ? 'border-red-500/50' : 'border-transparent focus:border-emerald-500/30'}`}
+                      className={`w-full bg-white dark:bg-zinc-900 border rounded-xl py-2.5 pl-10 pr-4 text-sm outline-none transition-all text-zinc-900 dark:text-zinc-100 ${errors.fullName ? 'border-red-500/50' : 'border-zinc-200 dark:border-zinc-800 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/10'}`}
                     />
                   </div>
-                  {errors.fullName && <p className="text-[10px] text-red-500 font-bold uppercase tracking-widest ml-4">{errors.fullName}</p>}
+                  {errors.fullName && <p className="text-[10px] text-red-500 font-bold uppercase tracking-widest ml-1">{errors.fullName}</p>}
                 </div>
-                <div className="space-y-2">
-                  <label className="text-[10px] font-bold uppercase tracking-widest text-black/40 dark:text-white/40 ml-4">Company Name *</label>
+                <div className="space-y-1.5">
+                  <label className="text-xs font-semibold text-zinc-700 dark:text-zinc-300 ml-1">Company Name *</label>
                   <div className="relative">
-                    <Building2 className="absolute left-4 top-1/2 -translate-y-1/2 text-black/20 dark:text-white/20" size={18} />
+                    <Building2 className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-400" size={14} />
                     <input 
                       type="text" 
-                      placeholder="Acme Corp"
+                      placeholder="Enter your company name"
                       value={formData.companyName}
                       onChange={(e) => setFormData({...formData, companyName: e.target.value})}
-                      className={`w-full bg-black/5 dark:bg-white/5 border rounded-2xl py-4 pl-12 pr-6 outline-none transition-all text-black dark:text-white font-medium ${errors.companyName ? 'border-red-500/50' : 'border-transparent focus:border-emerald-500/30'}`}
+                      className={`w-full bg-white dark:bg-zinc-900 border rounded-xl py-2.5 pl-10 pr-4 text-sm outline-none transition-all text-zinc-900 dark:text-zinc-100 ${errors.companyName ? 'border-red-500/50' : 'border-zinc-200 dark:border-zinc-800 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/10'}`}
                     />
                   </div>
-                  {errors.companyName && <p className="text-[10px] text-red-500 font-bold uppercase tracking-widest ml-4">{errors.companyName}</p>}
+                  {errors.companyName && <p className="text-[10px] text-red-500 font-bold uppercase tracking-widest ml-1">{errors.companyName}</p>}
                 </div>
-                <div className="space-y-2">
-                  <label className="text-[10px] font-bold uppercase tracking-widest text-black/40 dark:text-white/40 ml-4">Email Address *</label>
+                <div className="space-y-1.5">
+                  <label className="text-xs font-semibold text-zinc-700 dark:text-zinc-300 ml-1">Email Address *</label>
                   <div className="relative">
-                    <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-black/20 dark:text-white/20" size={18} />
+                    <Mail className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-400" size={14} />
                     <input 
                       type="email" 
-                      placeholder="john@example.com"
+                      placeholder="Enter your email address"
                       value={formData.email}
                       onChange={(e) => setFormData({...formData, email: e.target.value})}
-                      className={`w-full bg-black/5 dark:bg-white/5 border rounded-2xl py-4 pl-12 pr-6 outline-none transition-all text-black dark:text-white font-medium ${errors.email ? 'border-red-500/50' : 'border-transparent focus:border-emerald-500/30'}`}
+                      className={`w-full bg-white dark:bg-zinc-900 border rounded-xl py-2.5 pl-10 pr-4 text-sm outline-none transition-all text-zinc-900 dark:text-zinc-100 ${errors.email ? 'border-red-500/50' : 'border-zinc-200 dark:border-zinc-800 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/10'}`}
                     />
                   </div>
-                  {errors.email && <p className="text-[10px] text-red-500 font-bold uppercase tracking-widest ml-4">{errors.email}</p>}
+                  {errors.email && <p className="text-[10px] text-red-500 font-bold uppercase tracking-widest ml-1">{errors.email}</p>}
                 </div>
-                <div className="space-y-2">
-                  <label className="text-[10px] font-bold uppercase tracking-widest text-black/40 dark:text-white/40 ml-4">Phone Number *</label>
+                <div className="space-y-1.5">
+                  <label className="text-xs font-semibold text-zinc-700 dark:text-zinc-300 ml-1">Phone Number *</label>
                   <div className="relative">
-                    <Phone className="absolute left-4 top-1/2 -translate-y-1/2 text-black/20 dark:text-white/20" size={18} />
+                    <Phone className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-400" size={14} />
                     <input 
                       type="tel" 
                       placeholder="+1 (555) 000-0000"
                       value={formData.phone}
                       onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                      className={`w-full bg-black/5 dark:bg-white/5 border rounded-2xl py-4 pl-12 pr-6 outline-none transition-all text-black dark:text-white font-medium ${errors.phone ? 'border-red-500/50' : 'border-transparent focus:border-emerald-500/30'}`}
+                      className={`w-full bg-white dark:bg-zinc-900 border rounded-xl py-2.5 pl-10 pr-4 text-sm outline-none transition-all text-zinc-900 dark:text-zinc-100 ${errors.phone ? 'border-red-500/50' : 'border-zinc-200 dark:border-zinc-800 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/10'}`}
                     />
                   </div>
-                  {errors.phone && <p className="text-[10px] text-red-500 font-bold uppercase tracking-widest ml-4">{errors.phone}</p>}
+                  {errors.phone && <p className="text-[10px] text-red-500 font-semibold ml-1">{errors.phone}</p>}
                 </div>
-                <div className="space-y-2">
-                  <label className="text-[10px] font-bold uppercase tracking-widest text-black/40 dark:text-white/40 ml-4">Country *</label>
+                <div className="space-y-1.5">
+                  <label className="text-xs font-semibold text-zinc-700 dark:text-zinc-300 ml-1">Country *</label>
                   <div className="relative">
-                    <Globe className="absolute left-4 top-1/2 -translate-y-1/2 text-black/20 dark:text-white/20" size={18} />
+                    <Globe className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-400" size={14} />
                     <input 
                       type="text" 
-                      placeholder="United States"
+                      placeholder="e.g. United States"
                       value={formData.country}
                       onChange={(e) => setFormData({...formData, country: e.target.value})}
-                      className={`w-full bg-black/5 dark:bg-white/5 border rounded-2xl py-4 pl-12 pr-6 outline-none transition-all text-black dark:text-white font-medium ${errors.country ? 'border-red-500/50' : 'border-transparent focus:border-emerald-500/30'}`}
+                      className={`w-full bg-white dark:bg-zinc-900 border rounded-xl py-2.5 pl-10 pr-4 text-sm outline-none transition-all text-zinc-900 dark:text-zinc-100 ${errors.country ? 'border-red-500/50' : 'border-zinc-200 dark:border-zinc-800 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/10'}`}
                     />
                   </div>
-                  {errors.country && <p className="text-[10px] text-red-500 font-bold uppercase tracking-widest ml-4">{errors.country}</p>}
+                  {errors.country && <p className="text-[10px] text-red-500 font-semibold ml-1">{errors.country}</p>}
                 </div>
-                <div className="space-y-2">
-                  <label className="text-[10px] font-bold uppercase tracking-widest text-black/40 dark:text-white/40 ml-4">Industry *</label>
+                <div className="space-y-1.5">
+                  <label className="text-xs font-semibold text-zinc-700 dark:text-zinc-300 ml-1">Industry *</label>
                   <div className="relative">
-                    <Briefcase className="absolute left-4 top-1/2 -translate-y-1/2 text-black/20 dark:text-white/20" size={18} />
+                    <Briefcase className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-400" size={14} />
                     <input 
                       type="text" 
-                      placeholder="Technology, Healthcare, etc."
+                      placeholder="e.g. Technology, Healthcare"
                       value={formData.industry}
                       onChange={(e) => setFormData({...formData, industry: e.target.value})}
-                      className={`w-full bg-black/5 dark:bg-white/5 border rounded-2xl py-4 pl-12 pr-6 outline-none transition-all text-black dark:text-white font-medium ${errors.industry ? 'border-red-500/50' : 'border-transparent focus:border-emerald-500/30'}`}
+                      className={`w-full bg-white dark:bg-zinc-900 border rounded-xl py-2.5 pl-10 pr-4 text-sm outline-none transition-all text-zinc-900 dark:text-zinc-100 ${errors.industry ? 'border-red-500/50' : 'border-zinc-200 dark:border-zinc-800 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/10'}`}
                     />
                   </div>
-                  {errors.industry && <p className="text-[10px] text-red-500 font-bold uppercase tracking-widest ml-4">{errors.industry}</p>}
+                  {errors.industry && <p className="text-[10px] text-red-500 font-semibold ml-1">{errors.industry}</p>}
                 </div>
               </div>
             </motion.div>
@@ -434,27 +434,27 @@ export default function IntakeForm() {
                     key={service.id}
                     type="button"
                     onClick={() => selectService(service.id)}
-                    className={`p-8 rounded-[2rem] border transition-all duration-300 text-left flex items-start space-x-6 ${
+                    className={`p-6 rounded-2xl border transition-all duration-300 text-left flex items-start space-x-5 ${
                       formData.selectedService === service.id
                         ? 'bg-emerald-500 border-emerald-500 text-white shadow-xl shadow-emerald-500/20 scale-[1.02]'
-                        : 'bg-black/5 dark:bg-white/5 border-transparent text-black dark:text-white hover:bg-black/10 dark:hover:bg-white/10'
+                        : 'bg-zinc-50 dark:bg-zinc-900/50 border-zinc-100 dark:border-zinc-800 text-zinc-900 dark:text-white hover:border-emerald-500/30'
                     }`}
                   >
-                    <div className={`w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 ${
-                      formData.selectedService === service.id ? 'bg-white/20' : 'bg-black/5 dark:bg-white/5'
+                    <div className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 ${
+                      formData.selectedService === service.id ? 'bg-white/20' : 'bg-zinc-100 dark:bg-zinc-800'
                     }`}>
                       {service.icon}
                     </div>
                     <div>
-                      <p className="font-bold text-xl mb-1">{service.label}</p>
-                      <p className={`text-sm ${formData.selectedService === service.id ? 'text-white/80' : 'text-black/40 dark:text-white/40'}`}>
+                      <p className="font-bold text-lg mb-1">{service.label}</p>
+                      <p className={`text-xs leading-relaxed ${formData.selectedService === service.id ? 'text-white/80' : 'text-zinc-500'}`}>
                         {service.description}
                       </p>
                     </div>
                   </button>
                 ))}
               </div>
-              {errors.selectedService && <p className="text-sm text-red-500 font-bold text-center uppercase tracking-widest">{errors.selectedService}</p>}
+              {errors.selectedService && <p className="text-xs text-red-500 font-semibold text-center">{errors.selectedService}</p>}
             </motion.div>
           )}
 
@@ -476,12 +476,12 @@ export default function IntakeForm() {
               {formData.selectedService === 'Website Development' && formData.webDev && (
                 <div className="space-y-8">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="space-y-2">
-                      <label className="text-[10px] font-bold uppercase tracking-widest text-black/40 dark:text-white/40 ml-4">Website Type *</label>
+                    <div className="space-y-1.5">
+                      <label className="text-xs font-semibold text-zinc-700 dark:text-zinc-300 ml-1">Website Type *</label>
                       <select 
                         value={formData.webDev.websiteType}
                         onChange={(e) => setFormData({...formData, webDev: { ...formData.webDev!, websiteType: e.target.value as any }})}
-                        className={`w-full bg-black/5 dark:bg-white/5 border rounded-2xl py-4 px-6 outline-none text-black dark:text-white font-medium appearance-none ${errors.websiteType ? 'border-red-500/50' : 'border-transparent focus:border-emerald-500/30'}`}
+                        className={`w-full bg-white dark:bg-zinc-900 border rounded-xl py-2.5 px-4 text-sm outline-none transition-all appearance-none text-zinc-900 dark:text-zinc-100 ${errors.websiteType ? 'border-red-500/50' : 'border-zinc-200 dark:border-zinc-800 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/10'}`}
                       >
                         <option value="">Select Type</option>
                         <option value="Corporate">Corporate</option>
@@ -489,44 +489,44 @@ export default function IntakeForm() {
                         <option value="Portfolio">Portfolio</option>
                         <option value="SaaS">SaaS</option>
                       </select>
-                      {errors.websiteType && <p className="text-[10px] text-red-500 font-bold uppercase tracking-widest ml-4">{errors.websiteType}</p>}
+                      {errors.websiteType && <p className="text-[10px] text-red-500 font-bold uppercase tracking-widest ml-1">{errors.websiteType}</p>}
                     </div>
-                    <div className="space-y-2">
-                      <label className="text-[10px] font-bold uppercase tracking-widest text-black/40 dark:text-white/40 ml-4">Number of Pages *</label>
+                    <div className="space-y-1.5">
+                      <label className="text-xs font-semibold text-zinc-700 dark:text-zinc-300 ml-1">Number of Pages *</label>
                       <input 
                         type="text" 
                         placeholder="e.g. 10-15"
                         value={formData.webDev.numberOfPages}
                         onChange={(e) => setFormData({...formData, webDev: { ...formData.webDev!, numberOfPages: e.target.value }})}
-                        className={`w-full bg-black/5 dark:bg-white/5 border rounded-2xl py-4 px-6 outline-none text-black dark:text-white font-medium ${errors.numberOfPages ? 'border-red-500/50' : 'border-transparent focus:border-emerald-500/30'}`}
+                        className={`w-full bg-white dark:bg-zinc-900 border rounded-xl py-2.5 px-4 text-sm outline-none transition-all text-zinc-900 dark:text-zinc-100 ${errors.numberOfPages ? 'border-red-500/50' : 'border-zinc-200 dark:border-zinc-800 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/10'}`}
                       />
-                      {errors.numberOfPages && <p className="text-[10px] text-red-500 font-bold uppercase tracking-widest ml-4">{errors.numberOfPages}</p>}
+                      {errors.numberOfPages && <p className="text-[10px] text-red-500 font-bold uppercase tracking-widest ml-1">{errors.numberOfPages}</p>}
                     </div>
-                    <div className="space-y-2">
-                      <label className="text-[10px] font-bold uppercase tracking-widest text-black/40 dark:text-white/40 ml-4">Target Audience *</label>
+                    <div className="space-y-1.5">
+                      <label className="text-xs font-semibold text-zinc-700 dark:text-zinc-300 ml-1">Target Audience *</label>
                       <input 
                         type="text" 
                         placeholder="e.g. Small Business Owners"
                         value={formData.webDev.targetAudience}
                         onChange={(e) => setFormData({...formData, webDev: { ...formData.webDev!, targetAudience: e.target.value }})}
-                        className={`w-full bg-black/5 dark:bg-white/5 border rounded-2xl py-4 px-6 outline-none text-black dark:text-white font-medium ${errors.targetAudience ? 'border-red-500/50' : 'border-transparent focus:border-emerald-500/30'}`}
+                        className={`w-full bg-white dark:bg-zinc-900 border rounded-xl py-2.5 px-4 text-sm outline-none transition-all text-zinc-900 dark:text-zinc-100 ${errors.targetAudience ? 'border-red-500/50' : 'border-zinc-200 dark:border-zinc-800 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/10'}`}
                       />
-                      {errors.targetAudience && <p className="text-[10px] text-red-500 font-bold uppercase tracking-widest ml-4">{errors.targetAudience}</p>}
+                      {errors.targetAudience && <p className="text-[10px] text-red-500 font-bold uppercase tracking-widest ml-1">{errors.targetAudience}</p>}
                     </div>
-                    <div className="space-y-2">
-                      <label className="text-[10px] font-bold uppercase tracking-widest text-black/40 dark:text-white/40 ml-4">Required Features *</label>
+                    <div className="space-y-1.5">
+                      <label className="text-xs font-semibold text-zinc-700 dark:text-zinc-300 ml-1">Required Features *</label>
                       <input 
                         type="text" 
                         placeholder="e.g. Blog, Contact Form, Payment"
                         value={formData.webDev.requiredFeatures}
                         onChange={(e) => setFormData({...formData, webDev: { ...formData.webDev!, requiredFeatures: e.target.value }})}
-                        className={`w-full bg-black/5 dark:bg-white/5 border rounded-2xl py-4 px-6 outline-none text-black dark:text-white font-medium ${errors.requiredFeatures ? 'border-red-500/50' : 'border-transparent focus:border-emerald-500/30'}`}
+                        className={`w-full bg-white dark:bg-zinc-900 border rounded-xl py-2.5 px-4 text-sm outline-none transition-all text-zinc-900 dark:text-zinc-100 ${errors.requiredFeatures ? 'border-red-500/50' : 'border-zinc-200 dark:border-zinc-800 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/10'}`}
                       />
-                      {errors.requiredFeatures && <p className="text-[10px] text-red-500 font-bold uppercase tracking-widest ml-4">{errors.requiredFeatures}</p>}
+                      {errors.requiredFeatures && <p className="text-[10px] text-red-500 font-bold uppercase tracking-widest ml-1">{errors.requiredFeatures}</p>}
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-6 border-t border-black/5 dark:border-white/10">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-6 border-t border-zinc-100 dark:border-zinc-800">
                     <FileUploadField 
                       label="Logo" 
                       required 
@@ -561,53 +561,53 @@ export default function IntakeForm() {
               {formData.selectedService === 'SEO' && formData.seo && (
                 <div className="space-y-8">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="space-y-2">
-                      <label className="text-[10px] font-bold uppercase tracking-widest text-black/40 dark:text-white/40 ml-4">Website URL *</label>
+                    <div className="space-y-1.5">
+                      <label className="text-xs font-semibold text-zinc-700 dark:text-zinc-300 ml-1">Website URL *</label>
                       <input 
                         type="url" 
                         placeholder="https://example.com"
                         value={formData.seo.websiteUrl}
                         onChange={(e) => setFormData({...formData, seo: { ...formData.seo!, websiteUrl: e.target.value }})}
-                        className={`w-full bg-black/5 dark:bg-white/5 border rounded-2xl py-4 px-6 outline-none text-black dark:text-white font-medium ${errors.websiteUrl ? 'border-red-500/50' : 'border-transparent focus:border-emerald-500/30'}`}
+                        className={`w-full bg-white dark:bg-zinc-900 border rounded-xl py-2.5 px-4 text-sm outline-none transition-all text-zinc-900 dark:text-zinc-100 ${errors.websiteUrl ? 'border-red-500/50' : 'border-zinc-200 dark:border-zinc-800 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/10'}`}
                       />
-                      {errors.websiteUrl && <p className="text-[10px] text-red-500 font-bold uppercase tracking-widest ml-4">{errors.websiteUrl}</p>}
+                      {errors.websiteUrl && <p className="text-[10px] text-red-500 font-bold uppercase tracking-widest ml-1">{errors.websiteUrl}</p>}
                     </div>
-                    <div className="space-y-2">
-                      <label className="text-[10px] font-bold uppercase tracking-widest text-black/40 dark:text-white/40 ml-4">Target Country *</label>
+                    <div className="space-y-1.5">
+                      <label className="text-xs font-semibold text-zinc-700 dark:text-zinc-300 ml-1">Target Country *</label>
                       <input 
                         type="text" 
                         placeholder="e.g. United Kingdom"
                         value={formData.seo.targetCountry}
                         onChange={(e) => setFormData({...formData, seo: { ...formData.seo!, targetCountry: e.target.value }})}
-                        className={`w-full bg-black/5 dark:bg-white/5 border rounded-2xl py-4 px-6 outline-none text-black dark:text-white font-medium ${errors.targetCountry ? 'border-red-500/50' : 'border-transparent focus:border-emerald-500/30'}`}
+                        className={`w-full bg-white dark:bg-zinc-900 border rounded-xl py-2.5 px-4 text-sm outline-none transition-all text-zinc-900 dark:text-zinc-100 ${errors.targetCountry ? 'border-red-500/50' : 'border-zinc-200 dark:border-zinc-800 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/10'}`}
                       />
-                      {errors.targetCountry && <p className="text-[10px] text-red-500 font-bold uppercase tracking-widest ml-4">{errors.targetCountry}</p>}
+                      {errors.targetCountry && <p className="text-[10px] text-red-500 font-bold uppercase tracking-widest ml-1">{errors.targetCountry}</p>}
                     </div>
-                    <div className="space-y-2">
-                      <label className="text-[10px] font-bold uppercase tracking-widest text-black/40 dark:text-white/40 ml-4">Business Category *</label>
+                    <div className="space-y-1.5">
+                      <label className="text-xs font-semibold text-zinc-700 dark:text-zinc-300 ml-1">Business Category *</label>
                       <input 
                         type="text" 
                         placeholder="e.g. Real Estate"
                         value={formData.seo.businessCategory}
                         onChange={(e) => setFormData({...formData, seo: { ...formData.seo!, businessCategory: e.target.value }})}
-                        className={`w-full bg-black/5 dark:bg-white/5 border rounded-2xl py-4 px-6 outline-none text-black dark:text-white font-medium ${errors.businessCategory ? 'border-red-500/50' : 'border-transparent focus:border-emerald-500/30'}`}
+                        className={`w-full bg-white dark:bg-zinc-900 border rounded-xl py-2.5 px-4 text-sm outline-none transition-all text-zinc-900 dark:text-zinc-100 ${errors.businessCategory ? 'border-red-500/50' : 'border-zinc-200 dark:border-zinc-800 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/10'}`}
                       />
-                      {errors.businessCategory && <p className="text-[10px] text-red-500 font-bold uppercase tracking-widest ml-4">{errors.businessCategory}</p>}
+                      {errors.businessCategory && <p className="text-[10px] text-red-500 font-bold uppercase tracking-widest ml-1">{errors.businessCategory}</p>}
                     </div>
-                    <div className="space-y-2">
-                      <label className="text-[10px] font-bold uppercase tracking-widest text-black/40 dark:text-white/40 ml-4">Competitor Websites *</label>
+                    <div className="space-y-1.5">
+                      <label className="text-xs font-semibold text-zinc-700 dark:text-zinc-300 ml-1">Competitor Websites *</label>
                       <input 
                         type="text" 
                         placeholder="e.g. comp1.com, comp2.com"
                         value={formData.seo.competitorWebsites}
                         onChange={(e) => setFormData({...formData, seo: { ...formData.seo!, competitorWebsites: e.target.value }})}
-                        className={`w-full bg-black/5 dark:bg-white/5 border rounded-2xl py-4 px-6 outline-none text-black dark:text-white font-medium ${errors.competitorWebsites ? 'border-red-500/50' : 'border-transparent focus:border-emerald-500/30'}`}
+                        className={`w-full bg-white dark:bg-zinc-900 border rounded-xl py-2.5 px-4 text-sm outline-none transition-all text-zinc-900 dark:text-zinc-100 ${errors.competitorWebsites ? 'border-red-500/50' : 'border-zinc-200 dark:border-zinc-800 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/10'}`}
                       />
-                      {errors.competitorWebsites && <p className="text-[10px] text-red-500 font-bold uppercase tracking-widest ml-4">{errors.competitorWebsites}</p>}
+                      {errors.competitorWebsites && <p className="text-[10px] text-red-500 font-bold uppercase tracking-widest ml-1">{errors.competitorWebsites}</p>}
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-6 border-t border-black/5 dark:border-white/10">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-6 border-t border-zinc-100 dark:border-zinc-800">
                     <FileUploadField 
                       label="Keyword List (Optional)" 
                       selectedFile={formData.seo.keywordList}
@@ -631,56 +631,56 @@ export default function IntakeForm() {
               {formData.selectedService === 'Mobile App Development' && formData.appDev && (
                 <div className="space-y-8">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="space-y-2">
-                      <label className="text-[10px] font-bold uppercase tracking-widest text-black/40 dark:text-white/40 ml-4">Platform *</label>
+                    <div className="space-y-1.5">
+                      <label className="text-xs font-semibold text-zinc-700 dark:text-zinc-300 ml-1">Platform *</label>
                       <select 
                         value={formData.appDev.platform}
                         onChange={(e) => setFormData({...formData, appDev: { ...formData.appDev!, platform: e.target.value as any }})}
-                        className={`w-full bg-black/5 dark:bg-white/5 border rounded-2xl py-4 px-6 outline-none text-black dark:text-white font-medium appearance-none ${errors.platform ? 'border-red-500/50' : 'border-transparent focus:border-emerald-500/30'}`}
+                        className={`w-full bg-white dark:bg-zinc-900 border rounded-xl py-2.5 px-4 text-sm outline-none transition-all appearance-none text-zinc-900 dark:text-zinc-100 ${errors.platform ? 'border-red-500/50' : 'border-zinc-200 dark:border-zinc-800 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/10'}`}
                       >
                         <option value="">Select Platform</option>
                         <option value="Android">Android</option>
                         <option value="iOS">iOS</option>
                         <option value="Both">Both</option>
                       </select>
-                      {errors.platform && <p className="text-[10px] text-red-500 font-bold uppercase tracking-widest ml-4">{errors.platform}</p>}
+                      {errors.platform && <p className="text-[10px] text-red-500 font-bold uppercase tracking-widest ml-1">{errors.platform}</p>}
                     </div>
-                    <div className="space-y-2">
-                      <label className="text-[10px] font-bold uppercase tracking-widest text-black/40 dark:text-white/40 ml-4">App Type *</label>
+                    <div className="space-y-1.5">
+                      <label className="text-xs font-semibold text-zinc-700 dark:text-zinc-300 ml-1">App Type *</label>
                       <input 
                         type="text" 
                         placeholder="e.g. Social Media, Delivery"
                         value={formData.appDev.appType}
                         onChange={(e) => setFormData({...formData, appDev: { ...formData.appDev!, appType: e.target.value }})}
-                        className={`w-full bg-black/5 dark:bg-white/5 border rounded-2xl py-4 px-6 outline-none text-black dark:text-white font-medium ${errors.appType ? 'border-red-500/50' : 'border-transparent focus:border-emerald-500/30'}`}
+                        className={`w-full bg-white dark:bg-zinc-900 border rounded-xl py-2.5 px-4 text-sm outline-none transition-all text-zinc-900 dark:text-zinc-100 ${errors.appType ? 'border-red-500/50' : 'border-zinc-200 dark:border-zinc-800 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/10'}`}
                       />
-                      {errors.appType && <p className="text-[10px] text-red-500 font-bold uppercase tracking-widest ml-4">{errors.appType}</p>}
+                      {errors.appType && <p className="text-[10px] text-red-500 font-bold uppercase tracking-widest ml-1">{errors.appType}</p>}
                     </div>
-                    <div className="space-y-2">
-                      <label className="text-[10px] font-bold uppercase tracking-widest text-black/40 dark:text-white/40 ml-4">Core Features *</label>
+                    <div className="space-y-1.5">
+                      <label className="text-xs font-semibold text-zinc-700 dark:text-zinc-300 ml-1">Core Features *</label>
                       <input 
                         type="text" 
                         placeholder="e.g. Chat, Map, Payments"
                         value={formData.appDev.coreFeatures}
                         onChange={(e) => setFormData({...formData, appDev: { ...formData.appDev!, coreFeatures: e.target.value }})}
-                        className={`w-full bg-black/5 dark:bg-white/5 border rounded-2xl py-4 px-6 outline-none text-black dark:text-white font-medium ${errors.coreFeatures ? 'border-red-500/50' : 'border-transparent focus:border-emerald-500/30'}`}
+                        className={`w-full bg-white dark:bg-zinc-900 border rounded-xl py-2.5 px-4 text-sm outline-none transition-all text-zinc-900 dark:text-zinc-100 ${errors.coreFeatures ? 'border-red-500/50' : 'border-zinc-200 dark:border-zinc-800 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/10'}`}
                       />
-                      {errors.coreFeatures && <p className="text-[10px] text-red-500 font-bold uppercase tracking-widest ml-4">{errors.coreFeatures}</p>}
+                      {errors.coreFeatures && <p className="text-[10px] text-red-500 font-bold uppercase tracking-widest ml-1">{errors.coreFeatures}</p>}
                     </div>
-                    <div className="space-y-2">
-                      <label className="text-[10px] font-bold uppercase tracking-widest text-black/40 dark:text-white/40 ml-4">Number of User Roles *</label>
+                    <div className="space-y-1.5">
+                      <label className="text-xs font-semibold text-zinc-700 dark:text-zinc-300 ml-1">Number of User Roles *</label>
                       <input 
                         type="text" 
                         placeholder="e.g. Admin, Customer, Driver"
                         value={formData.appDev.userRoles}
                         onChange={(e) => setFormData({...formData, appDev: { ...formData.appDev!, userRoles: e.target.value }})}
-                        className={`w-full bg-black/5 dark:bg-white/5 border rounded-2xl py-4 px-6 outline-none text-black dark:text-white font-medium ${errors.userRoles ? 'border-red-500/50' : 'border-transparent focus:border-emerald-500/30'}`}
+                        className={`w-full bg-white dark:bg-zinc-900 border rounded-xl py-2.5 px-4 text-sm outline-none transition-all text-zinc-900 dark:text-zinc-100 ${errors.userRoles ? 'border-red-500/50' : 'border-zinc-200 dark:border-zinc-800 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/10'}`}
                       />
-                      {errors.userRoles && <p className="text-[10px] text-red-500 font-bold uppercase tracking-widest ml-4">{errors.userRoles}</p>}
+                      {errors.userRoles && <p className="text-[10px] text-red-500 font-bold uppercase tracking-widest ml-1">{errors.userRoles}</p>}
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-6 border-t border-black/5 dark:border-white/10">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-6 border-t border-zinc-100 dark:border-zinc-800">
                     <FileUploadField 
                       label="App Wireframe / Design" 
                       selectedFile={formData.appDev.wireframe}
@@ -704,12 +704,12 @@ export default function IntakeForm() {
               {formData.selectedService === 'Business Intelligence' && formData.bi && (
                 <div className="space-y-8">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="space-y-2">
-                      <label className="text-[10px] font-bold uppercase tracking-widest text-black/40 dark:text-white/40 ml-4">Data Source Type *</label>
+                    <div className="space-y-1.5">
+                      <label className="text-xs font-semibold text-zinc-700 dark:text-zinc-300 ml-1">Data Source Type *</label>
                       <select 
                         value={formData.bi.dataSourceType}
                         onChange={(e) => setFormData({...formData, bi: { ...formData.bi!, dataSourceType: e.target.value as any }})}
-                        className={`w-full bg-black/5 dark:bg-white/5 border rounded-2xl py-4 px-6 outline-none text-black dark:text-white font-medium appearance-none ${errors.dataSourceType ? 'border-red-500/50' : 'border-transparent focus:border-emerald-500/30'}`}
+                        className={`w-full bg-white dark:bg-zinc-900 border rounded-xl py-2.5 px-4 text-sm outline-none transition-all appearance-none text-zinc-900 dark:text-zinc-100 ${errors.dataSourceType ? 'border-red-500/50' : 'border-zinc-200 dark:border-zinc-800 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/10'}`}
                       >
                         <option value="">Select Source</option>
                         <option value="Excel">Excel</option>
@@ -717,33 +717,33 @@ export default function IntakeForm() {
                         <option value="ERP">ERP</option>
                         <option value="API">API</option>
                       </select>
-                      {errors.dataSourceType && <p className="text-[10px] text-red-500 font-bold uppercase tracking-widest ml-4">{errors.dataSourceType}</p>}
+                      {errors.dataSourceType && <p className="text-[10px] text-red-500 font-bold uppercase tracking-widest ml-1">{errors.dataSourceType}</p>}
                     </div>
-                    <div className="space-y-2">
-                      <label className="text-[10px] font-bold uppercase tracking-widest text-black/40 dark:text-white/40 ml-4">Dashboard Type *</label>
+                    <div className="space-y-1.5">
+                      <label className="text-xs font-semibold text-zinc-700 dark:text-zinc-300 ml-1">Dashboard Type *</label>
                       <input 
                         type="text" 
                         placeholder="e.g. Sales Analytics"
                         value={formData.bi.dashboardType}
                         onChange={(e) => setFormData({...formData, bi: { ...formData.bi!, dashboardType: e.target.value }})}
-                        className={`w-full bg-black/5 dark:bg-white/5 border rounded-2xl py-4 px-6 outline-none text-black dark:text-white font-medium ${errors.dashboardType ? 'border-red-500/50' : 'border-transparent focus:border-emerald-500/30'}`}
+                        className={`w-full bg-white dark:bg-zinc-900 border rounded-xl py-2.5 px-4 text-sm outline-none transition-all text-zinc-900 dark:text-zinc-100 ${errors.dashboardType ? 'border-red-500/50' : 'border-zinc-200 dark:border-zinc-800 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/10'}`}
                       />
-                      {errors.dashboardType && <p className="text-[10px] text-red-500 font-bold uppercase tracking-widest ml-4">{errors.dashboardType}</p>}
+                      {errors.dashboardType && <p className="text-[10px] text-red-500 font-bold uppercase tracking-widest ml-1">{errors.dashboardType}</p>}
                     </div>
-                    <div className="space-y-2">
-                      <label className="text-[10px] font-bold uppercase tracking-widest text-black/40 dark:text-white/40 ml-4">Key Metrics Needed *</label>
+                    <div className="space-y-1.5">
+                      <label className="text-xs font-semibold text-zinc-700 dark:text-zinc-300 ml-1">Key Metrics Needed *</label>
                       <input 
                         type="text" 
                         placeholder="e.g. ROI, Conversion Rate"
                         value={formData.bi.keyMetrics}
                         onChange={(e) => setFormData({...formData, bi: { ...formData.bi!, keyMetrics: e.target.value }})}
-                        className={`w-full bg-black/5 dark:bg-white/5 border rounded-2xl py-4 px-6 outline-none text-black dark:text-white font-medium ${errors.keyMetrics ? 'border-red-500/50' : 'border-transparent focus:border-emerald-500/30'}`}
+                        className={`w-full bg-white dark:bg-zinc-900 border rounded-xl py-2.5 px-4 text-sm outline-none transition-all text-zinc-900 dark:text-zinc-100 ${errors.keyMetrics ? 'border-red-500/50' : 'border-zinc-200 dark:border-zinc-800 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/10'}`}
                       />
-                      {errors.keyMetrics && <p className="text-[10px] text-red-500 font-bold uppercase tracking-widest ml-4">{errors.keyMetrics}</p>}
+                      {errors.keyMetrics && <p className="text-[10px] text-red-500 font-bold uppercase tracking-widest ml-1">{errors.keyMetrics}</p>}
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-6 border-t border-black/5 dark:border-white/10">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-6 border-t border-zinc-100 dark:border-zinc-800">
                     <FileUploadField 
                       label="Sample Data File" 
                       selectedFile={formData.bi.sampleData}
@@ -779,16 +779,16 @@ export default function IntakeForm() {
                 <p className="text-black/40 dark:text-white/40 font-medium">Describe your project in detail. This field is mandatory.</p>
               </div>
 
-              <div className="space-y-2">
-                <label className="text-[10px] font-bold uppercase tracking-widest text-black/40 dark:text-white/40 ml-4">Describe your project in detail *</label>
+              <div className="space-y-1.5">
+                <label className="text-xs font-semibold text-zinc-700 dark:text-zinc-300 ml-1">Describe your project in detail *</label>
                 <textarea 
                   rows={8}
                   placeholder="Tell us everything... What problem are we solving? Who is the audience? What does success look like?"
                   value={formData.projectDescription}
                   onChange={(e) => setFormData({...formData, projectDescription: e.target.value})}
-                  className={`w-full bg-black/5 dark:bg-white/5 border rounded-[2rem] p-8 outline-none transition-all text-black dark:text-white font-medium resize-none leading-relaxed ${errors.projectDescription ? 'border-red-500/50' : 'border-transparent focus:border-emerald-500/30'}`}
+                  className={`w-full bg-white dark:bg-zinc-900 border rounded-xl p-6 text-sm outline-none transition-all text-zinc-900 dark:text-zinc-100 leading-relaxed ${errors.projectDescription ? 'border-red-500/50' : 'border-zinc-200 dark:border-zinc-800 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/10'}`}
                 />
-                {errors.projectDescription && <p className="text-[10px] text-red-500 font-bold uppercase tracking-widest ml-4">{errors.projectDescription}</p>}
+                {errors.projectDescription && <p className="text-[10px] text-red-500 font-bold uppercase tracking-widest ml-1">{errors.projectDescription}</p>}
               </div>
             </motion.div>
           )}
@@ -808,45 +808,45 @@ export default function IntakeForm() {
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div className="p-8 bg-black/[0.02] dark:bg-white/[0.02] rounded-[2rem] border border-black/5 dark:border-white/10">
-                  <h4 className="text-xs font-bold uppercase tracking-widest text-black/40 dark:text-white/40 mb-6">Client Summary</h4>
-                  <div className="space-y-4">
+                <div className="p-6 bg-zinc-50 dark:bg-zinc-900/50 rounded-2xl border border-zinc-100 dark:border-zinc-800">
+                  <h4 className="text-xs font-bold text-zinc-900 dark:text-white mb-4">Client Summary</h4>
+                  <div className="space-y-3">
                     <div className="flex justify-between">
-                      <span className="text-sm text-black/40 dark:text-white/40">Name</span>
-                      <span className="text-sm font-bold">{formData.fullName}</span>
+                      <span className="text-xs text-zinc-500">Name</span>
+                      <span className="text-xs font-semibold text-zinc-900 dark:text-white">{formData.fullName}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-sm text-black/40 dark:text-white/40">Company</span>
-                      <span className="text-sm font-bold">{formData.companyName}</span>
+                      <span className="text-xs text-zinc-500">Company</span>
+                      <span className="text-xs font-semibold text-zinc-900 dark:text-white">{formData.companyName}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-sm text-black/40 dark:text-white/40">Email</span>
-                      <span className="text-sm font-bold">{formData.email}</span>
+                      <span className="text-xs text-zinc-500">Email</span>
+                      <span className="text-xs font-semibold text-zinc-900 dark:text-white">{formData.email}</span>
                     </div>
                   </div>
                 </div>
-                <div className="p-8 bg-black/[0.02] dark:bg-white/[0.02] rounded-[2rem] border border-black/5 dark:border-white/10">
-                  <h4 className="text-xs font-bold uppercase tracking-widest text-black/40 dark:text-white/40 mb-6">Service Selection</h4>
+                <div className="p-6 bg-zinc-50 dark:bg-zinc-900/50 rounded-2xl border border-zinc-100 dark:border-zinc-800">
+                  <h4 className="text-xs font-bold text-zinc-900 dark:text-white mb-4">Service Selection</h4>
                   <div className="flex items-center space-x-4">
-                    <div className="w-12 h-12 bg-emerald-500/10 text-emerald-500 rounded-xl flex items-center justify-center">
+                    <div className="w-10 h-10 bg-emerald-500/10 text-emerald-500 rounded-xl flex items-center justify-center">
                       {serviceOptions.find(s => s.id === formData.selectedService)?.icon}
                     </div>
                     <div>
-                      <p className="font-bold">{formData.selectedService}</p>
-                      <p className="text-xs text-black/40 dark:text-white/40">Primary Project Category</p>
+                      <p className="text-sm font-bold text-zinc-900 dark:text-white">{formData.selectedService}</p>
+                      <p className="text-[10px] text-zinc-500">Primary Project Category</p>
                     </div>
                   </div>
                 </div>
               </div>
 
-              <div className="p-8 bg-emerald-500/5 rounded-[2rem] border border-emerald-500/10">
+              <div className="p-6 bg-emerald-500/5 rounded-2xl border border-emerald-500/10">
                 <div className="flex items-start space-x-4">
                   <div className="w-10 h-10 bg-emerald-500 text-white rounded-xl flex items-center justify-center shrink-0">
                     <ShieldCheck size={20} />
                   </div>
                   <div>
-                    <h4 className="font-bold mb-1">Ready to Launch</h4>
-                    <p className="text-sm text-black/60 dark:text-white/60">By clicking submit, you confirm that all provided information and documents are accurate. Our team will contact you within 24 hours.</p>
+                    <h4 className="text-sm font-bold text-zinc-900 dark:text-white mb-1">Ready to Launch</h4>
+                    <p className="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">By clicking submit, you confirm that all provided information and documents are accurate. Our team will contact you within 24 hours.</p>
                   </div>
                 </div>
               </div>
@@ -892,18 +892,18 @@ export default function IntakeForm() {
       </form>
 
       {/* Trust Badges */}
-      <div className="mt-12 flex flex-wrap justify-center gap-8 opacity-40 grayscale">
+      <div className="mt-12 flex flex-wrap justify-center gap-8 opacity-50">
         <div className="flex items-center space-x-2">
-          <ShieldCheck size={16} />
-          <span className="text-[10px] font-bold uppercase tracking-widest">Enterprise Security</span>
+          <ShieldCheck size={14} className="text-zinc-400" />
+          <span className="text-[10px] font-semibold text-zinc-500">Enterprise Security</span>
         </div>
         <div className="flex items-center space-x-2">
-          <CheckCircle size={16} />
-          <span className="text-[10px] font-bold uppercase tracking-widest">Confidentiality Guaranteed</span>
+          <CheckCircle size={14} className="text-zinc-400" />
+          <span className="text-[10px] font-semibold text-zinc-500">Confidentiality Guaranteed</span>
         </div>
         <div className="flex items-center space-x-2">
-          <Zap size={16} />
-          <span className="text-[10px] font-bold uppercase tracking-widest">24h Response Time</span>
+          <Zap size={14} className="text-zinc-400" />
+          <span className="text-[10px] font-semibold text-zinc-500">24h Response Time</span>
         </div>
       </div>
     </div>

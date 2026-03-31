@@ -1,22 +1,14 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" class="dark">
   <head>
-    <meta name="google-site-verification" content="HcbIQteD24i0KsD45RZjbtWgjpN8X0SgAIvialQ2Rkk" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>WingsForShare – Premium Digital Solutions Marketplace</title>
-    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <title>WingsForShare | Revenue-Driven Digital Systems</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&family=Anton&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
   </head>
   <body>
-    <script>
-      (function() {
-        const savedTheme = localStorage.getItem('theme');
-        const theme = savedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-        document.body.classList.add(theme + '-mode');
-      })();
-    </script>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
-

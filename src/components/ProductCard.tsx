@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ExternalLink, ShieldCheck, Lock, CheckCircle, Calendar } from 'lucide-react';
+import { ExternalLink, ShieldCheck, Lock, CheckCircle, Calendar, ArrowUpRight, Sparkles } from 'lucide-react';
 import { Product } from '../types';
 import { motion } from 'motion/react';
 
@@ -13,147 +13,116 @@ export default function ProductCard({ product }: ProductCardProps) {
   const bookDemoUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(`Hi, I'm interested in booking a demo for ${product.name}`)}`;
 
   return (
-    <motion.div
+    <motion.div 
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
-      whileHover={{ y: -6 }}
-      transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
-      className="group flex flex-col h-full bg-white dark:bg-zinc-900 rounded-2xl overflow-hidden border border-zinc-200 dark:border-zinc-800 shadow-sm hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] dark:hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.3)] transition-all duration-500"
+      className="group flex flex-col h-full bg-white dark:bg-zinc-900/50 rounded-[2rem] overflow-hidden border border-zinc-100 dark:border-zinc-800/50 hover:border-emerald-500/30 dark:hover:border-emerald-500/30 transition-all duration-500 hover:shadow-[0_32px_64px_-16px_rgba(0,0,0,0.1)] dark:hover:shadow-[0_32px_64px_-16px_rgba(0,0,0,0.4)]"
     >
-      {/* Version Indicator for Debugging */}
-      <div className="hidden">ProductCard v2.1</div>
-      {/* Screenshot */}
-      <div className="aspect-[16/10] w-full overflow-hidden relative cursor-pointer">
-        <img
-          src={product.screenshot}
+      {/* Visual Header */}
+      <div className="aspect-[16/10] w-full overflow-hidden relative">
+        <img 
+          src={product.screenshot} 
           alt={product.name}
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
           loading="lazy"
           referrerPolicy="no-referrer"
         />
-
-        {/* Image Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-          <span className="text-white text-xs font-bold flex items-center gap-1 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-            View Demo <ExternalLink size={12} />
-          </span>
-        </div>
-
-        {/* Category Badge */}
-        <div className="absolute top-3 left-3 z-10">
-          <span className="px-2.5 py-1 bg-white/95 dark:bg-zinc-900/95 backdrop-blur-sm text-[10px] font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 rounded-full border border-emerald-500/10 shadow-sm">
+        
+        {/* Category Overlay */}
+        <div className="absolute top-4 left-4">
+          <span className="px-3 py-1.5 bg-white/90 dark:bg-zinc-900/90 backdrop-blur-md text-[10px] font-bold uppercase tracking-widest text-emerald-600 dark:text-emerald-400 rounded-full border border-emerald-500/10 shadow-sm">
             {product.category}
           </span>
         </div>
-      </div>
 
-      {/* Content */}
-      <div className="p-5 flex flex-col flex-grow">
-        <div className="mb-3">
-          <h3 className="text-xl font-bold text-zinc-900 dark:text-white mb-1.5 tracking-tight group-hover:text-emerald-500 transition-colors line-clamp-1">
-            {product.name}
-          </h3>
-          <p className="text-sm text-zinc-500 dark:text-zinc-400 line-clamp-3 leading-snug min-h-[3.75rem]">
-            {product.shortDescription || ''}
+        {/* Hover Action Overlay */}
+        <div className="absolute inset-0 bg-zinc-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center backdrop-blur-[2px]">
+          <motion.a
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            href={product.demoLink}
+            target="_blank"
+            rel="noreferrer"
+            className="w-14 h-14 bg-white text-zinc-900 rounded-full flex items-center justify-center shadow-2xl"
+          >
+            <ExternalLink size={20} />
+          </motion.a>
+        </div>
+      </div>
+      
+      {/* Content Body */}
+      <div className="p-8 flex flex-col flex-grow">
+        <div className="mb-6">
+          <div className="flex items-start justify-between gap-4 mb-3">
+            <h3 className="text-2xl font-bold text-zinc-900 dark:text-white tracking-tight leading-tight">
+              {product.name}
+            </h3>
+            <Link 
+              to={`/products/${product.slug}`}
+              className="w-10 h-10 rounded-full border border-zinc-100 dark:border-zinc-800 flex items-center justify-center text-zinc-400 hover:text-emerald-500 hover:border-emerald-500/30 transition-all shrink-0"
+            >
+              <ArrowUpRight size={18} />
+            </Link>
+          </div>
+          <p className="text-sm text-zinc-500 dark:text-zinc-400 line-clamp-2 leading-relaxed">
+            {product.shortDescription}
           </p>
         </div>
 
-        {/* Feature Highlights */}
-        <div className="mb-6 space-y-1.5">
-          {(product.features || []).slice(0, 5).map((feature, idx) => (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0, x: -10 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 + (idx * 0.1), duration: 0.3 }}
-              className="flex items-start gap-2"
-            >
-              <CheckCircle size={12} className="text-emerald-500 shrink-0 mt-0.5" />
-              <span className="text-xs text-zinc-600 dark:text-zinc-400 line-clamp-1">
+        {/* Result Highlight (New Feature) */}
+        {product.result && (
+          <div className="mb-6 p-4 bg-emerald-50 dark:bg-emerald-500/5 rounded-2xl border border-emerald-500/10">
+            <div className="flex items-center gap-2 mb-1">
+              <Sparkles size={14} className="text-emerald-500" />
+              <span className="text-[10px] font-bold uppercase tracking-widest text-emerald-600 dark:text-emerald-400">Key Result</span>
+            </div>
+            <p className="text-xs font-semibold text-zinc-700 dark:text-zinc-300">
+              {product.result}
+            </p>
+          </div>
+        )}
+
+        {/* Features List */}
+        <div className="mb-8 space-y-2.5">
+          {product.features.slice(0, 3).map((feature, idx) => (
+            <div key={idx} className="flex items-center gap-3">
+              <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0" />
+              <span className="text-xs font-medium text-zinc-600 dark:text-zinc-400">
                 {feature}
               </span>
-            </motion.div>
+            </div>
           ))}
         </div>
 
-        {/* Bottom Section (Fixed at bottom) */}
-        <div className="mt-auto space-y-4">
-          {/* Demo Access Info (Password) */}
-          {product.userLogin && (
-            <motion.div
-              animate={{
-                boxShadow: ["0 0 0 0px rgba(16, 185, 129, 0)", "0 0 0 4px rgba(16, 185, 129, 0.1)", "0 0 0 0px rgba(16, 185, 129, 0)"]
-              }}
-              transition={{ duration: 2, repeat: Infinity }}
-              className="inline-flex items-center gap-2 px-2.5 py-1.5 bg-[#e6f7ef] dark:bg-emerald-500/10 text-[#008a4e] dark:text-emerald-400 rounded-lg text-[12px] font-semibold border border-emerald-500/20"
-            >
-              <Lock size={13} />
-              <span>🔒 {product.userLogin}</span>
-            </motion.div>
-          )}
-
-          {/* Buttons */}
-          <div className="space-y-2.5">
-            <div className="grid grid-cols-2 gap-2.5">
-              <motion.a
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.98 }}
-                href={product.demoLink}
-                target="_blank"
-                rel="noreferrer"
-                className="group/btn inline-flex items-center justify-center gap-2 h-11 bg-emerald-500 text-white rounded-lg text-[13px] font-bold hover:bg-emerald-600 transition-all shadow-sm hover:shadow-emerald-500/25 active:scale-95"
-              >
-                <motion.div
-                  whileHover={{ x: 3 }}
-                  transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                  className="flex items-center gap-2"
-                >
-                  <ExternalLink size={14} />
-                  <span>Live Demo</span>
-                </motion.div>
-              </motion.a>
-
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }}>
-                <Link
-                  to={`/products/${product.slug}`}
-                  className="inline-flex items-center justify-center w-full h-11 bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 rounded-lg text-[13px] font-bold hover:opacity-90 transition-all shadow-sm active:scale-95"
-                >
-                  View Details
-                </Link>
-              </motion.div>
-            </div>
-
-            <motion.a
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
+        {/* Footer Actions */}
+        <div className="mt-auto pt-6 border-t border-zinc-100 dark:border-zinc-800/50 flex items-center justify-between gap-4">
+          <div className="flex items-center gap-3">
+            {product.userLogin && (
+              <div className="flex items-center gap-1.5 text-[10px] font-bold text-zinc-400 uppercase tracking-wider">
+                <Lock size={12} />
+                <span>Demo Access</span>
+              </div>
+            )}
+          </div>
+          
+          <div className="flex items-center gap-2">
+            <a 
               href={bookDemoUrl}
               target="_blank"
               rel="noreferrer"
-              className="w-full inline-flex items-center justify-center gap-2 h-11 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white border border-zinc-200 dark:border-zinc-700 rounded-lg text-[13px] font-bold hover:bg-zinc-50 dark:hover:bg-zinc-700 transition-all active:scale-95"
+              className="px-4 py-2 text-xs font-bold text-zinc-500 hover:text-emerald-500 transition-colors"
             >
-              <motion.div
-                whileHover={{ x: 3 }}
-                transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                className="flex items-center gap-2"
-              >
-                <Calendar size={14} />
-                <span>Book Demo</span>
-              </motion.div>
-            </motion.a>
-
-            {product.adminLogin && (
-              <a
-                href={product.adminLogin}
-                target="_blank"
-                rel="noreferrer"
-                className="w-full inline-flex items-center justify-center gap-2 h-9 bg-zinc-50 dark:bg-zinc-900 text-zinc-500 dark:text-zinc-400 rounded-lg text-[11px] font-bold uppercase tracking-wider hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all"
-              >
-                <ShieldCheck size={13} />
-                <span>Admin Panel</span>
-              </a>
-            )}
+              Book Demo
+            </a>
+            <a 
+              href={product.demoLink}
+              target="_blank"
+              rel="noreferrer"
+              className="px-5 py-2.5 bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 rounded-xl text-xs font-bold hover:opacity-90 transition-all active:scale-95"
+            >
+              Live Demo
+            </a>
           </div>
         </div>
       </div>

@@ -16,7 +16,7 @@ export default function ProductDetail() {
   return (
     <div className="pt-32 pb-32 bg-white dark:bg-[#0a0a0a] transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <Link to="/" className="inline-flex items-center space-x-2 text-sm font-bold text-black/40 dark:text-white/40 hover:text-black dark:hover:text-white transition-colors mb-12 group">
+        <Link to="/portfolio" className="inline-flex items-center space-x-2 text-sm font-bold text-black/40 dark:text-white/40 hover:text-black dark:hover:text-white transition-colors mb-12 group">
           <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
           <span>Back to Marketplace</span>
         </Link>

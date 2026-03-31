@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://wingsforshare.com/sitemap.xml

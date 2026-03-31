@@ -1,95 +1,126 @@
+import React from 'react';
+import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
-import { Mail, MessageCircle, ArrowRight } from 'lucide-react';
-
-import { Logo } from './Logo';
+import { Mail, Phone, MessageSquare, MapPin, Globe, Github, Twitter, Linkedin, Instagram, ArrowUpRight } from 'lucide-react';
 
 export default function Footer() {
+  const currentYear = new Date().getFullYear();
+
+  const services = [
+    { name: 'Software Development', link: '/services/software-development' },
+    { name: 'App Development', link: '/services/app-development' },
+    { name: 'Digital Marketing', link: '/services/digital-marketing' },
+    { name: 'SaaS Products', link: '/services/saas-products' },
+    { name: 'SEO Optimization', link: '/services/seo' }
+  ];
+
+  const socialLinks = [
+    { icon: <Github size={20} />, link: 'https://github.com/wingsforshare' },
+    { icon: <Twitter size={20} />, link: 'https://twitter.com/wingsforshare' },
+    { icon: <Linkedin size={20} />, link: 'https://linkedin.com/company/wingsforshare' },
+    { icon: <Instagram size={20} />, link: 'https://instagram.com/wingsforshare' }
+  ];
+
   return (
-    <footer className="bg-white dark:bg-[#0a0a0a] border-t border-black/5 dark:border-white/10 transition-colors duration-300">
-      {/* Consultation CTA Section */}
-      <div className="container-custom py-10 md:py-20 border-b border-black/5 dark:border-white/10">
-        <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-8 text-center md:text-left">
-          <div className="max-w-2xl">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
-              Start Growing Your Business with Technology
-            </h2>
-            <p className="text-black/60 dark:text-white/60 text-base md:text-lg">
-              Partner with us to build systems that scale your operations and revenue.
+    <footer className="bg-zinc-50 dark:bg-[#050505] border-t border-zinc-100 dark:border-zinc-900 pt-24 pb-12">
+      <div className="container-custom">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-24">
+          {/* Brand Column */}
+          <div className="lg:col-span-1">
+            <div className="flex items-center gap-3 mb-8 group cursor-pointer">
+              <div className="w-12 h-12 bg-emerald-500 rounded-2xl flex items-center justify-center text-white shadow-lg shadow-emerald-500/20 group-hover:rotate-12 transition-transform">
+                <Globe size={24} />
+              </div>
+              <div>
+                <h3 className="text-xl font-black tracking-tighter text-zinc-900 dark:text-white leading-none">WINGSFORSHARE</h3>
+                <p className="text-[10px] font-bold uppercase tracking-widest text-emerald-500">Digital Solutions</p>
+              </div>
+            </div>
+            <p className="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed mb-8">
+              We build high-performance digital systems that generate revenue and scale businesses globally.
             </p>
+            <div className="flex items-center gap-4">
+              {socialLinks.map((social, i) => (
+                <a
+                  key={i}
+                  href={social.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 rounded-xl bg-white dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-800 flex items-center justify-center text-zinc-500 hover:text-emerald-500 hover:border-emerald-500/50 transition-all"
+                >
+                  {social.icon}
+                </a>
+              ))}
+            </div>
           </div>
-          <Link 
-            to="/start-project" 
-            className="w-full sm:w-auto inline-flex items-center justify-center space-x-3 bg-black dark:bg-white text-white dark:text-black px-8 py-4 rounded-2xl font-bold text-lg hover:opacity-80 transition-all active:scale-95 shadow-xl shadow-black/10 dark:shadow-white/5"
-          >
-            <span>Start Your Project</span>
-            <ArrowRight size={20} />
-          </Link>
+
+          {/* Services Column */}
+          <div>
+            <h4 className="text-sm font-bold uppercase tracking-widest text-zinc-900 dark:text-white mb-8">Services</h4>
+            <ul className="space-y-4">
+              {services.map((service, i) => (
+                <li key={i}>
+                  <Link
+                    to={service.link}
+                    className="text-sm text-zinc-500 dark:text-zinc-400 hover:text-emerald-500 transition-colors flex items-center gap-2 group"
+                  >
+                    {service.name}
+                    <ArrowUpRight size={14} className="opacity-0 group-hover:opacity-100 transition-all" />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Contact Column */}
+          <div>
+            <h4 className="text-sm font-bold uppercase tracking-widest text-zinc-900 dark:text-white mb-8">Contact</h4>
+            <ul className="space-y-6">
+              <li className="flex items-start gap-4">
+                <Mail size={18} className="text-emerald-500 mt-1" />
+                <div>
+                  <p className="text-[10px] font-bold uppercase tracking-widest text-zinc-400 mb-1">Email Us</p>
+                  <a href="mailto:info@wingsforshare.com" className="text-sm font-bold text-zinc-900 dark:text-white hover:text-emerald-500 transition-colors">
+                    info@wingsforshare.com
+                  </a>
+                </div>
+              </li>
+              <li className="flex items-start gap-4">
+                <Phone size={18} className="text-emerald-500 mt-1" />
+                <div>
+                  <p className="text-[10px] font-bold uppercase tracking-widest text-zinc-400 mb-1">Call Us</p>
+                  <a href="tel:+918618764541" className="text-sm font-bold text-zinc-900 dark:text-white hover:text-emerald-500 transition-colors">
+                    +91 86187 64541
+                  </a>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          {/* Address Column */}
+          <div>
+            <h4 className="text-sm font-bold uppercase tracking-widest text-zinc-900 dark:text-white mb-8">Headquarters</h4>
+            <div className="flex items-start gap-4">
+              <MapPin size={18} className="text-emerald-500 mt-1" />
+              <div>
+                <p className="text-[10px] font-bold uppercase tracking-widest text-zinc-400 mb-1">Location</p>
+                <p className="text-sm font-bold text-zinc-900 dark:text-white leading-relaxed">
+                  15, A.K Max Layout, Kuduregere, Bangalore - 562162
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
 
-      <div className="container-custom py-10 md:py-24">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16">
-          {/* Column 1: Company Overview */}
-          <div className="flex flex-col items-center sm:items-start text-center sm:text-left">
-            <Link to="/" className="mb-6 group flex items-center">
-              <Logo className="h-10" />
-            </Link>
-            <p className="text-black/60 dark:text-white/60 text-sm md:text-base leading-relaxed max-w-xs">
-              We help businesses grow through modern websites, automation tools, digital marketing systems, and custom business applications.
-            </p>
-          </div>
-          
-          {/* Column 2: Solutions */}
-          <div className="text-center sm:text-left">
-            <h3 className="text-xs font-bold text-black dark:text-white uppercase tracking-widest mb-6 md:mb-8">Solutions</h3>
-            <ul className="space-y-3 md:space-y-4">
-              <li><Link to="/services/web-development" className="text-sm md:text-base text-black/60 dark:text-white/60 hover:text-black dark:hover:text-white transition-colors font-medium">Web Development Company</Link></li>
-              <li><Link to="/services/app-development" className="text-sm md:text-base text-black/60 dark:text-white/60 hover:text-black dark:hover:text-white transition-colors font-medium">Mobile App Development</Link></li>
-              <li><Link to="/services/business-intelligence" className="text-sm md:text-base text-black/60 dark:text-white/60 hover:text-black dark:hover:text-white transition-colors font-medium">Business Intelligence Solutions</Link></li>
-              <li><Link to="/services/business-consulting" className="text-sm md:text-base text-black/60 dark:text-white/60 hover:text-black dark:hover:text-white transition-colors font-medium">Business Development Consulting</Link></li>
-              <li><Link to="/services/digital-transformation" className="text-sm md:text-base text-black/60 dark:text-white/60 hover:text-black dark:hover:text-white transition-colors font-medium">Digital Transformation Services</Link></li>
-            </ul>
-          </div>
-
-          {/* Column 3: Industries */}
-          <div className="text-center sm:text-left">
-            <h3 className="text-xs font-bold text-black dark:text-white uppercase tracking-widest mb-6 md:mb-8">Industries</h3>
-            <ul className="space-y-3 md:space-y-4">
-              <li><span className="text-sm md:text-base text-black/60 dark:text-white/60 font-medium">Pest Control Systems</span></li>
-              <li><span className="text-sm md:text-base text-black/60 dark:text-white/60 font-medium">Manufacturing Solutions</span></li>
-              <li><span className="text-sm md:text-base text-black/60 dark:text-white/60 font-medium">Retail & E-commerce Platforms</span></li>
-              <li><span className="text-sm md:text-base text-black/60 dark:text-white/60 font-medium">Professional Service Automation</span></li>
-            </ul>
-          </div>
-
-          {/* Column 4: Start Project */}
-          <div className="text-center sm:text-left">
-            <h3 className="text-xs font-bold text-black dark:text-white uppercase tracking-widest mb-6 md:mb-8">Connect</h3>
-            <ul className="space-y-4 md:space-y-6">
-              <li>
-                <Link to="/contact" className="text-sm md:text-base text-black/60 dark:text-white/60 hover:text-black dark:hover:text-white transition-colors font-medium block mb-1">Contact Us</Link>
-              </li>
-              <li className="flex items-center justify-center sm:justify-start space-x-3 text-black/60 dark:text-white/60">
-                <MessageCircle size={16} className="text-emerald-500" />
-                <a href="https://wa.me/918618764541" target="_blank" rel="noopener noreferrer" className="text-sm md:text-base hover:text-black dark:hover:text-white transition-colors font-medium">WhatsApp: +91 86187 64541</a>
-              </li>
-              <li className="flex items-center justify-center sm:justify-start space-x-3 text-black/60 dark:text-white/60">
-                <Mail size={16} className="text-emerald-500" />
-                <a href="mailto:darshanng@gmail.com" className="text-sm md:text-base hover:text-black dark:hover:text-white transition-colors font-medium">darshanng@gmail.com</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-        
-        {/* Footer Bottom Bar */}
-        <div className="mt-10 md:mt-24 pt-8 md:pt-12 border-t border-black/5 dark:border-white/10 flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
-          <p className="text-xs md:text-sm text-black/40 dark:text-white/40 font-medium text-center md:text-left">
-            © {new Date().getFullYear()} WingsForShare Digital Solutions.
+        {/* Bottom Bar */}
+        <div className="pt-12 border-t border-zinc-100 dark:border-zinc-900 flex flex-col md:flex-row items-center justify-between gap-6">
+          <p className="text-xs text-zinc-500 dark:text-zinc-600">
+            © {currentYear} WingsForShare Digital Solutions. All rights reserved.
           </p>
-          <div className="flex flex-wrap justify-center gap-6 md:gap-10">
-            <Link to="/" className="text-xs md:text-sm text-black/40 dark:text-white/40 hover:text-black dark:hover:text-white transition-colors font-medium">Privacy Policy</Link>
-            <Link to="/" className="text-xs md:text-sm text-black/40 dark:text-white/40 hover:text-black dark:hover:text-white transition-colors font-medium">Terms of Service</Link>
-            <Link to="/start-project" className="text-xs md:text-sm text-black/40 dark:text-white/40 hover:text-black dark:hover:text-white transition-colors font-medium">Start Project</Link>
+          <div className="flex items-center gap-8">
+            <Link to="/privacy" className="text-xs text-zinc-500 hover:text-emerald-500 transition-colors">Privacy Policy</Link>
+            <Link to="/terms" className="text-xs text-zinc-500 hover:text-emerald-500 transition-colors">Terms of Service</Link>
+            <Link to="/sitemap" className="text-xs text-zinc-500 hover:text-emerald-500 transition-colors">Sitemap</Link>
           </div>
         </div>
       </div>

@@ -10,8 +10,11 @@ export default function SEOPage() {
   // Map SEO slugs to products
   const seoMap: Record<string, string> = {
     'websites-for-architects': 'architect-portfolio',
-    'websites-for-pest-control': 'pest-intelligence',
-    'ecommerce-for-clothing-brands': 'vastra-ecommerce'
+    'websites-for-pest-control': 'business-intelligence-dashboard',
+    'ecommerce-for-clothing-brands': 'garment-ecommerce',
+    'digital-vcard-for-professionals': 'digital-vcard-website',
+    'nursery-ecommerce-store': 'gardenwalla-nursery',
+    'refurbished-electronics-store': 'green-nest-electronics'
   };
 
   const productSlug = slug ? seoMap[slug] : null;

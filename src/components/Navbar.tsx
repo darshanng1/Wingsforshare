@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Menu, X, Sun, Moon, Facebook, Linkedin, Link as LinkIcon, MessageCircle, Share2 } from 'lucide-react';
+import { Menu, X, Sun, Moon, Facebook, Linkedin, Link as LinkIcon, MessageCircle, Share2, ArrowRight } from 'lucide-react';
 import { useTheme } from '../contexts/ThemeContext';
+import { useScrollSpy } from '../contexts/ScrollContext';
 import { motion, AnimatePresence } from 'motion/react';
 
 import { Logo } from './Logo';
@@ -10,38 +11,14 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = React.useState(false);
   const { theme, toggleTheme } = useTheme();
   const [scrolled, setScrolled] = React.useState(false);
-  const [activeSection, setActiveSection] = React.useState('');
+  const { activeSection } = useScrollSpy();
   const location = useLocation();
   const navigate = useNavigate();
-
-  React.useEffect(() => {
-    const sections = document.querySelectorAll('section[id]');
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        });
-      },
-      {
-        rootMargin: '-40% 0px -50% 0px',
-        threshold: 0
-      }
-    );
-
-    sections.forEach((section) => observer.observe(section));
-
-    return () => {
-      sections.forEach((section) => observer.unobserve(section));
-    };
-  }, []);
 
   const scrollToSection = (targetId: string) => {
     const element = document.getElementById(targetId);
     if (element) {
-      const offset = 80;
+      const offset = 100;
       const bodyRect = document.body.getBoundingClientRect().top;
       const elementRect = element.getBoundingClientRect().top;
       const elementPosition = elementRect - bodyRect;
@@ -72,16 +49,18 @@ export default function Navbar() {
     }
   };
 
-  const handleMobileNav = (targetId: string) => {
-    navigate('/', { state: { scrollTo: targetId } });
+  const handleMobileNav = (href: string) => {
+    if (href.startsWith('#')) {
+      const targetId = href.replace('#', '');
+      if (location.pathname !== '/') {
+        navigate('/', { state: { scrollTo: targetId } });
+      } else {
+        scrollToSection(targetId);
+      }
+    } else {
+      navigate(href);
+    }
     setIsOpen(false);
-  };
-
-  const shareUrl = window.location.href;
-  const shareTitle = "WingsForShare Digital Solutions – Premium Software & Marketing";
-
-  const handleCopyLink = () => {
-    navigator.clipboard.writeText(shareUrl);
   };
 
   React.useEffect(() => {
@@ -91,217 +70,157 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { name: 'Home', href: '#home' },
     { name: 'Solutions', href: '#solutions' },
     { name: 'Portfolio', href: '#portfolio' },
     { name: 'Industries', href: '#industries' },
-    { name: 'Contact', href: '#contact' },
-  ];
-
-  const shareButtons = [
-    { icon: <MessageCircle size={16} />, href: `https://wa.me/?text=${encodeURIComponent(shareTitle + ' ' + shareUrl)}`, label: 'WhatsApp' },
-    { icon: <Facebook size={16} />, href: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`, label: 'Facebook' },
-    { icon: <Linkedin size={16} />, href: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`, label: 'LinkedIn' },
-    { icon: <LinkIcon size={16} />, onClick: handleCopyLink, label: 'Copy Link' },
+    { name: 'Contact', href: '/contact' },
   ];
 
   return (
-    <div className="fixed w-full z-50 transition-all duration-300">
-      {/* Top Share Bar - Hidden on small mobile */}
-      <div className="hidden sm:block bg-black dark:bg-white text-white dark:text-black py-1.5">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-end items-center space-x-4">
-          <span className="text-[9px] font-bold uppercase tracking-widest opacity-60">Share WingsForShare:</span>
-          <div className="flex space-x-2">
-            {shareButtons.map((btn, idx) => (
-              btn.onClick ? (
-                <button
-                  key={idx}
-                  onClick={btn.onClick}
-                  className="w-6 h-6 flex items-center justify-center border border-white/20 dark:border-black/20 rounded-md hover:bg-white/10 dark:hover:bg-black/10 transition-all"
-                  title={btn.label}
-                >
-                  {btn.icon}
-                </button>
-              ) : (
-                <a
-                  key={idx}
-                  href={btn.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-6 h-6 flex items-center justify-center border border-white/20 dark:border-black/20 rounded-md hover:bg-white/10 dark:hover:bg-black/10 transition-all"
-                  title={btn.label}
-                >
-                  {btn.icon}
-                </a>
-              )
-            ))}
-          </div>
-        </div>
-      </div>
-
-      <nav className={`${
-        scrolled
-          ? 'bg-white/90 dark:bg-black/90 backdrop-blur-xl border-b border-black/5 dark:border-white/10 py-2'
-          : 'bg-transparent py-4 md:py-6'
-      }`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center">
-          <Link to="/" className="flex items-center group">
-            <Logo className="h-10 md:h-12" />
+    <header 
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        scrolled 
+          ? 'py-4' 
+          : 'py-6 md:py-8'
+      }`}
+    >
+      <div className="container-custom">
+        <nav 
+          className={`relative flex items-center justify-between px-6 py-3 md:px-8 md:py-4 rounded-[2rem] transition-all duration-500 ${
+            scrolled 
+              ? 'bg-white/80 dark:bg-zinc-900/80 backdrop-blur-xl border border-zinc-200/50 dark:border-zinc-800/50 shadow-[0_8px_32px_rgba(0,0,0,0.05)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.3)]' 
+              : 'bg-transparent border border-transparent'
+          }`}
+        >
+          {/* Logo */}
+          <Link to="/" className="flex items-center group relative z-10">
+            <Logo className="h-8 md:h-10" />
           </Link>
 
-          {/* Desktop Menu */}
-          <div className="hidden lg:flex space-x-8 items-center">
+          {/* Desktop Navigation */}
+          <div className="hidden lg:flex items-center gap-10">
             {navLinks.map((link) => {
               const isActive = activeSection === link.href.replace('#', '');
-              return link.href.startsWith('#') ? (
+              const isExternal = !link.href.startsWith('#');
+              
+              if (isExternal) {
+                return (
+                  <Link
+                    key={link.name}
+                    to={link.href}
+                    className={`relative text-[13px] font-display font-bold uppercase tracking-[0.15em] transition-all group py-2 ${
+                      location.pathname === link.href
+                        ? 'text-emerald-500' 
+                        : 'text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white'
+                    }`}
+                  >
+                    {link.name}
+                    <span className={`absolute bottom-0 left-0 w-full h-[2px] bg-emerald-500 origin-left transition-transform duration-300 ${location.pathname === link.href ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`} />
+                  </Link>
+                );
+              }
+
+              return (
                 <a
                   key={link.name}
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
-                  className={`group relative py-1 text-xs font-bold uppercase tracking-widest transition-colors ${
-                    isActive
-                      ? 'text-emerald-500'
-                      : 'text-black/60 dark:text-white/60 hover:text-black dark:hover:text-white'
+                  className={`relative text-[13px] font-display font-bold uppercase tracking-[0.15em] transition-all group py-2 ${
+                    isActive 
+                      ? 'text-emerald-500' 
+                      : 'text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white'
                   }`}
                 >
-                  <span>{link.name}</span>
-                  <span className={`absolute bottom-0 left-0 h-[2px] bg-emerald-500 transition-all duration-300 ${
-                    isActive ? 'w-full' : 'w-0 group-hover:w-full'
-                  }`} />
+                  {link.name}
+                  <span className={`absolute bottom-0 left-0 w-full h-[2px] bg-emerald-500 origin-left transition-transform duration-300 ${isActive ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`} />
                 </a>
-              ) : (
-                <Link
-                  key={link.name}
-                  to={link.href}
-                  className={`group relative py-1 text-xs font-bold uppercase tracking-widest transition-colors ${
-                    isActive
-                      ? 'text-emerald-500'
-                      : 'text-black/60 dark:text-white/60 hover:text-black dark:hover:text-white'
-                  }`}
-                >
-                  <span>{link.name}</span>
-                  <span className={`absolute bottom-0 left-0 h-[2px] bg-emerald-500 transition-all duration-300 ${
-                    isActive ? 'w-full' : 'w-0 group-hover:w-full'
-                  }`} />
-                </Link>
               );
             })}
+          </div>
 
-            <div className="h-4 w-[1px] bg-black/10 dark:bg-white/10" />
-
+          {/* Actions */}
+          <div className="hidden lg:flex items-center gap-6">
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-full hover:bg-black/5 dark:hover:bg-white/5 transition-colors text-black dark:text-white"
+              className="w-10 h-10 rounded-full flex items-center justify-center text-zinc-500 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all hover:scale-110 active:scale-95"
             >
               {theme === 'light' ? <Moon size={18} /> : <Sun size={18} />}
             </button>
-
-            <Link to="/login" className="group relative py-1 text-xs font-bold uppercase tracking-widest text-black/60 dark:text-white/60 hover:text-black dark:hover:text-white transition-colors">
-              <span>Login</span>
-              <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-emerald-500 transition-all duration-300 group-hover:w-full" />
-            </Link>
-
-            <Link to="/start-project" className="bg-black dark:bg-white text-white dark:text-black px-6 py-2.5 rounded-xl text-xs font-bold uppercase tracking-widest hover:opacity-80 transition-all shadow-xl shadow-black/10 dark:shadow-white/5">
-              Start Project
+            <div className="w-[1px] h-4 bg-zinc-200 dark:bg-zinc-800" />
+            <Link 
+              to="/start-project" 
+              className="relative group overflow-hidden px-8 py-3 bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 rounded-full text-[12px] font-display font-bold uppercase tracking-widest transition-all hover:shadow-[0_0_30px_rgba(16,185,129,0.3)] active:scale-95"
+            >
+              <span className="relative z-10">Start Project</span>
+              <div className="absolute inset-0 bg-emerald-500 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+              <span className="absolute inset-0 bg-emerald-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl" />
             </Link>
           </div>
 
-          {/* Mobile Menu Button */}
-          <div className="lg:hidden flex items-center space-x-3">
+          {/* Mobile Menu Toggle */}
+          <div className="flex lg:hidden items-center gap-3 relative z-10">
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-full hover:bg-black/5 dark:hover:bg-white/5 transition-colors text-black dark:text-white"
+              className="w-10 h-10 rounded-full flex items-center justify-center text-zinc-500 dark:text-zinc-400"
             >
               {theme === 'light' ? <Moon size={20} /> : <Sun size={20} />}
             </button>
-            <button onClick={() => setIsOpen(!isOpen)} className="text-black dark:text-white p-1">
-              {isOpen ? <X size={24} /> : <Menu size={24} />}
+            <button 
+              onClick={() => setIsOpen(!isOpen)} 
+              className="w-10 h-10 rounded-full flex items-center justify-center text-zinc-900 dark:text-white bg-zinc-100 dark:bg-zinc-800"
+            >
+              {isOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
           </div>
-        </div>
-      </div>
 
-      {/* Mobile Menu */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden bg-white dark:bg-black border-b border-black/5 dark:border-white/10 overflow-hidden"
-          >
-            <div className="container-custom py-8 space-y-6">
-              {navLinks.map((link) => {
-                const targetId = link.href.replace('#', '');
-                const isActive = activeSection === targetId;
-                return (
-                  <button
-                    key={link.name}
-                    onClick={() => handleMobileNav(targetId)}
-                    className={`w-full text-left group block px-4 py-3 text-lg font-bold rounded-2xl transition-all duration-300 ${
-                      isActive
-                        ? 'text-emerald-500 bg-emerald-500/5'
-                        : 'text-black dark:text-white hover:bg-black/5 dark:hover:bg-white/5'
-                    }`}
+          {/* Mobile Menu Overlay */}
+          <AnimatePresence>
+            {isOpen && (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95, y: -20 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.95, y: -20 }}
+                className="absolute top-full left-0 right-0 mt-4 p-6 bg-white dark:bg-zinc-900 rounded-[2.5rem] border border-zinc-200 dark:border-zinc-800 shadow-2xl lg:hidden overflow-hidden"
+              >
+                <div className="flex flex-col gap-6">
+                  {navLinks.map((link, i) => {
+                    const isExternal = !link.href.startsWith('#');
+                    const isActive = isExternal 
+                      ? location.pathname === link.href 
+                      : activeSection === link.href.replace('#', '');
+                    
+                    return (
+                      <motion.button
+                        key={link.name}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: i * 0.1 }}
+                        onClick={() => handleMobileNav(link.href)}
+                        className={`text-left text-4xl font-display font-black tracking-tighter transition-all uppercase ${
+                          isActive 
+                            ? 'text-emerald-500 translate-x-4' 
+                            : 'text-zinc-900 dark:text-white hover:translate-x-2'
+                        }`}
+                      >
+                        {link.name}
+                      </motion.button>
+                    );
+                  })}
+                  <div className="h-[1px] bg-zinc-100 dark:bg-zinc-800 my-2" />
+                  <Link
+                    to="/start-project"
+                    onClick={() => setIsOpen(false)}
+                    className="w-full py-5 bg-emerald-500 text-white rounded-2xl text-center font-bold text-lg flex items-center justify-center gap-3"
                   >
-                    <span className={`inline-block transition-transform duration-300 ${
-                      isActive ? 'translate-x-2' : 'group-hover:translate-x-2'
-                    }`}>{link.name}</span>
-                  </button>
-                );
-              })}
-
-              <div className="pt-4 border-t border-black/5 dark:border-white/10">
-                <p className="px-4 text-[10px] font-bold uppercase tracking-widest text-black/40 dark:text-white/40 mb-4">Share WingsForShare</p>
-                <div className="flex px-4 space-x-3">
-                  {shareButtons.map((btn, idx) => (
-                    btn.onClick ? (
-                      <button
-                        key={idx}
-                        onClick={btn.onClick}
-                        className="w-10 h-10 flex items-center justify-center border border-black/10 dark:border-white/10 rounded-xl hover:bg-black/5 dark:hover:bg-white/5 transition-all"
-                        title={btn.label}
-                      >
-                        {btn.icon}
-                      </button>
-                    ) : (
-                      <a
-                        key={idx}
-                        href={btn.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="w-10 h-10 flex items-center justify-center border border-black/10 dark:border-white/10 rounded-xl hover:bg-black/5 dark:hover:bg-white/5 transition-all"
-                        title={btn.label}
-                      >
-                        {btn.icon}
-                      </a>
-                    )
-                  ))}
+                    <span>Start Your Project</span>
+                    <ArrowRight size={20} />
+                  </Link>
                 </div>
-              </div>
-
-              <div className="pt-4 flex flex-col space-y-4">
-                <Link
-                  to="/login"
-                  onClick={() => setIsOpen(false)}
-                  className="w-full py-4 text-center text-lg font-bold text-black dark:text-white border border-black/10 dark:border-white/10 rounded-2xl"
-                >
-                  Login
-                </Link>
-                <Link
-                  to="/start-project"
-                  onClick={() => setIsOpen(false)}
-                  className="w-full py-4 text-center text-lg font-bold bg-black dark:bg-white text-white dark:text-black rounded-2xl shadow-xl"
-                >
-                  Start Project
-                </Link>
-              </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </nav>
-  </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </nav>
+      </div>
+    </header>
   );
 }

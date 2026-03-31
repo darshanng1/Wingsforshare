@@ -2,15 +2,25 @@ export interface Product {
   id: string;
   slug: string;
   name: string;
+  title?: string; // Added for backward compatibility
   description: string;
   shortDescription: string;
-  category: 'Websites' | 'Business Apps' | 'Ecommerce' | 'Marketing Services' | 'Automation Tools' | 'BI Tools' | 'Retail' | 'Digital Visiting Card-Web Based';
+  category: string; // Changed to string for flexibility
   screenshot: string;
+  image?: string; // Added for backward compatibility
+  demo?: string; // Added for backward compatibility
   demoLink: string;
+  details?: string; // Added for backward compatibility
   adminLogin?: string;
   userLogin?: string;
   features: string[];
-  fullDescription: string;
+  fullDescription?: string;
+  result?: string; // Added for highlighting project outcomes
+  sector?: string;
+  industry?: string;
+  status?: 'live' | 'coming';
+  highlight?: boolean;
+  password?: string;
 }
 
 export interface InquiryFormData {
