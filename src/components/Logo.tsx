@@ -28,7 +28,7 @@ export const Logo: React.FC<LogoProps> = ({
       </svg>
       
       {variant === 'primary' && (
-        <span className="font-display font-black text-xl tracking-tighter text-zinc-900 dark:text-white">
+        <span className="font-display font-bold text-xl tracking-tight text-zinc-900 dark:text-white">
           WingsForShare
         </span>
       )}

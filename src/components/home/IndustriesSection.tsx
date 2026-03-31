@@ -12,19 +12,19 @@ interface IndustriesSectionProps {
 
 const industries = [
   {
-    icon: HardHat,
+    icon: <HardHat />,
     name: 'Pest Control',
     desc: 'Field service automation, route tracking, customer CRM, and reporting dashboards.',
     tech: ['Business Automation', 'CRM System', 'Analytics Dashboard']
   },
   {
-    icon: Building2,
+    icon: <Building2 />,
     name: 'Real Estate',
     desc: 'Lead management, property portals, automated follow-ups, and virtual tour integrations.',
     tech: ['Lead Generation', 'Property Portal', 'Marketing Automation']
   },
   {
-    icon: ShoppingCart,
+    icon: <ShoppingCart />,
     name: 'E-commerce',
     desc: 'High-conversion stores, inventory management, multi-channel selling, and customer loyalty.',
     tech: ['E-commerce Platform', 'Inventory Sync', 'Customer Analytics']
@@ -66,7 +66,7 @@ export const IndustriesSection: React.FC<IndustriesSectionProps> = ({ wordIndex,
                 >
                   <div className="flex items-start gap-6">
                     <div className="w-14 h-14 bg-zinc-50 dark:bg-zinc-900 rounded-2xl flex items-center justify-center shrink-0 group-hover:bg-emerald-500 group-hover:text-white transition-all duration-500">
-                      <ind.icon size={24} />
+                      {React.cloneElement(ind.icon as React.ReactElement, { size: 24 })}
                     </div>
                     <div className="flex-grow">
                       <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-3 gap-2">

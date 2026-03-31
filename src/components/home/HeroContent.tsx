@@ -36,10 +36,10 @@ export const HeroContent = ({ wordIndex, words }: HeroContentProps) => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/20 text-[10px] font-black uppercase tracking-[0.3em] text-accent mb-10"
+        className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-zinc-100/50 dark:bg-zinc-900/50 backdrop-blur-md border border-zinc-200/50 dark:border-zinc-800/50 text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-500 dark:text-zinc-400 mb-10"
       >
-        <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
-        <span>Revenue-Driven Digital Systems</span>
+        <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+        <span>Next-Gen Digital Systems</span>
       </motion.div>
 
       {/* --- Headline Section --- */}
@@ -48,20 +48,19 @@ export const HeroContent = ({ wordIndex, words }: HeroContentProps) => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.1 }}
-          className="text-6xl md:text-8xl lg:text-[11rem] font-black tracking-tighter leading-[0.85] mb-4 uppercase font-sans"
+          className="text-5xl md:text-8xl lg:text-[10rem] font-black tracking-tighter leading-tight md:leading-[0.8] mb-4"
         >
-          BUILD <br />
-          <span className="text-zinc-300 dark:text-zinc-800">SYSTEMS</span> <br />
+          DEVELOPMENT <br />
           {/* Rotating Service Word Container */}
-          <div className="h-[1.1em] overflow-visible relative mt-2">
+          <div className="h-[1.2em] overflow-visible relative">
             <AnimatePresence mode="wait">
               <motion.span
                 key={wordIndex}
                 initial={{ y: "100%", opacity: 0 }}
                 animate={{ y: "0%", opacity: 1 }}
                 exit={{ y: "-100%", opacity: 0 }}
-                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                className={`absolute left-0 italic font-serif font-light tracking-tight ${words[wordIndex].color} whitespace-nowrap lowercase`}
+                transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
+                className={`absolute left-0 italic serif ${words[wordIndex].color} whitespace-nowrap`}
               >
                 {words[wordIndex].text}
               </motion.span>
@@ -75,9 +74,9 @@ export const HeroContent = ({ wordIndex, words }: HeroContentProps) => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.2 }}
-        className="text-xl md:text-2xl text-zinc-500 dark:text-zinc-400 max-w-xl mb-12 leading-relaxed font-light"
+        className="text-xl md:text-2xl text-zinc-500 dark:text-zinc-400 max-w-xl mb-12 leading-relaxed font-medium"
       >
-        We engineer high-performance <span className="text-zinc-900 dark:text-white font-medium">Digital Infrastructure</span> designed to scale your revenue through precision code and data-driven growth.
+        We build high-performance **Web Solutions**, **Mobile Apps**, and **BI Tools** integrated with **SEO Strategies** to dominate your market.
       </motion.p>
 
       {/* --- CTA Section --- */}
@@ -89,12 +88,12 @@ export const HeroContent = ({ wordIndex, words }: HeroContentProps) => {
       >
         <Link 
           to="/start-project" 
-          className="w-full sm:w-auto px-12 py-6 bg-accent text-white text-lg font-black uppercase tracking-widest rounded-2xl flex items-center justify-center gap-3 group shadow-2xl shadow-accent/30 hover:shadow-accent/50 hover:-translate-y-1 transition-all"
+          className="btn-primary w-full sm:w-auto px-12 py-6 text-lg flex items-center justify-center gap-3 group shadow-2xl shadow-emerald-500/20"
         >
           Launch Project
           <ArrowRight size={20} className="group-hover:translate-x-2 transition-transform" />
         </Link>
-        <a href="#portfolio" className="w-full sm:w-auto px-12 py-6 glass text-lg font-black uppercase tracking-widest rounded-2xl flex items-center justify-center gap-3 hover:bg-white/10 transition-all">
+        <a href="#portfolio" className="btn-outline w-full sm:w-auto px-12 py-6 text-lg backdrop-blur-sm">
           Explore Work
         </a>
       </motion.div>

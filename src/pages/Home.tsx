@@ -19,7 +19,6 @@ import { IndustriesSection } from '../components/home/IndustriesSection';
 import { WhyChooseUsSection } from '../components/home/WhyChooseUsSection';
 import { PlanningSection } from '../components/home/PlanningSection';
 import { ContactSection } from '../components/home/ContactSection';
-import { TestimonialsSection } from '../components/home/TestimonialsSection';
 
 const featuredApps = [
   {
@@ -357,9 +356,6 @@ export default function Home() {
 
       {/* Why Choose Us Section */}
       <WhyChooseUsSection />
-
-      {/* Testimonials Section */}
-      <TestimonialsSection />
 
       {/* Consultation & Meeting Section */}
       <PlanningSection />

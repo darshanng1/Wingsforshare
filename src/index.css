@@ -4,39 +4,6 @@
 @theme {
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Space Grotesk", sans-serif;
-
-  --color-brand-50: #f3f0ff;
-  --color-brand-100: #e4dffc;
-  --color-brand-200: #cbbef9;
-  --color-brand-300: #a693f3;
-  --color-brand-400: #7c62e9;
-  --color-brand-500: #5e3fe0;
-  --color-brand-600: #4d30c8;
-  --color-brand-700: #3f27a5;
-  --color-brand-800: #352484;
-  --color-brand-900: #2d226a;
-  --color-brand-950: #1a1240;
-
-  --color-teal-50: #effefa;
-  --color-teal-100: #c7fff4;
-  --color-teal-200: #90ffe9;
-  --color-teal-300: #51f5d8;
-  --color-teal-400: #1ee0c2;
-  --color-teal-500: #06c4ac;
-  --color-teal-600: #019e8e;
-  --color-teal-700: #067f74;
-  --color-teal-800: #0b645e;
-  --color-teal-900: #0e524e;
-  --color-teal-950: #003331;
-  
-  --color-warm-50: #fff7ed;
-  --color-warm-100: #ffedd5;
-  --color-warm-200: #fed7aa;
-  --color-warm-300: #fdba74;
-  --color-warm-400: #fb923c;
-  --color-warm-500: #f97316;
-  --color-warm-600: #ea580c;
-  --color-warm-700: #c2410c;
 }
 
 @keyframes gradient-x {
@@ -54,22 +21,18 @@
   animation: gradient-x 3s ease infinite;
 }
 
-.glass {
-  @apply bg-white/70 dark:bg-black/70 backdrop-blur-xl border border-black/5 dark:border-white/5;
-}
-
 .glass-card {
   background: rgba(255, 255, 255, 0.03);
   backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.dark .glass-card {
+.dark-mode .glass-card {
   background: rgba(0, 0, 0, 0.2);
   border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-@variant dark (&:where(.dark, .dark *));
+@variant dark (&:where(.dark-mode, .dark-mode *));
 
 @layer base {
   html {
@@ -95,11 +58,11 @@
     display: block;
   }
   
-  body.light {
+  body.light-mode {
     @apply bg-white text-zinc-900;
   }
   
-  body.dark {
+  body.dark-mode {
     @apply bg-[#030303] text-zinc-100;
   }
   

@@ -162,10 +162,10 @@ export default function ProjectIntakeForm() {
                 className="grid grid-cols-2 gap-4"
               >
                 {[
-                  { id: 'Website Development', icon: Globe, color: 'emerald' },
-                  { id: 'SEO', icon: Search, color: 'blue' },
-                  { id: 'Mobile App Development', icon: Smartphone, color: 'purple' },
-                  { id: 'Business Intelligence', icon: BarChart3, color: 'orange' }
+                  { id: 'Website Development', icon: <Globe />, color: 'emerald' },
+                  { id: 'SEO', icon: <Search />, color: 'blue' },
+                  { id: 'Mobile App Development', icon: <Smartphone />, color: 'purple' },
+                  { id: 'Business Intelligence', icon: <BarChart3 />, color: 'orange' }
                 ].map((service) => (
                   <button
                     key={service.id}
@@ -180,10 +180,10 @@ export default function ProjectIntakeForm() {
                     <div className={`w-10 h-10 rounded-xl flex items-center justify-center mb-4 transition-colors ${
                       formData.selectedService === service.id ? 'bg-white/20' : 'bg-zinc-100 dark:bg-zinc-800 group-hover:bg-emerald-500/10'
                     }`}>
-                      <service.icon 
-                        size={20} 
-                        className={formData.selectedService === service.id ? 'text-white' : 'text-zinc-400 group-hover:text-emerald-500'} 
-                      />
+                      {React.cloneElement(service.icon as React.ReactElement, { 
+                        size: 20, 
+                        className: formData.selectedService === service.id ? 'text-white' : 'text-zinc-400 group-hover:text-emerald-500' 
+                      })}
                     </div>
                     <span className="text-[10px] font-bold text-zinc-900 dark:text-white block leading-tight">{service.id}</span>
                   </button>

@@ -5,43 +5,37 @@ import { ArrowRight, Zap, Globe, Smartphone, TrendingUp, BarChart, Cpu } from 'l
 
 const solutions = [
   {
-    icon: Globe,
-    iconColor: 'text-emerald-500',
+    icon: <Globe className="text-emerald-500" />,
     title: 'Custom Web Development',
     desc: 'High-performance, SEO-optimized enterprise websites and web applications designed to convert visitors into loyal customers.',
     href: '/services/web-development'
   },
   {
-    icon: Smartphone,
-    iconColor: 'text-blue-500',
+    icon: <Smartphone className="text-blue-500" />,
     title: 'Mobile App Development',
     desc: 'Custom iOS and Android mobile applications built with React Native and Flutter for seamless cross-platform performance.',
     href: '/services/app-development'
   },
   {
-    icon: TrendingUp,
-    iconColor: 'text-orange-500',
+    icon: <TrendingUp className="text-orange-500" />,
     title: 'SEO & Growth Marketing',
     desc: 'Data-driven SEO strategies, keyword optimization, and growth hacking to scale your organic search presence and ROI.',
     href: '/services/seo-growth'
   },
   {
-    icon: BarChart,
-    iconColor: 'text-purple-500',
+    icon: <BarChart className="text-purple-500" />,
     title: 'Business Intelligence (BI)',
     desc: 'Advanced data analytics, custom dashboards, and BI tools to transform raw data into actionable business intelligence.',
     href: '/services/business-intelligence'
   },
   {
-    icon: Cpu,
-    iconColor: 'text-emerald-500',
+    icon: <Cpu className="text-emerald-500" />,
     title: 'Custom Software Solutions',
     desc: 'Tailor-made enterprise software and automation systems built to solve complex business challenges and unique workflows.',
     href: '/services/custom-software'
   },
   {
-    icon: Zap,
-    iconColor: 'text-yellow-500',
+    icon: <Zap className="text-yellow-500" />,
     title: 'Digital Transformation',
     desc: 'Modernizing legacy systems with cutting-edge technology, cloud integration, and AI-driven automation for the digital age.',
     href: '/services/digital-transformation'
@@ -81,7 +75,7 @@ export const SolutionsSection = () => {
               className="bg-white dark:bg-[#030303] p-12 hover:bg-zinc-50 dark:hover:bg-zinc-900/50 transition-colors group"
             >
               <div className="w-14 h-14 rounded-2xl bg-zinc-50 dark:bg-zinc-900 flex items-center justify-center mb-8 group-hover:bg-emerald-500 group-hover:text-white transition-all duration-500">
-                <solution.icon size={24} className={solution.iconColor} />
+                {React.cloneElement(solution.icon as React.ReactElement, { size: 24 })}
               </div>
               <h3 className="text-2xl font-bold mb-4 tracking-tight">{solution.title}</h3>
               <p className="text-zinc-500 dark:text-zinc-400 text-sm leading-relaxed mb-8">

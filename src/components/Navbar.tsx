@@ -72,16 +72,11 @@ export default function Navbar() {
     }
   };
 
-  const handleMobileNav = (href: string) => {
-    if (href.startsWith('#')) {
-      const targetId = href.replace('#', '');
-      if (location.pathname !== '/') {
-        navigate('/', { state: { scrollTo: targetId } });
-      } else {
-        scrollToSection(targetId);
-      }
+  const handleMobileNav = (targetId: string) => {
+    if (location.pathname !== '/') {
+      navigate('/', { state: { scrollTo: targetId } });
     } else {
-      navigate(href);
+      scrollToSection(targetId);
     }
     setIsOpen(false);
   };
@@ -96,7 +91,7 @@ export default function Navbar() {
     { name: 'Solutions', href: '#solutions' },
     { name: 'Portfolio', href: '#portfolio' },
     { name: 'Industries', href: '#industries' },
-    { name: 'Contact', href: '/contact' },
+    { name: 'Contact', href: '#contact' },
   ];
 
   return (
@@ -121,62 +116,40 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-10">
+          <div className="hidden lg:flex items-center gap-8">
             {navLinks.map((link) => {
               const isActive = activeSection === link.href.replace('#', '');
-              const isExternal = !link.href.startsWith('#');
-              
-              if (isExternal) {
-                return (
-                  <Link
-                    key={link.name}
-                    to={link.href}
-                    className={`relative text-[13px] font-display font-bold uppercase tracking-[0.15em] transition-all group py-2 ${
-                      location.pathname === link.href
-                        ? 'text-emerald-500' 
-                        : 'text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white'
-                    }`}
-                  >
-                    {link.name}
-                    <span className={`absolute bottom-0 left-0 w-full h-[2px] bg-emerald-500 origin-left transition-transform duration-300 ${location.pathname === link.href ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`} />
-                  </Link>
-                );
-              }
-
               return (
                 <a
                   key={link.name}
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
-                  className={`relative text-[13px] font-display font-bold uppercase tracking-[0.15em] transition-all group py-2 ${
+                  className={`text-[11px] font-bold uppercase tracking-widest transition-all hover:text-emerald-500 ${
                     isActive 
                       ? 'text-emerald-500' 
-                      : 'text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white'
+                      : 'text-zinc-500 dark:text-zinc-400'
                   }`}
                 >
                   {link.name}
-                  <span className={`absolute bottom-0 left-0 w-full h-[2px] bg-emerald-500 origin-left transition-transform duration-300 ${isActive ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`} />
                 </a>
               );
             })}
           </div>
 
           {/* Actions */}
-          <div className="hidden lg:flex items-center gap-6">
+          <div className="hidden lg:flex items-center gap-4">
             <button
               onClick={toggleTheme}
-              className="w-10 h-10 rounded-full flex items-center justify-center text-zinc-500 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all hover:scale-110 active:scale-95"
+              className="w-10 h-10 rounded-full flex items-center justify-center text-zinc-500 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all"
             >
               {theme === 'light' ? <Moon size={18} /> : <Sun size={18} />}
             </button>
             <div className="w-[1px] h-4 bg-zinc-200 dark:bg-zinc-800" />
             <Link 
               to="/start-project" 
-              className="relative group overflow-hidden px-8 py-3 bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 rounded-full text-[12px] font-display font-bold uppercase tracking-widest transition-all hover:shadow-[0_0_30px_rgba(16,185,129,0.3)] active:scale-95"
+              className="px-6 py-2.5 bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 rounded-full text-[11px] font-bold uppercase tracking-widest hover:opacity-90 transition-all active:scale-95 shadow-lg shadow-zinc-900/10 dark:shadow-white/10"
             >
-              <span className="relative z-10">Start Project</span>
-              <div className="absolute inset-0 bg-emerald-500 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
-              <span className="absolute inset-0 bg-emerald-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl" />
+              Start Project
             </Link>
           </div>
 
@@ -206,27 +179,21 @@ export default function Navbar() {
                 className="absolute top-full left-0 right-0 mt-4 p-6 bg-white dark:bg-zinc-900 rounded-[2.5rem] border border-zinc-200 dark:border-zinc-800 shadow-2xl lg:hidden overflow-hidden"
               >
                 <div className="flex flex-col gap-6">
-                  {navLinks.map((link, i) => {
-                    const isExternal = !link.href.startsWith('#');
-                    const isActive = isExternal 
-                      ? location.pathname === link.href 
-                      : activeSection === link.href.replace('#', '');
-                    
+                  {navLinks.map((link) => {
+                    const targetId = link.href.replace('#', '');
+                    const isActive = activeSection === targetId;
                     return (
-                      <motion.button
+                      <button
                         key={link.name}
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: i * 0.1 }}
-                        onClick={() => handleMobileNav(link.href)}
-                        className={`text-left text-4xl font-display font-black tracking-tighter transition-all uppercase ${
+                        onClick={() => handleMobileNav(targetId)}
+                        className={`text-left text-2xl font-bold tracking-tight transition-all ${
                           isActive 
-                            ? 'text-emerald-500 translate-x-4' 
-                            : 'text-zinc-900 dark:text-white hover:translate-x-2'
+                            ? 'text-emerald-500 translate-x-2' 
+                            : 'text-zinc-900 dark:text-white'
                         }`}
                       >
                         {link.name}
-                      </motion.button>
+                      </button>
                     );
                   })}
                   <div className="h-[1px] bg-zinc-100 dark:bg-zinc-800 my-2" />

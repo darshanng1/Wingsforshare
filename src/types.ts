@@ -14,7 +14,7 @@ export interface Product {
   adminLogin?: string;
   userLogin?: string;
   features: string[];
-  fullDescription?: string;
+  fullDescription: string;
   result?: string; // Added for highlighting project outcomes
   sector?: string;
   industry?: string;

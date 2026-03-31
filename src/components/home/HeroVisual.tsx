@@ -1,9 +1,8 @@
 import React from 'react';
 import { motion, AnimatePresence, MotionValue } from 'motion/react';
-import { Smartphone, Search, BarChart3, IndianRupee } from 'lucide-react';
+import { Smartphone, Search, BarChart3 } from 'lucide-react';
 import { MiniWebMockup, MiniAppMockup, MiniSEOMockup, MiniBIMockup } from './MiniMockups';
 import { WingsVisual } from './WingsVisual';
-import { cn } from '../../lib/utils';
 
 /**
  * HeroVisualProps: Defines the properties required by the HeroVisual component.
@@ -55,58 +54,46 @@ export const HeroVisual = ({ rotateX, rotateY, textX, textY, wordIndex, words }:
       {/* --- Main Visual: Dynamic Dashboard --- */}
       <motion.div
         style={{ x: textX, y: textY }}
-        className="absolute z-30 w-full max-w-[320px] lg:max-w-[480px] bg-white dark:bg-zinc-900/90 backdrop-blur-2xl rounded-[2.5rem] border border-zinc-200/50 dark:border-zinc-800/50 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.3)] overflow-hidden group/mockup"
+        className="absolute z-30 w-full max-w-[320px] lg:max-w-[450px] bg-white dark:bg-zinc-900/80 backdrop-blur-xl rounded-[2rem] lg:rounded-[2.5rem] border border-zinc-200/50 dark:border-zinc-800/50 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.2)] lg:shadow-[0_100px_150px_-30px_rgba(0,0,0,0.3)] overflow-hidden group/mockup"
       >
         {/* Dashboard Header */}
-        <div className="p-5 border-b border-zinc-100/50 dark:border-zinc-800/50 flex items-center justify-between bg-zinc-50/50 dark:bg-zinc-800/50">
-          <div className="flex gap-2">
-            <div className="w-3 h-3 rounded-full bg-red-400/20" />
-            <div className="w-3 h-3 rounded-full bg-amber-400/20" />
-            <div className="w-3 h-3 rounded-full bg-emerald-400/20" />
+        <div className="p-4 lg:p-5 border-b border-zinc-100/50 dark:border-zinc-800/50 flex items-center justify-between bg-zinc-50/50 dark:bg-zinc-800/50">
+          <div className="flex gap-1.5 lg:gap-2">
+            <div className="w-2.5 h-2.5 lg:w-3 lg:h-3 rounded-full bg-red-400/30" />
+            <div className="w-2.5 h-2.5 lg:w-3 lg:h-3 rounded-full bg-amber-400/30" />
+            <div className="w-2.5 h-2.5 lg:w-3 lg:h-3 rounded-full bg-emerald-400/30" />
           </div>
-          <div className="flex items-center gap-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-            <span className="text-[10px] font-black uppercase tracking-widest opacity-60">System Live</span>
+          <div className="px-3 py-1 lg:px-4 lg:py-1.5 rounded-full bg-emerald-500/10 text-emerald-500 text-[8px] lg:text-[10px] font-black uppercase tracking-widest border border-emerald-500/20">
+            {words[wordIndex].label}
           </div>
         </div>
 
-        {/* Dashboard Content */}
-        <div className="p-6 lg:p-8">
-          <div className="flex items-center justify-between mb-8">
-            <div>
-              <p className="text-[10px] font-black uppercase tracking-[0.2em] opacity-40 mb-1">Performance Overview</p>
-              <h3 className="text-xl font-black tracking-tight italic">Revenue Engine v4.0</h3>
-            </div>
-            <div className="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center text-accent">
-              <IndianRupee size={20} />
-            </div>
-          </div>
+        {/* Dashboard Content: Mockups */}
+        <div className="p-6 lg:p-8 space-y-4 lg:space-y-6">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={wordIndex}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              className="space-y-6"
+            >
+              {wordIndex === 0 && <MiniWebMockup />}
+              {wordIndex === 1 && <MiniAppMockup />}
+              {wordIndex === 2 && <MiniSEOMockup />}
+              {wordIndex === 3 && <MiniBIMockup />}
+            </motion.div>
+          </AnimatePresence>
 
-          <div className="grid grid-cols-2 gap-4 mb-8">
-            {[
-              { label: 'Revenue', value: '₹12.4L', trend: '+23.4%', color: 'text-accent' },
-              { label: 'Conversion', value: '4.8%', trend: '+1.2%', color: 'text-purple-400' },
-              { label: 'Active Users', value: '2,847', trend: '+18%', color: 'text-blue-400' },
-              { label: 'Leads', value: '342', trend: '+45%', color: 'text-emerald-400' },
-            ].map((stat, i) => (
-              <div key={stat.label} className="p-4 rounded-2xl bg-black/5 dark:bg-white/[0.03] border border-black/5 dark:border-white/5">
-                <p className="text-[9px] font-black uppercase tracking-widest opacity-30 mb-1">{stat.label}</p>
-                <p className="text-xl font-black tracking-tight">{stat.value}</p>
-                <p className={cn("text-[9px] font-bold mt-1", stat.color)}>{stat.trend}</p>
-              </div>
-            ))}
-          </div>
-
-          <div className="p-5 rounded-2xl bg-black/5 dark:bg-white/[0.03] border border-black/5 dark:border-white/5">
-            <div className="flex items-center justify-between mb-4">
-              <span className="text-[9px] font-black uppercase tracking-widest opacity-30">Traffic Growth</span>
-              <span className="text-[9px] font-bold text-accent">Last 7 Days</span>
+          {/* Dashboard Footer: Stats */}
+          <div className="grid grid-cols-2 gap-4 lg:gap-6">
+            <div className="p-4 lg:p-5 rounded-2xl lg:rounded-3xl bg-zinc-50 dark:bg-zinc-800/50 border border-zinc-100 dark:border-zinc-800">
+              <p className="text-[8px] lg:text-[10px] text-zinc-400 font-black uppercase tracking-widest mb-1 lg:mb-2">Efficiency</p>
+              <p className="text-xl lg:text-2xl font-black tracking-tight">94.2%</p>
             </div>
-            <div className="h-20 w-full relative">
-              <svg viewBox="0 0 400 100" className="w-full h-full" preserveAspectRatio="none">
-                <path d="M0,80 C50,75 100,85 150,60 C200,35 250,50 300,20 C350,-10 400,10 400,10" fill="none" stroke="#ff005e" strokeWidth="4" strokeLinecap="round" className="animate-draw" />
-                <path d="M0,80 C50,75 100,85 150,60 C200,35 250,50 300,20 C350,-10 400,10 400,10 L400,100 L0,100 Z" fill="url(#chartGrad)" className="opacity-20" />
-              </svg>
+            <div className="p-4 lg:p-5 rounded-2xl lg:rounded-3xl bg-zinc-50 dark:bg-zinc-800/50 border border-zinc-100 dark:border-zinc-800">
+              <p className="text-[8px] lg:text-[10px] text-zinc-400 font-black uppercase tracking-widest mb-1 lg:mb-2">ROI</p>
+              <p className="text-xl lg:text-2xl font-black tracking-tight">{wordIndex === 3 ? "8.4x" : "3.8x"}</p>
             </div>
           </div>
         </div>

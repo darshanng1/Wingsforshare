@@ -1,32 +1,20 @@
-import React, { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'motion/react';
+import { motion } from 'motion/react';
 import { CheckCircle, ExternalLink, ArrowRight, Camera, Layout, Smartphone, Search, Mail, Sparkles, Zap, Shield, Globe } from 'lucide-react';
 import InquiryForm from '../components/InquiryForm';
 
 export default function ArchitectPortfolio() {
-  const heroRef = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: heroRef,
-    offset: ["start start", "end start"]
-  });
-
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
-
   return (
     <div className="pt-16 bg-white dark:bg-[#0a0a0a] transition-colors duration-300">
       {/* Hero */}
-      <section ref={heroRef} className="py-32 bg-black text-white overflow-hidden relative min-h-[80vh] flex items-center">
-        <motion.div 
-          style={{ y }}
-          className="absolute inset-0 opacity-30"
-        >
+      <section className="py-32 bg-black text-white overflow-hidden relative min-h-[80vh] flex items-center">
+        <div className="absolute inset-0 opacity-30">
           <img 
             src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=1920&h=1080" 
             alt="Architecture Background" 
             className="w-full h-full object-cover scale-110"
             referrerPolicy="no-referrer"
           />
-        </motion.div>
+        </div>
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">

@@ -8,12 +8,11 @@ import { Product } from '../../data/products';
  * ProductCard: A reusable card component for showcasing individual projects or products.
  * Features: Category badges, hover animations, and demo/detail links.
  */
-export const ProductCard = React.forwardRef<HTMLDivElement, { product: Product }>(({ product }, ref) => (
+export const ProductCard: React.FC<{ product: Product }> = ({ product }) => (
   <motion.div
-    ref={ref}
     initial={{ opacity: 0, y: 20 }}
-    animate={{ opacity: 1, y: 0 }}
-    exit={{ opacity: 0, scale: 0.9, transition: { duration: 0.2 } }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true }}
     whileHover={{ y: -10 }}
     className="group relative bg-white dark:bg-[#111] rounded-[2.5rem] border border-black/5 dark:border-white/10 overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 flex flex-col h-full"
   >
@@ -101,7 +100,7 @@ export const ProductCard = React.forwardRef<HTMLDivElement, { product: Product }
       </div>
     </div>
   </motion.div>
-));
+);
 
 /**
  * MiniWebMockup: A simplified visual representation of a web application.
