@@ -8,17 +8,18 @@ import { Product } from '../../data/products';
  * ProductCard: A reusable card component for showcasing individual projects or products.
  * Features: Category badges, hover animations, and demo/detail links.
  */
-export const ProductCard: React.FC<{ product: Product }> = ({ product }) => (
+export const ProductCard = React.forwardRef<HTMLDivElement, { product: Product }>(({ product }, ref) => (
   <motion.div
+    ref={ref}
     initial={{ opacity: 0, y: 20 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true }}
+    animate={{ opacity: 1, y: 0 }}
+    exit={{ opacity: 0, scale: 0.9, transition: { duration: 0.2 } }}
     whileHover={{ y: -10 }}
-    className="group relative bg-white dark:bg-[#111] rounded-[2.5rem] border border-black/5 dark:border-white/10 overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 flex flex-col h-full"
+    className="group relative bg-card-bg backdrop-blur-[12px] rounded-[2.5rem] border border-card-border overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 flex flex-col h-full"
   >
     {/* Category Badge */}
     <div className="absolute top-6 left-6 z-20 flex flex-col gap-2">
-      <div className="px-4 py-2 bg-white/90 dark:bg-black/90 backdrop-blur-md text-gray-900 dark:text-white text-[10px] font-black uppercase tracking-widest rounded-full shadow-xl border border-black/5 dark:border-white/10">
+      <div className="px-4 py-2 bg-card-bg/90 backdrop-blur-md text-text-primary text-[10px] font-bold uppercase tracking-widest rounded-full shadow-xl border border-card-border">
         {product.category}
       </div>
       {product.highlight && (
@@ -71,36 +72,36 @@ export const ProductCard: React.FC<{ product: Product }> = ({ product }) => (
     {/* Content */}
     <div className="p-8 flex-grow flex flex-col">
       <div className="flex items-center justify-between mb-4">
-        <span className="text-[10px] font-bold uppercase tracking-widest text-emerald-500">{product.industry}</span>
+        <span className="text-[10px] font-bold uppercase tracking-widest text-accent">{product.industry}</span>
         <div className="flex items-center gap-1 text-amber-500">
           <Star size={10} fill="currentColor" />
           <span className="text-[10px] font-bold">4.9</span>
         </div>
       </div>
-      <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-emerald-500 transition-colors tracking-tight">
+      <h4 className="text-xl font-semibold text-text-primary mb-3 group-hover:text-accent transition-colors tracking-tight">
         {product.name}
       </h4>
-      <p className="text-gray-500 dark:text-gray-400 text-sm line-clamp-2 mb-6 flex-grow">
+      <p className="text-text-secondary text-sm line-clamp-2 mb-6 flex-grow">
         {product.shortDescription || product.description}
       </p>
 
       {product.password && (
-        <div className="mb-6 p-3 bg-zinc-50 dark:bg-zinc-800/50 rounded-xl border border-dashed border-zinc-200 dark:border-zinc-700">
-          <p className="text-[9px] font-bold uppercase tracking-widest text-zinc-400 mb-1">Demo Access</p>
-          <p className="text-xs font-mono text-emerald-500">Password: {product.password}</p>
+        <div className="mb-6 p-3 bg-text-primary/5 rounded-xl border border-dashed border-card-border">
+          <p className="text-[9px] font-bold uppercase tracking-widest text-text-secondary/50 mb-1">Demo Access</p>
+          <p className="text-xs font-mono text-accent">Password: {product.password}</p>
         </div>
       )}
       
-      <div className="pt-6 border-t border-black/5 dark:border-white/5 flex items-center justify-between">
+      <div className="pt-6 border-t border-card-border flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-          <span className="text-[10px] font-bold uppercase tracking-widest text-zinc-400">Result: {product.result}</span>
+          <div className="w-2 h-2 rounded-full bg-accent animate-pulse" />
+          <span className="text-[10px] font-bold uppercase tracking-widest text-text-secondary/50">Result: {product.result}</span>
         </div>
-        <ArrowRight className="text-zinc-300 group-hover:text-emerald-500 group-hover:translate-x-2 transition-all" size={20} />
+        <ArrowRight className="text-text-secondary/30 group-hover:text-accent group-hover:translate-x-2 transition-all" size={20} />
       </div>
     </div>
   </motion.div>
-);
+));
 
 /**
  * MiniWebMockup: A simplified visual representation of a web application.

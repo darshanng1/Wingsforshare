@@ -15,19 +15,16 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
       const saved = localStorage.getItem('theme') as Theme;
       if (saved) return saved;
       
-      // Default to system preference if no saved preference
-      if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        return 'dark';
-      }
-      return 'light';
+      // Default to dark for premium SaaS feel
+      return 'dark';
     }
     return 'dark';
   });
 
   useEffect(() => {
-    const body = window.document.body;
-    body.classList.remove('light-mode', 'dark-mode');
-    body.classList.add(`${theme}-mode`);
+    const root = window.document.documentElement;
+    root.classList.remove('light', 'dark');
+    root.classList.add(theme);
     localStorage.setItem('theme', theme);
   }, [theme]);
 

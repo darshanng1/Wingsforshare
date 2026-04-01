@@ -68,62 +68,60 @@ export default function MeetingBooking() {
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className="bg-black dark:bg-white text-white dark:text-black p-5 md:p-12 rounded-[3rem] shadow-[0_32px_64px_-16px_rgba(0,0,0,0.2)] dark:shadow-[0_32px_64px_-16px_rgba(255,255,255,0.05)] relative overflow-hidden group"
+      className="card-premium p-8 md:p-12 relative overflow-hidden group"
     >
-      <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-500/20 rounded-full blur-3xl -z-10 group-hover:bg-emerald-500/30 transition-colors" />
-      <div className="absolute bottom-0 left-0 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl -z-10" />
+      <div className="absolute top-0 right-0 w-64 h-64 bg-accent/5 rounded-full blur-3xl -z-10 group-hover:bg-accent/10 transition-colors" />
+      <div className="absolute bottom-0 left-0 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl -z-10" />
       
-      <div className="mb-2 relative z-10">
-        <div className="inline-flex items-center space-x-2 bg-white/10 dark:bg-black/10 px-4 py-2 rounded-full mb-4 border border-white/5 dark:border-black/5">
-          <Video size={16} className="text-emerald-500" />
-          <span className="text-[10px] font-bold uppercase tracking-widest opacity-60">1-on-1 Strategy Call</span>
+      <div className="mb-8 relative z-10">
+        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-accent/10 border border-accent/20 text-[10px] font-bold uppercase tracking-widest text-accent mb-4">
+          <Video size={16} />
+          <span>1-on-1 Strategy Call</span>
         </div>
-        <h3 className="text-4xl md:text-5xl font-bold tracking-tighter mb-2 leading-tight">Book a Project <br /> Strategy Session</h3>
-        <p className="text-[#F3F4F6] text-base md:text-lg leading-[1.6] font-normal mt-2 mb-4 max-w-[90%] md:max-w-md">
+        <h3 className="text-[32px] md:text-[40px] font-bold text-text-primary mb-4 tracking-tight leading-tight">Book a Project <br /> Strategy Session</h3>
+        <p className="text-text-secondary text-[16px] leading-relaxed max-w-md">
           Select a time that works for you. We'll discuss your project requirements and provide a technical roadmap.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 relative z-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 relative z-10">
         <div className="space-y-6">
           <div className="space-y-2">
-            <label className="text-xs font-bold uppercase tracking-widest opacity-40 ml-4">Select Date & Time</label>
+            <label className="text-[10px] font-bold uppercase tracking-widest text-text-secondary ml-4">Select Date & Time</label>
             <div className="relative">
-              <CalendarIcon className="absolute left-4 top-1/2 -translate-y-1/2 opacity-20 z-10" size={18} />
+              <CalendarIcon className="absolute left-4 top-1/2 -translate-y-1/2 text-text-secondary opacity-50 z-10" size={18} />
               <DatePicker
                 selected={selectedDate}
-                onChange={(date) => setSelectedDate(date)}
+                onChange={(date: Date | null) => setSelectedDate(date)}
                 showTimeSelect
                 dateFormat="MMMM d, yyyy h:mm aa"
                 minDate={new Date()}
-                className="w-full bg-white/5 dark:bg-black/5 border border-transparent focus:border-white/10 dark:focus:border-black/10 rounded-2xl py-4 pl-12 pr-6 outline-none transition-all font-medium"
+                className="w-full bg-white/5 border border-white/10 focus:border-accent/50 rounded-2xl py-4 pl-12 pr-6 outline-none transition-all text-text-primary font-medium"
               />
             </div>
           </div>
 
           <div className="space-y-4">
-            <div className="flex items-center space-x-3 opacity-60">
-              <Clock size={16} />
+            <div className="flex items-center gap-3 text-text-secondary">
+              <Clock size={16} className="text-accent" />
               <span className="text-sm font-medium">Duration: 30 Minutes</span>
             </div>
-            <div className="flex items-center space-x-3 opacity-60">
-              <Video size={16} />
+            <div className="flex items-center gap-3 text-text-secondary">
+              <Video size={16} className="text-accent" />
               <span className="text-sm font-medium">Platform: Google Meet</span>
             </div>
           </div>
         </div>
 
         <div className="flex flex-col justify-end">
-          <motion.button 
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
+          <button 
             onClick={handleBooking}
-            className="w-full bg-emerald-500 text-white py-5 rounded-2xl font-bold text-lg hover:bg-emerald-600 transition-all flex items-center justify-center space-x-2 shadow-xl shadow-emerald-500/20"
+            className="btn-primary w-full justify-center"
           >
             <span>Confirm Meeting</span>
             <ArrowRight size={20} />
-          </motion.button>
-          <p className="text-center mt-4 text-xs opacity-40 font-medium uppercase tracking-widest">
+          </button>
+          <p className="text-center mt-4 text-[10px] text-text-secondary/50 font-bold uppercase tracking-widest">
             Instant Confirmation & Link Generation
           </p>
         </div>

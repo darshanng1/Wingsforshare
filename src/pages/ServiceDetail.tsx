@@ -2,7 +2,7 @@ import React from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { 
-  Globe, Smartphone, BarChart, Briefcase, Zap, 
+  Layout, Smartphone, BarChart, Briefcase, Zap, 
   CheckCircle, ArrowRight, Rocket, Shield, Cpu,
   Database, Search, Target, MessageSquare
 } from 'lucide-react';
@@ -14,7 +14,7 @@ const servicesData: Record<string, any> = {
     title: 'Web Development Company',
     subtitle: 'High-Performance Websites That Drive Results',
     description: 'As a leading web development company, we specialize in creating custom, SEO-optimized websites that serve as powerful growth engines for your business.',
-    icon: <Globe className="text-blue-500" />,
+    icon: <Layout className="text-blue-500" />,
     features: [
       'Custom Website Design & Development',
       'Ecommerce Solutions (Shopify, WooCommerce)',
@@ -161,7 +161,10 @@ export default function ServiceDetail() {
             <span className="text-[10px] font-bold uppercase tracking-widest text-black/60 dark:text-white/60">Professional Technology Services</span>
           </motion.div>
           
-          <h1 className="mb-6 tracking-tighter">{service.title}</h1>
+          <h1 className="mb-6 tracking-tighter flex items-center justify-center gap-4">
+            <span className="shrink-0 opacity-80">{service.icon}</span>
+            {service.title}
+          </h1>
           <h2 className="text-xl md:text-2xl text-black/40 dark:text-white/40 italic serif mb-8">{service.subtitle}</h2>
           
           <p className="text-lg md:text-xl text-black/60 dark:text-white/60 max-w-3xl mx-auto leading-relaxed mb-12">

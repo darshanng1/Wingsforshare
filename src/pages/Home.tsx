@@ -5,9 +5,11 @@ import {
   BarChart3, Rocket, Building2, ShoppingCart, HardHat, CheckCircle2
 } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
+import { InView } from 'react-intersection-observer';
 import ProjectIntakeForm from '../components/ProjectIntakeForm';
 import SEO from '../components/SEO';
 import { products } from '../data/products';
+import { useScrollSpy } from '../contexts/ScrollContext';
 
 // --- Imported Hero Components ---
 import { ProductCard } from '../components/home/MiniMockups';
@@ -19,6 +21,7 @@ import { IndustriesSection } from '../components/home/IndustriesSection';
 import { WhyChooseUsSection } from '../components/home/WhyChooseUsSection';
 import { PlanningSection } from '../components/home/PlanningSection';
 import { ContactSection } from '../components/home/ContactSection';
+import { TestimonialsSection } from '../components/home/TestimonialsSection';
 
 const featuredApps = [
   {
@@ -57,6 +60,7 @@ export default function Home() {
   const [search, setSearch] = useState('');
   const [filter, setFilter] = useState('All');
   const [visibleItems, setVisibleItems] = useState(6);
+  const { setActiveSection } = useScrollSpy();
 
   const allProjects = React.useMemo(() => {
     // Prepend featured apps to the project list
@@ -127,21 +131,6 @@ export default function Home() {
     }
   }, [location]);
 
-  const [wordIndex, setWordIndex] = useState(0);
-  const words = [
-    { text: "WEB DEV", color: "text-emerald-500", bg: "from-emerald-500/20", label: "Web Development", keywords: ["React", "Next.js", "Node.js", "E-commerce"] },
-    { text: "MOBILE APPS", color: "text-blue-500", bg: "from-blue-500/20", label: "App Development", keywords: ["iOS", "Android", "Flutter", "React Native"] },
-    { text: "SEO GROWTH", color: "text-purple-500", bg: "from-purple-500/20", label: "SEO Optimization", keywords: ["Keywords", "Backlinks", "Ranking", "Analytics"] },
-    { text: "BI TOOLS", color: "text-orange-500", bg: "from-orange-500/20", label: "Business Intelligence", keywords: ["Dashboards", "Data Mining", "ROI", "Automation"] }
-  ];
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setWordIndex((prev) => (prev + 1) % words.length);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, []);
-
   const heroRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
     target: heroRef,
@@ -193,127 +182,112 @@ export default function Home() {
   };
 
   return (
-    <div className="bg-white dark:bg-[#0a0a0a] transition-colors duration-500 overflow-hidden">
+    <div className="bg-bg transition-colors duration-500 overflow-hidden">
       <SEO
         title="Wings Technology - Software, Web, App & Growth Agency"
         description="Wings Technology helps businesses scale through custom software, high-performance web development, mobile apps, and data-driven growth strategies."
       />
 
       {/* Hero Section */}
-      <section
-        ref={heroRef}
-        className="relative min-h-screen flex items-center pt-32 pb-24 overflow-hidden"
-        onMouseMove={handleMouseMove}
-        onMouseLeave={handleMouseLeave}
+      <InView
+        as="section"
+        id="hero"
+        threshold={0.5}
+        onChange={(inView) => { if (inView) setActiveSection('hero'); }}
       >
-        {/* Background Elements */}
-        <div className="absolute inset-0 -z-10 overflow-hidden">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={wordIndex}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 1.5 }}
-              className={`absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] ${words[wordIndex].bg} via-transparent to-transparent blur-[120px] opacity-40`}
-            />
-          </AnimatePresence>
-          
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:40px_40px]" />
-          
-          {/* Dynamic Floating Particles */}
-          {[...Array(20)].map((_, i) => (
-            <motion.div
-              key={i}
-              animate={{
-                y: [0, -100, 0],
-                x: [0, Math.random() * 50 - 25, 0],
-                opacity: [0.1, 0.3, 0.1],
-                scale: [1, 1.2, 1]
-              }}
-              transition={{
-                duration: 10 + Math.random() * 10,
-                repeat: Infinity,
-                ease: "easeInOut",
-                delay: Math.random() * 5
-              }}
-              className="absolute w-1 h-1 bg-emerald-500/20 rounded-full"
-              style={{
-                top: `${Math.random() * 100}%`,
-                left: `${Math.random() * 100}%`,
-              }}
-            />
-          ))}
-        </div>
-
-        <div className="container-custom relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
-            {/* --- Hero Content (Left Column) --- */}
-            <HeroContent wordIndex={wordIndex} words={words} />
-
-            {/* --- Hero Visual (Right Column) --- */}
-            <HeroVisual 
-              rotateX={rotateX} 
-              rotateY={rotateY} 
-              textX={textX} 
-              textY={textY} 
-              wordIndex={wordIndex} 
-              words={words} 
-            />
-
-            {/* Background Decorative Rings */}
-            <div className="absolute inset-0 -z-10">
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] h-[140%] bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-emerald-500/5 via-transparent to-transparent blur-3xl" />
-              <motion.div 
-                animate={{ rotate: 360 }}
-                transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] h-[110%] border border-emerald-500/10 rounded-full border-dashed" 
-              />
-              <motion.div 
-                animate={{ rotate: -360 }}
-                transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] h-[90%] border border-blue-500/10 rounded-full border-dashed" 
-              />
+        <section
+          ref={heroRef}
+          className="relative min-h-screen flex items-center py-[120px] overflow-hidden"
+          onMouseMove={handleMouseMove}
+          onMouseLeave={handleMouseLeave}
+        >
+          {/* Background Depth Elements */}
+          <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none">
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full">
+              <div className="absolute top-[-15%] left-[-10%] w-[60%] h-[60%] rounded-full bg-accent/5 blur-[140px]" />
+              <div className="absolute bottom-[-15%] right-[-10%] w-[60%] h-[60%] rounded-full bg-blue-500/5 blur-[140px]" />
+              {/* Subtle glow behind right panel */}
+              <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[500px] h-[500px] bg-accent/10 blur-[120px] rounded-full opacity-50" />
             </div>
+            <div className="absolute inset-0 bg-grid" />
+            <div className="absolute inset-0 bg-gradient-to-b from-bg via-transparent to-bg opacity-60" />
+          </div>
+
+          <div className="container-custom relative z-10">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center">
+              <HeroContent />
+              
+              <div className="lg:col-span-7 flex justify-center">
+                <HeroVisual 
+                  rotateX={rotateX} 
+                  rotateY={rotateY} 
+                  textX={textX} 
+                  textY={textY} 
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+      </InView>
+
+      {/* --- Trust Section --- */}
+      <section className="py-20 border-y border-text-primary/5 bg-text-primary/[0.01]">
+        <div className="container-custom">
+          <p className="text-center text-[10px] font-bold uppercase tracking-[0.3em] text-text-secondary/40 mb-12">
+            Powering Systems for Global Leaders
+          </p>
+          <div className="flex flex-wrap justify-center items-center gap-12 md:gap-24 opacity-30 grayscale hover:grayscale-0 transition-all duration-700">
+            {['Vercel', 'Stripe', 'Linear', 'Supabase', 'Framer'].map((company) => (
+              <span key={company} className="text-2xl font-black tracking-tighter text-text-primary hover:text-accent cursor-default transition-colors">
+                {company}
+              </span>
+            ))}
           </div>
         </div>
       </section>
+
       {/* Start Project Section */}
-      <section id="start-project-hero" className="section-padding bg-zinc-50 dark:bg-[#050505] relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-emerald-500/20 to-transparent" />
+      <InView
+        as="section"
+        id="start-project-hero"
+        threshold={0.5}
+        onChange={(inView) => { if (inView) setActiveSection('start-project-hero'); }}
+      >
+      <section id="start-project-hero" className="section-padding bg-bg relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-accent/20 to-transparent" />
         <div className="container-custom">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-            <div>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center">
+            <div className="lg:col-span-5">
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-[10px] font-bold uppercase tracking-widest text-emerald-600 dark:text-emerald-400 mb-8"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/20 text-[12px] font-bold uppercase tracking-widest text-accent mb-8"
               >
                 <Rocket size={14} />
                 <span>Kickstart Your Growth</span>
               </motion.div>
-              <h2 className="text-5xl md:text-7xl font-black tracking-tighter leading-[0.9] mb-8">
+              <h2 className="text-[40px] md:text-[48px] font-bold tracking-tight leading-[1.2] mb-8">
                 READY TO <br />
-                <span className="text-zinc-400 dark:text-zinc-700">TRANSFORM?</span>
+                <span className="text-text-secondary">TRANSFORM?</span>
               </h2>
-              <p className="text-lg text-zinc-500 dark:text-zinc-400 max-w-lg mb-12 leading-relaxed">
+              <p className="text-[16px] md:text-[18px] text-text-secondary max-w-lg mb-12 leading-relaxed">
                 Tell us about your vision. Whether it's a high-performance web platform, a native mobile app, or a complex BI system, we have the expertise to build it.
               </p>
               
-              <div className="space-y-6">
+              <div className="space-y-8">
                 {[
                   { title: 'Expert Consultation', desc: 'Direct access to senior technical architects' },
                   { title: 'Tailored Roadmap', desc: 'Custom strategy aligned with your business goals' },
                   { title: 'Rapid Execution', desc: 'Agile development with consistent delivery' }
                 ].map((item, i) => (
-                  <div key={i} className="flex items-start gap-4">
-                    <div className="w-6 h-6 rounded-full bg-emerald-500/10 flex items-center justify-center mt-1">
-                      <CheckCircle2 size={14} className="text-emerald-500" />
+                  <div key={i} className="flex items-start gap-5">
+                    <div className="w-8 h-8 rounded-full bg-accent/10 flex items-center justify-center mt-1 border border-accent/20">
+                      <CheckCircle2 size={16} className="text-accent" />
                     </div>
                     <div>
-                      <h4 className="font-bold text-sm uppercase tracking-widest">{item.title}</h4>
-                      <p className="text-xs text-zinc-500">{item.desc}</p>
+                      <h4 className="font-bold text-[14px] uppercase tracking-widest text-text-primary mb-1">{item.title}</h4>
+                      <p className="text-[14px] text-text-secondary mb-0">{item.desc}</p>
                     </div>
                   </div>
                 ))}
@@ -324,38 +298,60 @@ export default function Home() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="relative"
+              className="lg:col-span-7 relative"
             >
-              <div className="absolute -inset-4 bg-emerald-500/10 blur-3xl rounded-full opacity-50" />
-              <div className="bg-white dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-800 rounded-[3rem] p-8 md:p-12 shadow-2xl">
+              <div className="absolute -inset-10 bg-accent/5 blur-[100px] rounded-full opacity-50" />
+              <div className="card-premium relative z-10">
                 <ProjectIntakeForm />
               </div>
             </motion.div>
           </div>
         </div>
       </section>
+      </InView>
 
       {/* Solutions Section */}
-      <SolutionsSection />
+      <InView
+        as="div"
+        threshold={0.3}
+        onChange={(inView) => { if (inView) setActiveSection('solutions'); }}
+      >
+        <SolutionsSection />
+      </InView>
 
       {/* Live Demo Showcase Section */}
-      <LiveDemoSection 
-        search={search}
-        setSearch={setSearch}
-        filter={filter}
-        setFilter={setFilter}
-        categories={categories}
-        displayedProjects={displayedProjects}
-        filteredProjects={filteredProjects}
-        visibleItems={visibleItems}
-        setVisibleItems={setVisibleItems}
-      />
+      <InView
+        as="div"
+        threshold={0.3}
+        onChange={(inView) => { if (inView) setActiveSection('portfolio'); }}
+      >
+        <LiveDemoSection 
+          search={search}
+          setSearch={setSearch}
+          filter={filter}
+          setFilter={setFilter}
+          categories={categories}
+          displayedProjects={displayedProjects}
+          filteredProjects={filteredProjects}
+          visibleItems={visibleItems}
+          setVisibleItems={setVisibleItems}
+        />
+      </InView>
 
       {/* Across Industries Section */}
-      <IndustriesSection wordIndex={wordIndex} words={words} />
+      <InView
+        as="div"
+        threshold={0.3}
+        onChange={(inView) => { if (inView) setActiveSection('industries'); }}
+      >
+        <IndustriesSection />
+      </InView>
 
       {/* Why Choose Us Section */}
       <WhyChooseUsSection />
+
+      {/* Testimonials Section */}
+      <TestimonialsSection />
 
       {/* Consultation & Meeting Section */}
       <PlanningSection />

@@ -1,24 +1,18 @@
-/**
- * Centralized asset management for the application.
- * Replace these placeholder URLs with your actual hosted assets.
- */
-
 export const ASSETS = {
   LOGO: {
-    // Replace with the uploaded logo URL
-    PRIMARY: 'https://ais-dev-5nx7d23qzsizxwkhujw4h6-45023050426.asia-southeast1.run.app/logo.png', // Updated to the provided logo
-    SYMBOL: 'https://ais-dev-5nx7d23qzsizxwkhujw4h6-45023050426.asia-southeast1.run.app/logo.png',
+    LIGHT: '/logo-light.png', // Upload your light mode logo to /public/logo-light.png
+    DARK: '/logo-dark.png',   // Upload your dark mode logo to /public/logo-dark.png
+    SYMBOL: '/logo-symbol.png' // Optional symbol logo
   },
-  HERO: {
-    VIDEO: 'https://assets.mixkit.co/videos/preview/mixkit-digital-animation-of-a-circuit-board-1544-large.mp4',
-    IMAGE: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1920&auto=format&fit=crop',
-  },
-  SECTIONS: {
-    SOLUTIONS: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1200&auto=format&fit=crop',
-    PORTFOLIO: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop',
-    CONTACT: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop',
-  },
-  VIDEOS: {
-    TECH_BACKGROUND: 'https://assets.mixkit.co/videos/preview/mixkit-abstract-technology-background-with-blue-lines-23165-large.mp4',
+  IMAGES: {
+    HERO: 'https://picsum.photos/seed/wings-hero/1920/1080',
+    ABOUT: 'https://picsum.photos/seed/wings-about/1200/800',
+    PLACEHOLDER: 'https://picsum.photos/seed/wings-placeholder/800/600',
+    SERVICES: {
+      WEB: 'https://picsum.photos/seed/wings-web/800/600',
+      APP: 'https://picsum.photos/seed/wings-app/800/600',
+      BI: 'https://picsum.photos/seed/wings-bi/800/600',
+      CONSULTING: 'https://picsum.photos/seed/wings-consulting/800/600'
+    }
   }
 };

@@ -1,4 +1,6 @@
 import React from 'react';
+import { useTheme } from '../contexts/ThemeContext';
+import { ASSETS } from '../constants/assets';
 
 interface LogoProps {
   className?: string;
@@ -9,29 +11,26 @@ export const Logo: React.FC<LogoProps> = ({
   className = "h-10", 
   variant = 'primary'
 }) => {
+  const { theme } = useTheme();
+  
+  // Use the correct logo based on theme
+  const logoSrc = theme === 'dark' ? ASSETS.LOGO.DARK : ASSETS.LOGO.LIGHT;
+
   return (
-    <div className={`flex items-center gap-2 ${className}`}>
-      <svg 
-        viewBox="0 0 40 40" 
-        fill="none" 
-        xmlns="http://www.w3.org/2000/svg"
-        className="h-full w-auto"
-      >
-        <rect width="40" height="40" rx="10" className="fill-emerald-500" />
-        <path 
-          d="M10 12L16 28L20 18L24 28L30 12" 
-          stroke="white" 
-          strokeWidth="4" 
-          strokeLinecap="round" 
-          strokeLinejoin="round" 
-        />
-      </svg>
-      
-      {variant === 'primary' && (
-        <span className="font-display font-bold text-xl tracking-tight text-zinc-900 dark:text-white">
-          WingsForShare
-        </span>
-      )}
+    <div className={`flex items-center ${className}`}>
+      <img 
+        src={logoSrc} 
+        alt="WingsForShare Logo" 
+        className="h-full w-auto block object-contain"
+        style={{ minWidth: '1px' }} // Ensure it's not collapsed
+        referrerPolicy="no-referrer"
+        onError={(e) => {
+          console.error(`Failed to load logo: ${logoSrc}`);
+          // Fallback to text if logo fails to load
+          e.currentTarget.style.display = 'none';
+          e.currentTarget.parentElement?.insertAdjacentHTML('beforeend', '<span class="font-display font-bold text-xl tracking-tighter">WingsForShare</span>');
+        }}
+      />
     </div>
   );
 };
