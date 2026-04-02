@@ -13,9 +13,9 @@ interface SEOProps {
 }
 
 const SEO: React.FC<SEOProps> = ({
-  title = "WingsForShare – Digital Solutions Agency & Custom Software Development",
-  description = "WingsForShare is a leading digital solutions agency specializing in custom software development, business automation tools, and SEO services to scale your business.",
-  keywords = "digital solutions agency, custom software development, business automation, SEO services, digital marketing, WingsForShare, software marketplace",
+  title = "WingsForShare – Business Technology Growth Agency",
+  description = "WingsForShare is a leading digital solutions agency specializing in business technology growth, custom software development, and high-performance digital systems.",
+  keywords = "business technology growth, digital solutions agency, custom software development, business automation, SEO services, WingsForShare",
   canonical = process.env.APP_URL || "https://wingsforshare.com",
   ogImage = `${process.env.APP_URL || "https://wingsforshare.com"}${ASSETS.LOGO.LIGHT}`,
   ogType = "website",

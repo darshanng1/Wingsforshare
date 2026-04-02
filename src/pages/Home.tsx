@@ -184,8 +184,8 @@ export default function Home() {
   return (
     <div className="bg-bg transition-colors duration-500 overflow-hidden">
       <SEO
-        title="Wings Technology - Software, Web, App & Growth Agency"
-        description="Wings Technology helps businesses scale through custom software, high-performance web development, mobile apps, and data-driven growth strategies."
+        title="WingsForShare - Business Technology Growth Agency"
+        description="WingsForShare helps businesses scale through custom software, high-performance web development, mobile apps, and data-driven growth strategies."
       />
 
       {/* Hero Section */}
@@ -209,11 +209,10 @@ export default function Home() {
               {/* Subtle glow behind right panel */}
               <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[500px] h-[500px] bg-accent/10 blur-[120px] rounded-full opacity-50" />
             </div>
-            <div className="absolute inset-0 bg-grid" />
             <div className="absolute inset-0 bg-gradient-to-b from-bg via-transparent to-bg opacity-60" />
           </div>
 
-          <div className="container-custom relative z-10 -mt-12 md:-mt-20">
+          <div className="container-custom relative z-10">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
               <div className="lg:col-span-5 flex flex-col justify-center">
                 <HeroContent />
@@ -232,22 +231,6 @@ export default function Home() {
         </section>
       </InView>
 
-      {/* --- Trust Section --- */}
-      <section className="py-20 border-y border-text-primary/5 bg-text-primary/[0.01]">
-        <div className="container-custom">
-          <p className="text-center text-[10px] font-bold uppercase tracking-[0.3em] text-text-secondary/40 mb-12">
-            Powering Systems for Global Leaders
-          </p>
-          <div className="flex flex-wrap justify-center items-center gap-12 md:gap-24 opacity-30 grayscale hover:grayscale-0 transition-all duration-700">
-            {['Vercel', 'Stripe', 'Linear', 'Supabase', 'Framer'].map((company) => (
-              <span key={company} className="text-2xl font-black tracking-tighter text-text-primary hover:text-accent cursor-default transition-colors">
-                {company}
-              </span>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Start Project Section */}
       <InView
         as="section"
@@ -255,56 +238,93 @@ export default function Home() {
         threshold={0.5}
         onChange={(inView) => { if (inView) setActiveSection('start-project-hero'); }}
       >
-      <section id="start-project-hero" className="section-padding bg-bg relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-accent/20 to-transparent" />
-        <div className="container-custom">
+      <section id="start-project-hero" className="relative py-24 md:py-32 bg-bg overflow-hidden">
+        {/* Atmospheric Background Elements */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-[-20%] left-[-10%] w-[70%] h-[70%] rounded-full bg-emerald-500/5 blur-[120px] animate-pulse" />
+          <div className="absolute bottom-[-20%] right-[-10%] w-[70%] h-[70%] rounded-full bg-blue-600/5 blur-[120px]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-bg via-transparent to-bg opacity-60" />
+        </div>
+
+        <div className="container-custom relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center">
-            <div className="lg:col-span-5">
+            <div className="lg:col-span-6">
               <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/20 text-[12px] font-bold uppercase tracking-widest text-accent mb-8"
+                className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-card-bg border border-card-border mb-10"
               >
-                <Rocket size={14} />
-                <span>Kickstart Your Growth</span>
+                <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                <span className="text-[10px] font-black text-text-secondary uppercase tracking-[0.4em]">Kickstart Your Growth</span>
               </motion.div>
-              <h2 className="text-[40px] md:text-[48px] font-bold tracking-tight leading-[1.2] mb-8">
-                READY TO <br />
-                <span className="text-text-secondary">TRANSFORM?</span>
-              </h2>
-              <p className="text-[16px] md:text-[18px] text-text-secondary max-w-lg mb-12 leading-relaxed">
-                Tell us about your vision. Whether it's a high-performance web platform, a native mobile app, or a complex BI system, we have the expertise to build it.
-              </p>
-              
+
               <div className="space-y-8">
-                {[
-                  { title: 'Expert Consultation', desc: 'Direct access to senior technical architects' },
-                  { title: 'Tailored Roadmap', desc: 'Custom strategy aligned with your business goals' },
-                  { title: 'Rapid Execution', desc: 'Agile development with consistent delivery' }
-                ].map((item, i) => (
-                  <div key={i} className="flex items-start gap-5">
-                    <div className="w-8 h-8 rounded-full bg-accent/10 flex items-center justify-center mt-1 border border-accent/20">
-                      <CheckCircle2 size={16} className="text-accent" />
+                <motion.h2 
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  className="font-display text-[56px] md:text-[96px] font-black tracking-[-0.04em] leading-[0.9] text-text-primary"
+                >
+                  READY TO <br />
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-emerald-500 to-blue-500">TRANSFORM?</span>
+                </motion.h2>
+
+                <motion.p 
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.1 }}
+                  className="text-[18px] md:text-[20px] text-text-secondary max-w-lg leading-relaxed font-medium"
+                >
+                  Tell us about your vision. Whether it's a high-performance web platform, a native mobile app, or a complex BI system, we have the expertise to build it.
+                </motion.p>
+                
+                <motion.div 
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.2 }}
+                  className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-8"
+                >
+                  {[
+                    { title: 'Expert Consultation', desc: 'Direct access to senior technical architects' },
+                    { title: 'Tailored Roadmap', desc: 'Custom strategy aligned with your business goals' },
+                    { title: 'Rapid Execution', desc: 'Agile development with consistent delivery' },
+                    { title: 'Global Standards', desc: 'Enterprise-grade security and performance' }
+                  ].map((item, i) => (
+                    <div key={i} className="group p-5 rounded-3xl bg-card-bg border border-card-border hover:bg-accent/5 hover:border-accent/20 transition-all duration-500">
+                      <div className="flex items-center gap-3 mb-3">
+                        <div className="w-6 h-6 rounded-full bg-emerald-500/10 flex items-center justify-center border border-emerald-500/20 group-hover:scale-110 transition-transform duration-500">
+                          <CheckCircle2 size={12} className="text-emerald-500" />
+                        </div>
+                        <h4 className="font-display font-black text-[12px] uppercase tracking-[0.2em] text-text-primary">{item.title}</h4>
+                      </div>
+                      <p className="text-[13px] text-text-secondary leading-relaxed mb-0">{item.desc}</p>
                     </div>
-                    <div>
-                      <h4 className="font-bold text-[14px] uppercase tracking-widest text-text-primary mb-1">{item.title}</h4>
-                      <p className="text-[14px] text-text-secondary mb-0">{item.desc}</p>
-                    </div>
-                  </div>
-                ))}
+                  ))}
+                </motion.div>
               </div>
             </div>
             
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              className="lg:col-span-7 relative"
+              className="lg:col-span-6 relative"
             >
-              <div className="absolute -inset-10 bg-accent/5 blur-[100px] rounded-full opacity-50" />
-              <div className="card-premium relative z-10">
-                <ProjectIntakeForm />
+              {/* Decorative Glows */}
+              <div className="absolute -top-20 -right-20 w-64 h-64 bg-emerald-500/10 blur-[100px] rounded-full" />
+              <div className="absolute -bottom-20 -left-20 w-64 h-64 bg-blue-600/10 blur-[100px] rounded-full" />
+              
+              <div className="relative z-10 p-1 rounded-[2.5rem] bg-gradient-to-br from-card-border via-card-bg to-transparent border border-card-border shadow-2xl backdrop-blur-xl">
+                <div className="bg-bg rounded-[2.25rem] p-8 md:p-10">
+                  <div className="mb-10 text-center">
+                    <h3 className="text-2xl font-black text-text-primary mb-2 tracking-tight">Project Intake</h3>
+                    <p className="text-xs font-bold text-text-secondary uppercase tracking-widest">Secure & Confidential</p>
+                  </div>
+                  <ProjectIntakeForm />
+                </div>
               </div>
             </motion.div>
           </div>

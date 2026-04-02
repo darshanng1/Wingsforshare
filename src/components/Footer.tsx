@@ -51,13 +51,13 @@ export default function Footer() {
 
           {/* Services Column */}
           <div>
-            <h4 className="text-[10px] font-bold uppercase tracking-widest text-text-primary mb-8">Services</h4>
+            <h4 className="text-[11px] font-black uppercase tracking-[0.3em] text-text-primary mb-8 font-display">Services</h4>
             <ul className="space-y-4">
               {services.map((service, i) => (
                 <li key={i}>
                   <Link
                     to={service.link}
-                    className="text-[14px] text-text-secondary hover:text-accent transition-colors flex items-center gap-2 group"
+                    className="text-[15px] font-medium text-text-secondary hover:text-accent transition-colors flex items-center gap-2 group"
                   >
                     {service.name}
                     <ArrowUpRight size={14} className="opacity-0 group-hover:opacity-100 transition-all" />
@@ -69,13 +69,13 @@ export default function Footer() {
 
           {/* Contact Column */}
           <div>
-            <h4 className="text-[10px] font-bold uppercase tracking-widest text-text-primary mb-8">Contact</h4>
+            <h4 className="text-[11px] font-black uppercase tracking-[0.3em] text-text-primary mb-8 font-display">Contact</h4>
             <ul className="space-y-6">
               <li className="flex items-start gap-4">
                 <Mail size={18} className="text-accent mt-1" />
                 <div>
-                  <p className="text-[10px] font-bold uppercase tracking-widest text-text-secondary/50 mb-1">Email Us</p>
-                  <a href="mailto:info@wingsforshare.com" className="text-[14px] font-bold text-text-primary hover:text-accent transition-colors">
+                  <p className="text-[10px] font-black uppercase tracking-[0.2em] text-text-secondary/40 mb-1">Email Us</p>
+                  <a href="mailto:info@wingsforshare.com" className="text-[15px] font-bold text-text-primary hover:text-accent transition-colors font-display">
                     info@wingsforshare.com
                   </a>
                 </div>
@@ -83,8 +83,8 @@ export default function Footer() {
               <li className="flex items-start gap-4">
                 <Phone size={18} className="text-accent mt-1" />
                 <div>
-                  <p className="text-[10px] font-bold uppercase tracking-widest text-text-secondary/50 mb-1">Call Us</p>
-                  <a href="tel:+918618764541" className="text-[14px] font-bold text-text-primary hover:text-accent transition-colors">
+                  <p className="text-[10px] font-black uppercase tracking-[0.2em] text-text-secondary/40 mb-1">Call Us</p>
+                  <a href="tel:+918618764541" className="text-[15px] font-bold text-text-primary hover:text-accent transition-colors font-display">
                     +91 86187 64541
                   </a>
                 </div>
@@ -94,12 +94,12 @@ export default function Footer() {
 
           {/* Address Column */}
           <div>
-            <h4 className="text-[10px] font-bold uppercase tracking-widest text-text-primary mb-8">Headquarters</h4>
+            <h4 className="text-[11px] font-black uppercase tracking-[0.3em] text-text-primary mb-8 font-display">Headquarters</h4>
             <div className="flex items-start gap-4">
               <MapPin size={18} className="text-accent mt-1" />
               <div>
-                <p className="text-[10px] font-bold uppercase tracking-widest text-text-secondary/50 mb-1">Location</p>
-                <p className="text-[14px] font-bold text-text-primary leading-relaxed">
+                <p className="text-[10px] font-black uppercase tracking-[0.2em] text-text-secondary/40 mb-1">Location</p>
+                <p className="text-[15px] font-bold text-text-primary leading-relaxed font-display">
                   15, A.K Max Layout, Kuduregere, Bangalore - 562162
                 </p>
               </div>

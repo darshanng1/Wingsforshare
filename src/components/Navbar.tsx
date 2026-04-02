@@ -78,19 +78,11 @@ export default function Navbar() {
 
   return (
     <header 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled 
-          ? 'py-4' 
-          : 'py-6 md:py-8'
-      }`}
+      className={`fixed top-4 left-1/2 -translate-x-1/2 w-[calc(100%-2rem)] max-w-7xl z-50 transition-all duration-500`}
     >
-      <div className="container-custom">
+      <div className="w-full">
         <nav 
-          className={`relative flex items-center justify-between px-6 py-3 md:px-8 md:py-4 rounded-full transition-all duration-500 ${
-            scrolled 
-              ? 'bg-bg/80 backdrop-blur-xl border border-text-primary/10 shadow-[0_8px_32px_rgba(0,0,0,0.1)]' 
-              : 'bg-transparent border border-transparent'
-          }`}
+          className={`relative flex items-center justify-between px-6 py-3 md:px-8 md:py-4 rounded-full transition-all duration-500 bg-bg/80 backdrop-blur-xl border border-text-primary/10 shadow-[0_8px_32px_rgba(0,0,0,0.1)]`}
         >
           {/* Logo */}
           <Link to="/" className="flex items-center group relative z-10">
@@ -108,7 +100,7 @@ export default function Navbar() {
                   <Link
                     key={link.name}
                     to={link.href}
-                    className={`relative text-[11px] font-bold uppercase tracking-[0.2em] transition-all group py-2 ${
+                    className={`relative text-[11px] font-black uppercase tracking-[0.3em] transition-all group py-2 font-display ${
                       location.pathname === link.href
                         ? 'text-accent' 
                         : 'text-text-secondary hover:text-text-primary'
@@ -125,7 +117,7 @@ export default function Navbar() {
                   key={link.name}
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
-                  className={`relative text-[11px] font-bold uppercase tracking-[0.2em] transition-all group py-2 ${
+                  className={`relative text-[11px] font-black uppercase tracking-[0.3em] transition-all group py-2 font-display ${
                     isActive 
                       ? 'text-accent' 
                       : 'text-text-secondary hover:text-text-primary'
@@ -175,44 +167,77 @@ export default function Navbar() {
           <AnimatePresence>
             {isOpen && (
               <motion.div
-                initial={{ opacity: 0, scale: 0.95, y: -20 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.95, y: -20 }}
-                className="absolute top-full left-0 right-0 mt-4 p-8 bg-bg/95 backdrop-blur-2xl rounded-[2.5rem] border border-text-primary/10 shadow-2xl lg:hidden overflow-hidden"
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: 'auto' }}
+                exit={{ opacity: 0, height: 0 }}
+                className="absolute top-full left-0 right-0 mt-4 bg-bg/95 backdrop-blur-2xl rounded-[2.5rem] border border-text-primary/10 shadow-2xl lg:hidden overflow-hidden"
               >
-                <div className="flex flex-col gap-8">
-                  {navLinks.map((link, i) => {
-                    const isExternal = !link.href.startsWith('#');
-                    const isActive = isExternal 
-                      ? location.pathname === link.href 
-                      : activeSection === link.href.replace('#', '');
+                <div className="p-8 flex flex-col gap-6">
+                  <div className="space-y-1">
+                    <p className="text-[10px] font-black text-accent uppercase tracking-[0.3em] mb-4">Navigation</p>
+                    {navLinks.map((link, i) => {
+                      const isExternal = !link.href.startsWith('#');
+                      const isActive = isExternal 
+                        ? location.pathname === link.href 
+                        : activeSection === link.href.replace('#', '');
+                      
+                      return (
+                        <motion.button
+                          key={link.name}
+                          initial={{ opacity: 0, x: -20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: i * 0.1 }}
+                          onClick={() => handleMobileNav(link.href)}
+                          className={`group flex items-center justify-between w-full py-3 text-left transition-all ${
+                            isActive 
+                              ? 'text-accent' 
+                              : 'text-text-primary'
+                          }`}
+                        >
+                          <span className="text-3xl font-black tracking-tighter uppercase">{link.name}</span>
+                          <motion.div
+                            initial={{ scale: 0 }}
+                            animate={{ scale: isActive ? 1 : 0 }}
+                            className="w-2 h-2 rounded-full bg-accent"
+                          />
+                        </motion.button>
+                      );
+                    })}
+                  </div>
+                  
+                  <div className="h-[1px] bg-text-primary/5 my-2" />
+                  
+                  <div className="space-y-6">
+                    <div className="flex items-center gap-4">
+                      {[Facebook, Linkedin, MessageCircle, Share2].map((Icon, i) => (
+                        <motion.a
+                          key={i}
+                          href="#"
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: 0.4 + (i * 0.1) }}
+                          className="w-10 h-10 rounded-xl bg-text-primary/5 flex items-center justify-center text-text-secondary"
+                        >
+                          <Icon size={18} />
+                        </motion.a>
+                      ))}
+                    </div>
                     
-                    return (
-                      <motion.button
-                        key={link.name}
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: i * 0.1 }}
-                        onClick={() => handleMobileNav(link.href)}
-                        className={`text-left text-3xl font-bold tracking-tight transition-all uppercase ${
-                          isActive 
-                            ? 'text-accent translate-x-4' 
-                            : 'text-text-primary hover:translate-x-2'
-                        }`}
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.6 }}
+                    >
+                      <Link
+                        to="/start-project"
+                        onClick={() => setIsOpen(false)}
+                        className="btn-primary w-full justify-center py-5 text-lg"
                       >
-                        {link.name}
-                      </motion.button>
-                    );
-                  })}
-                  <div className="h-[1px] bg-text-primary/10 my-2" />
-                  <Link
-                    to="/start-project"
-                    onClick={() => setIsOpen(false)}
-                    className="btn-primary w-full justify-center py-5 text-lg"
-                  >
-                    <span>Start Your Project</span>
-                    <ArrowRight size={20} />
-                  </Link>
+                        <span>Start Your Project</span>
+                        <ArrowRight size={20} className="ml-2" />
+                      </Link>
+                    </motion.div>
+                  </div>
                 </div>
               </motion.div>
             )}
