@@ -5,7 +5,7 @@ import { ArrowRight } from 'lucide-react';
 
 export const HeroContent = () => {
   return (
-    <div className="lg:col-span-5 flex flex-col justify-center">
+    <div className="flex flex-col justify-center">
       {/* --- Badge Section --- */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -22,7 +22,7 @@ export const HeroContent = () => {
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        className="text-text-primary mb-6 text-balance leading-[1.1]"
+        className="text-text-primary mb-8 text-balance leading-[1.05] tracking-[-0.03em] font-semibold text-[clamp(2.5rem,6vw,4.5rem)]"
       >
         Build High-Converting <br className="hidden md:block" />
         <span className="text-accent">Websites, Apps & SEO Systems</span>
@@ -33,9 +33,9 @@ export const HeroContent = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.2 }}
-        className="text-text-secondary max-w-xl mb-10 leading-[1.6] font-normal text-lg"
+        className="text-text-secondary max-w-[540px] mb-12 leading-[1.7] font-normal text-lg md:text-xl"
       >
-        We design and develop high-performance websites, mobile apps, and SEO strategies that help your business generate leads, increase traffic, and grow faster in the digital world.
+        Empower your brand with premium web development and custom mobile apps. We build scalable business systems designed to increase conversions and grow revenue through data-driven digital strategies.
       </motion.p>
 
       {/* --- CTA Section --- */}

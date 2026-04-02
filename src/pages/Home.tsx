@@ -197,7 +197,7 @@ export default function Home() {
       >
         <section
           ref={heroRef}
-          className="relative min-h-screen flex items-center py-[120px] overflow-hidden"
+          className="relative min-h-[110vh] flex items-center pt-[140px] pb-[100px] overflow-hidden"
           onMouseMove={handleMouseMove}
           onMouseLeave={handleMouseLeave}
         >
@@ -213,11 +213,13 @@ export default function Home() {
             <div className="absolute inset-0 bg-gradient-to-b from-bg via-transparent to-bg opacity-60" />
           </div>
 
-          <div className="container-custom relative z-10">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center">
-              <HeroContent />
+          <div className="container-custom relative z-10 -mt-12 md:-mt-20">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+              <div className="lg:col-span-5 flex flex-col justify-center">
+                <HeroContent />
+              </div>
               
-              <div className="lg:col-span-7 flex justify-center">
+              <div className="lg:col-span-7 flex justify-center lg:justify-end">
                 <HeroVisual 
                   rotateX={rotateX} 
                   rotateY={rotateY} 
