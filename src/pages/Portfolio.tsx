@@ -87,29 +87,31 @@ export default function Portfolio() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
-          className="mt-12 flex flex-col md:flex-row gap-4 items-center justify-between p-2 bg-zinc-50 dark:bg-zinc-900/50 rounded-2xl border border-zinc-200 dark:border-zinc-800"
+          className="mt-16 space-y-8"
         >
-          <div className="relative w-full md:w-96">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-400" size={18} />
-            <input 
-              type="text"
-              placeholder="Search projects..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-12 pr-4 py-3 bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20 transition-all"
-            />
+          <div className="relative group max-w-2xl mx-auto">
+            <div className="absolute -inset-1 bg-gradient-to-r from-accent/20 to-blue-500/20 rounded-full blur opacity-0 group-focus-within:opacity-100 transition duration-500" />
+            <div className="relative">
+              <Search className="absolute left-6 top-1/2 -translate-y-1/2 text-text-secondary/40 group-focus-within:text-accent transition-colors" size={20} />
+              <input 
+                type="text"
+                placeholder="Search projects by name, industry, or technology..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full pl-14 pr-6 py-5 bg-card-bg/50 backdrop-blur-xl border border-card-border rounded-full focus:outline-none focus:border-accent/50 transition-all text-text-primary font-medium placeholder:text-text-secondary/20 shadow-xl"
+              />
+            </div>
           </div>
           
-          <div className="flex items-center gap-2 w-full md:w-auto overflow-x-auto pb-2 md:pb-0 scrollbar-hide">
-            <Filter size={16} className="text-zinc-400 ml-2 hidden md:block" />
+          <div className="flex flex-wrap justify-center gap-3">
             {categories.map(cat => (
               <button
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
-                className={`px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition-all ${
+                className={`px-8 py-3 rounded-full text-[10px] font-black uppercase tracking-[0.2em] transition-all duration-500 border ${
                   selectedCategory === cat 
-                    ? 'bg-emerald-500 text-white shadow-lg shadow-emerald-500/20' 
-                    : 'bg-white dark:bg-zinc-950 text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-800 hover:border-emerald-500/50'
+                    ? 'bg-accent text-white border-accent shadow-2xl shadow-accent/40 scale-105' 
+                    : 'bg-card-bg/40 text-text-secondary/60 hover:text-text-primary border-card-border hover:border-accent/30'
                 }`}
               >
                 {cat}

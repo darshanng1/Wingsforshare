@@ -22,7 +22,7 @@ export default function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/portfolio" element={<Portfolio />} />
-            <Route path="/product/:id" element={<ProductDetail />} />
+            <Route path="/product/:slug" element={<ProductDetail />} />
             <Route path="/start-project" element={<StartProject />} />
             <Route path="/login" element={<Login />} />
             <Route path="/seo" element={<SEOPage />} />

@@ -1,11 +1,6 @@
-import React, { useRef } from 'react';
-import { motion } from 'motion/react';
-import { Star, Quote, ChevronLeft, ChevronRight } from 'lucide-react';
-import Slider from 'react-slick';
-
-// Import slick-carousel css
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
+import { Star, Quote, ChevronLeft, ChevronRight, CheckCircle2, ArrowUpRight } from 'lucide-react';
 
 const testimonials = [
   {
@@ -15,7 +10,8 @@ const testimonials = [
     role: "Operations Director",
     content: "Wings Technology transformed our manual tracking into a high-performance BI system. Our operational efficiency increased by 300% within the first quarter. Their technical precision is unmatched.",
     image: "https://i.pravatar.cc/150?u=rajesh",
-    rating: 5
+    rating: 5,
+    tag: "Enterprise BI"
   },
   {
     id: 2,
@@ -24,7 +20,8 @@ const testimonials = [
     role: "CTO",
     content: "The mobile app developed by Wings has become the backbone of our field operations. The geo-fencing and real-time tracking features are flawless. A truly professional team.",
     image: "https://i.pravatar.cc/150?u=sarah",
-    rating: 5
+    rating: 5,
+    tag: "Mobile Ecosystem"
   },
   {
     id: 3,
@@ -33,171 +30,171 @@ const testimonials = [
     role: "Founder",
     content: "Their SEO growth strategy took us from page 10 to the top 3 results for our most competitive keywords. The ROI we've seen is incredible. Highly recommended for any scaling business.",
     image: "https://i.pravatar.cc/150?u=amit",
-    rating: 5
-  },
-  {
-    id: 4,
-    name: "Elena Rodriguez",
-    company: "EcoSmart Systems",
-    role: "Product Manager",
-    content: "Working with Wings was a seamless experience. They understood our complex data requirements and built a dashboard that even our non-technical staff loves to use.",
-    image: "https://i.pravatar.cc/150?u=elena",
-    rating: 5
+    rating: 5,
+    tag: "Growth Strategy"
   }
 ];
 
 export function TestimonialsSection() {
-  const sliderRef = useRef<Slider>(null);
-
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 5000,
-    arrows: false,
-    fade: false,
-    cssEase: "cubic-bezier(0.87, 0, 0.13, 1)",
-    dotsClass: "slick-dots custom-dots",
-    appendDots: (dots: React.ReactNode) => (
-      <div className="!static mt-8">
-        <ul className="flex gap-1 justify-start m-0 p-0"> {dots} </ul>
-      </div>
-    ),
-    customPaging: (i: number) => (
-      <div className="h-1 w-2 bg-zinc-200 dark:bg-zinc-800 rounded-full transition-all duration-500 hover:bg-emerald-500/50" />
-    )
-  };
+  const [activeIdx, setActiveIdx] = useState(0);
+  const [direction, setDirection] = useState(0);
 
   const next = () => {
-    sliderRef.current?.slickNext();
+    setDirection(1);
+    setActiveIdx((prev) => (prev + 1) % testimonials.length);
   };
 
   const prev = () => {
-    sliderRef.current?.slickPrev();
+    setDirection(-1);
+    setActiveIdx((prev) => (prev - 1 + testimonials.length) % testimonials.length);
   };
 
+  useEffect(() => {
+    const timer = setInterval(next, 8000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const active = testimonials[activeIdx];
+
   return (
-    <section className="section-padding bg-bg relative overflow-hidden">
+    <section id="testimonials" className="py-16 md:py-20 bg-bg relative overflow-hidden">
       {/* Background Decorative Elements */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-accent/5 via-transparent to-transparent blur-3xl -z-10" />
-      
-      <div className="container-custom">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center">
-          {/* Left Column: Heading */}
+      <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
+        <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-accent/5 blur-[120px] rounded-full" />
+        <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-blue-500/5 blur-[120px] rounded-full" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808005_1px,transparent_1px),linear-gradient(to_bottom,#80808005_1px,transparent_1px)] bg-[size:80px_80px]" />
+      </div>
+
+      <div className="container-custom relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-20 items-center">
+          {/* Left Column: Context & Controls */}
           <div className="lg:col-span-5">
             <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-accent/10 border border-accent/20 text-accent text-[11px] font-black uppercase tracking-[0.3em] mb-8"
+            >
+              <Star size={14} className="fill-accent" />
+              <span>Verified Partnerships</span>
+            </motion.div>
+            
+            <motion.h2 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/20 text-[12px] font-bold uppercase tracking-widest text-accent mb-8"
+              className="text-5xl md:text-7xl font-black tracking-[-0.04em] text-text-primary leading-[0.95] mb-8"
             >
-              <Star size={14} />
-              <span>Client Success Stories</span>
-            </motion.div>
-            
-            <h2 className="mb-8 leading-tight">
               What Our <br />
-              <span className="text-accent">Partners</span> Say.
-            </h2>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-blue-500">Partners</span> Say.
+            </motion.h2>
             
-            <p className="text-[16px] md:text-[18px] text-text-secondary max-w-md mb-12 leading-relaxed">
-              We don't just build software; we build long-term partnerships. Here's how we've helped businesses across the globe scale their operations.
-            </p>
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="text-[18px] text-text-secondary/60 max-w-md mb-12 leading-relaxed font-medium"
+            >
+              We don't just build software; we engineer long-term growth engines. Here's how we've transformed industry leaders.
+            </motion.p>
 
-            <div className="flex items-center gap-4">
-              <button 
-                onClick={prev}
-                className="w-14 h-14 rounded-full border border-white/10 flex items-center justify-center hover:bg-accent hover:border-accent hover:text-bg transition-all group"
-                aria-label="Previous testimonial"
-              >
-                <ChevronLeft size={24} className="group-active:scale-90 transition-transform" />
-              </button>
-              <button 
-                onClick={next}
-                className="w-14 h-14 rounded-full border border-white/10 flex items-center justify-center hover:bg-accent hover:border-accent hover:text-bg transition-all group"
-                aria-label="Next testimonial"
-              >
-                <ChevronRight size={24} className="group-active:scale-90 transition-transform" />
-              </button>
+            <div className="flex items-center gap-6">
+              <div className="flex gap-3">
+                <button 
+                  onClick={prev}
+                  className="w-14 h-14 rounded-2xl border border-card-border bg-card-bg/50 flex items-center justify-center hover:bg-accent hover:border-accent hover:text-bg transition-all duration-500 group"
+                >
+                  <ChevronLeft size={24} className="group-hover:-translate-x-1 transition-transform" />
+                </button>
+                <button 
+                  onClick={next}
+                  className="w-14 h-14 rounded-2xl border border-card-border bg-card-bg/50 flex items-center justify-center hover:bg-accent hover:border-accent hover:text-bg transition-all duration-500 group"
+                >
+                  <ChevronRight size={24} className="group-hover:translate-x-1 transition-transform" />
+                </button>
+              </div>
+              <div className="h-px w-24 bg-card-border hidden sm:block" />
+              <div className="text-[11px] font-black uppercase tracking-widest text-text-secondary/40">
+                {String(activeIdx + 1).padStart(2, '0')} / {String(testimonials.length).padStart(2, '0')}
+              </div>
             </div>
           </div>
 
-          {/* Right Column: Testimonial Card */}
+          {/* Right Column: Immersive Testimonial */}
           <div className="lg:col-span-7 relative">
-            <div className="absolute -top-10 -left-10 text-accent/5">
-              <Quote size={200} />
+            <div className="absolute -top-20 -right-20 text-accent/5 pointer-events-none">
+              <Quote size={300} />
             </div>
             
-            <div className="relative z-10 testimonial-slider">
-              <Slider ref={sliderRef} {...settings}>
-                {testimonials.map((testimonial) => (
-                  <div key={testimonial.id} className="outline-none px-2 py-4">
-                    <div className="card-premium p-10 md:p-16">
-                      <div className="flex items-center gap-1 mb-8">
-                        {[...Array(testimonial.rating)].map((_, i) => (
-                          <Star key={i} size={16} className="fill-accent text-accent" />
-                        ))}
+            <div className="relative z-10 min-h-[500px] flex items-center">
+              <AnimatePresence mode="wait" custom={direction}>
+                <motion.div
+                  key={activeIdx}
+                  custom={direction}
+                  initial={{ opacity: 0, x: direction > 0 ? 100 : -100, scale: 0.95 }}
+                  animate={{ opacity: 1, x: 0, scale: 1 }}
+                  exit={{ opacity: 0, x: direction > 0 ? -100 : 100, scale: 1.05 }}
+                  transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                  className="w-full"
+                >
+                  <div className="p-12 md:p-16 rounded-[3.5rem] bg-card-bg border border-card-border shadow-[0_64px_128px_-32px_rgba(0,0,0,0.5)] relative overflow-hidden group">
+                    <div className="absolute top-0 right-0 p-8">
+                      <div className="px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 flex items-center gap-2">
+                        <CheckCircle2 size={14} className="text-emerald-500" />
+                        <span className="text-[10px] font-black text-emerald-500 uppercase tracking-widest">Verified Result</span>
                       </div>
+                    </div>
 
-                      <p className="text-[20px] md:text-[24px] font-medium tracking-tight leading-relaxed mb-12 italic text-text-primary opacity-90">
-                        "{testimonial.content}"
-                      </p>
+                    <div className="flex items-center gap-1 mb-10">
+                      {[...Array(active.rating)].map((_, i) => (
+                        <Star key={i} size={18} className="fill-accent text-accent" />
+                      ))}
+                    </div>
 
+                    <blockquote className="text-2xl md:text-3xl font-black tracking-tight leading-[1.3] text-text-primary mb-12">
+                      "{active.content}"
+                    </blockquote>
+
+                    <div className="flex flex-col md:flex-row md:items-center justify-between gap-8 pt-12 border-t border-card-border/50">
                       <div className="flex items-center gap-6">
-                        <div className="w-16 h-16 rounded-2xl overflow-hidden border-2 border-accent/20">
+                        <div className="w-20 h-20 rounded-3xl overflow-hidden border-2 border-accent/20 p-1 bg-bg">
                           <img 
-                            src={testimonial.image} 
-                            alt={testimonial.name}
-                            className="w-full h-full object-cover"
+                            src={active.image} 
+                            alt={active.name}
+                            className="w-full h-full object-cover rounded-2xl"
                             referrerPolicy="no-referrer"
                           />
                         </div>
                         <div>
-                          <h4 className="text-[20px] font-bold tracking-tight text-text-primary">{testimonial.name}</h4>
-                          <p className="text-[12px] text-accent font-bold uppercase tracking-widest">{testimonial.role}</p>
-                          <p className="text-[10px] text-text-secondary uppercase tracking-widest mt-1">{testimonial.company}</p>
+                          <h4 className="text-2xl font-black tracking-tight text-text-primary">{active.name}</h4>
+                          <div className="flex items-center gap-2 mt-1">
+                            <span className="text-[11px] text-accent font-black uppercase tracking-widest">{active.role}</span>
+                            <div className="w-1 h-1 rounded-full bg-text-secondary/20" />
+                            <span className="text-[11px] text-text-secondary/40 font-black uppercase tracking-widest">{active.company}</span>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <div className="flex flex-col items-end">
+                        <span className="text-[10px] font-black text-text-secondary/30 uppercase tracking-widest mb-2">Project Focus</span>
+                        <div className="px-4 py-2 rounded-xl bg-bg border border-card-border text-[11px] font-black text-text-primary uppercase tracking-widest flex items-center gap-2">
+                          {active.tag}
+                          <ArrowUpRight size={14} className="text-accent" />
                         </div>
                       </div>
                     </div>
                   </div>
-                ))}
-              </Slider>
+                </motion.div>
+              </AnimatePresence>
             </div>
 
-            {/* Decorative Background Card */}
-            <div className="absolute top-4 left-4 w-full h-full bg-accent/5 rounded-[32px] -z-10" />
+            {/* Decorative Stack Effect */}
+            <div className="absolute top-8 left-8 w-full h-full bg-accent/5 rounded-[3.5rem] -z-10 translate-y-4" />
+            <div className="absolute top-12 left-12 w-full h-full bg-blue-500/5 rounded-[3.5rem] -z-20 translate-y-8" />
           </div>
         </div>
       </div>
-
-      <style dangerouslySetInnerHTML={{ __html: `
-        .testimonial-slider .slick-dots li {
-          margin: 0;
-          width: auto;
-          height: auto;
-        }
-        .testimonial-slider .slick-dots li.slick-active div {
-          width: 2rem;
-          background-color: #00FF9D; /* accent */
-        }
-        .testimonial-slider .slick-list {
-          overflow: visible;
-        }
-        .testimonial-slider .slick-track {
-          display: flex !important;
-        }
-        .testimonial-slider .slick-slide {
-          height: inherit !important;
-          display: flex !important;
-          justify-content: center;
-        }
-        .testimonial-slider .slick-slide > div {
-          width: 100%;
-        }
-      `}} />
     </section>
   );
 }

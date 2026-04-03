@@ -47,7 +47,7 @@ async function startServer() {
   });
 
   // Vite middleware for development
-  const isProd = false;
+  const isProd = process.env.NODE_ENV === "production";
   
   if (!isProd) {
     const vite = await createViteServer({
@@ -57,8 +57,18 @@ async function startServer() {
     app.use(vite.middlewares);
   } else {
     const distPath = path.join(process.cwd(), "dist");
-    app.use(express.static(distPath));
+    
+    // Serve static files from dist
+    app.use(express.static(distPath, {
+      index: false, // Don't serve index.html from here, we handle it below
+    }));
+
+    // Handle SPA routing, but exclude static assets from falling back to index.html
     app.get("*", (req, res) => {
+      // If the request looks like a static asset but wasn't found by express.static, return 404
+      if (req.path.match(/\.(png|jpg|jpeg|svg|gif|webp|css|js|woff2?|ttf|eot|ico)$/)) {
+        return res.status(404).send("Asset not found");
+      }
       res.sendFile(path.join(distPath, "index.html"));
     });
   }

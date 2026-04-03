@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { Play, Star, ArrowUpRight, ArrowRight, TrendingUp, Cpu } from 'lucide-react';
+import { Play, Star, ArrowUpRight, ArrowRight, TrendingUp, Cpu, Sparkles, Lock } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Product } from '../../data/products';
 
@@ -14,19 +14,28 @@ export const ProductCard = React.forwardRef<HTMLDivElement, { product: Product }
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
     exit={{ opacity: 0, scale: 0.9, transition: { duration: 0.2 } }}
-    whileHover={{ y: -10 }}
-    className="group relative bg-card-bg backdrop-blur-[12px] rounded-[2.5rem] border border-card-border overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 flex flex-col h-full"
+    whileHover={{ y: -12 }}
+    className="group relative bg-card-bg backdrop-blur-xl rounded-[2.5rem] border border-card-border overflow-hidden shadow-sm hover:shadow-[0_32px_64px_-16px_rgba(0,0,0,0.2)] dark:hover:shadow-[0_32px_64px_-16px_rgba(0,0,0,0.5)] transition-all duration-700 flex flex-col h-full"
   >
     {/* Category Badge */}
     <div className="absolute top-6 left-6 z-20 flex flex-col gap-2">
-      <div className="px-4 py-2 bg-card-bg/90 backdrop-blur-md text-text-primary text-[10px] font-bold uppercase tracking-widest rounded-full shadow-xl border border-card-border">
+      <div className="px-4 py-2 bg-card-bg/90 backdrop-blur-md text-text-primary text-[10px] font-black uppercase tracking-[0.2em] rounded-full shadow-xl border border-card-border">
         {product.category}
       </div>
       {product.highlight && (
-        <div className="px-4 py-2 bg-emerald-500 text-white text-[10px] font-black uppercase tracking-widest rounded-full shadow-xl shadow-emerald-500/20">
-          Featured
+        <div className="px-4 py-2 bg-accent text-white text-[10px] font-black uppercase tracking-[0.2em] rounded-full shadow-xl shadow-accent/20 flex items-center gap-2">
+          <Sparkles size={10} className="fill-white" />
+          <span>Featured</span>
         </div>
       )}
+    </div>
+
+    {/* Live Status Indicator */}
+    <div className="absolute top-6 right-6 z-20">
+      <div className="flex items-center gap-2 px-3 py-1.5 bg-black/40 backdrop-blur-md rounded-full border border-white/10">
+        <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_8px_rgba(16,185,129,0.8)]" />
+        <span className="text-[9px] font-black text-white uppercase tracking-widest">Live Demo</span>
+      </div>
     </div>
 
     {/* Image Container */}
@@ -34,70 +43,87 @@ export const ProductCard = React.forwardRef<HTMLDivElement, { product: Product }
       <motion.img
         src={product.screenshot || product.image || 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop'}
         alt={product.name}
-        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+        className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
         referrerPolicy="no-referrer"
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col items-center justify-center p-6 text-center">
-        <p className="text-white text-sm font-medium mb-6 line-clamp-3 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-75">
+      
+      {/* Premium Overlay on Hover */}
+      <div className="absolute inset-0 bg-gradient-to-t from-bg via-bg/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col items-center justify-center p-8 text-center backdrop-blur-[2px]">
+        <motion.p 
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          className="text-text-primary text-sm font-medium mb-8 line-clamp-3 leading-relaxed"
+        >
           {product.description}
-        </p>
-        <div className="flex flex-wrap justify-center gap-2 mb-8 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-100">
+        </motion.p>
+        
+        <div className="flex flex-wrap justify-center gap-2 mb-10">
           {product.features.slice(0, 3).map((feature, i) => (
-            <span key={i} className="px-2 py-1 bg-white/20 backdrop-blur-md rounded text-[8px] font-bold text-white uppercase tracking-wider">
+            <span key={i} className="px-3 py-1.5 bg-accent/10 border border-accent/20 rounded-lg text-[9px] font-black text-accent uppercase tracking-widest">
               {feature}
             </span>
           ))}
         </div>
-        <div className="flex items-center space-x-3 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-150">
+        
+        <div className="flex items-center gap-4">
           <a
             href={product.demoLink || product.demo}
             target="_blank"
             rel="noreferrer"
-            className="bg-emerald-500 text-white px-6 py-2.5 rounded-full font-bold text-xs hover:bg-emerald-600 transition-colors flex items-center space-x-2"
+            className="bg-accent text-white px-8 py-3.5 rounded-2xl font-black text-[11px] uppercase tracking-[0.2em] hover:bg-accent/80 transition-all flex items-center gap-3 shadow-2xl shadow-accent/20"
           >
-            <span>Live Demo</span>
+            <span>Launch Demo</span>
             <Play size={12} fill="currentColor" />
           </a>
           <Link
-            to={`/portfolio/${product.slug}`}
-            className="bg-white text-gray-900 px-6 py-2.5 rounded-full font-bold text-xs hover:bg-gray-100 transition-colors flex items-center space-x-2"
+            to={`/product/${product.slug}`}
+            className="bg-white text-bg px-8 py-3.5 rounded-2xl font-black text-[11px] uppercase tracking-[0.2em] hover:bg-gray-100 transition-all flex items-center gap-3 shadow-2xl shadow-black/10"
           >
             <span>Details</span>
-            <ArrowUpRight size={12} />
+            <ArrowUpRight size={14} />
           </Link>
         </div>
       </div>
     </div>
 
     {/* Content */}
-    <div className="p-8 flex-grow flex flex-col">
-      <div className="flex items-center justify-between mb-4">
-        <span className="text-[10px] font-bold uppercase tracking-widest text-accent">{product.industry}</span>
-        <div className="flex items-center gap-1 text-amber-500">
-          <Star size={10} fill="currentColor" />
-          <span className="text-[10px] font-bold">4.9</span>
+    <div className="p-10 flex-grow flex flex-col bg-gradient-to-b from-transparent to-card-bg/30">
+      <div className="flex items-center justify-between mb-6">
+        <span className="text-[11px] font-black uppercase tracking-[0.2em] text-accent/60">{product.industry}</span>
+        <div className="flex items-center gap-1.5 text-amber-500">
+          <Star size={12} fill="currentColor" />
+          <span className="text-[11px] font-black tracking-widest">4.9</span>
         </div>
       </div>
-      <h4 className="text-xl font-semibold text-text-primary mb-3 group-hover:text-accent transition-colors tracking-tight">
+      
+      <h4 className="text-2xl font-black text-text-primary mb-4 group-hover:text-accent transition-colors tracking-tight leading-none">
         {product.name}
       </h4>
-      <p className="text-text-secondary text-sm line-clamp-2 mb-6 flex-grow">
+      
+      <p className="text-text-secondary/70 text-[15px] line-clamp-2 mb-8 flex-grow font-medium leading-relaxed">
         {product.shortDescription || product.description}
       </p>
 
       {product.password && (
-        <div className="mb-6 p-3 bg-text-primary/5 rounded-xl border border-dashed border-card-border">
-          <p className="text-[9px] font-bold uppercase tracking-widest text-text-secondary/50 mb-1">Demo Access</p>
-          <p className="text-xs font-mono text-accent">Password: {product.password}</p>
+        <div className="mb-8 p-4 bg-accent/5 rounded-[1.5rem] border border-dashed border-accent/20 group-hover:border-accent/40 transition-colors">
+          <p className="text-[9px] font-black uppercase tracking-[0.3em] text-accent/60 mb-2">Demo Access</p>
+          <div className="flex items-center justify-between">
+            <p className="text-sm font-mono font-bold text-text-primary">{product.password}</p>
+            <Lock size={14} className="text-accent/40" />
+          </div>
         </div>
       )}
       
-      <div className="pt-6 border-t border-card-border flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <div className="w-2 h-2 rounded-full bg-accent animate-pulse" />
-          <span className="text-[10px] font-bold uppercase tracking-widest text-text-secondary/50">Result: {product.result}</span>
+      <div className="pt-8 border-t border-card-border flex items-center justify-between">
+        <div className="flex items-center gap-3">
+          <div className="w-2.5 h-2.5 rounded-full bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.4)]" />
+          <span className="text-[11px] font-black uppercase tracking-[0.2em] text-text-secondary/60">
+            {product.result}
+          </span>
         </div>
-        <ArrowRight className="text-text-secondary/30 group-hover:text-accent group-hover:translate-x-2 transition-all" size={20} />
+        <div className="w-10 h-10 rounded-full bg-text-primary/5 flex items-center justify-center group-hover:bg-accent group-hover:text-white transition-all duration-500">
+          <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+        </div>
       </div>
     </div>
   </motion.div>

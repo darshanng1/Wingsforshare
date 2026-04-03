@@ -19,48 +19,59 @@ const whyChooseUs = [
 
 export const WhyChooseUsSection = () => {
   return (
-    <section className="section-padding bg-bg text-text-primary overflow-hidden relative">
-      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/5 to-transparent opacity-20" />
-      <div className="container-custom">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center">
+    <section className="py-12 md:py-16 bg-bg text-text-primary overflow-hidden relative">
+      {/* Background Textures */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-accent/20 to-transparent" />
+        <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-blue-500/20 to-transparent" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-[radial-gradient(circle_at_center,rgba(16,185,129,0.02),transparent_60%)]" />
+      </div>
+
+      <div className="container-custom relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center mb-32">
           <div className="lg:col-span-6 order-2 lg:order-1 relative">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              className="card-premium aspect-square flex flex-col justify-center p-12 md:p-16"
+              className="relative"
             >
-              <div className="relative z-10">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 border border-accent/20 text-accent text-[10px] font-bold uppercase tracking-widest mb-8">
-                  <CheckCircle size={12} />
-                  <span>Growth Systems</span>
-                </div>
-                <h4 className="text-[28px] md:text-[40px] font-bold mb-8 tracking-tight text-text-primary leading-tight">
-                  Business Growth <br />
-                  <span className="text-accent">Systems.</span>
-                </h4>
-                <p className="text-[16px] md:text-[18px] text-text-secondary leading-relaxed mb-12">
-                  We design digital systems that help businesses generate leads, streamline operations, and scale using modern technology.
-                </p>
+              <div className="card-premium aspect-square flex flex-col justify-center p-12 md:p-20 relative z-10 overflow-hidden group">
+                <div className="absolute inset-0 bg-gradient-to-br from-accent/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                
+                <div className="relative z-10">
+                  <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-accent/10 border border-accent/20 text-accent text-[10px] font-black uppercase tracking-[0.3em] mb-10">
+                    <CheckCircle size={14} className="fill-accent/20" />
+                    <span>Growth Architecture</span>
+                  </div>
+                  <h4 className="text-[40px] md:text-[64px] font-black mb-10 tracking-[-0.04em] text-text-primary leading-[0.9]">
+                    SCALABLE <br />
+                    <span className="text-accent">ECOSYSTEMS.</span>
+                  </h4>
+                  <p className="text-[18px] md:text-[20px] text-text-secondary leading-relaxed mb-12 font-medium">
+                    We don't just build websites; we engineer digital infrastructure that drives measurable revenue growth and operational efficiency.
+                  </p>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  {[
-                    'Lead Generation',
-                    'Digital Infrastructure',
-                    'Process Automation',
-                    'Custom Applications'
-                  ].map((item, i) => (
-                    <div key={i} className="flex items-center space-x-3">
-                      <div className="w-2 h-2 rounded-full bg-accent shadow-[0_0_8px_rgba(0,255,157,0.5)]" />
-                      <span className="text-[14px] font-bold text-text-primary uppercase tracking-wide">{item}</span>
-                    </div>
-                  ))}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                    {[
+                      'Lead Generation',
+                      'Digital Infrastructure',
+                      'Process Automation',
+                      'Custom Applications'
+                    ].map((item, i) => (
+                      <div key={i} className="flex items-center space-x-4 group/item">
+                        <div className="w-2.5 h-2.5 rounded-full bg-accent shadow-[0_0_12px_rgba(16,185,129,0.6)] group-hover/item:scale-125 transition-transform" />
+                        <span className="text-[14px] font-black text-text-primary uppercase tracking-[0.15em]">{item}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
+              
+              {/* Floating Decorative Elements */}
+              <div className="absolute -top-10 -right-10 w-40 h-40 bg-accent/10 blur-[80px] rounded-full animate-pulse" />
+              <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-blue-500/10 blur-[80px] rounded-full" />
             </motion.div>
-            
-            {/* Decorative Background */}
-            <div className="absolute -inset-20 bg-accent/5 blur-[120px] -z-10 rounded-full opacity-30" />
           </div>
 
           <div className="lg:col-span-6 order-1 lg:order-2">
@@ -68,35 +79,60 @@ export const WhyChooseUsSection = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/20 text-accent text-[12px] font-bold uppercase tracking-widest mb-6"
+              className="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-accent/10 border border-accent/20 text-accent text-[12px] font-black uppercase tracking-[0.3em] mb-10"
             >
               <span>Why Choose Us</span>
             </motion.div>
-            <h2 className="mb-10 leading-tight">
-              Engineering Excellence <br />
-              <span className="text-text-secondary">For Your Success.</span>
+            <h2 className="text-[56px] md:text-[80px] font-black mb-12 leading-[0.9] tracking-[-0.04em]">
+              ENGINEERING <br />
+              <span className="text-text-secondary/40">FOR SUCCESS.</span>
             </h2>
 
-            <div className="space-y-8 md:space-y-10">
+            <div className="space-y-12">
               {whyChooseUs.map((item, idx) => (
                 <motion.div
                   key={idx}
-                  initial={{ opacity: 0, x: 20 }}
+                  initial={{ opacity: 0, x: 30 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: idx * 0.1 }}
-                  className="flex items-start space-x-6 group"
+                  className="flex items-start space-x-8 group"
                 >
-                  <div className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center flex-shrink-0 mt-1 group-hover:bg-accent group-hover:text-bg transition-all duration-500 group-hover:border-accent">
-                    <CheckCircle size={20} className="group-hover:text-bg transition-colors" />
+                  <div className="w-16 h-16 rounded-3xl bg-card-bg border border-card-border flex items-center justify-center flex-shrink-0 mt-1 group-hover:bg-accent group-hover:text-white transition-all duration-500 group-hover:border-accent group-hover:scale-110 shadow-lg">
+                    <CheckCircle size={24} className="group-hover:text-white transition-colors" />
                   </div>
                   <div>
-                    <h4 className="text-[20px] font-bold mb-2 text-text-primary group-hover:text-accent transition-colors duration-300 tracking-tight">{item.title}</h4>
-                    <p className="text-[14px] md:text-[16px] text-text-secondary leading-relaxed max-w-md">{item.desc}</p>
+                    <h4 className="text-[24px] font-black mb-3 text-text-primary group-hover:text-accent transition-colors duration-300 tracking-tight uppercase">{item.title}</h4>
+                    <p className="text-[16px] md:text-[18px] text-text-secondary leading-relaxed max-w-md font-medium">{item.desc}</p>
                   </div>
                 </motion.div>
               ))}
             </div>
+          </div>
+        </div>
+
+        {/* Global Impact Metrics - New Section to fill space */}
+        <div className="pt-24 border-t border-card-border/50">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+            {[
+              { label: 'Revenue Generated', value: '$250M+', desc: 'For our global partners' },
+              { label: 'Projects Delivered', value: '1,200+', desc: 'Across 15 industries' },
+              { label: 'Client Retention', value: '98%', desc: 'Long-term partnerships' },
+              { label: 'Global Reach', value: '24', desc: 'Countries transformed' }
+            ].map((stat, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="text-center lg:text-left group"
+              >
+                <div className="text-[10px] font-black text-accent uppercase tracking-[0.4em] mb-4 group-hover:tracking-[0.5em] transition-all duration-500">{stat.label}</div>
+                <div className="text-5xl md:text-6xl font-black text-text-primary tracking-tighter mb-4">{stat.value}</div>
+                <p className="text-sm text-text-secondary font-medium">{stat.desc}</p>
+              </motion.div>
+            ))}
           </div>
         </div>
       </div>

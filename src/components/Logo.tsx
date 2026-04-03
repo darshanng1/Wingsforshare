@@ -13,8 +13,7 @@ export const Logo: React.FC<LogoProps> = ({ className }) => {
     <img 
       src={theme === 'dark' ? '/logo-dark.png' : '/logo-light.png'} 
       alt="WingsforShare" 
-      className={cn("h-8 md:h-10 w-auto object-contain block", className)}
-      referrerPolicy="no-referrer"
+      className={cn("h-10 w-auto object-contain", className)}
     />
   );
 };
