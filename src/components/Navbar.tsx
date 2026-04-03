@@ -85,8 +85,8 @@ export default function Navbar() {
           className={`relative flex items-center justify-between px-6 py-3 md:px-8 md:py-4 rounded-full transition-all duration-500 bg-bg/80 backdrop-blur-xl border border-text-primary/10 shadow-[0_8px_32px_rgba(0,0,0,0.1)]`}
         >
           {/* Logo */}
-          <Link to="/" className="flex items-center group relative z-10">
-            <Logo className="h-8 md:h-10" />
+          <Link to="/" className="flex items-center gap-2 group relative z-10">
+            <Logo />
           </Link>
 
           {/* Desktop Navigation */}

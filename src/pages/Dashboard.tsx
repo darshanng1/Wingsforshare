@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { auth, db } from '../firebase';
 import { doc, getDoc, collection, query, where, onSnapshot, addDoc, serverTimestamp } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
+import { Logo } from '../components/Logo';
 import { 
   LayoutDashboard, Users, Settings, LogOut, ShieldCheck, Zap, 
   BarChart3, Globe, Clock, CheckCircle2, AlertCircle, 
@@ -470,14 +471,9 @@ export default function Dashboard() {
     <div className="min-h-screen bg-[#f8f9fa] dark:bg-[#050505] flex transition-colors duration-300">
       {/* Sidebar */}
       <aside className="w-72 bg-white dark:bg-[#0a0a0a] border-r border-black/5 dark:border-white/10 flex flex-col p-8 fixed h-full z-20">
-        <div className="flex items-center space-x-3 mb-12">
-          <div className="w-10 h-10 bg-black dark:bg-white rounded-xl flex items-center justify-center">
-            <span className="text-white dark:text-black font-bold text-xl">W</span>
-          </div>
-          <div className="flex flex-col">
-            <span className="text-xl font-bold tracking-tighter text-black dark:text-white leading-none">WingsForShare</span>
-            <span className="text-[10px] font-bold uppercase tracking-widest text-black/40 dark:text-white/40">Command Center</span>
-          </div>
+        <div className="mb-12">
+          <Logo />
+          <span className="text-[10px] font-bold uppercase tracking-widest text-black/40 dark:text-white/40 mt-2 block">Command Center</span>
         </div>
 
         <nav className="flex-1 space-y-2">

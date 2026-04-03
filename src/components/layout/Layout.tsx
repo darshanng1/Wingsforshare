@@ -13,12 +13,7 @@ import Footer from '../Footer';
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const { theme } = useTheme();
-  const isDark = theme === 'dark';
   const location = useLocation();
-
-  useEffect(() => {
-    document.documentElement.classList.toggle('dark', isDark);
-  }, [isDark]);
 
   // Scroll to top on route change
   useEffect(() => {

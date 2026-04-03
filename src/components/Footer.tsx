@@ -29,7 +29,7 @@ export default function Footer() {
           {/* Brand Column */}
           <div className="lg:col-span-1">
             <Link to="/" className="flex items-center gap-3 mb-8 group cursor-pointer">
-              <Logo className="h-12" />
+              <Logo />
             </Link>
             <p className="text-[14px] text-text-secondary leading-relaxed mb-8">
               We build high-performance digital systems that generate revenue and scale businesses globally.

@@ -197,28 +197,27 @@ export default function Home() {
       >
         <section
           ref={heroRef}
-          className="relative min-h-[110vh] flex items-center pt-[140px] pb-[100px] overflow-hidden"
+          className="relative min-h-screen flex items-center justify-center pt-24 pb-16 overflow-hidden bg-bg"
           onMouseMove={handleMouseMove}
           onMouseLeave={handleMouseLeave}
         >
           {/* Background Depth Elements */}
           <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none">
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full">
-              <div className="absolute top-[-15%] left-[-10%] w-[60%] h-[60%] rounded-full bg-accent/5 blur-[140px]" />
-              <div className="absolute bottom-[-15%] right-[-10%] w-[60%] h-[60%] rounded-full bg-blue-500/5 blur-[140px]" />
-              {/* Subtle glow behind right panel */}
-              <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[500px] h-[500px] bg-accent/10 blur-[120px] rounded-full opacity-50" />
+              <div className="absolute top-[-10%] left-[-5%] w-[50%] h-[50%] rounded-full bg-accent/10 blur-[120px] opacity-40" />
+              <div className="absolute bottom-[-10%] right-[-5%] w-[50%] h-[50%] rounded-full bg-blue-500/10 blur-[120px] opacity-40" />
             </div>
-            <div className="absolute inset-0 bg-gradient-to-b from-bg via-transparent to-bg opacity-60" />
+            {/* Smooth gradient overlay for premium feel */}
+            <div className="absolute inset-0 bg-gradient-to-b from-[#020203] via-transparent to-[#020203] opacity-80" />
           </div>
 
-          <div className="container-custom relative z-10">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
-              <div className="lg:col-span-5 flex flex-col justify-center">
+          <div className="container-custom w-full relative z-10">
+            <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-16">
+              <div className="w-full lg:w-[45%] flex flex-col justify-center text-center lg:text-left">
                 <HeroContent />
               </div>
               
-              <div className="lg:col-span-7 flex justify-center lg:justify-end">
+              <div className="w-full lg:w-[55%] flex justify-center lg:justify-end">
                 <HeroVisual 
                   rotateX={rotateX} 
                   rotateY={rotateY} 

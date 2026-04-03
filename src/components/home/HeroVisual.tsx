@@ -30,7 +30,7 @@ const WebPreview = () => (
     <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(16,185,129,0.1),transparent)]" />
     
     {/* Browser UI */}
-    <div className="sticky top-0 z-30 h-11 px-4 flex items-center gap-3 bg-[#050505]/90 backdrop-blur-xl border-b border-white/10">
+    <div className="sticky top-0 z-50 h-11 px-4 flex items-center gap-3 bg-[#050505]/90 backdrop-blur-xl border-b border-white/10">
       <div className="flex gap-1.5">
         <div className="w-2.5 h-2.5 rounded-full bg-red-500/40" />
         <div className="w-2.5 h-2.5 rounded-full bg-amber-500/40" />
@@ -48,170 +48,180 @@ const WebPreview = () => (
     
     {/* Website Content */}
     <div className="flex-grow flex flex-col">
-    {/* Header */}
-    <header className="h-16 px-8 flex items-center justify-between relative z-10 bg-[#050505]/50 border-b border-white/5">
-      <nav className="flex gap-10 items-center mx-auto">
-        {['Home', 'About', 'Contact'].map((item) => (
-          <button key={item} className="text-[11px] font-black text-white/40 uppercase tracking-[0.3em] hover:text-emerald-500 transition-all hover:scale-110">
-            {item}
-          </button>
-        ))}
-      </nav>
-    </header>
+      {/* Navigation Bar */}
+      <header className="h-20 px-8 flex items-center justify-between relative z-40 bg-transparent border-b border-white/5">
+        <div className="flex items-center gap-2">
+          <div className="w-8 h-8 bg-emerald-500 rounded-lg flex items-center justify-center">
+            <Zap size={16} className="text-white" />
+          </div>
+          <span className="text-white font-black text-sm uppercase tracking-tighter">Lumina</span>
+        </div>
+        
+        <nav className="hidden md:flex gap-8 items-center">
+          {['Solutions', 'Features', 'Pricing', 'Resources'].map((item) => (
+            <button key={item} className="text-[10px] font-black text-white/40 uppercase tracking-[0.2em] hover:text-emerald-500 transition-all">
+              {item}
+            </button>
+          ))}
+        </nav>
+
+        <div className="flex items-center gap-4">
+          <button className="text-[10px] font-black text-white/40 uppercase tracking-[0.2em] hover:text-white transition-all">Login</button>
+          <button className="px-5 py-2.5 bg-emerald-500 text-white text-[10px] font-black uppercase tracking-widest rounded-xl shadow-lg shadow-emerald-500/20 hover:scale-105 transition-transform">Get Started</button>
+        </div>
+      </header>
 
       {/* Hero Section */}
-      <section className="px-8 py-16 md:py-24 relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-        <div className="space-y-8">
-          <motion.div 
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20"
-          >
-            <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-            <span className="text-[10px] font-black text-emerald-500 uppercase tracking-[0.3em]">Premium Development</span>
-          </motion.div>
-          
-          <div className="space-y-6">
-            <motion.h4 
-              initial={{ opacity: 0, y: 20 }}
+      <section className="px-8 py-20 md:py-32 relative z-10">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+          <div className="space-y-10">
+            <motion.div 
+              initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 }}
-              className="text-4xl md:text-6xl font-black text-white leading-[1.1] tracking-tighter"
+              className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/20"
             >
-              Professional <br />
-              <span className="text-emerald-500">Website Design.</span>
-            </motion.h4>
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="text-white/40 text-sm md:text-lg max-w-md leading-relaxed"
-            >
-              We create high-quality, responsive websites that help your business grow and reach more customers.
-            </motion.p>
-          </div>
-
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-            className="flex flex-wrap gap-4"
-          >
-            <div className="h-14 w-44 bg-emerald-500 rounded-2xl shadow-2xl shadow-emerald-500/30 flex items-center justify-center text-white font-black text-xs uppercase tracking-widest hover:scale-105 transition-transform cursor-pointer">Start Project</div>
-            <div className="h-14 w-40 bg-white/5 rounded-2xl border border-white/10 flex items-center justify-center text-white/60 font-black text-xs uppercase tracking-widest hover:bg-white/10 transition-colors cursor-pointer">Our Work</div>
-          </motion.div>
-        </div>
-
-        {/* High-Fidelity Mockup Visual */}
-        <div className="relative hidden lg:block">
-          <div className="relative w-full aspect-[4/3] bg-gradient-to-br from-emerald-500/20 to-transparent rounded-[2.5rem] border border-white/10 p-10 flex items-center justify-center overflow-hidden">
+              <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+              <span className="text-[10px] font-black text-emerald-500 uppercase tracking-[0.3em]">Next-Gen Intelligence</span>
+            </motion.div>
             
-            {/* Desktop Mockup - Centered and Clear */}
+            <div className="space-y-6">
+              <motion.h1 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 }}
+                className="text-5xl md:text-7xl font-black text-white leading-[0.95] tracking-tight"
+              >
+                Scale Your <br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-blue-500">Digital Empire.</span>
+              </motion.h1>
+              <motion.p 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+                className="text-white/40 text-base md:text-xl max-w-lg leading-relaxed font-medium"
+              >
+                The ultimate platform for modern teams to build, deploy, and scale high-performance applications with zero friction.
+              </motion.p>
+            </div>
+
             <motion.div 
-              animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              className="relative w-full h-[85%] bg-[#0a0a0b] border border-white/10 rounded-2xl shadow-[0_50px_100px_rgba(0,0,0,0.5)] overflow-hidden z-10"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+              className="flex flex-wrap gap-5"
             >
-              <div className="h-8 px-3 flex items-center gap-1.5 border-b border-white/5 bg-white/5">
-                <div className="w-1.5 h-1.5 rounded-full bg-red-500/20" />
-                <div className="w-1.5 h-1.5 rounded-full bg-amber-500/20" />
-                <div className="w-1.5 h-1.5 rounded-full bg-emerald-500/20" />
+              <button className="h-16 px-10 bg-emerald-500 rounded-2xl shadow-2xl shadow-emerald-500/30 flex items-center justify-center text-white font-black text-xs uppercase tracking-widest hover:scale-105 transition-transform">
+                Start Building Free
+              </button>
+              <button className="h-16 px-10 bg-white/5 rounded-2xl border border-white/10 flex items-center justify-center text-white/60 font-black text-xs uppercase tracking-widest hover:bg-white/10 transition-colors">
+                Book a Demo
+              </button>
+            </motion.div>
+
+            {/* Trusted By */}
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.5 }}
+              className="pt-10 space-y-4"
+            >
+              <p className="text-[10px] font-black text-white/20 uppercase tracking-[0.3em]">Trusted by Industry Leaders</p>
+              <div className="flex gap-8 opacity-30 grayscale">
+                {[1, 2, 3, 4].map(i => (
+                  <div key={i} className="w-20 h-6 bg-white/20 rounded" />
+                ))}
               </div>
-              <div className="p-6 space-y-6">
-                <div className="flex justify-center items-center">
-                  <div className="flex gap-6">
-                    {['H', 'A', 'C'].map(i => <div key={i} className="text-[8px] font-black text-white/20 tracking-widest">{i}</div>)}
+            </motion.div>
+          </div>
+
+          {/* Hero Visual Mockup */}
+          <div className="relative hidden lg:block">
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.4 }}
+              className="relative aspect-square rounded-[3rem] bg-gradient-to-br from-emerald-500/20 to-blue-500/20 border border-white/10 p-8 overflow-hidden"
+            >
+              <div className="absolute inset-0 bg-[#050505]/40 backdrop-blur-sm" />
+              
+              {/* Internal Dashboard UI */}
+              <div className="relative h-full bg-[#0a0a0b] border border-white/10 rounded-3xl shadow-2xl overflow-hidden flex flex-col">
+                <div className="h-10 px-4 flex items-center justify-between border-b border-white/5 bg-white/5">
+                  <div className="flex gap-1.5">
+                    <div className="w-2 h-2 rounded-full bg-white/10" />
+                    <div className="w-2 h-2 rounded-full bg-white/10" />
+                    <div className="w-2 h-2 rounded-full bg-white/10" />
                   </div>
+                  <div className="w-32 h-4 bg-white/5 rounded-full" />
+                  <div className="w-6 h-6 rounded-full bg-emerald-500/20" />
                 </div>
-                <div className="space-y-4">
-                  <div className="h-6 w-3/4 bg-gradient-to-r from-emerald-500/20 to-transparent rounded-lg" />
-                  <div className="space-y-2">
-                    <div className="h-2 w-full bg-white/5 rounded-full" />
-                    <div className="h-2 w-5/6 bg-white/5 rounded-full" />
+                
+                <div className="flex-grow p-6 space-y-6">
+                  <div className="grid grid-cols-3 gap-4">
+                    {[1, 2, 3].map(i => (
+                      <div key={i} className="h-20 bg-white/[0.02] border border-white/5 rounded-2xl p-3 space-y-2">
+                        <div className="w-8 h-8 rounded-lg bg-emerald-500/10" />
+                        <div className="h-1.5 w-12 bg-white/10 rounded-full" />
+                      </div>
+                    ))}
                   </div>
-                </div>
-                <div className="grid grid-cols-3 gap-4 pt-4">
-                  {[1, 2, 3].map(i => (
-                    <div key={i} className="space-y-2">
-                      <div className="h-20 bg-white/[0.02] border border-white/5 rounded-xl" />
-                      <div className="h-1.5 w-12 bg-white/10 rounded-full mx-auto" />
+                  
+                  <div className="h-40 bg-white/[0.02] border border-white/5 rounded-2xl p-6 flex flex-col justify-end">
+                    <div className="flex items-end gap-2 h-24">
+                      {[40, 70, 45, 90, 65, 80, 55, 100].map((h, i) => (
+                        <motion.div 
+                          key={i}
+                          initial={{ height: 0 }}
+                          animate={{ height: `${h}%` }}
+                          transition={{ delay: 1 + (i * 0.1) }}
+                          className="flex-grow bg-emerald-500/20 rounded-t-lg border-t border-emerald-500/40"
+                        />
+                      ))}
                     </div>
-                  ))}
+                  </div>
+
+                  <div className="space-y-3">
+                    <div className="h-2 w-full bg-white/5 rounded-full" />
+                    <div className="h-2 w-2/3 bg-white/5 rounded-full" />
+                  </div>
                 </div>
               </div>
-            </motion.div>
 
-            {/* Floating Elements - Spaced out to avoid overlap confusion */}
-            <motion.div 
-              animate={{ y: [0, 15, 0], x: [0, 5, 0] }}
-              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-              className="absolute top-10 right-4 p-3 bg-emerald-500 rounded-xl shadow-2xl z-20"
-            >
-              <div className="flex items-center gap-2">
-                <TrendingUp size={12} className="text-white" />
-                <p className="text-[10px] font-black text-white">+142%</p>
-              </div>
-            </motion.div>
-
-            <motion.div 
-              animate={{ y: [0, -15, 0], x: [0, -5, 0] }}
-              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-              className="absolute bottom-10 left-4 p-3 bg-[#1a1a1b] border border-white/10 rounded-xl shadow-2xl z-20"
-            >
-              <div className="flex items-center gap-2">
-                <Users size={12} className="text-emerald-500" />
-                <p className="text-[10px] font-black text-white">12k+</p>
-              </div>
+              {/* Floating Badges */}
+              <motion.div 
+                animate={{ y: [0, -10, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute top-12 -right-4 p-4 bg-emerald-500 rounded-2xl shadow-2xl z-20"
+              >
+                <BarChart3 size={20} className="text-white" />
+              </motion.div>
+              
+              <motion.div 
+                animate={{ y: [0, 10, 0] }}
+                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                className="absolute bottom-12 -left-4 p-4 bg-blue-500 rounded-2xl shadow-2xl z-20"
+              >
+                <Zap size={20} className="text-white" />
+              </motion.div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="px-8 py-20 bg-white/[0.02] border-y border-white/5 relative z-10">
-        <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
+      {/* Social Proof / Stats */}
+      <section className="px-8 py-16 border-t border-white/5">
+        <div className="max-w-6xl mx-auto flex flex-wrap justify-between gap-10">
           {[
-            { t: 'Ultra Fast', d: 'Sub-second load times for better SEO.', i: Zap },
-            { t: 'Responsive', d: 'Perfect viewing on every device.', i: Layout },
-            { t: 'Secure', d: 'Enterprise-grade protection.', i: Shield }
-          ].map((f, i) => (
-            <div key={i} className="text-center space-y-4">
-              <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 flex items-center justify-center text-emerald-500 mx-auto border border-emerald-500/20">
-                <f.i size={24} />
-              </div>
-              <h5 className="text-white font-black text-lg tracking-tight">{f.t}</h5>
-              <p className="text-white/30 text-sm leading-relaxed">{f.d}</p>
+            { label: 'Active Users', value: '1.2M+' },
+            { label: 'Global Regions', value: '24' },
+            { label: 'Uptime SLA', value: '99.99%' },
+            { label: 'Support', value: '24/7' }
+          ].map((stat, i) => (
+            <div key={i} className="space-y-1">
+              <p className="text-3xl font-black text-white tracking-tighter">{stat.value}</p>
+              <p className="text-[10px] font-black text-white/20 uppercase tracking-widest">{stat.label}</p>
             </div>
           ))}
-        </div>
-      </section>
-
-      {/* Stats & Trust */}
-      <section className="px-8 py-20 relative z-10 space-y-20">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-          {[
-            { v: '250+', l: 'Projects' },
-            { v: '99.9%', l: 'Uptime' },
-            { v: '15M+', l: 'Traffic' },
-            { v: '24/7', l: 'Support' }
-          ].map((s, i) => (
-            <div key={i} className="text-center">
-              <p className="text-3xl md:text-4xl font-black text-white mb-2 truncate tracking-tighter">{s.v}</p>
-              <p className="text-[10px] font-black text-white/20 uppercase tracking-[0.3em]">{s.l}</p>
-            </div>
-          ))}
-        </div>
-
-        <div className="p-8 bg-gradient-to-br from-white/[0.03] to-transparent border border-white/5 rounded-[2.5rem] relative overflow-hidden">
-          <div className="absolute top-0 right-0 p-6 opacity-10"><MessageSquare size={60} className="text-emerald-500" /></div>
-          <p className="text-white/60 text-lg md:text-xl italic leading-relaxed mb-8 max-w-2xl">"Their expertise in web development transformed our business. The new site is faster, looks incredible, and our sales have doubled."</p>
-          <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-500 font-black text-sm border border-emerald-500/20">AS</div>
-            <div>
-              <p className="text-white font-black text-sm">Alex Smith</p>
-              <p className="text-white/20 text-[10px] font-black uppercase tracking-widest">Founder, InnovateX</p>
-            </div>
-          </div>
         </div>
       </section>
     </div>
@@ -538,9 +548,9 @@ export const HeroVisual = ({ rotateX, rotateY, textX, textY }: HeroVisualProps) 
           </div>
         </div>
 
-        <div className="flex flex-col md:flex-row h-auto md:h-[720px] bg-[#050505]">
+        <div className="flex flex-col md:flex-row h-auto md:h-[600px] bg-[#050505]">
           {/* --- Navigation Side Panel --- */}
-          <div className="w-full md:w-[260px] flex flex-col border-b md:border-b-0 md:border-r border-white/5">
+          <div className="w-full md:w-[240px] flex flex-col border-b md:border-b-0 md:border-r border-white/5">
             <div className="p-4 md:p-5 pb-4">
               <h2 className="text-[9px] font-black text-white/30 uppercase tracking-[0.4em] mb-4 md:mb-5">Service Ecosystem</h2>
               <div className="flex md:flex-col gap-1 overflow-x-auto md:overflow-x-visible pb-2 md:pb-0 no-scrollbar">
@@ -550,7 +560,7 @@ export const HeroVisual = ({ rotateX, rotateY, textX, textY }: HeroVisualProps) 
                     onMouseEnter={() => { setActiveStep(index); setIsAutoPlaying(false); }}
                     onClick={() => { setActiveStep(index); setIsAutoPlaying(false); }}
                     className={cn(
-                      "flex-shrink-0 md:w-full text-left p-3 md:p-3.5 rounded-xl transition-all duration-500 flex items-center gap-3 md:gap-3.5 border",
+                      "flex-shrink-0 md:w-full text-left p-3 md:p-3 rounded-xl transition-all duration-500 flex items-center gap-3 md:gap-3 border",
                       activeStep === index 
                         ? "bg-white/[0.03] border-white/10 shadow-2xl scale-[1.02] z-10" 
                         : "bg-transparent border-transparent grayscale opacity-40 hover:opacity-100 hover:grayscale-0 hover:bg-white/[0.01]"
@@ -569,8 +579,8 @@ export const HeroVisual = ({ rotateX, rotateY, textX, textY }: HeroVisualProps) 
                       <step.icon size={14} className="relative z-10 md:size-[16px]" />
                     </div>
                     <div className="flex-grow min-w-0 relative z-10 hidden md:block">
-                      <h4 className={cn("text-xs font-black transition-colors mb-0.5", activeStep === index ? "text-white" : "text-white/40")}>{step.title}</h4>
-                      <p className="text-[8px] text-white/20 font-bold uppercase tracking-wider">{step.metric}</p>
+                      <h4 className={cn("text-[11px] font-black transition-colors mb-0.5", activeStep === index ? "text-white" : "text-white/40")}>{step.title}</h4>
+                      <p className="text-[7px] text-white/20 font-bold uppercase tracking-wider">{step.metric}</p>
                     </div>
                   </button>
                 ))}
@@ -597,13 +607,13 @@ export const HeroVisual = ({ rotateX, rotateY, textX, textY }: HeroVisualProps) 
                  <span className="h-px w-6 bg-accent" />
                  <span className="text-[9px] font-black text-accent uppercase tracking-[0.4em]">{currentStep.label}</span>
                </motion.div>
-               <motion.h3 key={`tit-${currentStep.id}`} initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1, duration: 0.8 }} className="text-lg md:text-2xl font-black text-white leading-tight tracking-tight">
+               <motion.h3 key={`tit-${currentStep.id}`} initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1, duration: 0.8 }} className="text-lg md:text-xl font-black text-white leading-tight tracking-tight">
                  {currentStep.title}
                </motion.h3>
              </div>
 
              {/* UI Preview Container */}
-             <div className="h-[450px] md:h-auto md:flex-grow relative z-10 rounded-lg overflow-hidden bg-[#050505]">
+             <div className="h-[320px] md:h-auto md:flex-grow relative z-10 rounded-lg overflow-hidden bg-[#050505]">
                 <motion.div 
                   animate={{ top: ['0%', '100%', '0%'] }}
                   transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
