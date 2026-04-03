@@ -15,8 +15,8 @@ const SEO: React.FC<SEOProps> = ({
   title = "WingsForShare – Business Technology Growth Agency",
   description = "WingsForShare is a leading digital solutions agency specializing in business technology growth, custom software development, and high-performance digital systems.",
   keywords = "business technology growth, digital solutions agency, custom software development, business automation, SEO services, WingsForShare",
-  canonical = process.env.APP_URL || "https://wingsforshare.com",
-  ogImage = `${process.env.APP_URL || "https://wingsforshare.com"}/logo-light.png`,
+  canonical = "https://wingsforshare.com",
+  ogImage = "https://wingsforshare.com/logo-light.png",
   ogType = "website",
   schemaMarkup
 }) => {
@@ -26,8 +26,8 @@ const SEO: React.FC<SEOProps> = ({
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "WingsForShare",
-    "url": process.env.APP_URL || "https://wingsforshare.com",
-    "logo": `${process.env.APP_URL || "https://wingsforshare.com"}/logo-light.png`,
+    "url": "https://wingsforshare.com",
+    "logo": "https://wingsforshare.com/logo-light.png",
     "description": description,
     "sameAs": [
       "https://facebook.com/wingsforshare",
