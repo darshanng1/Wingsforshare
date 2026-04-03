@@ -1,11 +1,8 @@
-import logoLight from '@/assets/logo-light.png';
-import logoDark from '@/assets/logo-dark.png';
-
 export const ASSETS = {
   LOGO: {
-    LIGHT: logoLight, // Upload your light mode logo to /public/logo-light.png
-    DARK: logoDark,   // Upload your dark mode logo to /public/logo-dark.png
-    SYMBOL: '/logo-symbol.png' // Optional symbol logo
+    LIGHT: '/logo-light.png',
+    DARK: '/logo-dark.png',
+    SYMBOL: '/logo-symbol.png'
   },
   IMAGES: {
     HERO: 'https://picsum.photos/seed/wings-hero/1920/1080',
