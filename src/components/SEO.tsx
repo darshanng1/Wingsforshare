@@ -1,6 +1,5 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { ASSETS } from '../constants/assets';
 
 interface SEOProps {
   title?: string;
@@ -17,7 +16,7 @@ const SEO: React.FC<SEOProps> = ({
   description = "WingsForShare is a leading digital solutions agency specializing in business technology growth, custom software development, and high-performance digital systems.",
   keywords = "business technology growth, digital solutions agency, custom software development, business automation, SEO services, WingsForShare",
   canonical = process.env.APP_URL || "https://wingsforshare.com",
-  ogImage = `${process.env.APP_URL || "https://wingsforshare.com"}${ASSETS.LOGO.LIGHT}`,
+  ogImage = `${process.env.APP_URL || "https://wingsforshare.com"}/logo-light.png`,
   ogType = "website",
   schemaMarkup
 }) => {
@@ -28,7 +27,7 @@ const SEO: React.FC<SEOProps> = ({
     "@type": "Organization",
     "name": "WingsForShare",
     "url": process.env.APP_URL || "https://wingsforshare.com",
-    "logo": `${process.env.APP_URL || "https://wingsforshare.com"}${ASSETS.LOGO.LIGHT}`,
+    "logo": `${process.env.APP_URL || "https://wingsforshare.com"}/logo-light.png`,
     "description": description,
     "sameAs": [
       "https://facebook.com/wingsforshare",

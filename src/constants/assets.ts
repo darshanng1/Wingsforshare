@@ -1,9 +1,4 @@
 export const ASSETS = {
-  LOGO: {
-    LIGHT: '/logo-light.png',
-    DARK: '/logo-dark.png',
-    SYMBOL: '/logo-symbol.png'
-  },
   IMAGES: {
     HERO: 'https://picsum.photos/seed/wings-hero/1920/1080',
     ABOUT: 'https://picsum.photos/seed/wings-about/1200/800',
