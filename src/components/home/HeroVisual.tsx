@@ -54,7 +54,6 @@ const WebPreview = () => (
           <div className="w-8 h-8 bg-emerald-500 rounded-lg flex items-center justify-center">
             <Zap size={16} className="text-white" />
           </div>
-          <span className="text-white font-black text-sm uppercase tracking-tighter">Lumina</span>
         </div>
         
         <nav className="hidden md:flex gap-8 items-center">

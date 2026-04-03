@@ -1,7 +1,10 @@
+import logoLight from '@/assets/logo-light.png';
+import logoDark from '@/assets/logo-dark.png';
+
 export const ASSETS = {
   LOGO: {
-    LIGHT: '/logo-light.png', // Upload your light mode logo to /public/logo-light.png
-    DARK: '/logo-dark.png',   // Upload your dark mode logo to /public/logo-dark.png
+    LIGHT: logoLight, // Upload your light mode logo to /public/logo-light.png
+    DARK: logoDark,   // Upload your dark mode logo to /public/logo-dark.png
     SYMBOL: '/logo-symbol.png' // Optional symbol logo
   },
   IMAGES: {

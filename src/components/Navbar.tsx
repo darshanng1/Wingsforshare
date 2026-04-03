@@ -78,15 +78,15 @@ export default function Navbar() {
 
   return (
     <header 
-      className={`fixed top-4 left-1/2 -translate-x-1/2 w-[calc(100%-2rem)] max-w-7xl z-50 transition-all duration-500`}
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${scrolled ? 'bg-bg/90 backdrop-blur-xl shadow-sm' : 'bg-transparent'}`}
     >
-      <div className="w-full">
+      <div className="max-w-7xl mx-auto px-6 md:px-12">
         <nav 
-          className={`relative flex items-center justify-between px-6 py-3 md:px-8 md:py-4 rounded-full transition-all duration-500 bg-bg/80 backdrop-blur-xl border border-text-primary/10 shadow-[0_8px_32px_rgba(0,0,0,0.1)]`}
+          className={`relative flex items-center justify-between py-3 md:py-4 transition-all duration-500`}
         >
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2 group relative z-10">
-            <Logo />
+            <Logo className="h-6 md:h-8" />
           </Link>
 
           {/* Desktop Navigation */}
