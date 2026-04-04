@@ -52,10 +52,10 @@ export const LiveDemoSection: React.FC<LiveDemoSectionProps> = ({
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-6xl md:text-8xl font-black tracking-[-0.04em] leading-[0.9] mb-10"
+            className="text-6xl md:text-8xl font-display font-bold tracking-tighter leading-[0.9] mb-10"
           >
             Explore Our <br /> 
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent via-accent to-blue-500">Working Solutions</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent via-accent to-blue-500 italic font-light">Working Solutions</span>
           </motion.h2>
           
           <motion.p 

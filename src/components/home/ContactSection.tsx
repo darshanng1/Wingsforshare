@@ -1,167 +1,197 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { Rocket, Phone, MessageSquare, CheckCircle, ArrowRight, ShieldCheck, Zap, TrendingUp, Globe } from 'lucide-react';
+import { 
+  Rocket, 
+  Phone, 
+  MessageSquare, 
+  Mail,
+  CheckCircle, 
+  ArrowRight, 
+  ShieldCheck, 
+  Zap, 
+  TrendingUp, 
+  Globe, 
+  Cpu, 
+  Network 
+} from 'lucide-react';
 
 export const ContactSection = () => {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2
+      }
+    }
+  };
+
+  const itemVariants: any = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
+  };
+
   return (
-    <section id="contact" className="section-padding bg-bg relative overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-accent/5 via-transparent to-transparent blur-3xl pointer-events-none" />
+    <section id="contact" className="py-32 md:py-48 bg-bg relative overflow-hidden">
+      {/* Dynamic Background Elements */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-accent/10 via-transparent to-transparent blur-3xl pointer-events-none" />
+      
       <motion.div
         animate={{
-          scale: [1, 1.2, 1],
-          opacity: [0.1, 0.2, 0.1]
+          y: [0, -20, 0],
+          rotate: [0, 5, 0],
+          opacity: [0.05, 0.1, 0.05]
         }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute -top-24 -right-24 w-96 h-96 bg-blue-500/10 rounded-full blur-[100px] pointer-events-none"
-      />
-      <motion.div
-        animate={{
-          scale: [1.2, 1, 1.2],
-          opacity: [0.1, 0.2, 0.1]
-        }}
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute -bottom-24 -left-24 w-96 h-96 bg-accent/10 rounded-full blur-[100px] pointer-events-none"
+        transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-20 right-[10%] w-[600px] h-[600px] bg-accent/20 rounded-full blur-[120px] pointer-events-none"
       />
 
+      {/* Floating Tech Icons */}
+      <motion.div
+        animate={{ y: [0, -30, 0], rotate: [0, 360, 0] }}
+        transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+        className="absolute top-40 left-[5%] text-accent/20 pointer-events-none hidden lg:block"
+      >
+        <Cpu size={120} strokeWidth={0.5} />
+      </motion.div>
+      
+      <motion.div
+        animate={{ y: [0, 30, 0], x: [0, 20, 0] }}
+        transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute bottom-40 right-[5%] text-blue-500/20 pointer-events-none hidden lg:block"
+      >
+        <Network size={140} strokeWidth={0.5} />
+      </motion.div>
+
       <div className="container-custom relative z-10">
-        <div className="max-w-6xl mx-auto">
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          className="max-w-6xl mx-auto"
+        >
           {/* Main CTA Header */}
-          <div className="text-center mb-16 md:mb-32">
+          <div className="text-center mb-32">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/20 text-[12px] font-bold uppercase tracking-widest text-accent mb-8"
+              variants={itemVariants}
+              className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-accent/10 border border-accent/20 text-[11px] font-black uppercase tracking-[0.2em] text-accent mb-10 shadow-[0_0_20px_rgba(16,185,129,0.1)]"
             >
-              <Rocket size={14} />
-              <span>Ready to Scale?</span>
+              <Rocket size={14} className="animate-pulse" />
+              <span>Enterprise Solutions</span>
             </motion.div>
 
             <motion.h2
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              className="mb-8"
+              variants={itemVariants}
+              className="text-6xl md:text-9xl font-display font-bold tracking-tighter leading-[0.85] mb-12"
             >
               Let's Build Your <br />
-              <span className="text-text-secondary italic font-light">Digital Future.</span>
+              <span className="relative inline-block">
+                <span className="text-accent italic font-light">Digital Future.</span>
+                <motion.span 
+                  initial={{ width: 0 }}
+                  whileInView={{ width: '100%' }}
+                  transition={{ duration: 1, delay: 0.5 }}
+                  className="absolute bottom-4 left-0 h-2 bg-accent/20 -z-10"
+                />
+              </span>
             </motion.h2>
 
             <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              className="text-[18px] md:text-[24px] text-text-secondary mx-auto max-w-2xl font-light leading-relaxed"
+              variants={itemVariants}
+              className="text-xl md:text-3xl text-text-secondary mx-auto max-w-3xl font-medium leading-relaxed tracking-tight"
             >
-              Join successful businesses using our technology systems to automate, analyze, and grow.
-              Choose your preferred way to connect.
+              Empowering global enterprises with cutting-edge technology to <span className="text-text-primary underline decoration-accent/30 decoration-4 underline-offset-8">automate, analyze, and scale</span> with precision.
             </motion.p>
           </div>
 
-          {/* Contact Cards Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 mb-24 md:mb-32">
-            {/* Call Card */}
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              whileHover={{ y: -10 }}
-              className="group relative card-premium p-10 md:p-16 overflow-hidden"
-            >
-              <div className="absolute top-0 right-0 w-64 h-64 bg-accent/5 rounded-full blur-3xl -mr-32 -mt-32 group-hover:bg-accent/10 transition-colors" />
-
-              <div className="relative z-10">
-                <div className="w-16 h-16 bg-accent text-bg rounded-2xl flex items-center justify-center mb-10 shadow-xl group-hover:rotate-6 transition-transform duration-500">
-                  <Phone size={28} />
+          {/* Unified Contact Bar */}
+          <motion.div
+            variants={itemVariants}
+            className="relative group"
+          >
+            <div className="absolute inset-0 bg-accent/20 blur-[100px] rounded-full -z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
+            
+            <div className="card-premium p-2 md:p-4 bg-card-bg/40 backdrop-blur-3xl border-accent/20 shadow-[0_50px_100px_rgba(0,0,0,0.1)] overflow-hidden">
+              <div className="grid grid-cols-1 lg:grid-cols-3 divide-y lg:divide-y-0 lg:divide-x divide-accent/10">
+                
+                {/* Direct Consultation */}
+                <div className="p-8 md:p-12 flex flex-col items-center text-center group/item">
+                  <div className="w-16 h-16 bg-accent/10 text-accent rounded-2xl flex items-center justify-center mb-6 group-hover/item:scale-110 group-hover/item:rotate-6 transition-all duration-500">
+                    <Phone size={28} strokeWidth={1.5} />
+                  </div>
+                  <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-text-secondary mb-3">Direct Consultation</h4>
+                  <p className="text-2xl md:text-3xl font-black text-text-primary mb-8 tracking-tighter">+91 86187 64541</p>
+                  <motion.a
+                    whileTap={{ scale: 0.95 }}
+                    href="tel:+918618764541"
+                    className="inline-flex items-center justify-center space-x-3 bg-accent text-white px-8 py-4 rounded-xl font-black uppercase tracking-[0.1em] text-[12px] shadow-lg shadow-accent/20 hover:shadow-accent/40 transition-all duration-500 w-full"
+                  >
+                    <span>Call Now</span>
+                    <ArrowRight size={16} />
+                  </motion.a>
                 </div>
 
-                <h4 className="text-[12px] font-bold uppercase tracking-widest text-text-secondary mb-4">Direct Consultation</h4>
-                <p className="text-[28px] md:text-[36px] font-bold text-text-primary mb-10 tracking-tight">+91 86187 64541</p>
-
-                <div className="space-y-4 mb-12">
-                  {['Instant response', 'Technical guidance', 'Project scoping'].map((item, i) => (
-                    <div key={i} className="flex items-center space-x-3">
-                      <CheckCircle size={16} className="text-accent" />
-                      <span className="text-[14px] font-bold uppercase tracking-widest text-text-secondary">{item}</span>
-                    </div>
-                  ))}
+                {/* WhatsApp Ecosystem */}
+                <div className="p-8 md:p-12 flex flex-col items-center text-center group/item">
+                  <div className="w-16 h-16 bg-accent/10 text-accent rounded-2xl flex items-center justify-center mb-6 group-hover/item:scale-110 group-hover/item:-rotate-6 transition-all duration-500">
+                    <MessageSquare size={28} strokeWidth={1.5} />
+                  </div>
+                  <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-text-secondary mb-3">WhatsApp Ecosystem</h4>
+                  <p className="text-2xl md:text-3xl font-black text-text-primary mb-8 tracking-tighter">Quick Sync</p>
+                  <motion.a
+                    whileTap={{ scale: 0.95 }}
+                    href="https://wa.me/918618764541"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center space-x-3 bg-accent text-white px-8 py-4 rounded-xl font-black uppercase tracking-[0.1em] text-[12px] shadow-lg shadow-accent/20 hover:shadow-accent/40 transition-all duration-500 w-full"
+                  >
+                    <span>Message</span>
+                    <ArrowRight size={16} />
+                  </motion.a>
                 </div>
 
-                <a
-                  href="tel:+918618764541"
-                  className="btn-primary w-full justify-center"
-                >
-                  <span>Call Now</span>
-                  <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-                </a>
+                {/* Email Inquiry */}
+                <div className="p-8 md:p-12 flex flex-col items-center text-center group/item">
+                  <div className="w-16 h-16 bg-accent/10 text-accent rounded-2xl flex items-center justify-center mb-6 group-hover/item:scale-110 group-hover/item:rotate-6 transition-all duration-500">
+                    <Mail size={28} strokeWidth={1.5} />
+                  </div>
+                  <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-text-secondary mb-3">Email Inquiry</h4>
+                  <p className="text-2xl md:text-3xl font-black text-text-primary mb-8 tracking-tighter">info@wingsforshare.com</p>
+                  <motion.a
+                    whileTap={{ scale: 0.95 }}
+                    href="mailto:info@wingsforshare.com"
+                    className="inline-flex items-center justify-center space-x-3 bg-accent text-white px-8 py-4 rounded-xl font-black uppercase tracking-[0.1em] text-[12px] shadow-lg shadow-accent/20 hover:shadow-accent/40 transition-all duration-500 w-full"
+                  >
+                    <span>Send Email</span>
+                    <ArrowRight size={16} />
+                  </motion.a>
+                </div>
+
               </div>
-            </motion.div>
-
-            {/* WhatsApp Card */}
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              whileHover={{ y: -10 }}
-              className="group relative card-premium p-10 md:p-16 overflow-hidden"
-            >
-              <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-500/5 rounded-full blur-3xl -mr-32 -mt-32 group-hover:bg-emerald-500/10 transition-colors" />
-
-              <div className="relative z-10">
-                <div className="w-16 h-16 bg-emerald-500 text-white rounded-2xl flex items-center justify-center mb-10 shadow-xl group-hover:-rotate-6 transition-transform duration-500">
-                  <MessageSquare size={28} />
-                </div>
-
-                <h4 className="text-[12px] font-bold uppercase tracking-widest text-text-secondary mb-4">WhatsApp Support</h4>
-                <p className="text-[28px] md:text-[36px] font-bold text-text-primary mb-10 tracking-tight">Quick Chat</p>
-
-                <div className="space-y-4 mb-12">
-                  {['24/7 Availability', 'Quick queries', 'Portfolio sharing'].map((item, i) => (
-                    <div key={i} className="flex items-center space-x-3">
-                      <CheckCircle size={16} className="text-emerald-500" />
-                      <span className="text-[14px] font-bold uppercase tracking-widest text-text-secondary">{item}</span>
-                    </div>
-                  ))}
-                </div>
-
-                <a
-                  href="https://wa.me/918618764541"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center space-x-3 w-full bg-emerald-500 text-white px-8 py-6 rounded-2xl font-bold uppercase tracking-widest text-[14px] hover:scale-[1.02] active:scale-95 transition-all shadow-2xl shadow-emerald-500/20"
-                >
-                  <span>Message on WhatsApp</span>
-                  <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-                </a>
-              </div>
-            </motion.div>
-          </div>
+            </div>
+          </motion.div>
 
           {/* Trust Badges Bar */}
-          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 py-12 border-t border-white/10">
+          <div className="flex flex-wrap justify-center items-center gap-10 md:gap-24 py-20 border-t border-card-border">
             {[
-              { icon: <ShieldCheck size={18} />, text: 'Secure Systems' },
-              { icon: <Zap size={18} />, text: 'Fast Deployment' },
-              { icon: <TrendingUp size={18} />, text: 'Growth Focused' },
-              { icon: <Globe size={18} />, text: 'Global Support' }
+              { icon: <ShieldCheck size={24} />, text: 'Encrypted' },
+              { icon: <Zap size={24} />, text: 'Real-time' },
+              { icon: <TrendingUp size={24} />, text: 'Scalable' },
+              { icon: <Globe size={24} />, text: 'Global' }
             ].map((badge, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="flex items-center space-x-3 text-text-secondary"
+                variants={itemVariants}
+                className="flex items-center space-x-5 text-text-secondary group cursor-default"
               >
-                <div className="text-accent">{badge.icon}</div>
-                <span className="text-[12px] font-bold uppercase tracking-widest">{badge.text}</span>
+                <div className="text-accent group-hover:scale-125 group-hover:rotate-12 transition-all duration-500">{badge.icon}</div>
+                <span className="text-[13px] font-black uppercase tracking-[0.2em] group-hover:text-text-primary transition-colors">{badge.text}</span>
               </motion.div>
             ))}
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

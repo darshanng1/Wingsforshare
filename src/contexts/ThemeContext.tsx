@@ -29,6 +29,14 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     document.body.classList.remove('light', 'dark');
     document.body.classList.add(theme);
     localStorage.setItem('theme', theme);
+
+    // Direct logo update as requested for production stability
+    const logos = document.querySelectorAll("#logo");
+    logos.forEach((logo) => {
+      if (logo instanceof HTMLImageElement) {
+        logo.src = theme === 'dark' ? '/logo-dark.png' : '/logo-light.png';
+      }
+    });
   }, [theme]);
 
   const toggleTheme = () => {

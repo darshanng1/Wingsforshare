@@ -83,10 +83,10 @@ export function TestimonialsSection() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-5xl md:text-7xl font-black tracking-[-0.04em] text-text-primary leading-[0.95] mb-8"
+              className="text-5xl md:text-7xl font-display font-bold tracking-tighter text-text-primary leading-[0.95] mb-8"
             >
               What Our <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-blue-500">Partners</span> Say.
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-blue-500 italic font-light">Partners</span> Say.
             </motion.h2>
             
             <motion.p 
@@ -152,7 +152,7 @@ export function TestimonialsSection() {
                       ))}
                     </div>
 
-                    <blockquote className="text-2xl md:text-3xl font-black tracking-tight leading-[1.3] text-text-primary mb-12">
+                    <blockquote className="text-2xl md:text-3xl font-display font-bold tracking-tight leading-[1.3] text-text-primary mb-12">
                       "{active.content}"
                     </blockquote>
 
@@ -167,7 +167,7 @@ export function TestimonialsSection() {
                           />
                         </div>
                         <div>
-                          <h4 className="text-2xl font-black tracking-tight text-text-primary">{active.name}</h4>
+                          <h4 className="text-2xl font-display font-bold tracking-tight text-text-primary">{active.name}</h4>
                           <div className="flex items-center gap-2 mt-1">
                             <span className="text-[11px] text-accent font-black uppercase tracking-widest">{active.role}</span>
                             <div className="w-1 h-1 rounded-full bg-text-secondary/20" />

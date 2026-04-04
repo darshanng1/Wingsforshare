@@ -64,9 +64,9 @@ export const IndustriesSection: React.FC<IndustriesSectionProps> = () => {
               <Zap size={12} className="fill-accent" />
               <span>Transformation Framework</span>
             </motion.div>
-            <h2 className="text-7xl md:text-[120px] font-black tracking-[-0.06em] text-text-primary leading-[0.85] mb-10">
+            <h2 className="text-7xl md:text-[120px] font-display font-bold tracking-tighter text-text-primary leading-[0.85] mb-10">
               CORE <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-blue-500">ENGINE.</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-blue-500 italic font-light">ENGINE.</span>
             </h2>
             <p className="text-text-secondary/60 text-xl max-w-md leading-relaxed font-medium mb-12">
               We don't just build features; we re-engineer business models through custom automation and high-performance architecture.
@@ -98,7 +98,7 @@ export const IndustriesSection: React.FC<IndustriesSectionProps> = () => {
                   <div className="inline-block px-5 py-2 bg-emerald-500/10 border border-emerald-500/20 rounded-xl mb-8">
                     <span className="text-sm font-black text-emerald-500 uppercase tracking-[0.2em]">{item.impact}</span>
                   </div>
-                  <h3 className="text-5xl md:text-6xl font-black tracking-tighter text-text-primary mb-8 leading-none">
+                  <h3 className="text-5xl md:text-6xl font-display font-bold tracking-tighter text-text-primary mb-8 leading-none">
                     {item.industry}
                   </h3>
                   <p className="text-text-secondary/60 text-xl leading-relaxed mb-10 font-medium">

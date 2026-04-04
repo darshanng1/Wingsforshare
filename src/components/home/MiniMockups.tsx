@@ -96,7 +96,7 @@ export const ProductCard = React.forwardRef<HTMLDivElement, { product: Product }
         </div>
       </div>
       
-      <h4 className="text-2xl font-black text-text-primary mb-4 group-hover:text-accent transition-colors tracking-tight leading-none">
+      <h4 className="text-2xl font-display font-bold text-text-primary mb-4 group-hover:text-accent transition-colors tracking-tight leading-none">
         {product.name}
       </h4>
       

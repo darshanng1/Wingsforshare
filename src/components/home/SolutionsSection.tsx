@@ -67,10 +67,10 @@ export const SolutionsSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="text-5xl md:text-7xl font-black text-text-primary leading-[0.95] tracking-tight mb-0"
+              className="text-5xl md:text-8xl font-display font-bold text-text-primary leading-[0.9] tracking-tighter mb-0"
             >
               Solutions that <br /> 
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-blue-500">Scale Revenue.</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-blue-500 italic font-light">Scale Revenue.</span>
             </motion.h2>
           </div>
           <div className="lg:col-span-4">
@@ -108,7 +108,7 @@ export const SolutionsSection = () => {
                 </div>
                 
                 <div className="flex items-center justify-between mb-6">
-                  <h3 className="text-3xl font-black tracking-tighter text-text-primary mb-0 leading-none">{solution.title}</h3>
+                  <h3 className="text-3xl font-display font-bold tracking-tight text-text-primary mb-0 leading-none">{solution.title}</h3>
                   {solution.isPrimary && (
                     <span className="text-[10px] font-black bg-accent/10 text-accent px-3 py-1.5 rounded-full uppercase tracking-widest border border-accent/20">Core</span>
                   )}

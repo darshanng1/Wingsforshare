@@ -20,8 +20,9 @@ export const PlanningSection = () => {
           >
             <span>Project Planning</span>
           </motion.div>
-          <h2 className="mb-6">
-            Start Your <span className="text-text-secondary">Digital Transformation.</span>
+          <h2 className="text-5xl md:text-8xl font-display font-bold tracking-tighter leading-[0.9] mb-10">
+            Start Your <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-blue-500 italic font-light">Digital Transformation.</span>
           </h2>
           <p className="text-text-secondary max-w-2xl mx-auto mb-10 text-[16px] md:text-[18px] leading-relaxed">
             Choose the best way to start your project. Fill out our inquiry form for a quick quote or book a direct strategy session.

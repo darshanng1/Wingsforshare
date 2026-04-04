@@ -22,10 +22,10 @@ export const HeroContent = () => {
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        className="text-text-primary mb-6 text-balance leading-[1.1] tracking-tight font-bold text-[clamp(2.25rem,5vw,4rem)]"
+        className="text-text-primary mb-6 text-balance leading-[1.05] tracking-tighter font-display font-bold text-[clamp(2.5rem,6vw,4.5rem)]"
       >
         Build High-Converting <br className="hidden md:block" />
-        <span className="text-accent">Websites, Apps & SEO Systems</span>
+        <span className="text-accent italic font-light">Websites, Apps & SEO Systems</span>
       </motion.h1>
 
       {/* --- Description Section --- */}
