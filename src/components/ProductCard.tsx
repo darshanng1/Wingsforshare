@@ -17,89 +17,78 @@ export default function ProductCard({ product }: ProductCardProps) {
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
-      className="group flex flex-col h-full bg-card-bg backdrop-blur-xl rounded-[2.5rem] border border-card-border overflow-hidden transition-all duration-700 hover:shadow-[0_32px_64px_-16px_rgba(0,0,0,0.2)] dark:hover:shadow-[0_32px_64px_-16px_rgba(0,0,0,0.5)]"
+      className="group flex flex-col h-full bg-white dark:bg-zinc-900/50 rounded-[2rem] overflow-hidden border border-zinc-100 dark:border-zinc-800/50 hover:border-emerald-500/30 dark:hover:border-emerald-500/30 transition-all duration-500 hover:shadow-[0_32px_64px_-16px_rgba(0,0,0,0.1)] dark:hover:shadow-[0_32px_64px_-16px_rgba(0,0,0,0.4)]"
     >
       {/* Visual Header */}
       <div className="aspect-[16/10] w-full overflow-hidden relative">
         <img 
           src={product.screenshot} 
           alt={product.name}
-          className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
           loading="lazy"
           referrerPolicy="no-referrer"
         />
         
         {/* Category Overlay */}
-        <div className="absolute top-6 left-6 z-20">
-          <span className="px-4 py-2 bg-card-bg/90 backdrop-blur-md text-[10px] font-black uppercase tracking-[0.2em] text-accent rounded-full border border-accent/20 shadow-xl">
+        <div className="absolute top-4 left-4">
+          <span className="px-3 py-1.5 bg-white/90 dark:bg-zinc-900/90 backdrop-blur-md text-[10px] font-bold uppercase tracking-widest text-emerald-600 dark:text-emerald-400 rounded-full border border-emerald-500/10 shadow-sm">
             {product.category}
           </span>
         </div>
 
-        {/* Live Status Indicator */}
-        <div className="absolute top-6 right-6 z-20">
-          <div className="flex items-center gap-2 px-3 py-1.5 bg-black/40 backdrop-blur-md rounded-full border border-white/10">
-            <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_8px_rgba(16,185,129,0.8)]" />
-            <span className="text-[9px] font-black text-white uppercase tracking-widest">Live Demo</span>
-          </div>
-        </div>
-
         {/* Hover Action Overlay */}
-        <div className="absolute inset-0 bg-bg/40 opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center backdrop-blur-[2px]">
-          <div className="flex items-center gap-4">
-            <motion.a
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              href={product.demoLink}
-              target="_blank"
-              rel="noreferrer"
-              className="w-14 h-14 bg-accent text-white rounded-2xl flex items-center justify-center shadow-2xl shadow-accent/20"
-            >
-              <ExternalLink size={20} />
-            </motion.a>
-            <Link
-              to={`/product/${product.slug}`}
-              className="w-14 h-14 bg-white text-bg rounded-2xl flex items-center justify-center shadow-2xl shadow-black/10"
-            >
-              <ArrowUpRight size={20} />
-            </Link>
-          </div>
+        <div className="absolute inset-0 bg-zinc-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center backdrop-blur-[2px]">
+          <motion.a
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            href={product.demoLink}
+            target="_blank"
+            rel="noreferrer"
+            className="w-14 h-14 bg-white text-zinc-900 rounded-full flex items-center justify-center shadow-2xl"
+          >
+            <ExternalLink size={20} />
+          </motion.a>
         </div>
       </div>
       
       {/* Content Body */}
-      <div className="p-10 flex flex-col flex-grow bg-gradient-to-b from-transparent to-card-bg/30">
-        <div className="mb-8">
-          <div className="flex items-start justify-between gap-4 mb-4">
-            <h3 className="text-2xl font-black text-text-primary tracking-tight leading-none group-hover:text-accent transition-colors">
+      <div className="p-8 flex flex-col flex-grow">
+        <div className="mb-6">
+          <div className="flex items-start justify-between gap-4 mb-3">
+            <h3 className="text-2xl font-bold text-zinc-900 dark:text-white tracking-tight leading-tight">
               {product.name}
             </h3>
-            <span className="text-[10px] font-black uppercase tracking-[0.2em] text-accent/60 shrink-0">{product.industry}</span>
+            <Link 
+              to={`/products/${product.slug}`}
+              className="w-10 h-10 rounded-full border border-zinc-100 dark:border-zinc-800 flex items-center justify-center text-zinc-400 hover:text-emerald-500 hover:border-emerald-500/30 transition-all shrink-0"
+            >
+              <ArrowUpRight size={18} />
+            </Link>
           </div>
-          <p className="text-[15px] text-text-secondary/70 line-clamp-2 leading-relaxed font-medium">
+          <p className="text-sm text-zinc-500 dark:text-zinc-400 line-clamp-2 leading-relaxed">
             {product.shortDescription}
           </p>
         </div>
 
-        {/* Result Highlight */}
+        {/* Result Highlight (New Feature) */}
         {product.result && (
-          <div className="mb-8 p-5 bg-accent/5 rounded-[1.5rem] border border-accent/10 group-hover:border-accent/20 transition-colors">
-            <div className="flex items-center gap-2 mb-2">
-              <Sparkles size={14} className="text-accent" />
-              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-accent/60">Key Result</span>
+          <div className="mb-6 p-4 bg-emerald-50 dark:bg-emerald-500/5 rounded-2xl border border-emerald-500/10">
+            <div className="flex items-center gap-2 mb-1">
+              <Sparkles size={14} className="text-emerald-500" />
+              <span className="text-[10px] font-bold uppercase tracking-widest text-emerald-600 dark:text-emerald-400">Key Result</span>
             </div>
-            <p className="text-sm font-bold text-text-primary">
+            <p className="text-xs font-semibold text-zinc-700 dark:text-zinc-300">
               {product.result}
             </p>
           </div>
         )}
 
         {/* Features List */}
-        <div className="mb-10 space-y-3">
+        <div className="mb-8 space-y-2.5">
           {product.features.slice(0, 3).map((feature, idx) => (
             <div key={idx} className="flex items-center gap-3">
-              <div className="w-1.5 h-1.5 rounded-full bg-accent/40 shrink-0" />
-              <span className="text-[13px] font-medium text-text-secondary/80">
+              <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0" />
+              <span className="text-xs font-medium text-zinc-600 dark:text-zinc-400">
                 {feature}
               </span>
             </div>
@@ -107,22 +96,22 @@ export default function ProductCard({ product }: ProductCardProps) {
         </div>
 
         {/* Footer Actions */}
-        <div className="mt-auto pt-8 border-t border-card-border flex items-center justify-between gap-4">
+        <div className="mt-auto pt-6 border-t border-zinc-100 dark:border-zinc-800/50 flex items-center justify-between gap-4">
           <div className="flex items-center gap-3">
             {product.userLogin && (
-              <div className="flex items-center gap-2 px-3 py-1.5 bg-text-primary/5 rounded-lg border border-card-border">
-                <Lock size={12} className="text-text-secondary/40" />
-                <span className="text-[9px] font-black text-text-secondary/60 uppercase tracking-widest">Protected</span>
+              <div className="flex items-center gap-1.5 text-[10px] font-bold text-zinc-400 uppercase tracking-wider">
+                <Lock size={12} />
+                <span>Demo Access</span>
               </div>
             )}
           </div>
           
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2">
             <a 
               href={bookDemoUrl}
               target="_blank"
               rel="noreferrer"
-              className="px-6 py-3 text-[11px] font-black uppercase tracking-[0.2em] text-text-secondary hover:text-accent transition-colors"
+              className="px-4 py-2 text-xs font-bold text-zinc-500 hover:text-emerald-500 transition-colors"
             >
               Book Demo
             </a>
@@ -130,7 +119,7 @@ export default function ProductCard({ product }: ProductCardProps) {
               href={product.demoLink}
               target="_blank"
               rel="noreferrer"
-              className="px-8 py-3.5 bg-text-primary text-bg rounded-2xl text-[11px] font-black uppercase tracking-[0.2em] hover:bg-accent hover:text-white transition-all active:scale-95 shadow-xl shadow-black/5"
+              className="px-5 py-2.5 bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 rounded-xl text-xs font-bold hover:opacity-90 transition-all active:scale-95"
             >
               Live Demo
             </a>
