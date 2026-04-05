@@ -1,19 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
-@import "tailwindcss";
 
-@theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-  --color-bg: var(--bg);
-  --color-text-primary: var(--text-primary);
-  --color-text-secondary: var(--text-secondary);
-  --color-card-bg: var(--card-bg);
-  --color-card-border: var(--card-border);
-  --color-accent: #10b981;
-  --color-accent-hover: #059669;
-  --color-border: var(--card-border);
-}
+/* ================= ROOT VARIABLES ================= */
 
 :root {
   --bg: #f8fafc;
@@ -30,8 +21,9 @@
   --text-secondary: #94a3b8;
   --card-bg: #0b1220;
   --card-border: rgba(255, 255, 255, 0.06);
-  --accent: #10b981;
 }
+
+/* ================= BASE ================= */
 
 @layer base {
   html {
@@ -41,10 +33,14 @@
   }
 
   body {
-    @apply bg-bg text-text-primary font-sans antialiased selection:bg-accent/30 selection:text-accent;
-    background-image: 
+    @apply font-sans antialiased;
+    background-color: var(--bg);
+    color: var(--text-primary);
+
+    background-image:
       radial-gradient(circle at 50% -20%, rgba(16, 185, 129, 0.05), transparent 70%),
       url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+
     background-blend-mode: overlay;
   }
 
@@ -61,21 +57,27 @@
   }
 
   p {
-    @apply text-[16px] md:text-[19px] leading-[1.7] text-text-secondary mb-8 font-normal;
+    @apply text-[16px] md:text-[19px] leading-[1.7] mb-8;
+    color: var(--text-secondary);
   }
 }
+
+/* ================= COMPONENTS ================= */
 
 @layer components {
   .container-custom {
     @apply max-w-7xl mx-auto px-6 md:px-12 lg:px-20;
   }
-  
+
   .section-padding {
     @apply py-12 md:py-16;
   }
-  
+
   .card-premium {
-    @apply bg-card-bg backdrop-blur-[12px] border border-card-border rounded-[24px] p-6 md:p-8 transition-all duration-500 hover:border-accent/40 hover:shadow-[0_20px_40px_rgba(0,0,0,0.05),0_0_20px_rgba(16,185,129,0.05)] hover:-translate-y-[6px];
+    @apply backdrop-blur-[12px] border rounded-[24px] p-6 md:p-8 transition-all duration-500 hover:shadow-[0_20px_40px_rgba(0,0,0,0.05)] hover:-translate-y-[6px];
+
+    background-color: var(--card-bg);
+    border-color: var(--card-border);
     box-shadow: 0 10px 25px rgba(0,0,0,0.08);
   }
 
@@ -85,37 +87,29 @@
   }
 
   .btn-primary {
-    @apply inline-flex items-center justify-center h-[56px] px-10 rounded-full font-semibold text-[16px] tracking-tight transition-all duration-300 active:scale-95 bg-accent text-white hover:shadow-[0_10px_30px_rgba(16,185,129,0.4)] hover:scale-[1.03] relative overflow-hidden;
+    @apply inline-flex items-center justify-center h-[56px] px-10 rounded-full font-semibold text-[16px] tracking-tight transition-all duration-300 active:scale-95 text-white hover:scale-[1.03];
+
     background-image: linear-gradient(to bottom right, #10b981, #059669);
   }
 
+  /* ✅ FIXED BUTTON (NO ERROR NOW) */
   .btn-secondary {
-    @apply inline-flex items-center justify-center h-[56px] px-10 rounded-full font-semibold text-[16px] tracking-tight transition-all duration-300 active:scale-95 bg-transparent text-text-primary border border-text-primary/20 hover:bg-text-primary/5 hover:border-text-primary/40 hover:shadow-[0_10px_30px_rgba(0,0,0,0.05)];
+    @apply inline-flex items-center justify-center h-[56px] px-10 rounded-full font-semibold text-[16px] tracking-tight transition-all duration-300 active:scale-95 bg-transparent border hover:bg-black/5 hover:shadow-[0_10px_30px_rgba(0,0,0,0.05)];
+
+    color: var(--text-primary);
+    border-color: rgba(0, 0, 0, 0.2);
+  }
+
+  .dark .btn-secondary {
+    border-color: rgba(255, 255, 255, 0.2);
   }
 
   .glass-panel {
-    @apply bg-card-bg backdrop-blur-[12px] border border-card-border rounded-[32px] shadow-[0_40px_80px_-20px_rgba(0,0,0,0.2)];
-    position: relative;
-    background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.03), transparent);
-  }
+    @apply backdrop-blur-[12px] border rounded-[32px] shadow-[0_40px_80px_-20px_rgba(0,0,0,0.2)];
 
-  .glass-panel::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    padding: 1px;
-    background: linear-gradient(
-      to bottom right,
-      rgba(255, 255, 255, 0.1),
-      transparent,
-      rgba(255, 255, 255, 0.05)
-    );
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    pointer-events: none;
+    background-color: var(--card-bg);
+    border-color: var(--card-border);
+    position: relative;
   }
 
   .glow-border {
@@ -125,36 +119,24 @@
   .glow-border::after {
     content: "";
     position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
+    inset: 0;
     background: conic-gradient(
       from 0deg,
-      transparent 0%,
-      transparent 40%,
-      var(--accent) 50%,
-      transparent 60%,
-      transparent 100%
+      transparent,
+      var(--accent),
+      transparent
     );
     animation: rotate 4s linear infinite;
     opacity: 0.2;
-    pointer-events: none;
   }
 
   @keyframes rotate {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
   }
-
-  .text-balance {
-    text-wrap: balance;
-  }
-
-  .letter-spacing-tighter {
-    letter-spacing: -0.05em;
-  }
 }
+
+/* ================= EXTRA ================= */
 
 @keyframes marquee {
   0% { transform: translateX(0); }
