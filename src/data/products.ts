@@ -151,6 +151,7 @@ export const products: Product[] = [
     fullDescription:
       'Designed for refurbished product sellers, this platform improves trust and conversions through clean UI, strong product presentation, and optimized checkout flow.'
   },
+<<<<<<< Updated upstream
   {
     id: '7',
     slug: 'attendance-app',
@@ -177,6 +178,48 @@ export const products: Product[] = [
     fullDescription:
       'The Enterprise Attendance App solves the complexity of managing a distributed workforce. Benefits include: 1. **Eliminate Buddy Punching:** Secure biometric and geo-fenced check-ins ensure integrity. 2. **Real-time Visibility:** Know exactly where your field staff is and what they are working on. 3. **Reduced Admin Overhead:** Automate leave approvals and payroll calculations, saving hours of manual HR work every month.'
   },
+=======
+ {
+  id: '7',
+  slug: 'attendance-app',
+  name: 'Enterprise Attendance & Workforce App',
+  description:
+    'A high-performance mobile and web application designed for modern enterprises to manage workforce attendance, track real-time location, and automate payroll processing with biometric and geo-fencing integration.',
+  shortDescription:
+    'Next-gen employee tracking and workforce management system.',
+  category: 'BUSINESS APPS',
+  sector: 'business',
+  industry: 'HR & Workforce',
+  result: '99% Attendance Accuracy',
+
+  status: 'live',
+
+  screenshot: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=800&auto=format&fit=crop',
+
+  // ✅ KEEP ONLY ONE
+  liveUrl: 'https://wings-attendance.vercel.app/?source=portfolio',
+  demoLink: 'https://wings-attendance.vercel.app/?source=portfolio',
+
+  features: [
+    'GPS tracking',
+    'Face-ID integration',
+    'Automated leave management',
+    'Real-time productivity analytics',
+    'Seamless payroll integration',
+    'Offline sync capabilities',
+    'Group Message Broadcast',
+    'Individual Message Broadcast',
+    'Team level Management',
+    'Data backup',
+    'Overtime Calculation',
+    'Daily Service Report',
+    'Total employee performance tracker'
+  ],
+
+  fullDescription:
+    'The Enterprise Attendance App solves the complexity of managing a distributed workforce. Benefits include: 1. **Eliminate Buddy Punching:** Secure biometric and geo-fenced check-ins ensure integrity. 2. **Real-time Visibility:** Know exactly where your field staff is and what they are working on. 3. **Reduced Admin Overhead:** Automate leave approvals and payroll calculations, saving hours of manual HR work every month.'
+},
+>>>>>>> Stashed changes
   {
     id: '8',
     slug: 'icecream-brand',

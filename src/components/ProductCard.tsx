@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ExternalLink, ShieldCheck, Lock, CheckCircle, Calendar, ArrowUpRight, Sparkles } from 'lucide-react';
+import { ExternalLink, Lock, ArrowUpRight, Sparkles } from 'lucide-react';
 import { Product } from '../types';
 import { motion } from 'motion/react';
 
@@ -13,7 +13,7 @@ export default function ProductCard({ product }: ProductCardProps) {
   const bookDemoUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(`Hi, I'm interested in booking a demo for ${product.name}`)}`;
 
   return (
-    <motion.div 
+    <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
@@ -21,36 +21,38 @@ export default function ProductCard({ product }: ProductCardProps) {
     >
       {/* Visual Header */}
       <div className="aspect-[16/10] w-full overflow-hidden relative">
-        <img 
-          src={product.screenshot} 
+        <img
+          src={product.screenshot}
           alt={product.name}
           className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
           loading="lazy"
           referrerPolicy="no-referrer"
         />
-        
-        {/* Category Overlay */}
+
+        {/* Category */}
         <div className="absolute top-6 left-6 z-30">
           <span className="px-4 py-2 bg-card-bg/90 backdrop-blur-md text-[10px] font-black uppercase tracking-[0.2em] text-accent rounded-full border border-accent/20 shadow-xl">
             {product.category}
           </span>
         </div>
 
-        {/* Live Status Indicator */}
+        {/* Live Demo Button */}
         <div className="absolute top-6 right-6 z-30">
-          <a 
+          <a
             href={product.demoLink}
             target="_blank"
             rel="noreferrer"
-            className="flex items-center gap-2 px-3 py-1.5 bg-black/40 backdrop-blur-md rounded-full border border-white/10 hover:bg-accent/40 transition-colors pointer-events-auto"
+            className="flex items-center gap-2 px-3 py-1.5 bg-black/40 backdrop-blur-md rounded-full border border-white/10 hover:bg-accent/40 transition-colors"
           >
-            <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_8px_rgba(16,185,129,0.8)]" />
-            <span className="text-[9px] font-black text-white uppercase tracking-widest">Live Demo</span>
+            <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+            <span className="text-[9px] font-black text-white uppercase tracking-widest">
+              Live Demo
+            </span>
           </a>
         </div>
 
-        {/* Hover Action Overlay */}
-        <div className="absolute inset-0 bg-bg/40 opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center backdrop-blur-[2px] pointer-events-none z-0">
+        {/* Hover Overlay */}
+        <div className="absolute inset-0 bg-bg/40 opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center backdrop-blur-[2px] pointer-events-none">
           <div className="flex items-center gap-4">
             <motion.a
               whileHover={{ scale: 1.05 }}
@@ -58,84 +60,77 @@ export default function ProductCard({ product }: ProductCardProps) {
               href={product.demoLink}
               target="_blank"
               rel="noreferrer"
-              className="w-14 h-14 bg-accent text-white rounded-2xl flex items-center justify-center shadow-2xl shadow-accent/20 pointer-events-auto z-10"
+              className="w-14 h-14 bg-accent text-white rounded-2xl flex items-center justify-center shadow-2xl"
             >
               <ExternalLink size={20} />
             </motion.a>
+
             <Link
               to={`/product/${product.slug}`}
-              className="w-14 h-14 bg-white text-bg rounded-2xl flex items-center justify-center shadow-2xl shadow-black/10 pointer-events-auto z-10"
+              className="w-14 h-14 bg-white text-bg rounded-2xl flex items-center justify-center shadow-2xl"
             >
               <ArrowUpRight size={20} />
             </Link>
           </div>
         </div>
       </div>
-      
-      {/* Content Body */}
-      <div className="p-10 flex flex-col flex-grow bg-gradient-to-b from-transparent to-card-bg/30">
+
+      {/* Content */}
+      <div className="p-10 flex flex-col flex-grow">
         <div className="mb-8">
-          <div className="flex items-start justify-between gap-4 mb-4">
-            <h3 className="text-2xl font-black text-text-primary tracking-tight leading-none group-hover:text-accent transition-colors">
+          <div className="flex justify-between mb-4">
+            <h3 className="text-2xl font-black">
               {product.name}
             </h3>
-            <span className="text-[10px] font-black uppercase tracking-[0.2em] text-accent/60 shrink-0">{product.industry}</span>
+            <span className="text-[10px] uppercase text-accent">
+              {product.industry}
+            </span>
           </div>
-          <p className="text-[15px] text-text-secondary/70 line-clamp-2 leading-relaxed font-medium">
+
+          <p className="text-sm text-text-secondary">
             {product.shortDescription}
           </p>
         </div>
 
-        {/* Result Highlight */}
+        {/* Result */}
         {product.result && (
-          <div className="mb-8 p-5 bg-accent/5 rounded-[1.5rem] border border-accent/10 group-hover:border-accent/20 transition-colors">
+          <div className="mb-6 p-4 bg-accent/5 rounded-xl">
             <div className="flex items-center gap-2 mb-2">
-              <Sparkles size={14} className="text-accent" />
-              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-accent/60">Key Result</span>
+              <Sparkles size={14} />
+              <span className="text-xs font-bold">Key Result</span>
             </div>
-            <p className="text-sm font-bold text-text-primary">
-              {product.result}
-            </p>
+            <p>{product.result}</p>
           </div>
         )}
 
-        {/* Features List */}
-        <div className="mb-10 space-y-3">
-          {product.features.slice(0, 3).map((feature, idx) => (
-            <div key={idx} className="flex items-center gap-3">
-              <div className="w-1.5 h-1.5 rounded-full bg-accent/40 shrink-0" />
-              <span className="text-[13px] font-medium text-text-secondary/80">
-                {feature}
-              </span>
+        {/* Features */}
+        <div className="mb-6">
+          {product.features.slice(0, 3).map((f, i) => (
+            <div key={i} className="text-sm">
+              • {f}
             </div>
           ))}
         </div>
 
-        {/* Footer Actions */}
-        <div className="mt-auto pt-8 border-t border-card-border flex items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
-            {product.userLogin && (
-              <div className="flex items-center gap-2 px-3 py-1.5 bg-text-primary/5 rounded-lg border border-card-border">
-                <Lock size={12} className="text-text-secondary/40" />
-                <span className="text-[9px] font-black text-text-secondary/60 uppercase tracking-widest">Protected</span>
-              </div>
-            )}
-          </div>
-          
-          <div className="flex items-center gap-3 relative z-30">
-            <a 
-              href={bookDemoUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="px-6 py-3 text-[11px] font-black uppercase tracking-[0.2em] text-text-secondary hover:text-accent transition-colors"
-            >
+        {/* Footer */}
+        <div className="mt-auto flex justify-between items-center">
+          {product.userLogin && (
+            <div className="flex items-center gap-2 text-xs">
+              <Lock size={12} />
+              Protected
+            </div>
+          )}
+
+          <div className="flex gap-3">
+            <a href={bookDemoUrl} target="_blank" rel="noreferrer">
               Book Demo
             </a>
-            <a 
+
+            <a
               href={product.demoLink}
               target="_blank"
               rel="noreferrer"
-              className="px-8 py-3.5 bg-text-primary text-bg rounded-2xl text-[11px] font-black uppercase tracking-[0.2em] hover:bg-accent hover:text-white transition-all active:scale-95 shadow-xl shadow-black/5"
+              className="bg-black text-white px-4 py-2 rounded"
             >
               Live Demo
             </a>
@@ -145,5 +140,3 @@ export default function ProductCard({ product }: ProductCardProps) {
     </motion.div>
   );
 }
-
-
