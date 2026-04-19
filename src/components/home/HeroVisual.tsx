@@ -500,6 +500,17 @@ const DynamicPreview = ({ type }: { type: string }) => {
 export const HeroVisual = ({ rotateX, rotateY, textX, textY }: HeroVisualProps) => {
   const [activeStep, setActiveStep] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 1024); // Matching lg breakpoint
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   useEffect(() => {
     if (!isAutoPlaying) return;
@@ -510,7 +521,6 @@ export const HeroVisual = ({ rotateX, rotateY, textX, textY }: HeroVisualProps) 
   }, [isAutoPlaying]);
 
   const currentStep = simulationSteps[activeStep];
-  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
 
   return (
     <motion.div

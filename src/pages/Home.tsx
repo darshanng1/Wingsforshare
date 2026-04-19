@@ -22,38 +22,7 @@ import { WhyChooseUsSection } from '../components/home/WhyChooseUsSection';
 import { PlanningSection } from '../components/home/PlanningSection';
 import { ContactSection } from '../components/home/ContactSection';
 import { TestimonialsSection } from '../components/home/TestimonialsSection';
-
-const featuredApps = [
-  {
-    id: 'pest-control',
-    name: 'Pest Management BI System',
-    tag: 'Industry Leader',
-    desc: 'A complete Business Intelligence and automation engine for pest control companies. Manage technicians, track chemical usage, and monitor revenue in real-time.',
-    benefits: [
-      '300% Increase in operational efficiency',
-      'Real-time technician GPS tracking',
-      'Automated chemical usage reporting',
-      'Instant invoicing & payment collection'
-    ],
-    password: 'googlepehai1@',
-    link: 'https://pest-nine.vercel.app',
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop'
-  },
-  {
-    id: 'business-app',
-    name: 'Enterprise Attendance App',
-    tag: 'Workforce Management',
-    desc: 'Next-gen employee tracking system with geo-fencing and biometric security. Perfect for managing large-scale distributed workforces.',
-    benefits: [
-      'Eliminate buddy punching with Biometrics',
-      'Geo-fenced check-ins for field staff',
-      'Automated payroll & leave processing',
-      'Real-time productivity heatmaps'
-    ],
-    link: '#',
-    image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=800&auto=format&fit=crop'
-  }
-];
+import { LatestBlogs } from '../components/home/LatestBlogs';
 
 export default function Home() {
   const location = useLocation();
@@ -63,56 +32,24 @@ export default function Home() {
   const { setActiveSection } = useScrollSpy();
 
   const allProjects = React.useMemo(() => {
-    // Prepend featured apps to the project list
-    const featured = featuredApps.map(app => ({
-      id: app.id,
-      name: app.name,
-      title: app.name,
-      category: app.tag === 'Industry Leader' ? 'Business Intelligence' : 'Mobile App',
-      industry: app.tag,
-      description: app.desc,
-      shortDescription: app.desc,
-      image: app.image,
-      screenshot: app.image,
-      features: app.benefits,
-      demoLink: app.link,
-      demo: app.link,
-      slug: app.id,
-      result: app.benefits[0],
-      highlight: true,
-      password: app.password
-    }));
-
-    const baseProjects = Array.from({ length: 500 }, (_, i) => {
-      const base = products[i % products.length];
-      const results = [
-        "Increased user engagement by 45%",
-        "Reduced operational costs by 30%",
-        "Boosted conversion rates by 2.5x",
-        "Streamlined workflow efficiency by 60%",
-        "Achieved 99.9% system uptime"
-      ];
-      return {
-        ...base,
-        id: `${base.id}-${i}`,
-        name: `${base.name} ${Math.floor(i / products.length) + 1}`,
-        title: `${base.title} ${Math.floor(i / products.length) + 1}`,
-        result: results[i % results.length],
-        highlight: false
-      };
-    });
-
-    return [...featured, ...baseProjects];
-  }, [featuredApps]);
+    return products;
+  }, []);
 
   const categories = React.useMemo(() => ['All', ...new Set(products.map(p => p.category))], []);
 
   const filteredProjects = React.useMemo(() => {
+    const searchLower = search.toLowerCase().trim();
+    if (!searchLower) return allProjects.filter(p => filter === 'All' || p.category === filter);
+
     return allProjects.filter(project => {
       const matchesFilter = filter === 'All' || project.category === filter;
       
-      const matchesSearch = project.name.toLowerCase().includes(search.toLowerCase()) ||
-        project.description.toLowerCase().includes(search.toLowerCase());
+      // Strict match priority: Name > slug > Category > Industry
+      const matchesSearch = 
+        project.name.toLowerCase().includes(searchLower) ||
+        project.slug.toLowerCase().includes(searchLower) ||
+        project.category.toLowerCase().includes(searchLower) ||
+        (project.industry && project.industry.toLowerCase().includes(searchLower));
       
       return matchesFilter && matchesSearch;
     });
@@ -373,6 +310,9 @@ export default function Home() {
 
       {/* Testimonials Section */}
       <TestimonialsSection />
+
+      {/* Blog Section */}
+      <LatestBlogs />
 
       {/* Consultation & Meeting Section */}
       <PlanningSection />

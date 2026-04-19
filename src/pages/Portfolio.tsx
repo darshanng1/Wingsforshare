@@ -13,10 +13,17 @@ export default function Portfolio() {
   const categories = ['All', ...new Set(products.map(p => p.category))];
 
   const filteredProducts = useMemo(() => {
+    const searchLower = searchQuery.toLowerCase().trim();
     return products.filter(product => {
-      const matchesSearch = product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                          product.shortDescription.toLowerCase().includes(searchQuery.toLowerCase());
       const matchesCategory = selectedCategory === 'All' || product.category === selectedCategory;
+      if (!searchLower) return matchesCategory;
+
+      const matchesSearch = 
+        product.name.toLowerCase().includes(searchLower) ||
+        product.slug.toLowerCase().includes(searchLower) ||
+        product.category.toLowerCase().includes(searchLower) ||
+        (product.industry && product.industry.toLowerCase().includes(searchLower));
+      
       return matchesSearch && matchesCategory;
     });
   }, [searchQuery, selectedCategory]);
@@ -49,73 +56,102 @@ export default function Portfolio() {
   };
 
   return (
-    <div className="pt-32 pb-20 min-h-screen bg-white dark:bg-zinc-950 transition-colors duration-500">
+    <div className="pt-32 pb-20 min-h-screen bg-bg transition-colors duration-500">
       {/* Version Indicator for Debugging */}
-      <div className="hidden">Portfolio v2.1</div>
+      <div className="hidden">Portfolio v2.3</div>
       {/* Top Section */}
       <section className="container-custom mb-16">
-        <div className="max-w-3xl">
+        <div className="max-w-4xl mx-auto text-center">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-bold uppercase tracking-widest mb-6"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="inline-flex items-center gap-3 px-6 py-2 rounded-full bg-accent/10 border border-accent/20 text-accent text-[10px] font-black uppercase tracking-[0.3em] mb-10 shadow-xl shadow-accent/5"
           >
-            <Rocket size={14} />
-            <span>Our Marketplace</span>
+            <Rocket size={14} className="fill-accent" />
+            <span>Project Explorer System</span>
           </motion.div>
+          
           <motion.h1 
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-4xl md:text-6xl font-black tracking-tighter text-zinc-900 dark:text-white mb-6"
+            className="text-[64px] md:text-[110px] font-display font-black tracking-[-0.04em] leading-[0.85] mb-12"
           >
-            Our <span className="text-emerald-500">Work</span>
+            Digital <br /> 
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent via-accent to-blue-500 italic font-light">Showcase</span>
           </motion.h1>
+          
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed"
+            className="text-[20px] md:text-[24px] text-text-secondary/60 max-w-2xl mx-auto leading-relaxed font-medium mb-24"
           >
-            Explore our latest websites, apps, and business solutions. 
-            We build high-performance digital products tailored for growth.
+            A curated selection of high-performance digital solutions developed for industry-leading clients.
           </motion.p>
         </div>
 
-        {/* Search & Filter Bar */}
+        {/* Professional Agency Command Hub */}
         <motion.div 
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}
-          className="mt-16 space-y-8"
+          transition={{ duration: 1.2, ease: [0.23, 1, 0.32, 1] }}
+          className="space-y-12"
         >
-          <div className="relative group max-w-2xl mx-auto">
-            <div className="absolute -inset-1 bg-gradient-to-r from-accent/20 to-blue-500/20 rounded-full blur opacity-0 group-focus-within:opacity-100 transition duration-500" />
-            <div className="relative">
-              <Search className="absolute left-6 top-1/2 -translate-y-1/2 text-text-secondary/40 group-focus-within:text-accent transition-colors" size={20} />
-              <input 
-                type="text"
-                placeholder="Search projects by name, industry, or technology..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-14 pr-6 py-5 bg-card-bg/50 backdrop-blur-xl border border-card-border rounded-full focus:outline-none focus:border-accent/50 transition-all text-text-primary font-medium placeholder:text-text-secondary/20 shadow-xl"
-              />
+          <div className="relative group max-w-5xl mx-auto">
+            {/* Dynamic Energy Aura */}
+            <div className="absolute -inset-16 bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.15)_0%,transparent_70%)] rounded-full blur-[100px] opacity-0 group-focus-within:opacity-100 transition-opacity duration-1000" />
+            
+            <div className="relative bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-white/5 rounded-3xl shadow-[0_32px_80px_-24px_rgba(0,0,0,0.1)] dark:shadow-[0_48px_100px_-24px_rgba(0,0,0,0.5)] overflow-hidden transition-all duration-700 group-focus-within:scale-[1.01] group-focus-within:border-accent group-focus-within:ring-4 group-focus-within:ring-accent/5">
+              
+              <div className="relative z-10 flex items-center px-10 py-6">
+                <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-accent text-white shadow-lg shadow-accent/20">
+                  <Search size={24} strokeWidth={2.5} />
+                </div>
+                
+                <input 
+                  id="portfolio-search-input"
+                  type="text"
+                  placeholder="What solution can we find for you?"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-full bg-transparent focus:outline-none text-zinc-900 dark:text-zinc-50 text-xl md:text-2xl font-medium tracking-tight placeholder:text-zinc-300 dark:placeholder:text-zinc-800 pl-8 pr-32 h-full"
+                />
+                
+                {/* HUD Result Badge */}
+                <div className="absolute right-8 top-1/2 -translate-y-1/2 hidden md:flex items-center gap-3">
+                  <div className="w-px h-8 bg-zinc-200 dark:bg-zinc-800" />
+                  <motion.div 
+                    key={filteredProducts.length}
+                    initial={{ y: 5, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    className="flex flex-col items-end"
+                  >
+                    <span className="text-xl font-display font-bold text-accent italic">
+                      {filteredProducts.length}
+                    </span>
+                    <span className="text-[8px] font-black uppercase tracking-widest text-zinc-400">Results</span>
+                  </motion.div>
+                </div>
+              </div>
             </div>
           </div>
           
           <div className="flex flex-wrap justify-center gap-3">
             {categories.map(cat => (
-              <button
+              <motion.button
                 key={cat}
+                whileHover={{ y: -4 }}
+                whileTap={{ scale: 0.98 }}
                 onClick={() => setSelectedCategory(cat)}
-                className={`px-8 py-3 rounded-full text-[10px] font-black uppercase tracking-[0.2em] transition-all duration-500 border ${
+                className={`px-8 py-3 rounded-2xl text-[10px] font-bold uppercase tracking-widest transition-all duration-500 ${
                   selectedCategory === cat 
-                    ? 'bg-accent text-white border-accent shadow-2xl shadow-accent/40 scale-105' 
-                    : 'bg-card-bg/40 text-text-secondary/60 hover:text-text-primary border-card-border hover:border-accent/30'
+                    ? 'bg-accent text-white shadow-lg shadow-accent/20 scale-105' 
+                    : 'bg-zinc-100 dark:bg-zinc-900 text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100'
                 }`}
               >
                 {cat}
-              </button>
+              </motion.button>
             ))}
           </div>
         </motion.div>

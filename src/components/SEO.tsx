@@ -16,7 +16,7 @@ const SEO: React.FC<SEOProps> = ({
   description = "WingsForShare is a leading digital solutions agency specializing in business technology growth, custom software development, and high-performance digital systems.",
   keywords = "business technology growth, digital solutions agency, custom software development, business automation, SEO services, WingsForShare",
   canonical = "https://wingsforshare.com",
-  ogImage = "https://wingsforshare.com/logo-light.png",
+  ogImage = "https://wingsforshare.com/logos/logo-light.png",
   ogType = "website",
   schemaMarkup
 }) => {
@@ -27,7 +27,7 @@ const SEO: React.FC<SEOProps> = ({
     "@type": "Organization",
     "name": "WingsForShare",
     "url": "https://wingsforshare.com",
-    "logo": "https://wingsforshare.com/logo-light.png",
+    "logo": "https://wingsforshare.com/logos/logo-light.png",
     "description": description,
     "sameAs": [
       "https://facebook.com/wingsforshare",

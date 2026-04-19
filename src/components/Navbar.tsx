@@ -73,6 +73,7 @@ export default function Navbar() {
     { name: 'Solutions', href: '#solutions' },
     { name: 'Portfolio', href: '#portfolio' },
     { name: 'Industries', href: '#industries' },
+    { name: 'Blog', href: '/blog' },
     { name: 'Contact', href: '/contact' },
   ];
 

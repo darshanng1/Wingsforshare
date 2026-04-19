@@ -9,13 +9,36 @@ interface InquiryFormProps {
 export default function InquiryForm({ productName }: InquiryFormProps) {
   const [status, setStatus] = React.useState<'idle' | 'loading' | 'success'>('idle');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus('loading');
-    // Simulate API call
-    setTimeout(() => {
-      setStatus('success');
-    }, 1500);
+    
+    const formData = new FormData(e.target as HTMLFormElement);
+    const data = {
+      name: formData.get('full-name'),
+      phone: formData.get('phone'),
+      service: productName || 'General Inquiry',
+      message: formData.get('message'),
+      email: 'not-provided@wingsforshare.com' // Placeholder as form doesn't have email field directly
+    };
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      if (res.ok) {
+        setStatus('success');
+      } else {
+        setStatus('idle');
+        alert("Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      console.error("Inquiry error:", error);
+      setStatus('idle');
+    }
   };
 
   return (

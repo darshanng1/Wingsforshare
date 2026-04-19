@@ -68,41 +68,66 @@ export const LiveDemoSection: React.FC<LiveDemoSectionProps> = ({
             Don't just take our word for it. Interact with our live demos and see the quality of our work firsthand.
           </motion.p>
 
-          {/* Search and Filters */}
+          {/* Immersion Search and Filters */}
           <motion.div 
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="mt-20 space-y-12"
+            transition={{ duration: 1.2, ease: [0.23, 1, 0.32, 1] }}
+            className="mt-32 space-y-20"
           >
-            <div className="relative group max-w-3xl mx-auto">
-              <div className="absolute -inset-1 bg-gradient-to-r from-accent/20 to-blue-500/20 rounded-full blur opacity-0 group-focus-within:opacity-100 transition duration-500" />
-              <div className="relative">
-                <Search className="absolute left-8 top-1/2 -translate-y-1/2 text-text-secondary/40 group-focus-within:text-accent transition-colors" size={24} />
-                <input
-                  type="text"
-                  placeholder="Search projects by name, industry, or technology..."
-                  value={search}
-                  onChange={(e) => setSearch(e.target.value)}
-                  className="w-full pl-20 pr-8 py-8 bg-card-bg/50 backdrop-blur-xl border border-card-border rounded-full focus:outline-none focus:border-accent/50 transition-all text-text-primary text-lg font-medium placeholder:text-text-secondary/20 shadow-2xl"
-                />
+            <div className="relative group max-w-5xl mx-auto">
+              {/* Dynamic Energy Aura */}
+              <div className="absolute -inset-16 bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.15)_0%,transparent_70%)] rounded-full blur-[100px] opacity-0 group-focus-within:opacity-100 transition-opacity duration-1000" />
+              <div className="absolute -inset-1 border-2 border-accent/20 rounded-[3.5rem] blur-sm opacity-0 group-focus-within:opacity-100 transition-all duration-1000" />
+              
+              {/* Professional Agency Command Hub */}
+              <div className="relative bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-white/5 rounded-3xl shadow-[0_32px_80px_-24px_rgba(0,0,0,0.1)] dark:shadow-[0_48px_100px_-24px_rgba(0,0,0,0.5)] overflow-hidden transition-all duration-700 group-focus-within:scale-[1.01] group-focus-within:border-accent group-focus-within:ring-4 group-focus-within:ring-accent/5">
+                
+                <div className="relative z-10 flex items-center px-10 py-6">
+                  <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-accent text-white shadow-lg shadow-accent/20">
+                    <Search size={24} strokeWidth={2.5} />
+                  </div>
+                  
+                  <input
+                    id="showcase-search-input"
+                    type="text"
+                    placeholder="Search by service or industry..."
+                    value={search}
+                    onChange={(e) => setSearch(e.target.value)}
+                    className="w-full bg-transparent focus:outline-none text-zinc-900 dark:text-zinc-50 text-xl md:text-2xl font-medium tracking-tight placeholder:text-zinc-300 dark:placeholder:text-zinc-800 pl-8 pr-32 h-full"
+                  />
+                  
+                  {/* Performance Metric Result */}
+                  <div className="absolute right-8 top-1/2 -translate-y-1/2 hidden md:flex items-center gap-3">
+                    <div className="w-px h-8 bg-zinc-200 dark:bg-zinc-800" />
+                    <motion.div 
+                      key={filteredProjects.length}
+                      initial={{ y: 5, opacity: 0 }}
+                      animate={{ y: 0, opacity: 1 }}
+                      className="flex flex-col items-end"
+                    >
+                      <span className="text-xl font-display font-bold text-accent italic">
+                        {filteredProjects.length}
+                      </span>
+                      <span className="text-[8px] font-black uppercase tracking-widest text-zinc-400">Results</span>
+                    </motion.div>
+                  </div>
+                </div>
               </div>
             </div>
 
-            <div className="flex flex-wrap justify-center gap-4">
+            <div className="flex flex-wrap justify-center gap-3">
               {categories.map((cat, idx) => (
                 <motion.button
                   key={cat}
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.3 + (idx * 0.05) }}
+                  whileHover={{ y: -4 }}
+                  whileTap={{ scale: 0.98 }}
                   onClick={() => setFilter(cat)}
-                  className={`px-10 py-4 rounded-full text-[11px] font-black uppercase tracking-[0.2em] transition-all duration-500 border ${
+                  className={`px-8 py-3 rounded-2xl text-[10px] font-bold uppercase tracking-widest transition-all duration-500 ${
                     filter === cat
-                      ? 'bg-accent text-white border-accent shadow-2xl shadow-accent/40 scale-105'
-                      : 'bg-card-bg/40 text-text-secondary/60 hover:text-text-primary border-card-border hover:border-accent/30'
+                      ? 'bg-accent text-white shadow-lg shadow-accent/20 scale-105'
+                      : 'bg-zinc-100 dark:bg-zinc-900 text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100'
                   }`}
                 >
                   {cat}

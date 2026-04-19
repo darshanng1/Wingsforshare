@@ -81,7 +81,7 @@ export default function DashboardUI() {
           <div className="flex -space-x-2">
             {[1, 2, 3].map(i => (
               <div key={i} className="w-8 h-8 rounded-full border-2 border-white dark:border-zinc-900 bg-zinc-100 dark:bg-zinc-800 overflow-hidden">
-                <img src={`https://i.pravatar.cc/100?u=user${i}`} alt="User" />
+                <img src={`https://i.pravatar.cc/100?u=user${i}`} alt="User" referrerPolicy="no-referrer" />
               </div>
             ))}
           </div>

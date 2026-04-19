@@ -75,7 +75,12 @@ export const IndustriesSection: React.FC<IndustriesSectionProps> = () => {
               <div className="flex -space-x-4">
                 {[1, 2, 3, 4].map((i) => (
                   <div key={i} className="w-12 h-12 rounded-full border-4 border-bg bg-card-bg flex items-center justify-center overflow-hidden">
-                    <img src={`https://i.pravatar.cc/100?img=${i + 10}`} alt="Partner" className="w-full h-full object-cover" />
+                    <img 
+                      src={`https://i.pravatar.cc/100?img=${i + 10}`} 
+                      alt="Partner" 
+                      className="w-full h-full object-cover" 
+                      referrerPolicy="no-referrer"
+                    />
                   </div>
                 ))}
               </div>

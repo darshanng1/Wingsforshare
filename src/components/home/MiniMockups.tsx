@@ -18,7 +18,7 @@ export const ProductCard = React.forwardRef<HTMLDivElement, { product: Product }
     className="group relative bg-card-bg backdrop-blur-xl rounded-[2.5rem] border border-card-border overflow-hidden shadow-sm hover:shadow-[0_32px_64px_-16px_rgba(0,0,0,0.2)] dark:hover:shadow-[0_32px_64px_-16px_rgba(0,0,0,0.5)] transition-all duration-700 flex flex-col h-full"
   >
     {/* Category Badge */}
-    <div className="absolute top-6 left-6 z-20 flex flex-col gap-2">
+    <div className="absolute top-6 left-6 z-30 flex flex-col gap-2">
       <div className="px-4 py-2 bg-card-bg/90 backdrop-blur-md text-text-primary text-[10px] font-black uppercase tracking-[0.2em] rounded-full shadow-xl border border-card-border">
         {product.category}
       </div>
@@ -31,11 +31,16 @@ export const ProductCard = React.forwardRef<HTMLDivElement, { product: Product }
     </div>
 
     {/* Live Status Indicator */}
-    <div className="absolute top-6 right-6 z-20">
-      <div className="flex items-center gap-2 px-3 py-1.5 bg-black/40 backdrop-blur-md rounded-full border border-white/10">
+    <div className="absolute top-6 right-6 z-30">
+      <a 
+        href={product.demoLink || product.demo}
+        target="_blank"
+        rel="noreferrer"
+        className="flex items-center gap-2 px-3 py-1.5 bg-black/40 backdrop-blur-md rounded-full border border-white/10 hover:bg-accent/40 transition-colors pointer-events-auto"
+      >
         <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_8px_rgba(16,185,129,0.8)]" />
         <span className="text-[9px] font-black text-white uppercase tracking-widest">Live Demo</span>
-      </div>
+      </a>
     </div>
 
     {/* Image Container */}
@@ -48,7 +53,7 @@ export const ProductCard = React.forwardRef<HTMLDivElement, { product: Product }
       />
       
       {/* Premium Overlay on Hover */}
-      <div className="absolute inset-0 bg-gradient-to-t from-bg via-bg/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col items-center justify-center p-8 text-center backdrop-blur-[2px]">
+      <div className="absolute inset-0 bg-gradient-to-t from-bg via-bg/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col items-center justify-center p-8 text-center backdrop-blur-[2px] pointer-events-none z-10">
         <motion.p 
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -65,7 +70,7 @@ export const ProductCard = React.forwardRef<HTMLDivElement, { product: Product }
           ))}
         </div>
         
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-4 pointer-events-auto">
           <a
             href={product.demoLink || product.demo}
             target="_blank"

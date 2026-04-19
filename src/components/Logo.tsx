@@ -8,23 +8,21 @@ interface LogoProps {
 
 export const Logo: React.FC<LogoProps> = ({ className }) => {
   const { theme } = useTheme();
-
-  const logoSrc =
-    theme === 'dark' ? '/logo-dark.png' : '/logo-light.png';
-
+  
   return (
-    <img
-      src={logoSrc}
-      alt="WingsforShare"
+    <img 
+      id="logo-image"
+      src={theme === 'dark' ? '/logos/logo-dark.png' : '/logos/logo-light.png'} 
+      alt="WingsforShare" 
       className={cn("h-10 w-auto object-contain", className)}
+      referrerPolicy="no-referrer"
       onError={(e) => {
-        const target = e.currentTarget;
-
-        // fallback to a guaranteed safe logo
-        target.src = '/logo-dark.png';
-
-        // optional: remove error handler to avoid loop
-        target.onerror = null;
+        const target = e.target as HTMLImageElement;
+        // Ensure we don't loop infinitely
+        if (!target.dataset.triedFallback) {
+          target.dataset.triedFallback = 'true';
+          target.src = theme === 'dark' ? '/logos/logo-dark.png' : '/logos/logo-light.png';
+        }
       }}
     />
   );
