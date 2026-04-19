@@ -1,9 +1,15 @@
 import express from "express";
 import { createServer as createViteServer } from "vite";
 import path from "path";
-import Database from "better-sqlite3";
 import multer from "multer";
 import fs from "fs";
+
+const LEADS_FILE = path.join(process.cwd(), "leads.json");
+
+// Initialize JSON leads file if it doesn't exist
+if (!fs.existsSync(LEADS_FILE)) {
+  fs.writeFileSync(LEADS_FILE, JSON.stringify([], null, 2));
+}
 
 const upload = multer({
   storage: multer.diskStorage({
@@ -28,19 +34,6 @@ const upload = multer({
   },
 });
 
-const db = new Database("leads.db");
-db.exec(`
-  CREATE TABLE IF NOT EXISTS contact_leads (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    name TEXT NOT NULL,
-    email TEXT NOT NULL,
-    phone TEXT NOT NULL,
-    service TEXT,
-    message TEXT,
-    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
-  )
-`);
-
 async function startServer() {
   const app = express();
   const PORT = 3000;
@@ -57,9 +50,22 @@ async function startServer() {
     }
 
     try {
-      // 1. Save to Database (SQLite)
-      const stmt = db.prepare("INSERT INTO contact_leads (name, email, phone, service, message) VALUES (?, ?, ?, ?, ?)");
-      stmt.run(name, email, phone, service, message);
+      // 1. Save to JSON file
+      const data = fs.readFileSync(LEADS_FILE, "utf-8");
+      const leads = JSON.parse(data);
+      
+      const newLead = {
+        id: Date.now(),
+        name,
+        email,
+        phone,
+        service,
+        message,
+        created_at: new Date().toISOString()
+      };
+      
+      leads.push(newLead);
+      fs.writeFileSync(LEADS_FILE, JSON.stringify(leads, null, 2));
 
       // SMTP logic removed as per request to remove environment variables.
       console.log(`Lead saved: ${name} (${email})`);
