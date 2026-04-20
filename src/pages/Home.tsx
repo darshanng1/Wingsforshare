@@ -19,7 +19,7 @@ import { SolutionsSection } from '../components/home/SolutionsSection';
 import { LiveDemoSection } from '../components/home/LiveDemoSection';
 import { IndustriesSection } from '../components/home/IndustriesSection';
 import { WhyChooseUsSection } from '../components/home/WhyChooseUsSection';
-import { PlanningSection } from '../components/home/PlanningSection';
+import { PlanningSection } from '../components/home/ProjectPlanningSection';
 import { ContactSection } from '../components/home/ContactSection';
 import { TestimonialsSection } from '../components/home/TestimonialsSection';
 import { LatestBlogs } from '../components/home/LatestBlogs';
