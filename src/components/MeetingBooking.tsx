@@ -5,7 +5,7 @@ import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import { format, addMinutes } from 'date-fns';
 
-export default function MeetingBooking() {
+export function MeetingBooking() {
   const [selectedDate, setSelectedDate] = useState<Date | null>(new Date());
   const [isBooked, setIsBooked] = useState(false);
   const [meetingLink, setMeetingLink] = useState('');

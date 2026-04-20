@@ -7,7 +7,7 @@ import {
   Database, Search, Target, MessageSquare
 } from 'lucide-react';
 import SEO from '../components/SEO';
-import ConsultationForm from '../components/ConsultationForm';
+import { ConsultationForm } from '@/components';
 
 const servicesData: Record<string, any> = {
   'web-development': {

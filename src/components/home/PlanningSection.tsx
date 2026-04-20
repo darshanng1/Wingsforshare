@@ -2,8 +2,7 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
 import { Rocket } from 'lucide-react';
-import ConsultationForm from '../ConsultationForm';
-import MeetingBooking from '../MeetingBooking';
+import { ConsultationForm, MeetingBooking } from '@/components';
 
 export const PlanningSection = () => {
   return (

@@ -3,7 +3,7 @@ import { motion } from 'motion/react';
 import { Send, CheckCircle, MessageSquare, Phone, User, Building2, Briefcase, Sparkles } from 'lucide-react';
 import { InquiryFormData } from '../types';
 
-export default function ConsultationForm() {
+export function ConsultationForm() {
   const [formData, setFormData] = useState<InquiryFormData>({
     name: '',
     phone: '',
