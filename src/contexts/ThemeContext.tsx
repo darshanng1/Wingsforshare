@@ -34,7 +34,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     const logos = document.querySelectorAll("#logo");
     logos.forEach((logo) => {
       if (logo instanceof HTMLImageElement) {
-        logo.src = `${import.meta.env.BASE_URL}logos/${theme === 'dark' ? 'logo-dark.png' : 'logo-light.png'}`;
+        logo.src = theme === 'dark' ? '/logos/logo-dark.png' : '/logos/logo-light.png';
       }
     });
   }, [theme]);

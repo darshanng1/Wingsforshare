@@ -101,13 +101,17 @@ async function startServer() {
     app.use(vite.middlewares);
   } else {
     const distPath = path.join(process.cwd(), "dist");
+    const publicPath = path.join(process.cwd(), "public");
     
     // Serve static files from dist
     app.use(express.static(distPath, {
-      index: false, // Don't serve index.html from here, we handle it below
+      index: false,
     }));
 
-    // Handle SPA routing, but exclude static assets from falling back to index.html
+    // Serve static files from public as well (for uploaded logos)
+    app.use(express.static(publicPath));
+
+    // Handle SPA routing
     app.get("*", (req, res) => {
       // If the request looks like a static asset but wasn't found by express.static, return 404
       if (req.path.match(/\.(png|jpg|jpeg|svg|gif|webp|css|js|woff2?|ttf|eot|ico)$/)) {

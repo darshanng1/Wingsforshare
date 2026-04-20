@@ -35,14 +35,14 @@ export default function Footer() {
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            className="lg:col-span-5 p-8 md:p-12 bg-white/5 backdrop-blur-3xl rounded-[3rem] border border-white/10 shadow-2xl relative group"
+            className="lg:col-span-5 p-8 md:p-12 bg-card-bg/40 backdrop-blur-3xl rounded-[3rem] border border-card-border shadow-2xl relative group"
           >
             <div className="absolute -inset-0.5 bg-gradient-to-br from-accent/20 to-blue-500/20 rounded-[3rem] blur-xl opacity-0 group-hover:opacity-100 transition duration-1000" />
             <div className="relative">
               <Link to="/" className="inline-block mb-10">
                 <Logo className="h-12" />
               </Link>
-              <h3 className="text-3xl md:text-4xl font-display font-black tracking-tight text-white mb-8 leading-tight">
+              <h3 className="text-3xl md:text-4xl font-display font-black tracking-tight text-text-primary mb-8 leading-tight">
                 Engineering <span className="text-accent italic font-light">Digital Supremacy.</span>
               </h3>
               <p className="text-[18px] text-text-secondary leading-relaxed mb-10 max-w-sm">
@@ -54,7 +54,7 @@ export default function Footer() {
                     key={i}
                     whileHover={{ scale: 1.1, y: -5 }}
                     href={social.link}
-                    className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-text-secondary hover:text-white hover:border-accent transition-all shadow-xl"
+                    className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-text-secondary hover:text-text-primary hover:border-accent transition-all shadow-xl"
                   >
                     {social.icon}
                   </motion.a>
@@ -72,7 +72,7 @@ export default function Footer() {
                   <li key={i}>
                     <Link
                       to={service.link}
-                      className="text-[15px] font-medium text-text-secondary hover:text-white transition-all flex items-center gap-3 group"
+                      className="text-[15px] font-medium text-text-secondary hover:text-text-primary transition-all flex items-center gap-3 group"
                     >
                       <span className="w-1.5 h-1.5 rounded-full bg-white/10 group-hover:bg-accent transition-colors" />
                       {service.name}
@@ -88,11 +88,11 @@ export default function Footer() {
               <div className="space-y-10">
                 <a href="mailto:info@wingsforshare.com" className="block group">
                   <p className="text-[10px] font-black uppercase tracking-[0.3em] text-text-secondary/30 mb-2">Direct Mail</p>
-                  <p className="text-[16px] font-bold text-white group-hover:text-accent transition-colors">info@wingsforshare.com</p>
+                  <p className="text-[16px] font-bold text-text-primary group-hover:text-accent transition-colors">info@wingsforshare.com</p>
                 </a>
                 <a href="tel:+918618764541" className="block group">
                   <p className="text-[10px] font-black uppercase tracking-[0.3em] text-text-secondary/30 mb-2">Global Comms</p>
-                  <p className="text-[16px] font-bold text-white group-hover:text-accent transition-colors">+91 86187 64541</p>
+                  <p className="text-[16px] font-bold text-text-primary group-hover:text-accent transition-colors">+91 86187 64541</p>
                 </a>
               </div>
             </div>
@@ -100,13 +100,13 @@ export default function Footer() {
             {/* HQ Node */}
             <div className="space-y-10">
               <h4 className="text-[11px] font-black uppercase tracking-[0.4em] text-accent">HQ Node</h4>
-              <div className="p-8 rounded-[2rem] bg-white/5 border border-white/10">
-                <MapPin size={24} className="text-accent mb-6" />
-                <p className="text-[14px] font-medium text-text-secondary leading-loose">
-                  15, A.K Max Layout,<br />
-                  Kuduregere, Bangalore<br />
-                  KA - 562162, India
-                </p>
+              <div className="p-8 rounded-[2rem] bg-card-bg/40 border border-card-border">
+            <MapPin size={24} className="text-accent mb-6" />
+            <p className="text-[14px] font-medium text-text-secondary leading-loose">
+              15, A.K Max Layout,<br />
+              Kuduregere, Bangalore<br />
+              KA - 562162, India
+            </p>
               </div>
             </div>
           </div>
@@ -126,7 +126,7 @@ export default function Footer() {
               <Link 
                 key={item}
                 to={`/${item.toLowerCase()}`} 
-                className="text-[11px] font-black uppercase tracking-[0.3em] text-text-secondary/30 hover:text-white transition-all underline-offset-8 hover:underline"
+                className="text-[11px] font-black uppercase tracking-[0.3em] text-text-secondary/60 hover:text-text-primary transition-all underline-offset-8 hover:underline"
               >
                 {item}
               </Link>
