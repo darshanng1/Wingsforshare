@@ -39,7 +39,7 @@ export const LatestBlogs: React.FC = () => {
               className="group inline-flex items-center gap-3 text-text-primary hover:text-accent transition-colors font-bold uppercase tracking-widest text-[11px]"
             >
               View All Articles
-              <div className="p-2 rounded-full bg-white/5 border border-white/10 group-hover:border-accent transition-colors">
+              <div className="p-2 rounded-full bg-card-bg border border-card-border group-hover:border-accent transition-colors">
                 <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
               </div>
             </Link>
@@ -90,7 +90,7 @@ export const LatestBlogs: React.FC = () => {
                     {blog.excerpt}
                   </p>
                   
-                  <div className="pt-4 border-t border-white/5 flex items-center gap-3 text-[11px] font-black uppercase tracking-widest text-accent group-hover:gap-5 transition-all">
+                  <div className="pt-4 border-t border-card-border flex items-center gap-3 text-[11px] font-black uppercase tracking-widest text-accent group-hover:gap-5 transition-all">
                     Explore Insight <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
                   </div>
                 </div>

@@ -54,7 +54,7 @@ export default function Footer() {
                     key={i}
                     whileHover={{ scale: 1.1, y: -5 }}
                     href={social.link}
-                    className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-text-secondary hover:text-text-primary hover:border-accent transition-all shadow-xl"
+                    className="w-14 h-14 rounded-2xl bg-card-bg border border-card-border flex items-center justify-center text-text-secondary hover:text-text-primary hover:border-accent transition-all shadow-xl"
                   >
                     {social.icon}
                   </motion.a>
@@ -74,7 +74,7 @@ export default function Footer() {
                       to={service.link}
                       className="text-[15px] font-medium text-text-secondary hover:text-text-primary transition-all flex items-center gap-3 group"
                     >
-                      <span className="w-1.5 h-1.5 rounded-full bg-white/10 group-hover:bg-accent transition-colors" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-card-border group-hover:bg-accent transition-colors" />
                       {service.name}
                     </Link>
                   </li>
@@ -113,7 +113,7 @@ export default function Footer() {
         </div>
 
         {/* Cinematic Bottom Bar */}
-        <div className="pt-16 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-10">
+        <div className="pt-16 border-t border-card-border flex flex-col md:flex-row items-center justify-between gap-10">
           <div className="flex flex-col gap-2">
             <p className="text-[12px] font-medium text-text-secondary/40">
               © {currentYear} WingsForShare Digital Solutions. All parameters secured.

@@ -36,10 +36,10 @@ export const ProductCard = React.forwardRef<HTMLDivElement, { product: Product }
         href={product.demoLink || product.demo}
         target="_blank"
         rel="noreferrer"
-        className="flex items-center gap-2 px-3 py-1.5 bg-black/40 backdrop-blur-md rounded-full border border-white/10 hover:bg-accent/40 transition-colors pointer-events-auto"
+        className="flex items-center gap-2 px-3 py-1.5 bg-card-bg/90 backdrop-blur-md rounded-full border border-card-border hover:border-accent group/status transition-colors pointer-events-auto"
       >
         <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_8px_rgba(16,185,129,0.8)]" />
-        <span className="text-[9px] font-black text-white uppercase tracking-widest">Live Demo</span>
+        <span className="text-[9px] font-black text-text-primary uppercase tracking-widest group-hover/status:text-accent transition-colors">Live Demo</span>
       </a>
     </div>
 
@@ -82,7 +82,7 @@ export const ProductCard = React.forwardRef<HTMLDivElement, { product: Product }
           </a>
           <Link
             to={`/product/${product.slug}`}
-            className="bg-white text-bg px-8 py-3.5 rounded-2xl font-black text-[11px] uppercase tracking-[0.2em] hover:bg-gray-100 transition-all flex items-center gap-3 shadow-2xl shadow-black/10"
+            className="bg-card-bg text-text-primary px-8 py-3.5 rounded-2xl font-black text-[11px] uppercase tracking-[0.2em] border border-card-border hover:border-accent transition-all flex items-center gap-3 shadow-2xl shadow-black/10"
           >
             <span>Details</span>
             <ArrowUpRight size={14} />

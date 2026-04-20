@@ -54,11 +54,11 @@ export default function BlogPost() {
               </div>
             </div>
             
-            <h1 className="text-4xl md:text-7xl lg:text-8xl font-display font-black tracking-tighter leading-[1] text-white max-w-4xl">
+            <h1 className="text-4xl md:text-7xl lg:text-8xl font-display font-black tracking-tighter leading-[1] text-text-primary max-w-4xl">
               {blog.title}
             </h1>
 
-            <div className="flex items-center gap-4 pt-6 md:pt-8 border-t border-white/5">
+            <div className="flex items-center gap-4 pt-6 md:pt-8 border-t border-card-border">
               <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-br from-accent to-blue-500 p-0.5">
                 <div className="w-full h-full rounded-full bg-bg flex items-center justify-center font-bold text-accent text-sm md:text-lg">
                   {blog.author.charAt(0)}
@@ -66,7 +66,7 @@ export default function BlogPost() {
               </div>
               <div>
                 <p className="text-[9px] font-black uppercase tracking-widest text-text-secondary/40 mb-0.5">Written By</p>
-                <p className="text-xs md:text-sm font-bold text-white">{blog.author}</p>
+                <p className="text-xs md:text-sm font-bold text-text-primary">{blog.author}</p>
               </div>
             </div>
           </motion.div>
@@ -93,13 +93,13 @@ export default function BlogPost() {
             <div className="markdown-content">
               <style>{`
                 .markdown-content { 
-                  color: rgba(255,255,255,0.8); 
+                  color: var(--text-secondary); 
                   font-size: 1.125rem;
                   line-height: 1.8; 
                 }
                 .markdown-content h2 { 
-                  color: white; 
-                  font-family: 'Outfit', sans-serif; 
+                  color: var(--text-primary); 
+                  font-family: inherit; 
                   font-weight: 800; 
                   font-size: clamp(2rem, 5vw, 2.5rem); 
                   margin-top: 3.5rem; 
@@ -108,7 +108,7 @@ export default function BlogPost() {
                   line-height: 1.1;
                 }
                 .markdown-content h3 { 
-                  color: white; 
+                  color: var(--text-primary); 
                   font-weight: 700; 
                   font-size: clamp(1.5rem, 4vw, 1.75rem); 
                   margin-top: 2.5rem; 
@@ -138,7 +138,7 @@ export default function BlogPost() {
                   background: #10b981; 
                 }
                 .markdown-content strong {
-                  color: white;
+                  color: var(--text-primary);
                   font-weight: 700;
                 }
               `}</style>
@@ -146,12 +146,12 @@ export default function BlogPost() {
             </div>
 
             {/* Post Footer */}
-            <div className="mt-20 pt-12 border-t border-white/5 flex flex-wrap items-center justify-between gap-8">
+            <div className="mt-20 pt-12 border-t border-card-border flex flex-wrap items-center justify-between gap-8">
               <div className="flex items-center gap-4">
                 <span className="text-[10px] font-black uppercase tracking-widest text-text-secondary/40">Impact Knowledge:</span>
                 <div className="flex gap-2">
-                   <button className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-accent hover:text-white transition-all"><Share2 size={18} /></button>
-                   <button className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-accent hover:text-white transition-all"><MessageSquare size={18} /></button>
+                   <button className="w-12 h-12 rounded-xl bg-card-bg border border-card-border flex items-center justify-center hover:bg-accent hover:text-white transition-all"><Share2 size={18} /></button>
+                   <button className="w-12 h-12 rounded-xl bg-card-bg border border-card-border flex items-center justify-center hover:bg-accent hover:text-white transition-all"><MessageSquare size={18} /></button>
                 </div>
               </div>
               <Link to="/blog" className="text-[10px] font-black uppercase tracking-widest text-accent hover:underline">Read more articles</Link>
@@ -180,13 +180,13 @@ export default function BlogPost() {
               <div className="p-8 rounded-[2.5rem] bg-card-bg border border-card-border overflow-hidden">
                 <h5 className="text-[10px] font-black uppercase tracking-[0.3em] text-accent mb-6">Article Metadata</h5>
                 <div className="space-y-4">
-                  <div className="flex justify-between items-center py-2 border-b border-white/5">
+                  <div className="flex justify-between items-center py-2 border-b border-card-border">
                     <span className="text-[10px] font-bold text-text-secondary/60 uppercase">Category</span>
-                    <span className="text-[10px] font-black text-white uppercase">{blog.category}</span>
+                    <span className="text-[10px] font-black text-text-primary uppercase">{blog.category}</span>
                   </div>
-                  <div className="flex justify-between items-center py-2 border-b border-white/5">
+                  <div className="flex justify-between items-center py-2 border-b border-card-border">
                     <span className="text-[10px] font-bold text-text-secondary/60 uppercase">Complexity</span>
-                    <span className="text-[10px] font-black text-white uppercase">Advanced</span>
+                    <span className="text-[10px] font-black text-text-primary uppercase">Advanced</span>
                   </div>
                   <div className="flex justify-between items-center py-2">
                     <span className="text-[10px] font-bold text-text-secondary/60 uppercase">Status</span>

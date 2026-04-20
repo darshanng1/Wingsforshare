@@ -166,14 +166,14 @@ export default function Contact() {
                       className="group flex flex-col p-8 bg-card-bg/40 backdrop-blur-xl border border-card-border rounded-[2rem] transition-all hover:bg-card-bg/60 hover:border-accent/40"
                     >
                       <div className="flex items-start justify-between mb-4">
-                        <div className={`w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center border border-white/10 group-hover:border-accent/40 group-hover:text-accent transition-colors`}>
-                          {method.icon}
-                        </div>
-                        <ArrowUpRight size={18} className="text-text-secondary/20 group-hover:text-accent transition-colors" />
+                      <div className={`w-12 h-12 rounded-2xl bg-card-bg flex items-center justify-center border border-card-border group-hover:border-accent/40 group-hover:text-accent transition-colors shadow-sm`}>
+                        {method.icon}
                       </div>
-                      <span className="text-[10px] font-black uppercase tracking-widest text-text-secondary/50 mb-1">{method.title}</span>
-                      <span className="text-2xl font-bold text-white mb-2">{method.value}</span>
-                      <p className="text-sm text-text-secondary">{method.description}</p>
+                      <ArrowUpRight size={18} className="text-text-secondary/20 group-hover:text-accent transition-colors" />
+                    </div>
+                    <span className="text-[10px] font-black uppercase tracking-widest text-text-secondary/50 mb-1">{method.title}</span>
+                    <span className="text-2xl font-bold text-text-primary mb-2">{method.value}</span>
+                    <p className="text-sm text-text-secondary">{method.description}</p>
                     </motion.a>
                   ))}
                 </div>
@@ -183,7 +183,7 @@ export default function Contact() {
                 <div className="absolute -right-8 -bottom-8 opacity-5 group-hover:opacity-10 group-hover:scale-110 transition-all duration-700">
                   <ShieldCheck size={200} />
                 </div>
-                <h4 className="text-xl font-bold text-white mb-4">Security Guaranteed</h4>
+                <h4 className="text-xl font-bold text-text-primary mb-4">Security Guaranteed</h4>
                 <p className="text-sm text-text-secondary leading-relaxed mb-6">All data transmitted through our systems is protected by end-to-end encryption and enterprise-grade security protocols.</p>
                 <div className="flex items-center gap-3">
                   <div className="flex -space-x-2">
@@ -326,34 +326,34 @@ export default function Contact() {
       </div>
 
       {/* Global HQ Visual */}
-      <div className="mt-32 border-t border-white/5 pt-32">
+      <div className="mt-32 border-t border-card-border pt-32">
         <div className="container-custom">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
             <div>
-              <h2 className="text-5xl font-display font-bold tracking-tighter mb-8">Our Studio Hub</h2>
+              <h2 className="text-5xl font-display font-bold tracking-tighter mb-8 shadow-sm">Our Studio Hub</h2>
               <div className="space-y-12">
                 <div className="flex items-start gap-8">
-                  <div className="w-16 h-16 bg-white/5 rounded-[1.5rem] border border-white/10 flex items-center justify-center shrink-0">
+                  <div className="w-16 h-16 bg-card-bg rounded-[1.5rem] border border-card-border flex items-center justify-center shrink-0">
                     <MapPin size={32} className="text-accent" />
                   </div>
                   <div>
                     <span className="text-[10px] font-black uppercase tracking-[0.3em] text-text-secondary/40 mb-2 block">Location Matrix</span>
-                    <p className="text-2xl font-bold text-white leading-tight">15, A.K Max Layout, Kuduregere, Bangalore, KA - 562162, IN</p>
+                    <p className="text-2xl font-bold text-text-primary leading-tight">15, A.K Max Layout, Kuduregere, Bangalore, KA - 562162, IN</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-8">
-                  <div className="w-16 h-16 bg-white/5 rounded-[1.5rem] border border-white/10 flex items-center justify-center shrink-0">
+                  <div className="w-16 h-16 bg-card-bg rounded-[1.5rem] border border-card-border flex items-center justify-center shrink-0">
                     <Globe size={32} className="text-blue-500" />
                   </div>
                   <div>
                     <span className="text-[10px] font-black uppercase tracking-[0.3em] text-text-secondary/40 mb-2 block">Global Presence</span>
-                    <p className="text-2xl font-bold text-white leading-tight">Servicing Enterprise Partners Across APAC, EMEA, and NAMER.</p>
+                    <p className="text-2xl font-bold text-text-primary leading-tight">Servicing Enterprise Partners Across APAC, EMEA, and NAMER.</p>
                   </div>
                 </div>
               </div>
             </div>
             
-            <div className="aspect-square lg:aspect-video rounded-[3rem] bg-white/5 border border-white/10 overflow-hidden relative group">
+            <div className="aspect-square lg:aspect-video rounded-[3rem] bg-card-bg border border-card-border overflow-hidden relative group">
               <iframe 
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3885.344400782352!2d77.4988478!3d13.1407337!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae239639555555%3A0x5555555555555555!2sKuduregere%2C%20Karnataka!5e0!3m2!1sen!2sin!4v1712240000000!5m2!1sen!2sin" 
                 width="100%" 

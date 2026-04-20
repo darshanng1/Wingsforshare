@@ -42,10 +42,10 @@ export default function ProductCard({ product }: ProductCardProps) {
             href={product.demoLink}
             target="_blank"
             rel="noreferrer"
-            className="flex items-center gap-2 px-3 py-1.5 bg-black/40 backdrop-blur-md rounded-full border border-white/10 hover:bg-accent/40 transition-colors pointer-events-auto"
+            className="flex items-center gap-2 px-3 py-1.5 bg-card-bg/90 backdrop-blur-md rounded-full border border-card-border hover:border-accent group/status transition-colors pointer-events-auto"
           >
             <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_8px_rgba(16,185,129,0.8)]" />
-            <span className="text-[9px] font-black text-white uppercase tracking-widest">Live Demo</span>
+            <span className="text-[9px] font-black text-text-primary uppercase tracking-widest group-hover/status:text-accent transition-colors">Live Demo</span>
           </a>
         </div>
 

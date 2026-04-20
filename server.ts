@@ -40,6 +40,17 @@ async function startServer() {
 
   app.use(express.json());
 
+  // Serve static files from public directory manually for both dev and prod
+  // This ensures uploaded logos are always accessible and take precedence
+  const publicPath = path.resolve(process.cwd(), "public");
+  app.use(express.static(publicPath));
+
+  // Explicit route for logos to prevent 404s in production environments
+  app.use('/logos', express.static(path.join(publicPath, 'logos'), {
+    maxAge: '0', // No cache for logos to ensure updates are visible
+    etag: false
+  }));
+
   // API Route for Contact Form
   app.post("/api/contact", async (req, res) => {
     const { name, email, phone, service, message } = req.body;
@@ -83,6 +94,7 @@ async function startServer() {
       if (!req.file) {
         return res.status(400).json({ success: false, message: "No file uploaded." });
       }
+      console.log(`Logo uploaded: ${req.file.filename} to ${req.file.path}`);
       res.json({ success: true, message: "Logo updated successfully!" });
     } catch (error) {
       console.error("Error uploading logo:", error);
@@ -101,15 +113,11 @@ async function startServer() {
     app.use(vite.middlewares);
   } else {
     const distPath = path.join(process.cwd(), "dist");
-    const publicPath = path.join(process.cwd(), "public");
     
     // Serve static files from dist
     app.use(express.static(distPath, {
       index: false,
     }));
-
-    // Serve static files from public as well (for uploaded logos)
-    app.use(express.static(publicPath));
 
     // Handle SPA routing
     app.get("*", (req, res) => {

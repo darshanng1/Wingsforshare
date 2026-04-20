@@ -12,8 +12,8 @@ export default function SetupLogos() {
   const upload = async (file: File, type: 'light' | 'dark') => {
     setStatus(prev => ({ ...prev, [type]: 'uploading' }));
     const formData = new FormData();
-    formData.append('logo', file);
     formData.append('type', type);
+    formData.append('logo', file);
 
     try {
       const res = await fetch('/api/admin/upload-logo', { method: 'POST', body: formData });
@@ -21,7 +21,7 @@ export default function SetupLogos() {
       if (data.success) {
         setStatus(prev => ({ ...prev, [type]: 'success' }));
         // Refresh logo visual
-        const logos = document.querySelectorAll<HTMLImageElement>('#logo');
+        const logos = document.querySelectorAll<HTMLImageElement>('#logo-image');
         logos.forEach(img => {
           if (img.src.includes(`/logos/logo-${type}.png`)) img.src = `${img.src.split('?')[0]}?t=${Date.now()}`;
         });
