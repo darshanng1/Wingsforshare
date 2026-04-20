@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { Rocket } from 'lucide-react';
 import { ProjectInquiryForm, MeetingBooking } from '@components';
 
-export const PlanningSection = () => {
+export const ProjectPlanningSection = () => {
   return (
     <section id="planning" className="section-padding bg-bg relative overflow-hidden border-y border-white/5">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-accent/5 via-transparent to-transparent blur-3xl pointer-events-none" />
