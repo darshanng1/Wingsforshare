@@ -20,6 +20,7 @@ import { SolutionsSection } from '@/components/home/SolutionsSection';
 import { LiveDemoSection } from '@/components/home/LiveDemoSection';
 import { IndustriesSection } from '@/components/home/IndustriesSection';
 import { WhyChooseUsSection } from '@/components/home/WhyChooseUsSection';
+import { ProjectPlanningSection } from '@/components/home/ProjectPlanningSection';
 import { ContactSection } from '@/components/home/ContactSection';
 import { TestimonialsSection } from '@/components/home/TestimonialsSection';
 import { LatestBlogs } from '@/components/home/LatestBlogs';
@@ -313,6 +314,9 @@ export default function Home() {
 
       {/* Blog Section */}
       <LatestBlogs />
+
+      {/* Consultation & Meeting Section */}
+      <ProjectPlanningSection />
 
       {/* Contact & Final CTA Section */}
       <ContactSection />
