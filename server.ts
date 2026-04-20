@@ -40,16 +40,26 @@ async function startServer() {
 
   app.use(express.json());
 
-  // Serve static files from public directory manually for both dev and prod
-  // This ensures uploaded logos are always accessible and take precedence
+  // Serve static files from public or dist/logos
   const publicPath = path.resolve(process.cwd(), "public");
-  app.use(express.static(publicPath));
-
-  // Explicit route for logos to prevent 404s in production environments
+  const distPath = path.resolve(process.cwd(), "dist");
+  
+  // Explicit route for logos to prevent 404s
+  // Check public first (for uploads), then dist (for bundled assets)
   app.use('/logos', express.static(path.join(publicPath, 'logos'), {
-    maxAge: '0', // No cache for logos to ensure updates are visible
+    maxAge: '0',
+    etag: false,
+    setHeaders: (res) => {
+      res.set('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
+    }
+  }));
+  
+  app.use('/logos', express.static(path.join(distPath, 'logos'), {
+    maxAge: '0',
     etag: false
   }));
+
+  app.use(express.static(publicPath));
 
   // API Route for Contact Form
   app.post("/api/contact", async (req, res) => {

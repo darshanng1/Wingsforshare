@@ -34,7 +34,7 @@ export default function Blog() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-[20px] md:text-[24px] text-text-secondary/60 leading-relaxed max-w-2xl mx-auto"
+            className="text-[20px] md:text-[24px] text-text-secondary leading-relaxed max-w-2xl mx-auto"
           >
             Expert perspectives on building high-performance systems and managing global digital products.
           </motion.p>
@@ -61,7 +61,7 @@ export default function Blog() {
                     <span className="px-4 py-2 bg-accent rounded-xl text-white text-[10px] font-black uppercase tracking-widest inline-block shadow-lg shadow-accent/20">
                       Featured Insight
                     </span>
-                    <span className="text-[10px] font-black uppercase tracking-widest text-text-secondary/60">{blogs[0].date}</span>
+                    <span className="text-[10px] font-black uppercase tracking-widest text-text-secondary/80">{blogs[0].date}</span>
                    </div>
                   <h2 className="text-3xl md:text-5xl lg:text-6xl font-display font-black text-text-primary leading-[1.1] group-hover:text-accent transition-colors">
                     {blogs[0].title}

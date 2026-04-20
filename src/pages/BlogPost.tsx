@@ -32,7 +32,7 @@ export default function BlogPost() {
           animate={{ opacity: 1, x: 0 }}
           className="mb-12"
         >
-          <Link to="/blog" className="inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.3em] text-text-secondary/50 hover:text-accent font-display transition-colors">
+          <Link to="/blog" className="inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.3em] text-text-secondary/80 hover:text-accent font-display transition-colors">
             <ChevronLeft size={14} />
             Back to Knowledge Hub
           </Link>
@@ -48,7 +48,7 @@ export default function BlogPost() {
               <span className="px-4 py-1.5 rounded-full bg-accent/10 border border-accent/20 text-accent text-[10px] font-black uppercase tracking-widest inline-block">
                 {blog.category}
               </span>
-              <div className="flex items-center gap-4 text-[10px] font-black uppercase tracking-widest text-text-secondary/40">
+              <div className="flex items-center gap-4 text-[10px] font-black uppercase tracking-widest text-text-secondary/60">
                 <span className="flex items-center gap-2"><Calendar size={12} className="text-accent" /> {blog.date}</span>
                 <span className="flex items-center gap-2"><Clock size={12} className="text-accent" /> {blog.readTime}</span>
               </div>
@@ -65,7 +65,7 @@ export default function BlogPost() {
                 </div>
               </div>
               <div>
-                <p className="text-[9px] font-black uppercase tracking-widest text-text-secondary/40 mb-0.5">Written By</p>
+                <p className="text-[9px] font-black uppercase tracking-widest text-text-secondary/60 mb-0.5">Written By</p>
                 <p className="text-xs md:text-sm font-bold text-text-primary">{blog.author}</p>
               </div>
             </div>

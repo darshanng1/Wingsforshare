@@ -31,7 +31,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     localStorage.setItem('theme', theme);
 
     // Direct logo update as requested for production stability
-    const logos = document.querySelectorAll("#logo");
+    const logos = document.querySelectorAll("#logo-image");
     logos.forEach((logo) => {
       if (logo instanceof HTMLImageElement) {
         logo.src = theme === 'dark' ? '/logos/logo-dark.png' : '/logos/logo-light.png';

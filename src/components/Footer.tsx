@@ -87,11 +87,11 @@ export default function Footer() {
               <h4 className="text-[11px] font-black uppercase tracking-[0.4em] text-accent">Connect</h4>
               <div className="space-y-10">
                 <a href="mailto:info@wingsforshare.com" className="block group">
-                  <p className="text-[10px] font-black uppercase tracking-[0.3em] text-text-secondary/30 mb-2">Direct Mail</p>
+                  <p className="text-[10px] font-black uppercase tracking-[0.3em] text-text-secondary/60 mb-2">Direct Mail</p>
                   <p className="text-[16px] font-bold text-text-primary group-hover:text-accent transition-colors">info@wingsforshare.com</p>
                 </a>
                 <a href="tel:+918618764541" className="block group">
-                  <p className="text-[10px] font-black uppercase tracking-[0.3em] text-text-secondary/30 mb-2">Global Comms</p>
+                  <p className="text-[10px] font-black uppercase tracking-[0.3em] text-text-secondary/60 mb-2">Global Comms</p>
                   <p className="text-[16px] font-bold text-text-primary group-hover:text-accent transition-colors">+91 86187 64541</p>
                 </a>
               </div>
@@ -115,10 +115,10 @@ export default function Footer() {
         {/* Cinematic Bottom Bar */}
         <div className="pt-16 border-t border-card-border flex flex-col md:flex-row items-center justify-between gap-10">
           <div className="flex flex-col gap-2">
-            <p className="text-[12px] font-medium text-text-secondary/40">
+            <p className="text-[12px] font-medium text-text-secondary/60">
               © {currentYear} WingsForShare Digital Solutions. All parameters secured.
             </p>
-            <p className="text-[10px] font-black uppercase tracking-[0.5em] text-emerald-500/50">System Status: Optimal</p>
+            <p className="text-[10px] font-black uppercase tracking-[0.5em] text-emerald-500/80">System Status: Optimal</p>
           </div>
           
           <div className="flex items-center gap-10">
