@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
 import { Rocket } from 'lucide-react';
-import { ConsultationForm, MeetingBooking } from '@/components';
+import { ProjectInquiryForm, MeetingBooking } from '@/components';
 
 export const PlanningSection = () => {
   return (
@@ -36,7 +36,7 @@ export const PlanningSection = () => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24">
-          <ConsultationForm />
+          <ProjectInquiryForm />
           <MeetingBooking />
         </div>
       </div>

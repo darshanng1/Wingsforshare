@@ -1,4 +1,4 @@
-export * from './ConsultationForm';
+export * from './ProjectInquiryForm';
 export * from './MeetingBooking';
 export * from './Logo';
 export * from './Navbar';

@@ -7,7 +7,7 @@ import {
   Database, Search, Target, MessageSquare
 } from 'lucide-react';
 import SEO from '../components/SEO';
-import { ConsultationForm } from '@/components';
+import { ProjectInquiryForm } from '@/components';
 
 const servicesData: Record<string, any> = {
   'web-development': {
@@ -250,7 +250,7 @@ export default function ServiceDetail() {
               </div>
             </div>
           </div>
-          <ConsultationForm />
+          <ProjectInquiryForm />
         </div>
       </div>
     </div>
