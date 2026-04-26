@@ -5,18 +5,7 @@ import { ArrowRight } from 'lucide-react';
 
 export const HeroContent = () => {
   return (
-    <div className="flex flex-col justify-center items-center lg:items-start">
-      {/* --- Badge Section --- */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-accent/10 border border-accent/20 text-[10px] font-bold uppercase tracking-[0.2em] text-accent mb-6 w-fit shadow-[0_0_15px_rgba(16,185,129,0.1)]"
-      >
-        <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse shadow-[0_0_10px_rgba(16,185,129,0.5)]" />
-        <span>Business Technology Growth</span>
-      </motion.div>
-
+    <div className="flex flex-col justify-center items-center lg:items-start pt-12">
       {/* --- Headline Section --- */}
       <motion.h1
         initial={{ opacity: 0, y: 40 }}
