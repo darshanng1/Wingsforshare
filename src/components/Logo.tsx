@@ -2,17 +2,22 @@ import React from 'react';
 import { useTheme } from '../contexts/ThemeContext';
 import { cn } from '../lib/utils';
 
-export const Logo = ({ className }: { className?: string }) => {
-  const { theme } = useTheme();
+interface LogoProps {
+  className?: string;
+}
 
+export const Logo: React.FC<LogoProps> = ({ className }) => {
+  const { theme } = useTheme();
+  
   return (
-    <img
-      key={theme}
-      src={theme === 'dark' ? '/logo-dark.png' : '/logo-light.png'}
-      alt="WingsforShare"
-      className={cn("h-10 w-auto object-contain", className)}
-    />
+    <div className={cn("flex items-center gap-2", className)}>
+      <img 
+        src={theme === 'dark' ? '/static/images/logo-dark.png' : '/static/images/logo.png'} 
+        alt="WingsForShare" 
+        className="h-10 w-auto object-contain"
+        referrerPolicy="no-referrer"
+        id="logo-image"
+      />
+    </div>
   );
 };
-
-
