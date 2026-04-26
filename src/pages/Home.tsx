@@ -315,7 +315,7 @@ export default function Home() {
       <LatestBlogs />
 
       {/* Consultation & Meeting Section */}
-      <ProjectPlanningSection />
+  
 
       {/* Contact & Final CTA Section */}
       <ContactSection />
