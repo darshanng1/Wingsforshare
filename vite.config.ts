@@ -1,9 +1,13 @@
 import react from '@vitejs/plugin-react';
 import path from 'path';
 import { defineConfig } from 'vite';
+import tailwindcss from '@tailwindcss/vite'; // 👈 ADD THIS
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    react(),
+    tailwindcss(), // 👈 ADD THIS
+  ],
 
   resolve: {
     alias: {
@@ -16,7 +20,6 @@ export default defineConfig({
     hmr: false,
   },
 
-  // 🔥 Fix build freeze + stability
   build: {
     reportCompressedSize: false,
     chunkSizeWarningLimit: 1000,
