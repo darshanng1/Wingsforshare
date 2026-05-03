@@ -135,7 +135,7 @@ export default function Home() {
       >
         <section
           ref={heroRef}
-          className="relative min-h-screen flex items-center justify-center pt-24 pb-16 overflow-hidden bg-bg"
+          className="relative min-h-screen flex items-center justify-center pb-16 overflow-hidden bg-bg"
           onMouseMove={handleMouseMove}
           onMouseLeave={handleMouseLeave}
         >

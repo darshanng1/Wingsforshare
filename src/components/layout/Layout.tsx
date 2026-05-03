@@ -25,7 +25,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <div className="noise pointer-events-none" />
       <Navbar />
       
-      <main className="relative z-10">
+      <main className="relative z-10 pt-20 md:pt-24">
         {children}
       </main>
 

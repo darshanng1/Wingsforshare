@@ -12,7 +12,7 @@ export const Logo: React.FC<LogoProps> = ({ className }) => {
   return (
     <div className={cn("flex items-center gap-2", className)}>
       <img 
-        src={theme === 'dark' ? '/static/images/logo-dark.png' : '/static/images/logo.png'} 
+        src={theme === 'dark' ? '/static/images/logo-dark.png' : '/static/images/logo-light.png'} 
         alt="WingsForShare" 
         className="h-10 w-auto object-contain"
         referrerPolicy="no-referrer"
