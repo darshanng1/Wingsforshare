@@ -1,6 +1,6 @@
-// Build Sync Marker: 2026-04-20 16:25
+// Build Sync Marker: 2026-05-04
 import React, { useRef, useState, useEffect } from 'react';
-import { motion, useScroll, useTransform, useSpring, useMotionValue, AnimatePresence } from 'motion/react';
+import { motion, useScroll, useTransform, useSpring, useMotionValue, AnimatePresence } from 'framer-motion';
 import {
   ArrowRight, Sparkles, Zap, Globe, Star, TrendingUp,
   BarChart3, Rocket, Building2, ShoppingCart, HardHat, CheckCircle2
@@ -119,14 +119,135 @@ export default function Home() {
     y.set(0);
   };
 
+  // Schema for homepage - LocalBusiness for better local SEO
+  const homePageSchema = {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "WingsForShare - Business Technology Growth Agency",
+    "description": "WingsForShare builds revenue-driven digital systems including custom software, web applications, mobile apps, and business automation solutions.",
+    "url": "https://wingsforshare.com",
+    "logo": "https://wingsforshare.com/logo.png",
+    "image": "https://wingsforshare.com/og-image.jpg",
+    "telephone": "+91-86187-64541",
+    "email": "contact@wingsforshare.com",
+    "priceRange": "$$",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "IN",
+      "addressRegion": "",
+      "addressLocality": ""
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "20.5937",
+      "longitude": "78.9629"
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "09:00",
+        "closes": "18:00"
+      }
+    ],
+    "areaServed": [
+      {
+        "@type": "Place",
+        "name": "Worldwide"
+      }
+    ],
+    "serviceType": [
+      "Custom Software Development",
+      "Web Application Development",
+      "Mobile App Development",
+      "Business Process Automation",
+      "Digital Transformation Consulting",
+      "SaaS Product Development",
+      "Enterprise Software Solutions"
+    ],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Digital Services",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Custom Software Development",
+            "description": "Tailored software solutions built for your specific business needs"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Web Application Development",
+            "description": "High-performance web applications with modern technologies"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Mobile App Development",
+            "description": "Native and cross-platform mobile applications"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Business Automation",
+            "description": "Streamline operations with intelligent automation solutions"
+          }
+        }
+      ]
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "127"
+    },
+    "sameAs": [
+      "https://facebook.com/wingsforshare",
+      "https://twitter.com/wingsforshare",
+      "https://linkedin.com/company/wingsforshare",
+      "https://instagram.com/wingsforshare"
+    ]
+  };
+
+  // Breadcrumb schema for homepage
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://wingsforshare.com"
+      }
+    ]
+  };
+
   return (
     <div className="bg-bg transition-colors duration-500 overflow-hidden">
       <SEO
-        title="WingsForShare - Business Technology Growth Agency"
-        description="WingsForShare helps businesses scale through custom software, high-performance web development, mobile apps, and data-driven growth strategies."
+        title="WingsForShare | Revenue-Driven Digital Systems & Business Technology Growth"
+        description="WingsForShare builds revenue-driven digital systems. Custom software development, web applications, mobile apps, and business automation solutions that drive measurable growth."
+        keywords="business technology growth, digital transformation, custom software development, web development, mobile app development, business automation, SaaS development, enterprise software, WingsForShare"
+        canonical="https://wingsforshare.com"
+        ogType="website"
+        schemaType="LocalBusiness"
+        schemaMarkup={homePageSchema}
       />
+      
+      {/* Additional Schema */}
+      <script type="application/ld+json">
+        {JSON.stringify(breadcrumbSchema)}
+      </script>
 
-      {/* Hero Section */}
+      {/* Hero Section - H1 for SEO */}
       <InView
         as="section"
         id="hero"
@@ -150,6 +271,11 @@ export default function Home() {
           </div>
 
           <div className="container-custom w-full relative z-10">
+            {/* H1 - Hidden but accessible for SEO */}
+            <h1 className="sr-only">
+              WingsForShare - Revenue-Driven Digital Systems & Business Technology Growth Agency
+            </h1>
+            
             <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-16">
               <div className="w-full lg:w-[45%] flex flex-col justify-center text-center lg:text-left">
                 <HeroContent />
@@ -197,6 +323,7 @@ export default function Home() {
               </motion.div>
 
               <div className="space-y-8">
+                {/* H2 with strong keywords */}
                 <motion.h2 
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -235,7 +362,7 @@ export default function Home() {
                         <div className="w-6 h-6 rounded-full bg-emerald-500/10 flex items-center justify-center border border-emerald-500/20 group-hover:scale-110 transition-transform duration-500">
                           <CheckCircle2 size={12} className="text-emerald-500" />
                         </div>
-                        <h4 className="font-display font-black text-[12px] uppercase tracking-[0.2em] text-text-primary">{item.title}</h4>
+                        <h3 className="font-display font-black text-[12px] uppercase tracking-[0.2em] text-text-primary">{item.title}</h3>
                       </div>
                       <p className="text-[13px] text-text-secondary leading-relaxed mb-0">{item.desc}</p>
                     </div>

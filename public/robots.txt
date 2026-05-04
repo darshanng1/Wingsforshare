@@ -1,2 +1,65 @@
+# robots.txt for WingsForShare
+# https://wingsforshare.com/robots.txt
+
 User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /api/
+Disallow: /internal/
+Disallow: /private/
+Disallow: /draft/
+Disallow: /*?preview=*
+Disallow: /*?token=*
+
+# Allow search engines to crawl JS/CSS for proper rendering
+Allow: /*.js$
+Allow: /*.css$
+Allow: /*.png$
+Allow: /*.jpg$
+Allow: /*.gif$
+Allow: /*.svg$
+Allow: /*.ico$
+
+# Crawl-delay for rate limiting (optional, not all bots respect this)
+Crawl-delay: 1
+
+# Sitemap location
+Sitemap: https://wingsforshare.com/sitemap.xml
+
+# Specific bot instructions
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0.5
+
+User-agent: Googlebot-Image
+Allow: /
+Allow: /static/images/
+Allow: /images/
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Slurp
+Allow: /
+Crawl-delay: 2
+
+User-agent: DuckDuckBot
+Allow: /
+Crawl-delay: 1
+
+# Block specific unwanted bots
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: BLEXBot
 Disallow: /
