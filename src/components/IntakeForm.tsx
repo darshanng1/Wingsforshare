@@ -231,7 +231,8 @@ export default function IntakeForm() {
     // Simulate API call
     console.log('Submitting Project Intake:', formData);
     
-    const newId = 'PRJ-2026-' + Math.floor(1000 + Math.random() * 9000);
+    const currentYear = new Date().getFullYear();
+    const newId = `PRJ-${currentYear}-` + Math.floor(1000 + Math.random() * 9000);
     setProjectId(newId);
     
     // In a real app, use FormData for file uploads
@@ -331,21 +332,24 @@ export default function IntakeForm() {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-1.5">
-                  <label className="text-[11px] font-bold uppercase tracking-widest text-text-secondary ml-2 mb-2 block">Full Name *</label>
+                  <label htmlFor="fullName" className="text-[11px] font-bold uppercase tracking-widest text-text-secondary ml-2 mb-2 block">Full Name *</label>
                   <div className="relative group">
                     <User className="absolute left-4 top-1/2 -translate-y-1/2 text-text-secondary group-focus-within:text-accent transition-colors" size={18} />
                     <input 
                       type="text" 
+                      id="fullName"
+                      aria-invalid={errors.fullName ? 'true' : 'false'}
+                      aria-describedby={errors.fullName ? 'fullname-error' : undefined}
                       placeholder="Enter your full name"
                       value={formData.fullName}
                       onChange={(e) => setFormData({...formData, fullName: e.target.value})}
                       className={`w-full bg-black/5 dark:bg-white/5 border rounded-2xl py-4 pl-12 pr-6 text-[16px] outline-none transition-all text-text-primary placeholder:text-text-secondary/50 ${errors.fullName ? 'border-red-500/50 bg-red-500/5' : 'border-card-border focus:border-accent focus:ring-4 focus:ring-accent/10'}`}
                     />
                   </div>
-                  {errors.fullName && <p className="text-[10px] text-red-500 font-bold uppercase tracking-widest ml-1">{errors.fullName}</p>}
+                  {errors.fullName && <p id="fullname-error" className="text-[10px] text-red-500 font-bold uppercase tracking-widest ml-1" role="alert">{errors.fullName}</p>}
                 </div>
                 <div className="space-y-1.5">
-                  <label className="text-[11px] font-bold uppercase tracking-widest text-text-secondary ml-2 mb-2 block">Company Name *</label>
+                  <label htmlFor="companyName" className="text-[11px] font-bold uppercase tracking-widest text-text-secondary ml-2 mb-2 block">Company Name *</label>
                   <div className="relative group">
                     <Building2 className="absolute left-4 top-1/2 -translate-y-1/2 text-text-secondary group-focus-within:text-accent transition-colors" size={18} />
                     <input 
@@ -904,7 +908,7 @@ export default function IntakeForm() {
               className="flex items-center space-x-4 bg-accent text-white px-16 py-6 rounded-[2rem] font-black text-xl hover:scale-105 active:scale-95 transition-all shadow-[0_25px_50px_rgba(16,185,129,0.3)] hover:shadow-[0_35px_70px_rgba(16,185,129,0.4)]"
             >
               <Rocket size={28} className="animate-bounce" />
-              <span className="text-[14px] font-bold uppercase tracking-widest">Launch Project Request</span>
+              <span className="text-[14px] font-bold uppercase tracking-widest">Submit Project Request</span>
             </button>
           )}
         </div>

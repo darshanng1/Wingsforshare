@@ -26,7 +26,6 @@ export default function ContactForm() {
   const onSubmit = async (data: FormData) => {
     setIsSubmitting(true);
     try {
-      // Using Web3Forms API
       const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: {
@@ -34,7 +33,7 @@ export default function ContactForm() {
           Accept: 'application/json',
         },
         body: JSON.stringify({
-          access_key: 'YOUR_ACCESS_KEY_HERE', // User should replace this
+          access_key: 'YOUR_ACCESS_KEY_HERE',
           ...data,
           subject: `New Contact Form Submission from ${data.name}`,
           from_name: 'WingsForShare Website',
@@ -81,60 +80,88 @@ export default function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-8" noValidate>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* Name */}
         <div className="space-y-2">
-          <label className="text-[10px] font-bold uppercase tracking-widest text-zinc-400 ml-1">Full Name</label>
+          <label htmlFor="name" className="text-[10px] font-bold uppercase tracking-widest text-zinc-400 ml-1">
+            Full Name <span aria-label="required">*</span>
+          </label>
           <input
+            id="name"
             {...register('name', { required: 'Name is required' })}
             placeholder="John Doe"
+            aria-invalid={errors.name ? 'true' : 'false'}
+            aria-describedby={errors.name ? 'name-error' : undefined}
             className={`w-full px-6 py-4 bg-zinc-50 dark:bg-zinc-800/50 border ${
               errors.name ? 'border-red-500' : 'border-zinc-100 dark:border-zinc-800'
             } rounded-2xl focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 outline-none transition-all dark:text-white`}
           />
-          {errors.name && <p className="text-xs text-red-500 ml-1">{errors.name.message}</p>}
+          {errors.name && <p id="name-error" className="text-xs text-red-500 ml-1" role="alert">{errors.name.message}</p>}
         </div>
 
         {/* Email */}
         <div className="space-y-2">
-          <label className="text-[10px] font-bold uppercase tracking-widest text-zinc-400 ml-1">Email Address</label>
+          <label htmlFor="email" className="text-[10px] font-bold uppercase tracking-widest text-zinc-400 ml-1">
+            Email Address <span aria-label="required">*</span>
+          </label>
           <input
+            id="email"
+            type="email"
             {...register('email', {
               required: 'Email is required',
               pattern: {
                 value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                message: 'Invalid email address',
+                message: 'Please enter a valid email address',
               },
             })}
             placeholder="john@example.com"
+            aria-invalid={errors.email ? 'true' : 'false'}
+            aria-describedby={errors.email ? 'email-error' : undefined}
             className={`w-full px-6 py-4 bg-zinc-50 dark:bg-zinc-800/50 border ${
               errors.email ? 'border-red-500' : 'border-zinc-100 dark:border-zinc-800'
             } rounded-2xl focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 outline-none transition-all dark:text-white`}
           />
-          {errors.email && <p className="text-xs text-red-500 ml-1">{errors.email.message}</p>}
+          {errors.email && <p id="email-error" className="text-xs text-red-500 ml-1" role="alert">{errors.email.message}</p>}
         </div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* Phone */}
         <div className="space-y-2">
-          <label className="text-[10px] font-bold uppercase tracking-widest text-zinc-400 ml-1">Phone Number</label>
+          <label htmlFor="phone" className="text-[10px] font-bold uppercase tracking-widest text-zinc-400 ml-1">
+            Phone Number <span aria-label="required">*</span>
+          </label>
           <input
-            {...register('phone', { required: 'Phone number is required' })}
+            id="phone"
+            type="tel"
+            {...register('phone', {
+              required: 'Phone number is required',
+              pattern: {
+                value: /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/,
+                message: 'Please enter a valid phone number'
+              }
+            })}
             placeholder="+91 86187 64541"
+            aria-invalid={errors.phone ? 'true' : 'false'}
+            aria-describedby={errors.phone ? 'phone-error' : undefined}
             className={`w-full px-6 py-4 bg-zinc-50 dark:bg-zinc-800/50 border ${
               errors.phone ? 'border-red-500' : 'border-zinc-100 dark:border-zinc-800'
             } rounded-2xl focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 outline-none transition-all dark:text-white`}
           />
-          {errors.phone && <p className="text-xs text-red-500 ml-1">{errors.phone.message}</p>}
+          {errors.phone && <p id="phone-error" className="text-xs text-red-500 ml-1" role="alert">{errors.phone.message}</p>}
         </div>
 
         {/* Service */}
         <div className="space-y-2">
-          <label className="text-[10px] font-bold uppercase tracking-widest text-zinc-400 ml-1">Service Required</label>
+          <label htmlFor="service" className="text-[10px] font-bold uppercase tracking-widest text-zinc-400 ml-1">
+            Service Required <span aria-label="required">*</span>
+          </label>
           <select
+            id="service"
             {...register('service', { required: 'Please select a service' })}
+            aria-invalid={errors.service ? 'true' : 'false'}
+            aria-describedby={errors.service ? 'service-error' : undefined}
             className={`w-full px-6 py-4 bg-zinc-50 dark:bg-zinc-800/50 border ${
               errors.service ? 'border-red-500' : 'border-zinc-100 dark:border-zinc-800'
             } rounded-2xl focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 outline-none transition-all dark:text-white appearance-none`}
@@ -146,22 +173,27 @@ export default function ContactForm() {
             <option value="saas-products">SaaS Products</option>
             <option value="other">Other Inquiry</option>
           </select>
-          {errors.service && <p className="text-xs text-red-500 ml-1">{errors.service.message}</p>}
+          {errors.service && <p id="service-error" className="text-xs text-red-500 ml-1" role="alert">{errors.service.message}</p>}
         </div>
       </div>
 
       {/* Message */}
       <div className="space-y-2">
-        <label className="text-[10px] font-bold uppercase tracking-widest text-zinc-400 ml-1">Your Message</label>
+        <label htmlFor="message" className="text-[10px] font-bold uppercase tracking-widest text-zinc-400 ml-1">
+          Your Message <span aria-label="required">*</span>
+        </label>
         <textarea
+          id="message"
           {...register('message', { required: 'Message is required' })}
           placeholder="Tell us about your project or inquiry..."
           rows={5}
+          aria-invalid={errors.message ? 'true' : 'false'}
+          aria-describedby={errors.message ? 'message-error' : undefined}
           className={`w-full px-6 py-4 bg-zinc-50 dark:bg-zinc-800/50 border ${
             errors.message ? 'border-red-500' : 'border-zinc-100 dark:border-zinc-800'
           } rounded-3xl focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 outline-none transition-all dark:text-white resize-none`}
         />
-        {errors.message && <p className="text-xs text-red-500 ml-1">{errors.message.message}</p>}
+        {errors.message && <p id="message-error" className="text-xs text-red-500 ml-1" role="alert">{errors.message.message}</p>}
       </div>
 
       <button

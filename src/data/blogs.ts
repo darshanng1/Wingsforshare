@@ -16,10 +16,10 @@ export const blogs: BlogPost[] = [
     id: '1',
     slug: 'performance-matters-seo-strategy',
     title: 'Performance Matters: Why Speed is the Ultimate SEO Strategy',
-    excerpt: 'In 2026, user experience is the only thing that matters to search engines. Discover how we optimize for core web vitals.',
+    excerpt: 'In 2025, user experience is the only thing that matters to search engines. Discover how we optimize for core web vitals.',
     category: 'SEO & Performance',
     author: 'WingsForShare Tech Team',
-    date: 'April 15, 2026',
+    date: 'April 15, 2025',
     image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop',
     readTime: '6 min read',
     content: `## The Speed-to-Revenue Connection
@@ -44,7 +44,7 @@ Companies that optimize their core web vitals see an average of 15-20% increase 
     excerpt: 'A deep dive into the serverless and micro-frontend architectures we use to build global software products.',
     category: 'Product Engineering',
     author: 'Chief Architect',
-    date: 'April 10, 2026',
+    date: 'April 10, 2025',
     image: 'https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=800&auto=format&fit=crop',
     readTime: '8 min read',
     content: `## Architecture for the Future
@@ -67,7 +67,7 @@ In a multi-tenant SaaS environment, security is paramount. We implement zero-tru
     excerpt: 'How we implement custom AI layers to turn your business data into predictive growth maps.',
     category: 'Data Science',
     author: 'Data Lead',
-    date: 'April 05, 2026',
+    date: 'April 05, 2025',
     image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop',
     readTime: '5 min read',
     content: `## The Era of Smart Data

@@ -81,7 +81,7 @@ export default function ProjectIntakeForm() {
         <div className="w-24 h-24 bg-emerald-500/10 text-emerald-500 rounded-[2.5rem] flex items-center justify-center mx-auto mb-8 border border-emerald-500/20">
           <CheckCircle size={48} />
         </div>
-        <h3 className="text-4xl font-black text-text-primary mb-4 tracking-tight">Strategy Brief Received</h3>
+        <h3 className="text-4xl font-black text-text-primary mb-4 tracking-tight">Project Request Received</h3>
         <p className="text-text-secondary/60 mb-10 max-w-md mx-auto leading-relaxed font-medium">
           Our technical architects are analyzing your requirements. You'll receive a detailed roadmap and resource estimate within 24 hours.
         </p>
@@ -106,10 +106,10 @@ export default function ProjectIntakeForm() {
               <span className="text-[11px] font-black text-accent uppercase tracking-[0.3em]">Phase {step} / {totalSteps}</span>
             </div>
             <h3 className="text-4xl font-black tracking-tight text-text-primary leading-none">
-              {step === 1 && "Identity & Context"}
-              {step === 2 && "Service Architecture"}
-              {step === 3 && "Technical Scope"}
-              {step === 4 && "Budget & Velocity"}
+              {step === 1 && "Contact Information"}
+              {step === 2 && "Select Service"}
+              {step === 3 && "Project Details"}
+              {step === 4 && "Budget & Timeline"}
             </h3>
           </div>
           <div className="text-right hidden sm:block">
@@ -156,7 +156,7 @@ export default function ProjectIntakeForm() {
                     </div>
                   </div>
                   <div className="space-y-2">
-                    <label className="text-[11px] font-black text-text-secondary/40 uppercase tracking-widest ml-1">Company Entity</label>
+                    <label className="text-[11px] font-black text-text-secondary/40 uppercase tracking-widest ml-1">Company Name</label>
                     <div className="relative group">
                       <Building2 className="absolute left-5 top-1/2 -translate-y-1/2 text-text-secondary/20 group-focus-within:text-accent transition-colors" size={18} />
                       <input 
@@ -169,7 +169,7 @@ export default function ProjectIntakeForm() {
                     </div>
                   </div>
                   <div className="space-y-2 md:col-span-2">
-                    <label className="text-[11px] font-black text-text-secondary/40 uppercase tracking-widest ml-1">Strategic Email</label>
+                    <label className="text-[11px] font-black text-text-secondary/40 uppercase tracking-widest ml-1">Email Address</label>
                     <input 
                       type="email" 
                       placeholder="alex@nexus.com"
@@ -249,7 +249,7 @@ export default function ProjectIntakeForm() {
                     <div className="space-y-8">
                       <div className="grid grid-cols-2 gap-6">
                         <div className="space-y-2">
-                          <label className="text-[11px] font-black text-text-secondary/40 uppercase tracking-widest ml-1">Platform Type</label>
+                          <label className="text-[11px] font-black text-text-secondary/40 uppercase tracking-widest ml-1">Website Type</label>
                           <select 
                             className="w-full bg-card-bg border border-card-border rounded-[1.5rem] py-5 px-6 text-sm text-text-primary outline-none focus:border-accent/50 transition-all appearance-none font-medium"
                             value={formData.webDev?.websiteType}
@@ -263,7 +263,7 @@ export default function ProjectIntakeForm() {
                           </select>
                         </div>
                         <div className="space-y-2">
-                          <label className="text-[11px] font-black text-text-secondary/40 uppercase tracking-widest ml-1">Page Volume</label>
+                          <label className="text-[11px] font-black text-text-secondary/40 uppercase tracking-widest ml-1">Number of Pages</label>
                           <input 
                             type="text" 
                             placeholder="e.g. 10-15 Pages" 
@@ -312,7 +312,7 @@ export default function ProjectIntakeForm() {
                   {formData.selectedService === 'Mobile App Development' && (
                     <div className="space-y-8">
                       <div className="space-y-4">
-                        <label className="text-[11px] font-black text-text-secondary/40 uppercase tracking-widest ml-1">Target Ecosystem</label>
+                        <label className="text-[11px] font-black text-text-secondary/40 uppercase tracking-widest ml-1">Platform</label>
                         <div className="grid grid-cols-3 gap-4">
                           {['iOS', 'Android', 'Cross-Platform'].map((plat) => (
                             <button
@@ -369,7 +369,7 @@ export default function ProjectIntakeForm() {
                 <div className="space-y-10">
                   <div className="space-y-6">
                     <div className="space-y-4">
-                      <label className="text-[11px] font-black text-text-secondary/40 uppercase tracking-widest ml-1">Investment Range</label>
+                      <label className="text-[11px] font-black text-text-secondary/40 uppercase tracking-widest ml-1">Budget Range</label>
                       <div className="grid grid-cols-2 gap-4">
                         {['$5k - $15k', '$15k - $50k', '$50k - $150k', 'Enterprise ($150k+)'].map((range) => (
                           <button
@@ -390,7 +390,7 @@ export default function ProjectIntakeForm() {
                     </div>
                     
                     <div className="space-y-4">
-                      <label className="text-[11px] font-black text-text-secondary/40 uppercase tracking-widest ml-1">Development Velocity</label>
+                      <label className="text-[11px] font-black text-text-secondary/40 uppercase tracking-widest ml-1">Timeline</label>
                       <div className="grid grid-cols-2 gap-4">
                         {['Rapid (1-2 Months)', 'Standard (3-4 Months)', 'Strategic (6+ Months)', 'Ongoing Partnership'].map((time) => (
                           <button
@@ -418,7 +418,7 @@ export default function ProjectIntakeForm() {
                         <ShieldCheck size={28} />
                       </div>
                       <div>
-                        <p className="text-2xl font-black text-text-primary mb-2 tracking-tight">Architectural Review Included</p>
+                        <p className="text-2xl font-black text-text-primary mb-2 tracking-tight">Technical Review Included</p>
                         <p className="text-[13px] text-text-secondary/60 leading-relaxed font-medium">Your brief will be reviewed by a Senior Solutions Architect. We'll provide a technical feasibility report alongside our proposal.</p>
                       </div>
                     </div>
@@ -459,7 +459,7 @@ export default function ProjectIntakeForm() {
             onClick={handleSubmit}
             className="flex items-center gap-4 bg-accent text-bg px-12 py-6 rounded-[1.5rem] text-[11px] font-black uppercase tracking-[0.3em] hover:scale-[1.05] active:scale-[0.95] transition-all shadow-[0_32px_64px_-16px_rgba(0,255,157,0.3)] group"
           >
-            Deploy Brief
+            Submit Project
             <Send size={20} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
           </button>
         )}

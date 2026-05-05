@@ -1,25 +1,84 @@
-import React from 'react';
-import { Send, CheckCircle, Upload } from 'lucide-react';
+import React, { useState } from 'react';
+import { Send, CheckCircle } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
 interface InquiryFormProps {
   productName?: string;
 }
 
+interface FormErrors {
+  fullName?: string;
+  phone?: string;
+}
+
+interface TouchedFields {
+  fullName?: boolean;
+  phone?: boolean;
+}
+
 export default function InquiryForm({ productName }: InquiryFormProps) {
   const [status, setStatus] = React.useState<'idle' | 'loading' | 'success'>('idle');
+  const [formData, setFormData] = useState({
+    fullName: '',
+    phone: '',
+    message: ''
+  });
+  const [errors, setErrors] = useState<FormErrors>({});
+  const [touched, setTouched] = useState<TouchedFields>({});
+
+  const validateField = (name: keyof typeof formData, value: string): string | undefined => {
+    switch (name) {
+      case 'fullName':
+        if (!value.trim()) return 'Full name is required';
+        if (value.trim().length < 2) return 'Name must be at least 2 characters';
+        break;
+      case 'phone':
+        if (!value.trim()) return 'Phone number is required';
+        if (!/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/.test(value)) {
+          return 'Please enter a valid phone number';
+        }
+        break;
+    }
+    return undefined;
+  };
+
+  const handleBlur = (field: keyof typeof formData) => {
+    setTouched(prev => ({ ...prev, [field]: true }));
+    const error = validateField(field, formData[field]);
+    setErrors(prev => ({ ...prev, [field]: error }));
+  };
+
+  const handleChange = (field: keyof typeof formData, value: string) => {
+    setFormData(prev => ({ ...prev, [field]: value }));
+    if (touched[field]) {
+      const error = validateField(field, value);
+      setErrors(prev => ({ ...prev, [field]: error }));
+    }
+  };
+
+  const validateForm = (): boolean => {
+    const newErrors: FormErrors = {};
+    const nameError = validateField('fullName', formData.fullName);
+    const phoneError = validateField('phone', formData.phone);
+    if (nameError) newErrors.fullName = nameError;
+    if (phoneError) newErrors.phone = phoneError;
+    setErrors(newErrors);
+    setTouched({ fullName: true, phone: true });
+    return Object.keys(newErrors).length === 0;
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!validateForm()) return;
+
     setStatus('loading');
     
-    const formData = new FormData(e.target as HTMLFormElement);
     const data = {
-      name: formData.get('full-name'),
-      phone: formData.get('phone'),
+      name: formData.fullName,
+      phone: formData.phone,
       service: productName || 'General Inquiry',
-      message: formData.get('message'),
-      email: 'not-provided@wingsforshare.com' // Placeholder as form doesn't have email field directly
+      message: formData.message,
+      email: 'not-provided@wingsforshare.com'
     };
 
     try {
@@ -69,32 +128,63 @@ export default function InquiryForm({ productName }: InquiryFormProps) {
             onSubmit={handleSubmit} 
             aria-busy={status === 'loading'}
             className="space-y-6 bg-white dark:bg-[#111] p-10 md:p-12 rounded-[2.5rem] border border-black/5 dark:border-white/10 shadow-2xl shadow-black/5 dark:shadow-white/5 transition-colors duration-300"
+            noValidate
           >
             <div className="mb-10">
-              <h3 className="text-3xl font-bold text-black dark:text-white mb-2 tracking-tight">Request Setup</h3>
+              <h3 className="text-3xl font-bold text-black dark:text-white mb-2 tracking-tight">Request Information</h3>
               <p className="text-black/60 dark:text-white/60 text-sm">Fill out the form below and we'll get back to you shortly.</p>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <label htmlFor="full-name" className="block text-[10px] uppercase tracking-widest font-bold text-black/40 dark:text-white/40 mb-2 ml-1">Full Name</label>
+                <label htmlFor="full-name" className="block text-[10px] uppercase tracking-widest font-bold text-black/40 dark:text-white/40 mb-2 ml-1">
+                  Full Name <span aria-label="required">*</span>
+                </label>
                 <input 
-                  required
                   id="full-name"
                   type="text" 
-                  className="w-full px-6 py-4 bg-black/5 dark:bg-white/5 border border-transparent focus:border-black/10 dark:focus:border-white/10 rounded-2xl text-sm text-black dark:text-white focus:ring-4 focus:ring-black/5 dark:focus:ring-white/5 outline-none transition-all"
+                  value={formData.fullName}
+                  onChange={(e) => handleChange('fullName', e.target.value)}
+                  onBlur={() => handleBlur('fullName')}
+                  aria-invalid={errors.fullName ? 'true' : 'false'}
+                  aria-describedby={errors.fullName ? 'fullname-error' : undefined}
+                  className={`w-full px-6 py-4 bg-black/5 dark:bg-white/5 border rounded-2xl text-sm text-black dark:text-white focus:ring-4 focus:ring-black/5 dark:focus:ring-white/5 outline-none transition-all ${
+                    errors.fullName && touched.fullName 
+                      ? 'border-red-500 bg-red-500/5' 
+                      : 'border-transparent focus:border-black/10 dark:focus:border-white/10'
+                  }`}
                   placeholder="John Doe"
                 />
+                {errors.fullName && touched.fullName && (
+                  <p id="fullname-error" className="text-[10px] text-red-500 font-bold uppercase tracking-widest ml-1 mt-1" role="alert">
+                    {errors.fullName}
+                  </p>
+                )}
               </div>
               <div>
-                <label htmlFor="phone" className="block text-[10px] uppercase tracking-widest font-bold text-black/40 dark:text-white/40 mb-2 ml-1">Phone / WhatsApp</label>
+                <label htmlFor="phone" className="block text-[10px] uppercase tracking-widest font-bold text-black/40 dark:text-white/40 mb-2 ml-1">
+                  Phone / WhatsApp <span aria-label="required">*</span>
+                </label>
                 <input 
-                  required
                   id="phone"
                   type="tel" 
-                  className="w-full px-6 py-4 bg-black/5 dark:bg-white/5 border border-transparent focus:border-black/10 dark:focus:border-white/10 rounded-2xl text-sm text-black dark:text-white focus:ring-4 focus:ring-black/5 dark:focus:ring-white/5 outline-none transition-all"
+                  value={formData.phone}
+                  onChange={(e) => handleChange('phone', e.target.value)}
+                  onBlur={() => handleBlur('phone')}
+                  aria-invalid={errors.phone ? 'true' : 'false'}
+                  aria-describedby={errors.phone ? 'phone-error' : undefined}
+                  className={`w-full px-6 py-4 bg-black/5 dark:bg-white/5 border rounded-2xl text-sm text-black dark:text-white focus:ring-4 focus:ring-black/5 dark:focus:ring-white/5 outline-none transition-all ${
+                    errors.phone && touched.phone 
+                      ? 'border-red-500 bg-red-500/5' 
+                      : 'border-transparent focus:border-black/10 dark:focus:border-white/10'
+                  }`}
                   placeholder="+91 86187 64541"
                 />
+                {errors.phone && touched.phone && (
+                  <p id="phone-error" className="text-[10px] text-red-500 font-bold uppercase tracking-widest ml-1 mt-1" role="alert">
+                    {errors.phone}
+                  </p>
+                )}
               </div>
             </div>
 
@@ -106,6 +196,7 @@ export default function InquiryForm({ productName }: InquiryFormProps) {
                 readOnly
                 value={productName || 'General Inquiry'}
                 className="w-full px-6 py-4 bg-black/5 dark:bg-white/5 border border-transparent rounded-2xl text-sm text-black/40 dark:text-white/40 outline-none cursor-not-allowed"
+                aria-readonly="true"
               />
             </div>
 
@@ -114,6 +205,8 @@ export default function InquiryForm({ productName }: InquiryFormProps) {
               <textarea 
                 id="message"
                 rows={4}
+                value={formData.message}
+                onChange={(e) => handleChange('message', e.target.value)}
                 className="w-full px-6 py-4 bg-black/5 dark:bg-white/5 border border-transparent focus:border-black/10 dark:focus:border-white/10 rounded-2xl text-sm text-black dark:text-white focus:ring-4 focus:ring-black/5 dark:focus:ring-white/5 outline-none transition-all resize-none"
                 placeholder="Tell us about your business needs..."
               />
