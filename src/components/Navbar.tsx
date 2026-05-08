@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Menu, X, Sun, Moon, Facebook, Linkedin, Link as LinkIcon, MessageCircle, Share2, ArrowRight } from 'lucide-react';
+import { Menu, X, Sun, Moon, Linkedin, ArrowRight } from 'lucide-react';
 import { useTheme } from '../contexts/ThemeContext';
 import { useScrollSpy } from '../contexts/ScrollContext';
 import { motion, AnimatePresence } from 'motion/react';
@@ -210,18 +210,17 @@ export default function Navbar() {
                   
                   <div className="space-y-6">
                     <div className="flex items-center gap-4">
-                      {[Facebook, Linkedin, MessageCircle, Share2].map((Icon, i) => (
-                        <motion.a
-                          key={i}
-                          href="#"
-                          initial={{ opacity: 0, y: 10 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ delay: 0.4 + (i * 0.1) }}
-                          className="w-10 h-10 rounded-xl bg-text-primary/5 flex items-center justify-center text-text-secondary"
-                        >
-                          <Icon size={18} />
-                        </motion.a>
-                      ))}
+                      <motion.a
+                        href="https://www.linkedin.com/company/wings-for-share/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.4 }}
+                        className="w-10 h-10 rounded-xl bg-text-primary/5 flex items-center justify-center text-text-secondary hover:text-text-primary hover:bg-text-primary/10 transition-all"
+                      >
+                        <Linkedin size={18} />
+                      </motion.a>
                     </div>
                     
                     <motion.div

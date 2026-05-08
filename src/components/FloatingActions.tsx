@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { MessageCircle, Play, Share2, X, Link as LinkIcon, Facebook, Linkedin, Twitter, CheckCircle } from 'lucide-react';
+import { MessageCircle, Play, Share2, X, Link as LinkIcon, Linkedin, CheckCircle } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Link } from 'react-router-dom';
 
@@ -8,8 +8,6 @@ export default function FloatingActions() {
   const [copied, setCopied] = useState(false);
 
   const shareLinks = [
-    { icon: Facebook, name: 'Facebook', url: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}` },
-    { icon: Twitter, name: 'Twitter', url: `https://twitter.com/intent/tweet?url=${encodeURIComponent(window.location.href)}` },
     { icon: Linkedin, name: 'LinkedIn', url: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(window.location.href)}` },
   ];
 

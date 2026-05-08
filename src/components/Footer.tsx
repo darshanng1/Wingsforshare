@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
-import { Mail, Phone, MessageSquare, MapPin, Globe, Github, Twitter, Linkedin, Instagram, ArrowUpRight } from 'lucide-react';
+import { Mail, Phone, MessageSquare, MapPin, Globe, Linkedin, ArrowUpRight } from 'lucide-react';
 import { Logo } from './Logo';
 
 export default function Footer() {
@@ -16,10 +16,7 @@ export default function Footer() {
   ];
 
   const socialLinks = [
-    { icon: <Github size={20} />, link: 'https://github.com/wingsforshare' },
-    { icon: <Twitter size={20} />, link: 'https://twitter.com/wingsforshare' },
-    { icon: <Linkedin size={20} />, link: 'https://linkedin.com/company/wingsforshare' },
-    { icon: <Instagram size={20} />, link: 'https://instagram.com/wingsforshare' }
+    { icon: <Linkedin size={20} />, link: 'https://www.linkedin.com/company/wings-for-share/' }
   ];
 
   return (
@@ -54,6 +51,8 @@ export default function Footer() {
                     key={i}
                     whileHover={{ scale: 1.1, y: -5 }}
                     href={social.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="w-14 h-14 rounded-2xl bg-card-bg border border-card-border flex items-center justify-center text-text-secondary hover:text-text-primary hover:border-accent transition-all shadow-xl"
                   >
                     {social.icon}
