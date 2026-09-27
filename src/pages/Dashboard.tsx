@@ -4,6 +4,7 @@ import { auth, db } from '../firebase';
 import { doc, getDoc, collection, query, where, onSnapshot, addDoc, serverTimestamp } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
 import { Logo } from '../components/Logo';
+import NoIndex from '../components/NoIndex';
 import { 
   LayoutDashboard, Users, Settings, LogOut, ShieldCheck, Zap, 
   BarChart3, Globe, Clock, CheckCircle2, AlertCircle, 
@@ -69,6 +70,7 @@ const ClientDashboard = ({ user, profile }: { user: any, profile: any }) => {
 
   return (
     <div className="space-y-12">
+      <NoIndex />
       {/* Header */}
       <header className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
         <div>

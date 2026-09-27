@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
+import SEO from '../components/SEO';
 import { 
   Phone, 
   MessageSquare, 
@@ -95,6 +96,13 @@ export default function Contact() {
 
   return (
     <div className="min-h-screen bg-bg pt-32 pb-20 relative overflow-hidden">
+      <SEO
+        title="Contact WingsForShare | Free Consultation for Web, App & SEO Projects"
+        description="Talk to WingsForShare. Call, WhatsApp, or email for a free consultation on website development, mobile apps, custom software, and SEO. Fast quotes, clear pricing, no jargon."
+        keywords="contact web development agency, hire website developer India, free website consultation, WingsForShare contact"
+        canonical="https://wingsforshare.com/contact"
+        schemaType="ContactPage"
+      />
       {/* Dynamic Background */}
       <div className="absolute inset-0 pointer-events-none opacity-40">
         <div className="absolute top-0 right-0 w-[60%] h-[60%] bg-accent/10 blur-[160px] rounded-full translate-x-1/2 -translate-y-1/2" />

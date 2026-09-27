@@ -13,8 +13,8 @@ export const HeroContent = () => {
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         className="text-text-primary mb-6 text-balance leading-[1.05] tracking-tighter font-display font-bold text-[clamp(2.5rem,6vw,4.5rem)]"
       >
-        Build High-Converting <br className="hidden md:block" />
-        <span className="text-accent italic font-light">Websites, Apps & SEO Systems</span>
+        Web Development, SEO, Apps <br className="hidden md:block" />
+        <span className="text-accent italic font-light">&amp; Business Analytics</span>
       </motion.h1>
 
       {/* --- Description Section --- */}
@@ -24,7 +24,7 @@ export const HeroContent = () => {
         transition={{ duration: 0.8, delay: 0.2 }}
         className="text-text-secondary max-w-[540px] mb-10 leading-[1.6] font-normal text-base md:text-lg"
       >
-        Empower your brand with premium web development and custom mobile apps. We build scalable business systems designed to increase conversions and grow revenue through data-driven digital strategies.
+We're a global web development agency building high-performance websites, mobile apps, SEO systems, social media marketing and business analytics — engineered to increase conversions and grow revenue.
       </motion.p>
 
       {/* --- CTA Section --- */}

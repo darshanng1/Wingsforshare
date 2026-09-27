@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'motion/react';
 import { CheckCircle, ExternalLink, ArrowRight, Camera, Layout, Smartphone, Search, Mail, Sparkles, Zap, Shield, Globe } from 'lucide-react';
 import InquiryForm from '../components/InquiryForm';
+import SEO from '../components/SEO';
 
 export default function ArchitectPortfolio() {
   const heroRef = useRef<HTMLElement>(null);
@@ -14,6 +15,13 @@ export default function ArchitectPortfolio() {
 
   return (
     <div className="pt-16 bg-white dark:bg-[#0a0a0a] transition-colors duration-300">
+      <SEO
+        title="Architecture Portfolio Website Development | WingsForShare"
+        description="Premium portfolio websites for architects and design studios. Project galleries, inquiry generation, SEO-optimized structure, and mobile-first design that wins high-value clients."
+        keywords="architecture portfolio website, website for architects, architect web design, portfolio website development"
+        canonical="https://wingsforshare.com/architect"
+        schemaType="Service"
+      />
       {/* Hero */}
       <section ref={heroRef} className="py-32 bg-black text-white overflow-hidden relative min-h-[80vh] flex items-center">
         <motion.div 

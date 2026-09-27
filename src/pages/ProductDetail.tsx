@@ -3,6 +3,7 @@ import { useParams, Link, Navigate } from 'react-router-dom';
 import { products } from '../data/products';
 import { ExternalLink, CheckCircle, ArrowLeft, MessageCircle, Sparkles, Zap, Shield, Globe, ArrowRight } from 'lucide-react';
 import { motion } from 'motion/react';
+import SEO from '../components/SEO';
 import InquiryForm from '../components/InquiryForm';
 
 export default function ProductDetail() {
@@ -15,6 +16,14 @@ export default function ProductDetail() {
 
   return (
     <div className="pt-32 pb-32 bg-bg transition-colors duration-500 overflow-hidden relative">
+      <SEO
+        title={product.name + " | WingsForShare Case Study"}
+        description={product.shortDescription || product.description}
+        keywords={product.name + ", " + product.category + (product.industry ? ", " + product.industry : "") + ", WingsForShare project"}
+        canonical={"https://wingsforshare.com/product/" + product.slug}
+        ogImage={product.screenshot}
+        schemaType="Service"
+      />
       {/* Background Decorative Elements */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-accent/5 rounded-full blur-[120px]" />

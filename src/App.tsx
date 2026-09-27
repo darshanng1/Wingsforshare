@@ -7,6 +7,8 @@ import Contact from './pages/Contact';
 import Dashboard from './pages/Dashboard';
 import Portfolio from './pages/Portfolio';
 import ProductDetail from './pages/ProductDetail';
+import ServiceDetail from './pages/ServiceDetail';
+import Services from './pages/Services';
 import StartProject from './pages/StartProject';
 import Login from './pages/Login';
 import SEOPage from './pages/SEOPage';
@@ -31,6 +33,8 @@ export default function App() {
               <Route path="/contact" element={<Contact />} />
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/portfolio" element={<Portfolio />} />
+              <Route path="/services" element={<Services />} />
+              <Route path="/services/:slug" element={<ServiceDetail />} />
               <Route path="/product/:slug" element={<ProductDetail />} />
               <Route path="/start-project" element={<StartProject />} />
               <Route path="/login" element={<Login />} />

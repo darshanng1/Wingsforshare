@@ -25,21 +25,21 @@ const solutions = [
     iconColor: 'text-purple-500',
     title: 'SEO Services',
     desc: 'Rank Higher on Google & Get More Traffic with data-driven strategies and keyword optimization.',
-    href: '/services/seo-growth'
+    href: '/services/seo'
   },
   {
     icon: Share2,
     iconColor: 'text-pink-500',
     title: 'SMM (Social Media Marketing)',
     desc: 'Grow Your Brand on Social Media with targeted campaigns and creative content strategies.',
-    href: '/services/smm'
+    href: '/services/social-media-marketing'
   },
   {
     icon: BarChart3,
     iconColor: 'text-orange-500',
-    title: 'Business Intelligence Tools',
-    desc: 'Data Dashboards & Business Insights to transform raw data into actionable intelligence.',
-    href: '/services/business-intelligence'
+    title: 'Business Analytics',
+    desc: 'Data dashboards & business insights to transform raw data into actionable intelligence.',
+    href: '/services/business-analytics'
   }
 ];
 

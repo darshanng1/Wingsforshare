@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Upload, Sun, Moon, Check, AlertTriangle, Loader2 } from 'lucide-react';
+import NoIndex from '../components/NoIndex';
 
 export default function SetupLogos() {
   const [lightFile, setLightFile] = useState<File | null>(null);
@@ -35,6 +36,7 @@ export default function SetupLogos() {
 
   return (
     <div className="min-h-screen bg-bg flex items-center justify-center p-6 pt-24">
+      <NoIndex />
       <div className="max-w-2xl w-full grid md:grid-cols-2 gap-8">
         {/* Light Mode Logo */}
         <div className="bg-white rounded-3xl p-8 border border-black/5 shadow-2xl space-y-6">

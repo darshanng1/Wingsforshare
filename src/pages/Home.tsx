@@ -24,6 +24,7 @@ import { ProjectPlanningSection } from '@/components/home/ProjectPlanningSection
 import { ContactSection } from '@/components/home/ContactSection';
 import { TestimonialsSection } from '@/components/home/TestimonialsSection';
 import { LatestBlogs } from '@/components/home/LatestBlogs';
+import { FaqSection } from '@/components/home/FaqSection';
 
 export default function Home() {
   const location = useLocation();
@@ -203,11 +204,6 @@ export default function Home() {
         }
       ]
     },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": "127"
-    },
     "sameAs": [
       "https://facebook.com/wingsforshare",
       "https://twitter.com/wingsforshare",
@@ -233,9 +229,9 @@ export default function Home() {
   return (
     <div className="bg-bg transition-colors duration-500 overflow-hidden">
       <SEO
-        title="WingsForShare | Revenue-Driven Digital Systems & Business Technology Growth"
-        description="WingsForShare builds revenue-driven digital systems. Custom software development, web applications, mobile apps, and business automation solutions that drive measurable growth."
-        keywords="business technology growth, digital transformation, custom software development, web development, mobile app development, business automation, SaaS development, enterprise software, WingsForShare"
+        title="Web Development, SEO, App Development & Business Analytics Agency | WingsForShare"
+        description="WingsForShare is a global web development, SEO, social media marketing (SMM), app development and business analytics agency. We build websites, apps and data systems that drive revenue."
+        keywords="web development agency, seo agency, seo services, smm services, social media marketing, app development agency, mobile app development, business analytics, business intelligence, digital agency, WingsForShare"
         canonical="https://wingsforshare.com"
         ogType="website"
         schemaType="LocalBusiness"
@@ -271,11 +267,7 @@ export default function Home() {
           </div>
 
           <div className="container-custom w-full relative z-10">
-            {/* H1 - Hidden but accessible for SEO */}
-            <h1 className="sr-only">
-              WingsForShare - Revenue-Driven Digital Systems & Business Technology Growth Agency
-            </h1>
-            
+            {/* Primary H1 lives in <HeroContent /> (single, visible, keyword-rich) */}
             <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-16">
               <div className="w-full lg:w-[45%] flex flex-col justify-center text-center lg:text-left">
                 <HeroContent />
@@ -444,6 +436,9 @@ export default function Home() {
 
       {/* Consultation & Meeting Section */}
       <ProjectPlanningSection />
+
+      {/* FAQ (on-page SEO + FAQPage schema) */}
+      <FaqSection />
 
       {/* Contact & Final CTA Section */}
       <ContactSection />

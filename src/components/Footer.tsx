@@ -8,11 +8,12 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   const services = [
-    { name: 'Software Development', link: '/services/software-development' },
+    { name: 'Web Development', link: '/services/web-development' },
+    { name: 'SEO Services', link: '/services/seo' },
+    { name: 'Social Media Marketing', link: '/services/social-media-marketing' },
     { name: 'App Development', link: '/services/app-development' },
-    { name: 'Digital Marketing', link: '/services/digital-marketing' },
-    { name: 'SaaS Products', link: '/services/saas-products' },
-    { name: 'SEO Optimization', link: '/services/seo' }
+    { name: 'Business Analytics', link: '/services/business-analytics' },
+    { name: 'Custom Software', link: '/services/custom-software' }
   ];
 
   const socialLinks = [

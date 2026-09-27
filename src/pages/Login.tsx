@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { auth, db } from '../firebase';
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
 import { doc, setDoc, getDoc } from 'firebase/firestore';
+import NoIndex from '../components/NoIndex';
 
 export default function Login() {
   const [loginType, setLoginType] = useState<'admin' | 'client'>('client');
@@ -66,6 +67,7 @@ export default function Login() {
 
   return (
     <div className="min-h-screen bg-white dark:bg-[#0a0a0a] pt-32 pb-24 flex items-center justify-center px-4">
+      <NoIndex />
       <div className="max-w-md w-full">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

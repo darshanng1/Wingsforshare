@@ -2,6 +2,7 @@ import React, { useState, useMemo, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Search, Filter, Rocket, ChevronRight, RefreshCw } from 'lucide-react';
 import { products } from '../data/products';
+import SEO from '../components/SEO';
 import ProductCard from '../components/ProductCard';
 
 export default function Portfolio() {
@@ -57,6 +58,27 @@ export default function Portfolio() {
 
   return (
     <div className="pt-32 pb-20 min-h-screen bg-bg transition-colors duration-500">
+      <SEO
+        title="Portfolio: Web, Mobile & BI Projects Delivered | WingsForShare"
+        description="Explore the WingsForShare portfolio of delivered projects: architecture portfolio sites, ecommerce stores, digital vCards, pest-control BI systems, and custom web applications built for measurable business results."
+        keywords="web development portfolio, ecommerce development portfolio, BI dashboard case studies, custom software projects India, WingsForShare portfolio"
+        canonical="https://wingsforshare.com/portfolio"
+        schemaMarkup={{
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          "name": "WingsForShare Portfolio",
+          "url": "https://wingsforshare.com/portfolio",
+          "mainEntity": {
+            "@type": "ItemList",
+            "itemListElement": products.map((p, i) => ({
+              "@type": "ListItem",
+              "position": i + 1,
+              "name": p.name,
+              "url": "https://wingsforshare.com/product/" + p.slug
+            }))
+          }
+        }}
+      />
       {/* Version Indicator for Debugging */}
       <div className="hidden">Portfolio v2.3</div>
       {/* Top Section */}
