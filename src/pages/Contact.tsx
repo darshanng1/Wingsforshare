@@ -273,7 +273,7 @@ export default function Contact() {
                     <div className="space-y-4">
                       <label className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-text-secondary/60">
                         <span className="w-1 h-1 rounded-full bg-accent" />
-                        Service Module
+Service Required
                       </label>
                       <select 
                         name="service"
@@ -281,11 +281,14 @@ export default function Contact() {
                         onChange={handleChange}
                         className="w-full bg-transparent border-b-2 border-card-border px-0 py-4 focus:border-accent transition-all outline-none font-bold text-text-primary appearance-none cursor-pointer"
                       >
-                        <option value="" className="bg-bg">Select Matrix</option>
-                        <option value="Enterprise Software" className="bg-bg">Enterprise Software</option>
-                        <option value="SaaS Architecture" className="bg-bg">SaaS Architecture</option>
-                        <option value="Infrastructure" className="bg-bg">Infrastructure</option>
-                        <option value="Machine Learning" className="bg-bg">Machine Learning</option>
+                        <option value="" className="bg-bg">Select a service</option>
+                        <option value="Web Development" className="bg-bg">Web Development</option>
+                        <option value="SEO Services" className="bg-bg">SEO Services</option>
+                        <option value="Social Media Marketing" className="bg-bg">Social Media Marketing</option>
+                        <option value="Mobile App Development" className="bg-bg">Mobile App Development</option>
+                        <option value="Business Analytics" className="bg-bg">Business Analytics</option>
+                        <option value="Custom Software" className="bg-bg">Custom Software</option>
+                        <option value="Other" className="bg-bg">Other</option>
                       </select>
                     </div>
                   </div>

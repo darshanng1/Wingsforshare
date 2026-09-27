@@ -21,9 +21,18 @@ export default function BlogPost() {
 
   return (
     <article className="pt-32 pb-32 bg-bg min-h-screen">
-      <SEO 
+      <SEO
         title={`${blog.title} | WingsForShare Insight`}
         description={blog.excerpt}
+        canonical={`https://wingsforshare.com/blog/${blog.slug}`}
+        ogType="article"
+        ogImage={blog.image}
+        schemaType="Article"
+        publishedTime={blog.date}
+        modifiedTime={blog.date}
+        author={blog.author}
+        section={blog.category}
+        keywords={`${blog.category}, web development, seo services, social media marketing, app development, business analytics`}
       />
 
       <div className="container-custom max-w-6xl">
@@ -143,6 +152,28 @@ export default function BlogPost() {
                 }
               `}</style>
               <Markdown>{blog.content}</Markdown>
+            </div>
+
+            {/* Internal linking — route readers to services */}
+            <div className="mt-16 p-8 rounded-[2rem] bg-card-bg border border-card-border">
+              <h3 className="text-[10px] font-black uppercase tracking-[0.3em] text-accent mb-5">Explore our services</h3>
+              <div className="flex flex-wrap gap-3">
+                {[
+                  { to: '/services/web-development', label: 'Web Development' },
+                  { to: '/services/seo', label: 'SEO Services' },
+                  { to: '/services/social-media-marketing', label: 'Social Media Marketing' },
+                  { to: '/services/app-development', label: 'App Development' },
+                  { to: '/services/business-analytics', label: 'Business Analytics' }
+                ].map((l) => (
+                  <Link
+                    key={l.to}
+                    to={l.to}
+                    className="px-4 py-2 rounded-full bg-bg border border-card-border text-[11px] font-bold uppercase tracking-widest text-text-secondary hover:text-accent hover:border-accent/40 transition-all"
+                  >
+                    {l.label}
+                  </Link>
+                ))}
+              </div>
             </div>
 
             {/* Post Footer */}

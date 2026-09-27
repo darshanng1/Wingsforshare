@@ -91,6 +91,27 @@ export default function ProductDetail() {
                 <ArrowRight size={20} />
               </Link>
             </div>
+
+            {/* Internal linking — related services */}
+            <div className="mt-16 pt-10 border-t border-card-border">
+              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-accent block mb-5">Related services</span>
+              <div className="flex flex-wrap gap-3">
+                {[
+                  { to: '/services/web-development', label: 'Web Development' },
+                  { to: '/services/seo', label: 'SEO Services' },
+                  { to: '/services/app-development', label: 'App Development' },
+                  { to: '/services/business-analytics', label: 'Business Analytics' }
+                ].map((l) => (
+                  <Link
+                    key={l.to}
+                    to={l.to}
+                    className="px-4 py-2 rounded-full bg-card-bg border border-card-border text-[11px] font-bold uppercase tracking-widest text-text-secondary hover:text-accent hover:border-accent/40 transition-all"
+                  >
+                    {l.label}
+                  </Link>
+                ))}
+              </div>
+            </div>
           </motion.div>
           
           {/* Right: Media & Form */}

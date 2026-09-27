@@ -5,7 +5,7 @@ import {
   Upload, Globe, Search, Smartphone, BarChart3, ChevronRight, 
   ChevronLeft, FileText, Image as ImageIcon, Link as LinkIcon,
   DollarSign, Layers, MousePointer2, Plus, X, Monitor, Cpu,
-  Target, Zap, ShieldCheck, Clock, CreditCard, CheckCircle2
+  Target, Zap, ShieldCheck, Clock, CreditCard, CheckCircle2, Loader2, AlertCircle
 } from 'lucide-react';
 import { ProjectIntakeData, ServiceType } from '../types';
 
@@ -40,6 +40,8 @@ export default function ProjectIntakeForm() {
     }
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const [direction, setDirection] = useState(1);
 
   const totalSteps = 4;
@@ -53,10 +55,51 @@ export default function ProjectIntakeForm() {
     setStep(prev => Math.max(prev - 1, 1));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Project Intake Submitted:', formData);
-    setIsSubmitted(true);
+    setSubmitError(null);
+
+    if (!formData.fullName?.trim() || !formData.email?.trim() || !formData.phone?.trim()) {
+      setSubmitError('Please complete Name, Email and Phone before submitting.');
+      setStep(1);
+      return;
+    }
+
+    setSubmitting(true);
+    try {
+      const detail = [
+        formData.companyName ? `Company: ${formData.companyName}` : '',
+        formData.industry ? `Industry: ${formData.industry}` : '',
+        formData.budgetRange ? `Budget: ${formData.budgetRange}` : '',
+        formData.timeline ? `Timeline: ${formData.timeline}` : '',
+        formData.projectDescription ? `Details: ${formData.projectDescription}` : '',
+        formData.webDev ? `Web: ${JSON.stringify(formData.webDev)}` : '',
+        formData.appDev ? `App: ${JSON.stringify(formData.appDev)}` : ''
+      ].filter(Boolean).join('\n');
+
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.fullName,
+          email: formData.email,
+          phone: formData.phone,
+          service: formData.selectedService || 'General',
+          message: detail || 'Project intake submitted.'
+        })
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || data.success === false) {
+        throw new Error(data.message || 'Something went wrong.');
+      }
+      setIsSubmitted(true);
+    } catch (err: any) {
+      setSubmitError(
+        err?.message || 'Could not submit right now. Please email info@wingsforshare.com or WhatsApp +91 86187 64541.'
+      );
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const updateFormData = (data: Partial<ExtendedProjectIntakeData>) => {
@@ -430,6 +473,13 @@ export default function ProjectIntakeForm() {
         </form>
       </div>
 
+      {submitError && (
+        <div role="alert" className="mt-8 flex items-start gap-3 p-4 rounded-2xl bg-red-500/10 border border-red-500/20">
+          <AlertCircle size={18} className="text-red-500 shrink-0 mt-0.5" />
+          <p className="text-[12px] text-red-400 font-medium leading-relaxed">{submitError}</p>
+        </div>
+      )}
+
       {/* Navigation Architecture */}
       <div className="pt-12 mt-auto flex items-center justify-between border-t border-card-border/50">
         <button
@@ -457,10 +507,15 @@ export default function ProjectIntakeForm() {
           <button
             type="button"
             onClick={handleSubmit}
-            className="flex items-center gap-4 bg-accent text-bg px-12 py-6 rounded-[1.5rem] text-[11px] font-black uppercase tracking-[0.3em] hover:scale-[1.05] active:scale-[0.95] transition-all shadow-[0_32px_64px_-16px_rgba(0,255,157,0.3)] group"
+            disabled={submitting}
+            className="flex items-center gap-4 bg-accent text-bg px-12 py-6 rounded-[1.5rem] text-[11px] font-black uppercase tracking-[0.3em] hover:scale-[1.05] active:scale-[0.95] transition-all shadow-[0_32px_64px_-16px_rgba(0,255,157,0.3)] group disabled:opacity-60 disabled:cursor-not-allowed"
           >
-            Submit Project
-            <Send size={20} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+            {submitting ? 'Sending…' : 'Submit Project'}
+            {submitting ? (
+              <Loader2 size={20} className="animate-spin" />
+            ) : (
+              <Send size={20} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+            )}
           </button>
         )}
       </div>

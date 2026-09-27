@@ -228,17 +228,38 @@ export default function IntakeForm() {
     e.preventDefault();
     if (!validateStep(currentStep)) return;
 
-    // Simulate API call
-    console.log('Submitting Project Intake:', formData);
-    
     const currentYear = new Date().getFullYear();
     const newId = `PRJ-${currentYear}-` + Math.floor(1000 + Math.random() * 9000);
+
+    const detail = [
+      `Project ID: ${newId}`,
+      formData.companyName ? `Company: ${formData.companyName}` : '',
+      formData.country ? `Country: ${formData.country}` : '',
+      formData.industry ? `Industry: ${formData.industry}` : '',
+      formData.projectDescription ? `Description: ${formData.projectDescription}` : '',
+      formData.webDev ? `Web requirements: ${JSON.stringify(formData.webDev)}` : '',
+      formData.seo ? `SEO requirements: ${JSON.stringify(formData.seo)}` : '',
+      formData.appDev ? `App requirements: ${JSON.stringify(formData.appDev)}` : '',
+      formData.bi ? `BI requirements: ${JSON.stringify(formData.bi)}` : ''
+    ].filter(Boolean).join('\n');
+
+    try {
+      await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.fullName,
+          email: formData.email,
+          phone: formData.phone,
+          service: formData.selectedService || 'General',
+          message: detail
+        })
+      });
+    } catch {
+      // lead capture failure should not block the confirmation screen
+    }
+
     setProjectId(newId);
-    
-    // In a real app, use FormData for file uploads
-    // const payload = new FormData();
-    // ...
-    
     setIsSubmitted(true);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
