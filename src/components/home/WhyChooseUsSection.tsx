@@ -1,3 +1,9 @@
+cd D:\Wingsforshare
+git add -A
+git commit -m "site update"
+git push
+ssh wings deploy
+
 import React from 'react';
 import { motion } from 'motion/react';
 import { CheckCircle, Zap, TrendingUp, Network, Cpu, Smartphone } from 'lucide-react';
