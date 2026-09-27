@@ -9,3 +9,5 @@ coverage/
 .idea/
 .commandcode/
 leads.json
+
+.env
