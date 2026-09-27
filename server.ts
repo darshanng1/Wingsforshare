@@ -167,6 +167,8 @@ async function startServer() {
     // Convenience redirects (so /sitemap and /robots don't 404)
     app.get("/sitemap", (_req, res) => res.redirect(301, "/sitemap.xml"));
     app.get("/robots", (_req, res) => res.redirect(301, "/robots.txt"));
+    app.get("/product", (_req, res) => res.redirect(301, "/portfolio"));
+    app.get("/products", (_req, res) => res.redirect(301, "/portfolio"));
 
     app.use(express.static(distPath, {
       index: false,

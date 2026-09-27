@@ -73,6 +73,30 @@ export default function ProductDetail() {
                 Delivery: <span className="text-text-primary">Discover → Build → Launch</span>
               </span>
             </div>
+
+            {/* Demo login credentials */}
+            {product.userLogin && (
+              <div className="mb-16 p-6 md:p-8 rounded-3xl bg-card-bg border border-accent/30">
+                <span className="text-[10px] font-black uppercase tracking-[0.3em] text-accent block mb-3">Demo access</span>
+                <p className="text-sm text-text-secondary mb-4">
+                  Log into the live demo with this password:
+                </p>
+                <div className="flex flex-wrap items-center gap-3">
+                  <code className="px-4 py-2.5 rounded-xl bg-bg border border-card-border text-text-primary font-mono text-sm">
+                    {product.userLogin}
+                  </code>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      if (navigator.clipboard) navigator.clipboard.writeText(String(product.userLogin));
+                    }}
+                    className="px-4 py-2.5 rounded-xl bg-accent text-white text-[11px] font-black uppercase tracking-widest hover:brightness-110 active:scale-95 transition-all"
+                  >
+                    Copy password
+                  </button>
+                </div>
+              </div>
+            )}
             
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 mb-16">
               {product.features.map((feature, idx) => (
