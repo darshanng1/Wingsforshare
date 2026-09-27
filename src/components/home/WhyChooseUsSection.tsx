@@ -141,14 +141,14 @@ export const WhyChooseUsSection = () => {
           </div>
         </div>
 
-        {/* Global Impact Metrics - New Section to fill space */}
+        {/* How we work — honest, verifiable commitments (no fabricated metrics) */}
         <div className="pt-24 border-t border-card-border/50">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
             {[
-              { label: 'Revenue Generated', value: '$250M+', desc: 'For our global partners' },
-              { label: 'Projects Delivered', value: '1,200+', desc: 'Across 15 industries' },
-              { label: 'Client Retention', value: '98%', desc: 'Long-term partnerships' },
-              { label: 'Global Reach', value: '24', desc: 'Countries transformed' }
+              { label: 'Global Delivery', value: 'Global', desc: 'India, US, UK, Australia & the Middle East' },
+              { label: 'Code Ownership', value: 'Yours', desc: 'Full source code and IP handed over on delivery' },
+              { label: 'Pricing', value: 'Fixed', desc: 'Scope and price agreed in writing before we start' },
+              { label: 'Response Time', value: '< 24h', desc: 'Every enquiry answered within one working day' }
             ].map((stat, i) => (
               <motion.div
                 key={i}

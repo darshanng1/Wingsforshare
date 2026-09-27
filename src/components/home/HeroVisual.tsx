@@ -124,7 +124,7 @@ const WebPreview = () => (
               transition={{ delay: 0.5 }}
               className="pt-10 space-y-4"
             >
-              <p className="text-[10px] font-black text-white/20 uppercase tracking-[0.3em]">Trusted by Industry Leaders</p>
+              <p className="text-[10px] font-black text-white/20 uppercase tracking-[0.3em]">Designed &amp; built in-house</p>
               <div className="flex gap-8 opacity-30 grayscale">
                 {[1, 2, 3, 4].map(i => (
                   <div key={i} className="w-20 h-6 bg-white/20 rounded" />
@@ -213,7 +213,7 @@ const WebPreview = () => (
           {[
             { label: 'Active Users', value: '1.2M+' },
             { label: 'Global Regions', value: '24' },
-            { label: 'Uptime SLA', value: '99.99%' },
+            { label: 'Monitoring', value: 'Live' },
             { label: 'Support', value: '24/7' }
           ].map((stat, i) => (
             <div key={i} className="space-y-1">

@@ -51,16 +51,16 @@ We're a global web development agency building high-performance websites, mobile
         className="grid grid-cols-3 gap-4 md:gap-8 pt-8 border-t border-text-primary/10 w-full max-w-md lg:max-w-none"
       >
         <div className="flex flex-col gap-1">
-          <span className="text-xl md:text-2xl font-bold text-text-primary">100+</span>
-          <span className="text-[9px] md:text-[10px] uppercase tracking-widest text-text-secondary font-semibold">Projects Delivered</span>
+          <span className="text-xl md:text-2xl font-bold text-text-primary">Global</span>
+          <span className="text-[9px] md:text-[10px] uppercase tracking-widest text-text-secondary font-semibold">Delivery</span>
         </div>
         <div className="flex flex-col gap-1">
-          <span className="text-xl md:text-2xl font-bold text-text-primary">99.9%</span>
-          <span className="text-[9px] md:text-[10px] uppercase tracking-widest text-text-secondary font-semibold">System Uptime</span>
+          <span className="text-xl md:text-2xl font-bold text-text-primary">&lt; 24h</span>
+          <span className="text-[9px] md:text-[10px] uppercase tracking-widest text-text-secondary font-semibold">Reply Time</span>
         </div>
         <div className="flex flex-col gap-1">
-          <span className="text-xl md:text-2xl font-bold text-text-primary">10+</span>
-          <span className="text-[9px] md:text-[10px] uppercase tracking-widest text-text-secondary font-semibold">Industries Served</span>
+          <span className="text-xl md:text-2xl font-bold text-text-primary">Yours</span>
+          <span className="text-[9px] md:text-[10px] uppercase tracking-widest text-text-secondary font-semibold">Code Ownership</span>
         </div>
       </motion.div>
     </div>

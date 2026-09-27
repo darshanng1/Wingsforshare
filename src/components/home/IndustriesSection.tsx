@@ -11,7 +11,7 @@ const transformations = [
     icon: HardHat,
     industry: 'Field Services',
     title: 'Service Automation',
-    impact: '+42% Efficiency',
+    impact: 'Workflow Automation',
     desc: 'Unified field service engine automating dispatch and reporting.',
     color: 'emerald'
   },
@@ -19,7 +19,7 @@ const transformations = [
     icon: Building2,
     industry: 'Real Estate',
     title: 'Conversion Engine',
-    impact: '3.5x Lead Growth',
+    impact: 'Lead Capture & Scoring',
     desc: 'High-performance property ecosystem with smart lead scoring.',
     color: 'blue'
   },
@@ -27,7 +27,7 @@ const transformations = [
     icon: ShoppingCart,
     industry: 'E-commerce',
     title: 'Global Scale',
-    impact: '210% Revenue Lift',
+    impact: 'Headless Commerce',
     desc: 'Headless commerce architecture for sub-second performance.',
     color: 'accent'
   }
@@ -85,7 +85,7 @@ export const IndustriesSection: React.FC<IndustriesSectionProps> = () => {
                 ))}
               </div>
               <div className="text-[10px] font-black uppercase tracking-widest text-text-secondary">
-                Trusted by <span className="text-text-primary">50+ Enterprises</span>
+                Built for <span className="text-text-primary">growing businesses</span>
               </div>
             </div>
           </div>
@@ -124,7 +124,7 @@ export const IndustriesSection: React.FC<IndustriesSectionProps> = () => {
                   <div className="flex justify-between items-center mb-10">
                     <div className="flex items-center gap-4">
                       <div className="w-2 h-2 rounded-full bg-accent animate-pulse" />
-                      <span className="text-[11px] font-black uppercase tracking-[0.3em] text-text-primary">Live Metrics</span>
+                      <span className="text-[11px] font-black uppercase tracking-[0.3em] text-text-primary">Sample Dashboard</span>
                     </div>
                     <div className="flex items-center gap-2 px-3 py-1 bg-accent/10 rounded-full">
                       <TrendingUp size={14} className="text-accent" />
@@ -146,12 +146,12 @@ export const IndustriesSection: React.FC<IndustriesSectionProps> = () => {
                     </div>
                     <div className="grid grid-cols-2 gap-6">
                       <div className="p-6 rounded-3xl bg-card-bg border border-card-border group-hover:border-accent/20 transition-colors">
-                        <span className="text-[10px] font-black text-text-secondary/40 uppercase tracking-widest block mb-2">Growth Velocity</span>
-                        <div className="text-3xl font-black text-emerald-500 tracking-tighter">+124%</div>
+                        <span className="text-[10px] font-black text-text-secondary/40 uppercase tracking-widest block mb-2">Speed Budget</span>
+                        <div className="text-3xl font-black text-emerald-500 tracking-tighter">&lt; 2s</div>
                       </div>
                       <div className="p-6 rounded-3xl bg-card-bg border border-card-border group-hover:border-accent/20 transition-colors">
-                        <span className="text-[10px] font-black text-text-secondary/40 uppercase tracking-widest block mb-2">System Efficiency</span>
-                        <div className="text-3xl font-black text-accent tracking-tighter">98.2%</div>
+                        <span className="text-[10px] font-black text-text-secondary/40 uppercase tracking-widest block mb-2">Core Web Vitals</span>
+                        <div className="text-3xl font-black text-accent tracking-tighter">Tuned</div>
                       </div>
                     </div>
                   </div>
