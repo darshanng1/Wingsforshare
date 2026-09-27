@@ -169,12 +169,31 @@ async function startServer() {
     }));
 
     // Handle SPA routing
+    const KNOWN_ROUTES: RegExp[] = [
+      /^\/$/,
+      /^\/services\/?$/,
+      /^\/services\/[a-z0-9-]+\/?$/,
+      /^\/portfolio\/?$/,
+      /^\/blog\/?$/,
+      /^\/blog\/[a-z0-9-]+\/?$/,
+      /^\/contact\/?$/,
+      /^\/start-project\/?$/,
+      /^\/product\/[a-z0-9-]+\/?$/,
+      /^\/architect\/?$/,
+      /^\/seo\/?$/,
+      /^\/login\/?$/,
+      /^\/dashboard\/?$/,
+      /^\/setup-logos\/?$/,
+    ];
+
     app.get("*", (req, res) => {
       // If the request looks like a static asset but wasn't found by express.static, return 404
       if (req.path.match(/\.(png|jpg|jpeg|svg|gif|webp|css|js|woff2?|ttf|eot|ico)$/)) {
         return res.status(404).send("Asset not found");
       }
-      res.sendFile(path.join(distPath, "index.html"));
+      // Known SPA route -> 200; anything else -> real 404 (avoids Google soft-404s)
+      const isKnown = KNOWN_ROUTES.some((r) => r.test(req.path));
+      res.status(isKnown ? 200 : 404).sendFile(path.join(distPath, "index.html"));
     });
   }
 
