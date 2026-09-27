@@ -8,9 +8,25 @@ import SEO from '../components/SEO';
 export default function Blog() {
   return (
     <div className="pt-32 pb-32 bg-bg min-h-screen">
-      <SEO 
-        title="Knowledge Hub | WingsForShare Digital Insights"
-        description="Deep dives into software engineering, performance marketing, SaaS growth, and the future of technology."
+      <SEO
+        title="Digital Marketing, Web Development & SEO Blog | WingsForShare"
+        description="Practical guides on web development, SEO, social media marketing, app development and business analytics - written to help growing businesses rank on Google and convert more visitors."
+        keywords="web development blog, seo blog, social media marketing blog, app development cost, choose a digital agency, business analytics, digital growth guides"
+        canonical="https://wingsforshare.com/blog"
+        schemaType="Blog"
+        schemaMarkup={{
+          "@context": "https://schema.org",
+          "@type": "Blog",
+          "name": "WingsForShare Knowledge Hub",
+          "url": "https://wingsforshare.com/blog",
+          "blogPost": blogs.slice(0, 10).map((b) => ({
+            "@type": "BlogPosting",
+            "headline": b.title,
+            "url": "https://wingsforshare.com/blog/" + b.slug,
+            "datePublished": b.date,
+            "author": { "@type": "Organization", "name": "WingsForShare" }
+          }))
+        }}
       />
 
       <div className="container-custom">
@@ -39,6 +55,32 @@ export default function Blog() {
             Expert perspectives on building high-performance systems and managing global digital products.
           </motion.p>
         </header>
+
+        {/* Intro + internal links (on-page SEO) */}
+        <div className="max-w-3xl mx-auto -mt-12 mb-24 text-center">
+          <p className="text-text-secondary leading-relaxed mb-8">
+            Hands-on, no-fluff guides from our team on web development, SEO, social media marketing,
+            mobile apps and business analytics - written to help growing businesses rank on Google and turn
+            traffic into revenue.
+          </p>
+          <div className="flex flex-wrap justify-center gap-3">
+            {[
+              { to: '/services/web-development', label: 'Web Development' },
+              { to: '/services/seo', label: 'SEO Services' },
+              { to: '/services/social-media-marketing', label: 'Social Media Marketing' },
+              { to: '/services/app-development', label: 'App Development' },
+              { to: '/services/business-analytics', label: 'Business Analytics' }
+            ].map((l) => (
+              <Link
+                key={l.to}
+                to={l.to}
+                className="px-4 py-2 rounded-full bg-card-bg border border-card-border text-[11px] font-bold uppercase tracking-widest text-text-secondary hover:text-accent hover:border-accent/40 transition-all"
+              >
+                {l.label}
+              </Link>
+            ))}
+          </div>
+        </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 md:gap-16">
           {/* Featured Post */}

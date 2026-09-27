@@ -1,5 +1,6 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
+import { Link } from 'react-router-dom';
 import { Search, Filter, Rocket, ChevronRight, RefreshCw } from 'lucide-react';
 import { products } from '../data/products';
 import SEO from '../components/SEO';
@@ -107,10 +108,28 @@ export default function Portfolio() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-[20px] md:text-[24px] text-text-secondary/60 max-w-2xl mx-auto leading-relaxed font-medium mb-24"
+            className="text-[20px] md:text-[24px] text-text-secondary/60 max-w-2xl mx-auto leading-relaxed font-medium mb-10"
           >
-            A curated selection of high-performance digital solutions developed for industry-leading clients.
+            A selection of digital products we've designed and built across web, ecommerce, mobile and business intelligence.
           </motion.p>
+
+          {/* Internal links (on-page SEO) */}
+          <div className="flex flex-wrap justify-center gap-3 mb-24">
+            {[
+              { to: '/services/web-development', label: 'Web Development' },
+              { to: '/services/app-development', label: 'App Development' },
+              { to: '/services/business-analytics', label: 'Business Analytics' },
+              { to: '/services/seo', label: 'SEO' }
+            ].map((l) => (
+              <Link
+                key={l.to}
+                to={l.to}
+                className="px-4 py-2 rounded-full bg-card-bg border border-card-border text-[11px] font-bold uppercase tracking-widest text-text-secondary hover:text-accent hover:border-accent/40 transition-all"
+              >
+                {l.label}
+              </Link>
+            ))}
+          </div>
         </div>
 
         {/* Professional Agency Command Hub */}
