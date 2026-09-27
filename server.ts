@@ -164,6 +164,15 @@ async function startServer() {
     const distPath = path.join(process.cwd(), "dist");
     
     // Serve static files from dist
+    // Never cache HTML shells (so new deploys are picked up immediately);
+    // hashed assets under /assets keep their long cache instead.
+    app.use((req, res, next) => {
+      if (req.method === "GET" && !/\.[a-z0-9]+$/i.test(req.path)) {
+        res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+      }
+      next();
+    });
+
     // Convenience redirects (so /sitemap and /robots don't 404)
     app.get("/sitemap", (_req, res) => res.redirect(301, "/sitemap.xml"));
     app.get("/robots", (_req, res) => res.redirect(301, "/robots.txt"));

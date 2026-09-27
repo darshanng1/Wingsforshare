@@ -54,7 +54,29 @@ export default function ProductDetail() {
             <h1 className="text-6xl md:text-8xl font-black tracking-[-0.04em] text-text-primary mb-10 leading-[0.9]">
               {product.name}
             </h1>
-            
+
+            {/* Demo login credentials — shown prominently at the top */}
+            {product.userLogin && (
+              <div className="mb-10 p-5 md:p-6 rounded-3xl bg-accent/10 border border-accent/40">
+                <span className="text-[10px] font-black uppercase tracking-[0.3em] text-accent block mb-2">Demo access</span>
+                <div className="flex flex-wrap items-center gap-3">
+                  <span className="text-sm text-text-secondary">Demo password:</span>
+                  <code className="px-4 py-2 rounded-xl bg-bg border border-card-border text-text-primary font-mono text-base font-bold">
+                    {product.userLogin}
+                  </code>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      if (navigator.clipboard) navigator.clipboard.writeText(String(product.userLogin));
+                    }}
+                    className="px-4 py-2 rounded-xl bg-accent text-white text-[11px] font-black uppercase tracking-widest hover:brightness-110 active:scale-95 transition-all"
+                  >
+                    Copy
+                  </button>
+                </div>
+              </div>
+            )}
+
             <p className="text-[18px] md:text-[22px] text-text-secondary/70 mb-10 leading-relaxed font-medium max-w-2xl">
               {product.fullDescription}
             </p>
@@ -74,30 +96,6 @@ export default function ProductDetail() {
               </span>
             </div>
 
-            {/* Demo login credentials */}
-            {product.userLogin && (
-              <div className="mb-16 p-6 md:p-8 rounded-3xl bg-card-bg border border-accent/30">
-                <span className="text-[10px] font-black uppercase tracking-[0.3em] text-accent block mb-3">Demo access</span>
-                <p className="text-sm text-text-secondary mb-4">
-                  Log into the live demo with this password:
-                </p>
-                <div className="flex flex-wrap items-center gap-3">
-                  <code className="px-4 py-2.5 rounded-xl bg-bg border border-card-border text-text-primary font-mono text-sm">
-                    {product.userLogin}
-                  </code>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      if (navigator.clipboard) navigator.clipboard.writeText(String(product.userLogin));
-                    }}
-                    className="px-4 py-2.5 rounded-xl bg-accent text-white text-[11px] font-black uppercase tracking-widest hover:brightness-110 active:scale-95 transition-all"
-                  >
-                    Copy password
-                  </button>
-                </div>
-              </div>
-            )}
-            
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 mb-16">
               {product.features.map((feature, idx) => (
                 <div key={idx} className="flex items-start gap-5 group">
