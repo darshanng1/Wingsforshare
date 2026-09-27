@@ -298,11 +298,11 @@ export default function ProjectIntakeForm() {
                             value={formData.webDev?.websiteType}
                             onChange={(e) => updateNestedData('webDev', { websiteType: e.target.value })}
                           >
-                            <option value="" className="bg-card-bg">Select Architecture</option>
-                            <option value="Corporate" className="bg-card-bg">Corporate Enterprise</option>
-                            <option value="Ecommerce" className="bg-card-bg">E-commerce Store</option>
-                            <option value="SaaS" className="bg-card-bg">SaaS Landing Page</option>
-                            <option value="Portfolio" className="bg-card-bg">High-End Portfolio</option>
+                            <option className="bg-[#111] text-white" value="" className="bg-card-bg">Select Architecture</option>
+                            <option className="bg-[#111] text-white" value="Corporate" className="bg-card-bg">Corporate Enterprise</option>
+                            <option className="bg-[#111] text-white" value="Ecommerce" className="bg-card-bg">E-commerce Store</option>
+                            <option className="bg-[#111] text-white" value="SaaS" className="bg-card-bg">SaaS Landing Page</option>
+                            <option className="bg-[#111] text-white" value="Portfolio" className="bg-card-bg">High-End Portfolio</option>
                           </select>
                         </div>
                         <div className="space-y-2">

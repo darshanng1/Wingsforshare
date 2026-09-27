@@ -7,7 +7,7 @@ import SEO from '../components/SEO';
 export default function NotFound() {
   return (
     <div className="min-h-screen bg-bg flex items-center justify-center pt-20">
-      <SEO title="404 - Reality Not Found" description="The page you're looking for has moved to a different dimension." />
+      <SEO title="404 - Reality Not Found" description="The page you're looking for has moved to a different dimension." noindex />
       
       <div className="container-custom text-center relative">
         {/* Cinematic Background Gradient */}
@@ -26,7 +26,7 @@ export default function NotFound() {
             404
           </h1>
           
-          <h2 className="text-4xl md:text-6xl font-display font-black text-white mb-8 tracking-tight">
+          <h2 className="text-4xl md:text-6xl font-display font-black text-text-primary mb-8 tracking-tight">
             Digital Void Encountered.
           </h2>
           

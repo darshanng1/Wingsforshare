@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+﻿import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { 
   User, Building2, Mail, Phone, Globe, Briefcase, 
@@ -519,11 +519,11 @@ export default function IntakeForm() {
                           onChange={(e) => setFormData({...formData, webDev: { ...formData.webDev!, websiteType: e.target.value as any }})}
                           className={`w-full bg-black/5 dark:bg-white/5 border rounded-2xl py-4 px-6 text-[16px] outline-none transition-all appearance-none text-text-primary ${errors.websiteType ? 'border-red-500/50 bg-red-500/5' : 'border-card-border focus:border-accent focus:ring-4 focus:ring-accent/10'}`}
                         >
-                          <option value="">Select Type</option>
-                          <option value="Corporate">Corporate</option>
-                          <option value="Ecommerce">Ecommerce</option>
-                          <option value="Portfolio">Portfolio</option>
-                          <option value="SaaS">SaaS</option>
+                          <option className="bg-[#111] text-white" value="">Select Type</option>
+                          <option className="bg-[#111] text-white" value="Corporate">Corporate</option>
+                          <option className="bg-[#111] text-white" value="Ecommerce">Ecommerce</option>
+                          <option className="bg-[#111] text-white" value="Portfolio">Portfolio</option>
+                          <option className="bg-[#111] text-white" value="SaaS">SaaS</option>
                         </select>
                         <ChevronRight className="absolute right-4 top-1/2 -translate-y-1/2 rotate-90 text-text-secondary pointer-events-none" size={18} />
                       </div>
@@ -677,10 +677,10 @@ export default function IntakeForm() {
                           onChange={(e) => setFormData({...formData, appDev: { ...formData.appDev!, platform: e.target.value as any }})}
                           className={`w-full bg-black/5 dark:bg-white/5 border rounded-2xl py-4 px-6 text-[16px] outline-none transition-all appearance-none text-text-primary ${errors.platform ? 'border-red-500/50 bg-red-500/5' : 'border-card-border focus:border-accent focus:ring-4 focus:ring-accent/10'}`}
                         >
-                          <option value="">Select Platform</option>
-                          <option value="Android">Android</option>
-                          <option value="iOS">iOS</option>
-                          <option value="Both">Both</option>
+                          <option className="bg-[#111] text-white" value="">Select Platform</option>
+                          <option className="bg-[#111] text-white" value="Android">Android</option>
+                          <option className="bg-[#111] text-white" value="iOS">iOS</option>
+                          <option className="bg-[#111] text-white" value="Both">Both</option>
                         </select>
                         <ChevronRight className="absolute right-4 top-1/2 -translate-y-1/2 rotate-90 text-text-secondary pointer-events-none" size={18} />
                       </div>
@@ -753,11 +753,11 @@ export default function IntakeForm() {
                           onChange={(e) => setFormData({...formData, bi: { ...formData.bi!, dataSourceType: e.target.value as any }})}
                           className={`w-full bg-black/5 dark:bg-white/5 border rounded-2xl py-4 px-6 text-[16px] outline-none transition-all appearance-none text-text-primary ${errors.dataSourceType ? 'border-red-500/50 bg-red-500/5' : 'border-card-border focus:border-accent focus:ring-4 focus:ring-accent/10'}`}
                         >
-                          <option value="">Select Source</option>
-                          <option value="Excel">Excel</option>
-                          <option value="CRM">CRM</option>
-                          <option value="ERP">ERP</option>
-                          <option value="API">API</option>
+                          <option className="bg-[#111] text-white" value="">Select Source</option>
+                          <option className="bg-[#111] text-white" value="Excel">Excel</option>
+                          <option className="bg-[#111] text-white" value="CRM">CRM</option>
+                          <option className="bg-[#111] text-white" value="ERP">ERP</option>
+                          <option className="bg-[#111] text-white" value="API">API</option>
                         </select>
                         <ChevronRight className="absolute right-4 top-1/2 -translate-y-1/2 rotate-90 text-text-secondary pointer-events-none" size={18} />
                       </div>

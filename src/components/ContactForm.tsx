@@ -166,12 +166,12 @@ export default function ContactForm() {
               errors.service ? 'border-red-500' : 'border-zinc-100 dark:border-zinc-800'
             } rounded-2xl focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 outline-none transition-all dark:text-white appearance-none`}
           >
-            <option value="">Select a service</option>
-            <option value="software-development">Software Development</option>
-            <option value="app-development">App Development</option>
-            <option value="digital-marketing">Digital Marketing</option>
-            <option value="saas-products">SaaS Products</option>
-            <option value="other">Other Inquiry</option>
+            <option className="bg-[#111] text-white" value="">Select a service</option>
+            <option className="bg-[#111] text-white" value="software-development">Software Development</option>
+            <option className="bg-[#111] text-white" value="app-development">App Development</option>
+            <option className="bg-[#111] text-white" value="digital-marketing">Digital Marketing</option>
+            <option className="bg-[#111] text-white" value="saas-products">SaaS Products</option>
+            <option className="bg-[#111] text-white" value="other">Other Inquiry</option>
           </select>
           {errors.service && <p id="service-error" className="text-xs text-red-500 ml-1" role="alert">{errors.service.message}</p>}
         </div>
