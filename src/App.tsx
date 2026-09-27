@@ -17,6 +17,7 @@ import SetupLogos from './pages/SetupLogos';
 import Blog from './pages/Blog';
 import BlogPost from './pages/BlogPost';
 import ScrollToTop from './components/ScrollToTop';
+import GoogleAnalytics from './components/GoogleAnalytics';
 import ChatWidget from './components/ChatWidget';
 import ErrorBoundary from './components/layout/ErrorBoundary';
 import NotFound from './pages/NotFound';
@@ -27,6 +28,7 @@ export default function App() {
     <ErrorBoundary>
       <Router>
         <ScrollToTop />
+        <GoogleAnalytics />
         <ScrollProvider>
           <Layout>
             <ChatWidget />
