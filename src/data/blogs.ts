@@ -568,5 +568,174 @@ A solid MVP in 2026 sits between Rs 2,00,000 and Rs 6,00,000, and a serious prod
 
 At **[WingsForShare](https://wingsforshare.com/services/app-development)**, we scope apps honestly, build cross-platform to save you money, and hand over full code ownership. **[Talk to us](https://wingsforshare.com/contact)** before you sign anywhere else — a free consultation now is cheaper than a rebuild later.
 `
+  },
+  {
+    id: 'website-development-cost-2026',
+    slug: 'website-development-cost-2026',
+    title: 'Website Development Cost in 2026: What You Should Actually Pay',
+    excerpt: 'Website quotes range from Rs 20,000 to Rs 20 lakh. Here is an honest breakdown of what drives website development cost in 2026, and how to tell a fair quote from a cheap trap.',
+    category: 'Web Development',
+    author: 'WingsForShare',
+    date: '2026-09-27',
+    image: '/static/images/Scalable.png',
+    readTime: '7 min read',
+    content: `
+Ask ten agencies what a website costs and you will get ten wildly different numbers. That is not because some are ripping you off and others are generous. It is because "a website" means completely different things to different people.
+
+Here is the honest breakdown for 2026, so you can budget with confidence and spot a quote that will quietly blow past its estimate.
+
+## The four real price bands
+
+**1. Template / DIY: Rs 20,000 - Rs 60,000.** A single-page site on a template or no-code builder. Fine for a freelancer validating an idea or a local shop that just needs a Google presence. Limits: little control over speed, SEO or design, and it gets expensive to customise later.
+
+**2. Professional marketing site: Rs 60,000 - Rs 2,50,000.** Custom design, 5 to 15 pages, mobile-first, SEO-ready, a contact system, and analytics. This is where most growing businesses land, and where the best value sits.
+
+**3. Ecommerce / web app: Rs 2,50,000 - Rs 10,00,000.** Product catalogues, payments, accounts, order management, integrations. The back end is the real work; the design is the easy part.
+
+**4. Complex platform: Rs 10,00,000+.** Multi-vendor marketplaces, SaaS products, advanced dashboards, heavy integrations. You are building a software company at this level.
+
+## What actually drives the number
+
+- **Custom design vs template.** Real design takes time, and time is the cost. A template is fast but generic.
+- **Number of unique page types.** Ten pages of one design is cheap; ten bespoke layouts is not.
+- **Integrations.** Every connection (payments, CRM, ERP, email, shipping) adds build and testing time.
+- **Content.** Who writes the copy? Missing content is the single biggest cause of late, over-budget projects.
+- **Ongoing needs.** Hosting, maintenance, security and updates are a monthly cost, not a one-time one.
+
+## The cheap-quote trap
+
+A quote far below everyone else is rarely a bargain. It usually means a template with your logo on it, no real SEO foundation, no performance work, and a rebuild within a year. The truly expensive website is the one you pay for twice.
+
+## How to compare quotes fairly
+
+1. Ask for a **fixed scope with a written page list**, not a vague promise.
+2. Ask which **platform** it is built on and whether **you own the code**.
+3. Ask what **SEO and speed optimisation** are included by default.
+4. Ask the **monthly cost after launch** (hosting, maintenance, plugins).
+5. Ask for **two examples they built** (not purchased templates).
+
+## The bottom line
+
+A solid, custom, SEO-ready business website in 2026 sits between **Rs 60,000 and Rs 2,50,000**, and an ecommerce or web-app build between **Rs 2,50,000 and Rs 10,00,000**. If a quote is far outside that, ask exactly why before you sign.
+
+At **[WingsForShare](https://wingsforshare.com/services/web-development)**, we scope websites honestly, build them to be fast and SEO-ready from day one, and hand over full ownership. **[Get a free quote](https://wingsforshare.com/contact)** and we will give you a real number, not a range designed to hide surprises.
+`
+  },
+  {
+    id: 'how-to-choose-a-digital-agency-2026',
+    slug: 'how-to-choose-a-digital-agency-2026',
+    title: 'How to Choose a Digital Agency in 2026 (A Buyer Checklist)',
+    excerpt: 'Choosing the wrong agency costs months and lakhs. Here is a practical 10-point checklist to evaluate any web development, SEO or marketing agency before you sign.',
+    category: 'Strategy',
+    author: 'WingsForShare',
+    date: '2026-09-27',
+    image: '/static/images/Scalable.png',
+    readTime: '7 min read',
+    content: `
+Every agency says the same things: "we are results-driven", "you are our priority", "we have a proven process". Those phrases tell you nothing. What separates a good agency from an expensive mistake is how they answer specific, uncomfortable questions.
+
+Here is the checklist we would use if we were hiring an agency for our own business.
+
+## 1. Ask who actually does the work
+
+Will a senior person who scoped the project build it, or does it get handed to a junior after the sales call? Ask directly, and ask to meet the people doing the work.
+
+## 2. Ask for the plan, in writing
+
+A real agency can show you the phases, deliverables and timeline before you pay. If the plan only appears after you sign, you are buying hope.
+
+## 3. Ask about ownership
+
+Who owns the code, the domain, the analytics accounts and the content? The answer should be: you. Anything else is a future hostage negotiation.
+
+## 4. Ask how they measure success
+
+"Traffic went up" is not a result. Ask which metrics map to revenue: leads, conversion rate, cost per acquisition, ranking for buyer-intent keywords.
+
+## 5. Ask what they would NOT do
+
+Good agencies turn down work that does not fit. If an agency says yes to everything, they are selling hours, not outcomes.
+
+## 6. Check the work, not the buzzwords
+
+Look at live projects. Check their speed, mobile experience and Google rankings. Ask which parts the agency actually built.
+
+## 7. Ask how they communicate
+
+Who is your point of contact? How often do you get updates? What happens when something goes wrong? The answer reveals the real working relationship.
+
+## 8. Ask about after launch
+
+Websites break, rankings move, platforms update. Ask what ongoing support costs and what is included.
+
+## 9. Ask for references
+
+Then actually call them. Ask: what went wrong, and how did the agency handle it? Every project has a bump; how it was handled is the real signal.
+
+## 10. Trust the specifics
+
+An agency that gives you concrete numbers, honest trade-offs and clear next steps is worth more than one with the flashiest deck.
+
+## The bottom line
+
+The right agency will welcome hard questions and answer them plainly. The wrong one will deflect, delay, and talk about "synergy". You are not buying a website or a campaign; you are buying a partner for growth. Choose accordingly.
+
+At **[WingsForShare](https://wingsforshare.com/services)**, we answer all ten of these before you sign anything. **[Start a conversation](https://wingsforshare.com/contact)** and test us on the list above.
+`
+  },
+  {
+    id: 'seo-vs-social-media-marketing',
+    slug: 'seo-vs-social-media-marketing',
+    title: 'SEO or Social Media Marketing: Where Should You Invest First?',
+    excerpt: 'SEO compounds, social media creates demand. If your budget only stretches to one, here is how to decide which to prioritise in 2026 - and how to run both without doubling your spend.',
+    category: 'Growth',
+    author: 'WingsForShare',
+    date: '2026-09-27',
+    image: '/static/images/Scalable.png',
+    readTime: '6 min read',
+    content: `
+"Should we spend on SEO or on social media?" It is one of the most common questions we get, and the honest answer is: they do different jobs, and the right first move depends on your business.
+
+## The core difference
+
+**SEO captures demand that already exists.** Someone is searching "best web development agency" right now. SEO puts you in front of them at the exact moment they are ready to buy. It compounds: a page that ranks keeps bringing leads for years.
+
+**Social media creates demand.** Nobody searches for a brand they have never heard of. Social media puts your business in front of people who are not looking yet, builds familiarity, and makes them more likely to choose you when they do start looking.
+
+## When to prioritise SEO first
+
+- You sell something people actively search for (services, software, products).
+- You want leads with high buying intent.
+- You can invest 3 to 6 months before expecting a strong return.
+- You want an asset that keeps working without a monthly ad bill.
+
+## When to prioritise social first
+
+- You are launching something new that nobody is searching for yet.
+- Your product is visual or lifestyle-driven.
+- You need awareness fast, and leads can come later.
+- You have a face or a founder story that people connect with.
+
+## Why the best answer is usually "both, in order"
+
+Start with the channel that matches your buying cycle, prove the message, then add the second. Social media builds the audience; SEO captures that audience when they search. Together they are far stronger than either alone.
+
+A practical sequence for most small and mid-sized businesses:
+
+1. **Fix the foundation** - fast site, clear offer, tracking in place.
+2. **Win the buyer keywords** - the searches closest to purchase.
+3. **Build social proof** - consistent content on the platform your buyers use.
+4. **Retarget and scale** - paid ads once the organic message is proven.
+
+## Measure the same thing for both
+
+Do not compare likes to rankings. Compare both channels on the same scoreboard: leads, cost per lead, and revenue. If a channel cannot show that, it cannot be defended.
+
+## The bottom line
+
+SEO is the asset; social media is the accelerator. If you must pick one first, pick the one that matches how your customers actually buy - then add the other before you scale paid ads.
+
+At **[WingsForShare](https://wingsforshare.com/services/seo)**, we run both together - **[SEO](https://wingsforshare.com/services/seo)** and **[social media marketing](https://wingsforshare.com/services/social-media-marketing)** - measured on leads and revenue, not vanity metrics. **[Book a free consultation](https://wingsforshare.com/contact)** and we will tell you which to start with for your business.
+`
   }
 ];

@@ -32,7 +32,7 @@ export default function ContactDetails() {
                 className="inline-flex items-center space-x-2 bg-emerald-500/10 px-4 py-2 rounded-full mb-6 border border-emerald-500/20"
               >
                 <Globe size={14} className="text-emerald-500" />
-                <span className="text-[10px] font-bold uppercase tracking-widest text-emerald-600 dark:text-emerald-400">Global Presence</span>
+                <span className="text-[10px] font-bold uppercase tracking-widest text-emerald-600 dark:text-emerald-400">Get in touch</span>
               </motion.div>
               <h2 className="text-4xl md:text-6xl font-black tracking-tighter mb-6">VISIT OUR <br /> <span className="text-emerald-500">HEADQUARTERS.</span></h2>
               <p className="text-zinc-500 dark:text-zinc-400 max-w-md">

@@ -347,8 +347,8 @@ Service Required
                     <Globe size={32} className="text-blue-500" />
                   </div>
                   <div>
-                    <span className="text-[10px] font-black uppercase tracking-[0.3em] text-text-secondary/40 mb-2 block">Global Presence</span>
-                    <p className="text-2xl font-bold text-text-primary leading-tight">Servicing Enterprise Partners Across APAC, EMEA, and NAMER.</p>
+                    <span className="text-[10px] font-black uppercase tracking-[0.3em] text-text-secondary/40 mb-2 block">Where we work</span>
+                    <p className="text-2xl font-bold text-text-primary leading-tight">Working with clients across India, the US, the UK, Australia and the Middle East.</p>
                   </div>
                 </div>
               </div>
