@@ -87,30 +87,6 @@ export default function FloatingActions() {
             {isShareOpen ? <X className="w-5 h-5 md:w-6 md:h-6" /> : <Share2 className="w-5 h-5 md:w-6 md:h-6" />}
           </motion.button>
 
-          {/* Email Button */}
-          <motion.a
-            href="https://wa.me/918618764541"
-            target="_blank"
-            rel="noopener noreferrer"
-            title="Chat on WhatsApp"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            className="w-12 h-12 md:w-14 md:h-14 bg-[#25D366] text-white rounded-xl md:rounded-2xl flex items-center justify-center shadow-2xl shadow-emerald-500/20 relative group"
-          >
-            <motion.div
-              animate={{
-                scale: [1, 1.2, 1],
-                opacity: [0.5, 0, 0.5],
-              }}
-              transition={{
-                duration: 2,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-              className="absolute inset-0 bg-[#25D366] rounded-xl md:rounded-2xl -z-10"
-            />
-            <MessageCircle className="w-6 h-6 md:w-7 md:h-7 group-hover:rotate-12 transition-transform" />
-          </motion.a>
         </div>
       </div>
     </div>
