@@ -18,6 +18,7 @@ import {
   Network,
   Zap,
   Rocket,
+  Calendar,
   ArrowUpRight,
   Loader2,
   CheckCircle2
@@ -25,14 +26,24 @@ import {
 
 const CONTACT_METHODS = [
   {
-    id: 'call',
-    title: 'Direct Consultation',
-    value: 'info@wingsforshare.com',
-    description: 'Instant response for urgent technical scoping.',
-    icon: <Phone size={24} />,
+    id: 'whatsapp',
+    title: 'WhatsApp Chat',
+    value: 'Direct & Global',
+    description: 'Chat with us directly on WhatsApp - free consultation, wherever you are.',
+    icon: <MessageSquare size={24} />,
     color: 'emerald',
-    link: 'mailto:info@wingsforshare.com',
-    features: ['Instant response', 'Technical guidance', 'Project scoping']
+    link: 'https://wa.me/918618764541?text=Hi%20WingsForShare%2C%20I%27d%20like%20a%20free%20consultation.',
+    features: ['Global', 'Direct chat', 'Free consultation']
+  },
+  {
+    id: 'quicksync',
+    title: 'Quick Sync',
+    value: 'Book a Google Meet',
+    description: 'Schedule a short Google Meet with our team to scope your project.',
+    icon: <Calendar size={24} />,
+    color: 'blue',
+    link: 'mailto:info@wingsforshare.com?subject=Quick%20Sync%20-%20Schedule%20a%20Google%20Meet',
+    features: ['15-min Google Meet', 'Pick your slot', 'Screen share']
   },
   {
     id: 'email',
@@ -182,15 +193,10 @@ export default function Contact() {
                 <div className="absolute -right-8 -bottom-8 opacity-5 group-hover:opacity-10 group-hover:scale-110 transition-all duration-700">
                   <ShieldCheck size={200} />
                 </div>
-                <h4 className="text-xl font-bold text-text-primary mb-4">Security Guaranteed</h4>
-                <p className="text-sm text-text-secondary leading-relaxed mb-6">All data transmitted through our systems is protected by end-to-end encryption and enterprise-grade security protocols.</p>
+                <h4 className="text-xl font-bold text-text-primary mb-4">Your details stay private</h4>
+                <p className="text-sm text-text-secondary leading-relaxed mb-6">We use your details only to reply to your enquiry - never shared or sold. Every message goes straight to our team.</p>
                 <div className="flex items-center gap-3">
-                  <div className="flex -space-x-2">
-                    {[1, 2, 3].map(i => (
-                      <div key={i} className="w-8 h-8 rounded-full border-2 border-bg bg-accent/20" />
-                    ))}
-                  </div>
-                  <span className="text-[10px] font-black uppercase tracking-widest text-accent">Trusted by 500+ Global Partners</span>
+                  <span className="text-[10px] font-black uppercase tracking-widest text-accent">Global - replies within 24 hours</span>
                 </div>
               </div>
             </div>

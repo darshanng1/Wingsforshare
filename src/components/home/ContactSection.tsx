@@ -116,38 +116,38 @@ export const ContactSection = () => {
             <div className="card-premium p-2 md:p-4 bg-card-bg/40 backdrop-blur-3xl border-accent/20 shadow-[0_50px_100px_rgba(0,0,0,0.1)] overflow-hidden">
               <div className="grid grid-cols-1 lg:grid-cols-3 divide-y lg:divide-y-0 lg:divide-x divide-accent/10">
                 
-                {/* Direct Consultation */}
+                {/* WhatsApp Chat */}
                 <div className="p-8 md:p-12 flex flex-col items-center text-center group/item">
-                  <div className="w-16 h-16 bg-accent/10 text-accent rounded-2xl flex items-center justify-center mb-6 group-hover/item:scale-110 group-hover/item:rotate-6 transition-all duration-500">
-                    <Phone size={28} strokeWidth={1.5} />
+                  <div className="w-16 h-16 bg-[#25D366]/10 text-[#25D366] rounded-2xl flex items-center justify-center mb-6 group-hover/item:scale-110 group-hover/item:rotate-6 transition-all duration-500">
+                    <MessageSquare size={28} strokeWidth={1.5} />
                   </div>
-                  <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-text-secondary mb-3">Direct Consultation</h4>
-                  <p className="text-2xl md:text-3xl font-black text-text-primary mb-8 tracking-tighter">info@wingsforshare.com</p>
+                  <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-text-secondary mb-3">WhatsApp Chat</h4>
+                  <p className="text-2xl md:text-3xl font-black text-text-primary mb-8 tracking-tighter">Direct &amp; Global</p>
                   <motion.a
                     whileTap={{ scale: 0.95 }}
-                    href="mailto:info@wingsforshare.com"
-                    className="inline-flex items-center justify-center space-x-3 bg-accent text-white px-8 py-4 rounded-xl font-black uppercase tracking-[0.1em] text-[12px] shadow-lg shadow-accent/20 hover:shadow-accent/40 transition-all duration-500 w-full"
+                    href="https://wa.me/918618764541?text=Hi%20WingsForShare%2C%20I'd%20like%20a%20free%20consultation."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center space-x-3 bg-[#25D366] text-white px-8 py-4 rounded-xl font-black uppercase tracking-[0.1em] text-[12px] shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/40 transition-all duration-500 w-full"
                   >
-                    <span>Call Now</span>
+                    <span>Chat on WhatsApp</span>
                     <ArrowRight size={16} />
                   </motion.a>
                 </div>
 
-                {/* Email Support */}
+                {/* Quick Sync */}
                 <div className="p-8 md:p-12 flex flex-col items-center text-center group/item">
                   <div className="w-16 h-16 bg-accent/10 text-accent rounded-2xl flex items-center justify-center mb-6 group-hover/item:scale-110 group-hover/item:-rotate-6 transition-all duration-500">
-                    <MessageSquare size={28} strokeWidth={1.5} />
+                    <Zap size={28} strokeWidth={1.5} />
                   </div>
-                  <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-text-secondary mb-3">Email Support</h4>
-                  <p className="text-2xl md:text-3xl font-black text-text-primary mb-8 tracking-tighter">Quick Sync</p>
+                  <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-text-secondary mb-3">Quick Sync</h4>
+                  <p className="text-2xl md:text-3xl font-black text-text-primary mb-8 tracking-tighter">Book a Google Meet</p>
                   <motion.a
                     whileTap={{ scale: 0.95 }}
-                    href="/contact"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href="mailto:info@wingsforshare.com?subject=Quick%20Sync%20-%20Schedule%20a%20Google%20Meet"
                     className="inline-flex items-center justify-center space-x-3 bg-accent text-white px-8 py-4 rounded-xl font-black uppercase tracking-[0.1em] text-[12px] shadow-lg shadow-accent/20 hover:shadow-accent/40 transition-all duration-500 w-full"
                   >
-                    <span>Message</span>
+                    <span>Schedule a Meet</span>
                     <ArrowRight size={16} />
                   </motion.a>
                 </div>
@@ -176,10 +176,10 @@ export const ContactSection = () => {
           {/* Trust Badges Bar */}
           <div className="flex flex-wrap justify-center items-center gap-10 md:gap-16 py-12 border-t border-card-border">
             {[
-              { icon: <ShieldCheck size={24} />, text: 'Encrypted' },
-              { icon: <Zap size={24} />, text: 'Real-time' },
-              { icon: <TrendingUp size={24} />, text: 'Scalable' },
-              { icon: <Globe size={24} />, text: 'Global' }
+              { icon: <Globe size={24} />, text: 'Global Delivery' },
+              { icon: <Zap size={24} />, text: 'Fast Replies' },
+              { icon: <TrendingUp size={24} />, text: 'Fixed Pricing' },
+              { icon: <ShieldCheck size={24} />, text: 'You Own Your Code' }
             ].map((badge, i) => (
               <motion.div
                 key={i}
