@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Sparkles, Search, ArrowRight } from 'lucide-react';
 import { ProductCard } from './MiniMockups';
@@ -37,7 +37,7 @@ export const LiveDemoSection: React.FC<LiveDemoSectionProps> = ({
       </div>
 
       <div className="container-custom relative z-10">
-        <div className="max-w-4xl mx-auto text-center mb-24">
+        <div className="max-w-4xl mx-auto text-center mb-14">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -74,7 +74,7 @@ export const LiveDemoSection: React.FC<LiveDemoSectionProps> = ({
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1.2, ease: [0.23, 1, 0.32, 1] }}
-            className="mt-32 space-y-20"
+            className="mt-16 space-y-12"
           >
             <div className="relative group max-w-5xl mx-auto">
               {/* Dynamic Energy Aura */}
@@ -150,7 +150,7 @@ export const LiveDemoSection: React.FC<LiveDemoSectionProps> = ({
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="mt-32 text-center"
+            className="mt-16 text-center"
           >
             <button
               onClick={() => setVisibleItems((prev: number) => prev + 6)}

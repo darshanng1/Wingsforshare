@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Zap, Globe, Smartphone, Search, BarChart3, Share2 } from 'lucide-react';
@@ -51,7 +51,7 @@ export const SolutionsSection = () => {
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-500/5 blur-[100px] rounded-full translate-y-1/3 -translate-x-1/4 pointer-events-none" />
 
       <div className="container-custom relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:items-end mb-24">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:items-end mb-14">
           <div className="lg:col-span-8">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -144,7 +144,7 @@ export const SolutionsSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.5 }}
-          className="mt-20 text-center"
+          className="mt-12 text-center"
         >
           <Link 
             to="/services" 

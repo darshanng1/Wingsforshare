@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { motion } from 'motion/react';
 import { CheckCircle, Zap, TrendingUp, Network, Cpu, Smartphone } from 'lucide-react';
 
@@ -28,7 +28,7 @@ export const WhyChooseUsSection = () => {
       </div>
 
       <div className="container-custom relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center mb-32">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center mb-16">
           <div className="lg:col-span-7 order-2 lg:order-1 relative">
             <motion.div
               initial={{ opacity: 0, x: -50 }}
@@ -141,8 +141,8 @@ export const WhyChooseUsSection = () => {
           </div>
         </div>
 
-        {/* How we work — honest, verifiable commitments (no fabricated metrics) */}
-        <div className="pt-24 border-t border-card-border/50">
+        {/* How we work â€” honest, verifiable commitments (no fabricated metrics) */}
+        <div className="pt-14 border-t border-card-border/50">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
             {[
               { label: 'Global Delivery', value: 'Global', desc: 'India, US, UK, Australia & the Middle East' },

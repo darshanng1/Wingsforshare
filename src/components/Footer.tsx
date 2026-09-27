@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
 import { Mail, Phone, MessageSquare, MapPin, Globe, Linkedin, ArrowUpRight } from 'lucide-react';
@@ -21,14 +21,14 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="relative bg-bg pt-32 pb-16 overflow-hidden">
+    <footer className="relative bg-bg pt-16 pb-12 overflow-hidden">
       {/* 3D Floor Perspective Effect */}
       <div className="absolute bottom-0 left-0 right-0 h-[300px] md:h-[600px] bg-gradient-to-t from-accent/5 to-transparent [perspective:1000px] pointer-events-none">
         <div className="absolute inset-0 [transform:rotateX(60deg)] bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:100px_100px] [mask-image:linear-gradient(to_bottom,transparent,black)]" />
       </div>
 
       <div className="container-custom relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 mb-20 md:mb-32">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-12 md:mb-16">
           {/* Brand & Mission - Floating 3D Card */}
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
@@ -82,11 +82,11 @@ export default function Footer() {
               </ul>
             </div>
 
-            {/* Contact — all contact details live on the Contact page */}
+            {/* Contact â€” all contact details live on the Contact page */}
             <div className="space-y-10">
               <h4 className="text-[11px] font-black uppercase tracking-[0.4em] text-accent">Contact</h4>
               <p className="text-[15px] font-medium text-text-secondary leading-relaxed max-w-xs">
-                Have a project or a question? Every enquiry goes straight to our inbox — all our contact details are on the contact page.
+                Have a project or a question? Every enquiry goes straight to our inbox â€” all our contact details are on the contact page.
               </p>
               <Link
                 to="/contact"
@@ -103,7 +103,7 @@ export default function Footer() {
         <div className="pt-16 border-t border-card-border flex flex-col md:flex-row items-center justify-between gap-10">
           <div className="flex flex-col gap-2">
             <p className="text-[12px] font-medium text-text-secondary/60">
-              © {currentYear} WingsForShare Digital Solutions. All parameters secured.
+              Â© {currentYear} WingsForShare Digital Solutions. All parameters secured.
             </p>
             <p className="text-[10px] font-black uppercase tracking-[0.5em] text-emerald-500/80">System Status: Optimal</p>
           </div>

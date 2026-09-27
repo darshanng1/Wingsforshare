@@ -33,7 +33,7 @@ export const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="py-32 md:py-48 bg-bg relative overflow-hidden">
+    <section id="contact" className="py-16 md:py-24 bg-bg relative overflow-hidden">
       {/* Dynamic Background Elements */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-accent/10 via-transparent to-transparent blur-3xl pointer-events-none" />
       
@@ -73,7 +73,7 @@ export const ContactSection = () => {
           className="max-w-6xl mx-auto"
         >
           {/* Main CTA Header */}
-          <div className="text-center mb-32">
+          <div className="text-center mb-16">
             <motion.div
               variants={itemVariants}
               className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-accent/10 border border-accent/20 text-[11px] font-black uppercase tracking-[0.2em] text-accent mb-10 shadow-[0_0_20px_rgba(16,185,129,0.1)]"
@@ -174,7 +174,7 @@ export const ContactSection = () => {
           </motion.div>
 
           {/* Trust Badges Bar */}
-          <div className="flex flex-wrap justify-center items-center gap-10 md:gap-24 py-20 border-t border-card-border">
+          <div className="flex flex-wrap justify-center items-center gap-10 md:gap-16 py-12 border-t border-card-border">
             {[
               { icon: <ShieldCheck size={24} />, text: 'Encrypted' },
               { icon: <Zap size={24} />, text: 'Real-time' },

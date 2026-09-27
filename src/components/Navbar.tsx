@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X, Sun, Moon, Linkedin, ArrowRight } from 'lucide-react';
 import { useTheme } from '../contexts/ThemeContext';
@@ -196,7 +196,7 @@ export default function Navbar() {
                               : 'text-text-primary'
                           }`}
                         >
-                          <span className="text-3xl font-black tracking-tighter uppercase">{link.name}</span>
+                          <span className="text-xl font-black tracking-tight uppercase">{link.name}</span>
                           <motion.div
                             initial={{ scale: 0 }}
                             animate={{ scale: isActive ? 1 : 0 }}
@@ -232,7 +232,7 @@ export default function Navbar() {
                       <Link
                         to="/start-project"
                         onClick={() => setIsOpen(false)}
-                        className="btn-primary w-full justify-center py-5 text-lg"
+                        className="btn-primary w-full justify-center py-4 text-base"
                       >
                         <span>Start Your Project</span>
                         <ArrowRight size={20} className="ml-2" />

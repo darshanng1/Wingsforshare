@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
 import { Calendar, User, Clock, Search, ArrowRight } from 'lucide-react';
@@ -7,7 +7,7 @@ import SEO from '../components/SEO';
 
 export default function Blog() {
   return (
-    <div className="pt-32 pb-32 bg-bg min-h-screen">
+    <div className="pt-24 pb-20 bg-bg min-h-screen">
       <SEO
         title="Digital Marketing, Web Development & SEO Blog | WingsForShare"
         description="Practical guides on web development, SEO, social media marketing, app development and business analytics - written to help growing businesses rank on Google and convert more visitors."

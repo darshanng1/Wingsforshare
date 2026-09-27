@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
 import { Rocket } from 'lucide-react';
@@ -10,7 +10,7 @@ export const ProjectPlanningSection = () => {
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-accent/5 via-transparent to-transparent blur-3xl pointer-events-none" />
 
       <div className="container-custom relative z-10">
-        <div className="text-center mb-16 md:mb-24">
+        <div className="text-center mb-10 md:mb-14">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
