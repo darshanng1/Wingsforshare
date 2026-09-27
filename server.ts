@@ -164,6 +164,10 @@ async function startServer() {
     const distPath = path.join(process.cwd(), "dist");
     
     // Serve static files from dist
+    // Convenience redirects (so /sitemap and /robots don't 404)
+    app.get("/sitemap", (_req, res) => res.redirect(301, "/sitemap.xml"));
+    app.get("/robots", (_req, res) => res.redirect(301, "/robots.txt"));
+
     app.use(express.static(distPath, {
       index: false,
       redirect: false,
