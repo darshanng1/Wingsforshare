@@ -35,16 +35,6 @@ const CONTACT_METHODS = [
     features: ['Instant response', 'Technical guidance', 'Project scoping']
   },
   {
-    id: 'whatsapp',
-    title: 'WhatsApp Support',
-    value: 'Quick Sync',
-    description: '24/7 availability for quick queries and updates.',
-    icon: <MessageSquare size={24} />,
-    color: 'emerald',
-    link: '/contact',
-    features: ['24/7 Availability', 'Quick queries', 'Portfolio sharing']
-  },
-  {
     id: 'email',
     title: 'Email Inquiry',
     value: 'info@wingsforshare.com',
@@ -98,7 +88,7 @@ export default function Contact() {
     <div className="min-h-screen bg-bg pt-32 pb-20 relative overflow-hidden">
       <SEO
         title="Contact WingsForShare | Free Consultation for Web, App & SEO Projects"
-        description="Talk to WingsForShare. Call, WhatsApp, or email for a free consultation on website development, mobile apps, custom software, and SEO. Fast quotes, clear pricing, no jargon."
+        description="Talk to WingsForShare. Talk to us for a free consultation on website development, mobile apps, custom software, and SEO. Fast quotes, clear pricing, no jargon."
         keywords="contact web development agency, hire website developer India, free website consultation, WingsForShare contact"
         canonical="https://wingsforshare.com/contact"
         schemaType="ContactPage"

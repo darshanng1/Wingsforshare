@@ -32,7 +32,7 @@ export default function MobileCTA() {
               className="flex-1 flex items-center justify-center space-x-2 bg-[#25D366] text-white py-3.5 rounded-xl font-bold shadow-lg shadow-emerald-500/20 active:scale-95 transition-transform"
             >
               <MessageCircle size={20} />
-              <span className="text-sm">WhatsApp</span>
+              <span className="text-sm">Email</span>
             </a>
             <Link
               to="/start-project"

@@ -5,20 +5,6 @@ import { Phone, MessageSquare, Mail, ArrowRight } from 'lucide-react';
 export default function QuickContactBar() {
   const contacts = [
     {
-      icon: <Phone size={20} />,
-      label: 'Call Us',
-      value: 'info@wingsforshare.com',
-      link: 'mailto:info@wingsforshare.com',
-      color: 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400'
-    },
-    {
-      icon: <MessageSquare size={20} />,
-      label: 'WhatsApp',
-      value: 'info@wingsforshare.com',
-      link: '/contact',
-      color: 'bg-[#25D366]/10 text-[#25D366]'
-    },
-    {
       icon: <Mail size={20} />,
       label: 'Email',
       value: 'info@wingsforshare.com',
@@ -61,7 +47,7 @@ export default function QuickContactBar() {
           >
             <div className="text-right">
               <p className="text-[10px] font-bold uppercase tracking-widest text-zinc-400 mb-1">Response Time</p>
-              <p className="text-sm font-bold text-emerald-500 tracking-tight">Under 15 Minutes</p>
+              <p className="text-sm font-bold text-emerald-500 tracking-tight">Within 24 hours</p>
             </div>
             <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
           </motion.div>

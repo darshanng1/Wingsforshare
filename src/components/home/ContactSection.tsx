@@ -133,12 +133,12 @@ export const ContactSection = () => {
                   </motion.a>
                 </div>
 
-                {/* WhatsApp Ecosystem */}
+                {/* Email Support */}
                 <div className="p-8 md:p-12 flex flex-col items-center text-center group/item">
                   <div className="w-16 h-16 bg-accent/10 text-accent rounded-2xl flex items-center justify-center mb-6 group-hover/item:scale-110 group-hover/item:-rotate-6 transition-all duration-500">
                     <MessageSquare size={28} strokeWidth={1.5} />
                   </div>
-                  <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-text-secondary mb-3">WhatsApp Ecosystem</h4>
+                  <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-text-secondary mb-3">Email Support</h4>
                   <p className="text-2xl md:text-3xl font-black text-text-primary mb-8 tracking-tighter">Quick Sync</p>
                   <motion.a
                     whileTap={{ scale: 0.95 }}

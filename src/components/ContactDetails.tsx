@@ -11,18 +11,6 @@ export default function ContactDetails() {
       link: 'mailto:info@wingsforshare.com'
     },
     {
-      icon: <Phone className="text-emerald-500" />,
-      label: 'Phone',
-      value: 'info@wingsforshare.com',
-      link: 'mailto:info@wingsforshare.com'
-    },
-    {
-      icon: <MessageSquare className="text-emerald-500" />,
-      label: 'WhatsApp',
-      value: 'info@wingsforshare.com',
-      link: '/contact'
-    },
-    {
       icon: <MapPin className="text-emerald-500" />,
       label: 'Address',
       value: '15, A.K Max Layout, Kuduregere, Bangalore - 562162',

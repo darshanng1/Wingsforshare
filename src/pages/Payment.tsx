@@ -23,7 +23,7 @@ export default function Payment() {
       currency: "INR",
       name: "WingsForShare",
       description: "Digital Solution Advance Payment",
-      image: "/static/images/Scalable.png",
+      image: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&q=80&w=200&h=200",
       handler: function (response: any) {
         console.log("Payment Success:", response.razorpay_payment_id);
         setStep(3);
@@ -226,7 +226,7 @@ export default function Payment() {
                 <p className="text-black/60 dark:text-white/60 leading-relaxed max-w-xl mx-auto">
                   Thank you for choosing WingsForShare. Our team has been notified of your payment. 
                   After completing payment, please share the transaction ID with us for confirmation.
-                  We will contact you on WhatsApp within 2-4 hours to begin the setup process.
+                  We will contact you by email within 2-4 hours to begin the setup process.
                 </p>
                 
                 <div className="space-y-4 max-w-md mx-auto">
@@ -235,7 +235,7 @@ export default function Payment() {
                     className="flex items-center justify-center space-x-3 w-full py-5 bg-[#25D366] text-white rounded-2xl font-bold text-lg hover:opacity-90 transition-all shadow-xl shadow-emerald-500/10 active:scale-95"
                   >
                     <MessageCircle size={24} />
-                    <span>Chat on WhatsApp</span>
+                    <span>Email us</span>
                   </a>
                   <button 
                     onClick={() => window.location.href = '/'}

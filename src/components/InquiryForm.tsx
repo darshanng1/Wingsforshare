@@ -1,5 +1,5 @@
 ﻿import React, { useState } from 'react';
-import { Send, CheckCircle } from 'lucide-react';
+import { Send, CheckCircle, Mail } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
 interface InquiryFormProps {
@@ -33,10 +33,8 @@ export default function InquiryForm({ productName }: InquiryFormProps) {
         if (value.trim().length < 2) return 'Name must be at least 2 characters';
         break;
       case 'phone':
-        if (!value.trim()) return 'Phone number is required';
-        if (!/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/.test(value)) {
-          return 'Please enter a valid phone number';
-        }
+        if (!value.trim()) return 'Email is required';
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim())) return 'Please enter a valid email';
         break;
     }
     return undefined;
@@ -78,7 +76,7 @@ export default function InquiryForm({ productName }: InquiryFormProps) {
       phone: formData.phone,
       service: productName || 'General Inquiry',
       message: formData.message,
-      email: 'not-provided@wingsforshare.com'
+      email: formData.phone
     };
 
     try {
@@ -117,7 +115,7 @@ export default function InquiryForm({ productName }: InquiryFormProps) {
             </div>
             <h3 className="text-3xl font-bold text-emerald-900 dark:text-emerald-400 mb-4 tracking-tight">Inquiry Sent!</h3>
             <p className="text-emerald-700 dark:text-emerald-500/80 text-lg leading-relaxed">
-              Thank you for your interest. Our team will contact you via WhatsApp within 24 hours to discuss your project.
+              Thank you for your interest. Our team will contact you by email within 24 hours to discuss your project.
             </p>
           </motion.div>
         ) : (
@@ -163,11 +161,11 @@ export default function InquiryForm({ productName }: InquiryFormProps) {
               </div>
               <div>
                 <label htmlFor="phone" className="block text-[10px] uppercase tracking-widest font-bold text-black/40 dark:text-white/40 mb-2 ml-1">
-                  Phone / WhatsApp <span aria-label="required">*</span>
+                  Email <span aria-label="required">*</span>
                 </label>
                 <input 
                   id="phone"
-                  type="tel" 
+                  type="email" 
                   value={formData.phone}
                   onChange={(e) => handleChange('phone', e.target.value)}
                   onBlur={() => handleBlur('phone')}
@@ -178,7 +176,7 @@ export default function InquiryForm({ productName }: InquiryFormProps) {
                       ? 'border-red-500 bg-red-500/5' 
                       : 'border-transparent focus:border-black/10 dark:focus:border-white/10'
                   }`}
-                  placeholder="Phone (optional)"
+                  placeholder="you@company.com"
                 />
                 {errors.phone && touched.phone && (
                   <p id="phone-error" className="text-[10px] text-red-500 font-bold uppercase tracking-widest ml-1 mt-1" role="alert">

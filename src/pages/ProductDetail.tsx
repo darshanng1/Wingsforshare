@@ -55,9 +55,24 @@ export default function ProductDetail() {
               {product.name}
             </h1>
             
-            <p className="text-[18px] md:text-[22px] text-text-secondary/70 mb-16 leading-relaxed font-medium max-w-2xl">
+            <p className="text-[18px] md:text-[22px] text-text-secondary/70 mb-10 leading-relaxed font-medium max-w-2xl">
               {product.fullDescription}
             </p>
+
+            {/* Project facts */}
+            <div className="flex flex-wrap gap-4 mb-16">
+              <span className="px-5 py-3 rounded-2xl bg-card-bg border border-card-border text-[11px] font-black uppercase tracking-widest text-text-secondary">
+                Category: <span className="text-text-primary">{product.category}</span>
+              </span>
+              {product.industry && (
+                <span className="px-5 py-3 rounded-2xl bg-card-bg border border-card-border text-[11px] font-black uppercase tracking-widest text-text-secondary">
+                  Industry: <span className="text-text-primary">{product.industry}</span>
+                </span>
+              )}
+              <span className="px-5 py-3 rounded-2xl bg-card-bg border border-card-border text-[11px] font-black uppercase tracking-widest text-text-secondary">
+                Delivery: <span className="text-text-primary">Discover → Build → Launch</span>
+              </span>
+            </div>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 mb-16">
               {product.features.map((feature, idx) => (
@@ -72,6 +87,24 @@ export default function ProductDetail() {
               ))}
             </div>
             
+            {/* Our approach */}
+            <div className="mb-16">
+              <h2 className="text-2xl md:text-3xl font-display font-bold text-text-primary mb-8">Our approach</h2>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                {[
+                  { n: '01', t: 'Discover', d: 'We map your goals, users and constraints before a line of code is written.' },
+                  { n: '02', t: 'Build', d: 'Design and develop in short cycles, with your feedback at every step.' },
+                  { n: '03', t: 'Launch & grow', d: 'We ship, measure what matters, then support you as you scale.' }
+                ].map((s) => (
+                  <div key={s.n} className="p-6 rounded-3xl bg-card-bg border border-card-border">
+                    <span className="text-accent font-display font-black text-2xl">{s.n}</span>
+                    <h3 className="font-bold text-text-primary mt-3 mb-2">{s.t}</h3>
+                    <p className="text-sm text-text-secondary leading-relaxed">{s.d}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
             <div className="flex flex-col sm:flex-row gap-6">
               <a 
                 href={product.demoLink} 

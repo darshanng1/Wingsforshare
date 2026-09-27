@@ -9,7 +9,7 @@ interface ProductCardProps {
 }
 
 export default function ProductCard({ product }: ProductCardProps) {
-  const whatsappNumber = "918618764541";
+  
   const bookDemoUrl = '/contact';
 
   return (

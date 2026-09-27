@@ -216,7 +216,7 @@ export function ProjectInquiryForm() {
 
           <div className="space-y-2">
             <label htmlFor="consult-phone" className="text-[10px] font-bold uppercase tracking-widest text-text-secondary ml-4">
-              Phone / WhatsApp (optional)
+              Phone (optional)
             </label>
             <div className="relative">
               <Phone className="absolute left-4 top-1/2 -translate-y-1/2 text-text-secondary opacity-50" size={18} aria-hidden="true" />

@@ -1,4 +1,4 @@
-﻿import React, { useRef } from 'react';
+import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'motion/react';
 import { 
   Building2, HardHat, ShoppingCart, Cpu, TrendingUp, Zap, ArrowRight
@@ -76,7 +76,7 @@ export const IndustriesSection: React.FC<IndustriesSectionProps> = () => {
                 {[1, 2, 3, 4].map((i) => (
                   <div key={i} className="w-12 h-12 rounded-full border-4 border-bg bg-card-bg flex items-center justify-center overflow-hidden">
                     <img 
-                      src={`/static/images/Scalable.png + 10}`} 
+                      src={`https://i.pravatar.cc/100?img=${i + 10}`} 
                       alt="Partner" 
                       className="w-full h-full object-cover" 
                       referrerPolicy="no-referrer"

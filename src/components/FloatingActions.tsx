@@ -87,7 +87,7 @@ export default function FloatingActions() {
             {isShareOpen ? <X className="w-5 h-5 md:w-6 md:h-6" /> : <Share2 className="w-5 h-5 md:w-6 md:h-6" />}
           </motion.button>
 
-          {/* WhatsApp Button */}
+          {/* Email Button */}
           <motion.a
             href="/contact"
             target="_blank"
