@@ -17,6 +17,7 @@ import SetupLogos from './pages/SetupLogos';
 import Blog from './pages/Blog';
 import BlogPost from './pages/BlogPost';
 import ScrollToTop from './components/ScrollToTop';
+import ChatWidget from './components/ChatWidget';
 import ErrorBoundary from './components/layout/ErrorBoundary';
 import NotFound from './pages/NotFound';
 import { ScrollProvider } from './contexts/ScrollContext';
@@ -28,6 +29,7 @@ export default function App() {
         <ScrollToTop />
         <ScrollProvider>
           <Layout>
+            <ChatWidget />
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/contact" element={<Contact />} />
