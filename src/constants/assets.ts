@@ -1,13 +1,13 @@
-export const ASSETS = {
+﻿export const ASSETS = {
   IMAGES: {
-    HERO: 'https://picsum.photos/seed/wings-hero/1920/1080',
-    ABOUT: 'https://picsum.photos/seed/wings-about/1200/800',
-    PLACEHOLDER: 'https://picsum.photos/seed/wings-placeholder/800/600',
+    HERO: '/static/images/Scalable.png',
+    ABOUT: '/static/images/Scalable.png',
+    PLACEHOLDER: '/static/images/Scalable.png',
     SERVICES: {
-      WEB: 'https://picsum.photos/seed/wings-web/800/600',
-      APP: 'https://picsum.photos/seed/wings-app/800/600',
-      BI: 'https://picsum.photos/seed/wings-bi/800/600',
-      CONSULTING: 'https://picsum.photos/seed/wings-consulting/800/600'
+      WEB: '/static/images/Scalable.png',
+      APP: '/static/images/Scalable.png',
+      BI: '/static/images/Scalable.png',
+      CONSULTING: '/static/images/Scalable.png'
     }
   }
 };

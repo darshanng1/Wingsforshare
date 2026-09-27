@@ -1,4 +1,4 @@
-import { Product } from '../types';
+﻿import { Product } from '../types';
 export type { Product };
 
 export const products: Product[] = [
@@ -16,7 +16,7 @@ export const products: Product[] = [
     result: '+80% Client Inquiries',
     status: 'live',
     highlight: true,
-    screenshot: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800&auto=format&fit=crop',
+    screenshot: '/static/images/Scalable.png',
     demoLink: 'https://architectswebsite.online/',
     features: [
       'Project gallery showcase',
@@ -40,7 +40,7 @@ export const products: Product[] = [
     industry: 'Business',
     result: '+120 Leads / Month',
     status: 'live',
-    screenshot: 'https://images.unsplash.com/photo-1512428559087-560fa5ceab42?q=80&w=800&auto=format&fit=crop',
+    screenshot: '/static/images/Scalable.png',
     demoLink: 'https://darshanngsipcvcard.pages.dev',
     features: [
       'One-click sharing',
@@ -64,7 +64,7 @@ export const products: Product[] = [
     industry: 'Fashion',
     result: '+40% Sales Growth',
     status: 'live',
-    screenshot: 'https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=800&auto=format&fit=crop',
+    screenshot: '/static/images/Scalable.png',
     demoLink: 'https://vastra-one.vercel.app/',
     features: [
       'Product catalog system',
@@ -89,7 +89,7 @@ export const products: Product[] = [
     result: '300% Operational Efficiency',
     status: 'live',
     highlight: true,
-    screenshot: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop',
+    screenshot: '/static/images/Scalable.png',
     demoLink: 'https://pest-nine.vercel.app/',
     userLogin: 'googlepehai1@',
     features: [
@@ -116,7 +116,7 @@ export const products: Product[] = [
     industry: 'Plants & Nursery',
     result: '+60% Orders',
     status: 'live',
-    screenshot: 'https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?q=80&w=800&auto=format&fit=crop',
+    screenshot: '/static/images/Scalable.png',
     demoLink: 'https://gardenwalla.vercel.app/',
     features: [
       'Category-based browsing',
@@ -130,7 +130,7 @@ export const products: Product[] = [
   {
     id: '6',
     slug: 'green-nest-electronics',
-    name: 'Green Nest – Refurbished Electronics',
+    name: 'Green Nest â€“ Refurbished Electronics',
     description:
       'A modern ecommerce platform for selling refurbished electronics with a focus on trust and conversion.',
     shortDescription:
@@ -140,7 +140,7 @@ export const products: Product[] = [
     industry: 'Electronics',
     result: '+2x Conversions',
     status: 'live',
-    screenshot: 'https://images.unsplash.com/photo-1593784991095-a205069470b6?q=80&w=800&auto=format&fit=crop',
+    screenshot: '/static/images/Scalable.png',
     demoLink: 'https://green-nest-lime.vercel.app/',
     features: [
       'Product catalog',
@@ -164,7 +164,7 @@ export const products: Product[] = [
     industry: 'HR & Workforce',
     result: '100% Mobile Adoption',
     status: 'live',
-    screenshot: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=800&auto=format&fit=crop',
+    screenshot: '/static/images/Scalable.png',
     demoLink: 'https://wings-attendance.vercel.app/',
     features: [
       'Geo-fencing & GPS tracking',
@@ -190,7 +190,7 @@ export const products: Product[] = [
     industry: 'Food & Beverage',
     result: 'Coming Soon',
     status: 'coming',
-    screenshot: 'https://images.unsplash.com/photo-1501443762994-82bd5dabb892?q=80&w=800&auto=format&fit=crop',
+    screenshot: '/static/images/Scalable.png',
     demoLink: '',
     features: [],
     fullDescription:
@@ -209,7 +209,7 @@ export const products: Product[] = [
     industry: 'Manufacturing',
     result: 'Coming Soon',
     status: 'coming',
-    screenshot: 'https://images.unsplash.com/photo-1503387762-592dee58c160?q=80&w=800&auto=format&fit=crop',
+    screenshot: '/static/images/Scalable.png',
     demoLink: '',
     features: [],
     fullDescription:
