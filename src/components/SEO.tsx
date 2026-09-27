@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { Helmet } from 'react-helmet-async';
 
 export type SchemaType = 
@@ -36,7 +36,7 @@ interface SEOProps {
 }
 
 const SEO: React.FC<SEOProps> = ({
-  title = "WingsForShare – Business Technology Growth Agency",
+  title = "WingsForShare â€“ Business Technology Growth Agency",
   description = "WingsForShare builds revenue-driven digital systems. Custom software development, web applications, mobile apps, and business automation solutions.",
   keywords = "business technology growth, digital transformation, custom software development, web development, mobile app development, business automation, SaaS development, enterprise software",
   canonical = "https://wingsforshare.com",
@@ -74,7 +74,7 @@ const SEO: React.FC<SEOProps> = ({
     },
     "contactPoint": {
       "@type": "ContactPoint",
-      "telephone": "+91-86187-64541",
+      
       "contactType": "customer service",
       "areaServed": ["IN", "US", "GB", "AU", "CA"],
       "availableLanguage": ["English", "Hindi"]
@@ -111,7 +111,7 @@ const SEO: React.FC<SEOProps> = ({
     "description": description,
     "url": canonical,
     "logo": "https://wingsforshare.com/logo.png",
-    "telephone": "+91-86187-64541",
+    
     "email": "contact@wingsforshare.com",
     "address": {
       "@type": "PostalAddress",

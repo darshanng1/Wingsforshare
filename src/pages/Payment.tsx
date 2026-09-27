@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Smartphone, CheckCircle, Upload, MessageCircle, ArrowRight, CreditCard, ShieldCheck, Zap } from 'lucide-react';
 import SEO from '../components/SEO';
@@ -14,7 +14,7 @@ export default function Payment() {
   const [paymentMethod, setPaymentMethod] = React.useState<'upi' | 'gateway' | null>(null);
   const upiId = "darshanng@okicici";
   const upiLink = `upi://pay?pa=${upiId}&pn=Darshan%20N%20G&cu=INR`;
-  // For testing ₹1 payment: upi://pay?pa=darshanng@okicici&pn=Darshan%20N%20G&am=1&cu=INR
+  // For testing â‚¹1 payment: upi://pay?pa=darshanng@okicici&pn=Darshan%20N%20G&am=1&cu=INR
 
   const handleRazorpay = () => {
     const options = {
@@ -45,7 +45,7 @@ export default function Payment() {
   return (
     <div className="pt-20 md:pt-32 pb-12 md:pb-32 bg-white dark:bg-[#0a0a0a] min-h-screen transition-colors duration-300">
       <SEO 
-        title="Secure Payment – WingsForShare Digital Solutions"
+        title="Secure Payment â€“ WingsForShare Digital Solutions"
         description="Complete your payment securely for custom software development, business automation tools, or SEO services from WingsForShare."
         keywords="secure payment, digital solutions payment, WingsForShare payment"
         canonical="https://wingsforshare.com/payment"
@@ -184,7 +184,7 @@ export default function Payment() {
 
                   <p className="text-xl font-bold text-black dark:text-white mb-1 tracking-tight">UPI ID: {upiId}</p>
                   <p className="text-lg font-bold text-black/80 dark:text-white/80 mb-2">Name: Darshan N G</p>
-                  <p className="text-sm font-bold text-black/60 dark:text-white/60 mb-2">Phone: +91 8618764541</p>
+                  <p className="text-sm font-bold text-black/60 dark:text-white/60 mb-2">Phone: info@wingsforshare.com</p>
                   
                   <button 
                     onClick={() => window.location.href = upiLink}
@@ -231,7 +231,7 @@ export default function Payment() {
                 
                 <div className="space-y-4 max-w-md mx-auto">
                   <a 
-                    href="https://wa.me/yournumber" 
+                    href="/contact" 
                     className="flex items-center justify-center space-x-3 w-full py-5 bg-[#25D366] text-white rounded-2xl font-bold text-lg hover:opacity-90 transition-all shadow-xl shadow-emerald-500/10 active:scale-95"
                   >
                     <MessageCircle size={24} />

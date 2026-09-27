@@ -35,6 +35,14 @@ const upload = multer({
 });
 
 async function startServer() {
+  // Load .env if present (optional — keeps SMTP secrets out of the repo)
+  try {
+    const dotenv: any = await import("dotenv");
+    (dotenv.default || dotenv).config();
+  } catch {
+    /* dotenv not installed — rely on real environment variables */
+  }
+
   const app = express();
   const PORT = 3000;
 
@@ -62,34 +70,65 @@ async function startServer() {
   app.use(express.static(publicPath));
 
   // API Route for Contact Form
+  // Required: name + email. Phone is optional.
+  // Enquiries are always saved to leads.json and, when SMTP is configured,
+  // emailed to MAIL_TO (defaults to info@wingsforshare.com).
   app.post("/api/contact", async (req, res) => {
     const { name, email, phone, service, message } = req.body;
 
-    // Basic validation
-    if (!name || !email || !phone) {
-      return res.status(400).json({ success: false, message: "Missing required fields." });
+    if (!name || !email) {
+      return res.status(400).json({ success: false, message: "Name and email are required." });
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(email))) {
+      return res.status(400).json({ success: false, message: "Please provide a valid email address." });
     }
 
     try {
-      // 1. Save to JSON file
+      // 1. Save to JSON file (backup, never lose a lead)
       const data = fs.readFileSync(LEADS_FILE, "utf-8");
       const leads = JSON.parse(data);
-      
+
       const newLead = {
         id: Date.now(),
         name,
         email,
-        phone,
-        service,
-        message,
+        phone: phone || "",
+        service: service || "",
+        message: message || "",
         created_at: new Date().toISOString()
       };
-      
+
       leads.push(newLead);
       fs.writeFileSync(LEADS_FILE, JSON.stringify(leads, null, 2));
 
-      // SMTP logic removed as per request to remove environment variables.
-      console.log(`Lead saved: ${name} (${email})`);
+      // 2. Email the enquiry to info@wingsforshare.com
+      const MAIL_TO = process.env.MAIL_TO || "info@wingsforshare.com";
+      if (process.env.SMTP_HOST && process.env.SMTP_USER && process.env.SMTP_PASS) {
+        try {
+          const nodemailer: any = await import("nodemailer");
+          const transporter = (nodemailer.default || nodemailer).createTransport({
+            host: process.env.SMTP_HOST,
+            port: Number(process.env.SMTP_PORT || 465),
+            secure: Number(process.env.SMTP_PORT || 465) === 465,
+            auth: { user: process.env.SMTP_USER, pass: process.env.SMTP_PASS },
+          });
+          await transporter.sendMail({
+            from: `"WingsForShare Enquiry" <${process.env.SMTP_USER}>`,
+            to: MAIL_TO,
+            replyTo: email,
+            subject: `New enquiry (${service || "General"}) — ${name}`,
+            text:
+              `New enquiry from wingsforshare.com\n\n` +
+              `Name: ${name}\nEmail: ${email}\nPhone: ${phone || "-"}\nService: ${service || "-"}\n\n` +
+              `${message || "(no message)"}`,
+          });
+          console.log(`Enquiry emailed to ${MAIL_TO}: ${name} (${email})`);
+        } catch (mailErr) {
+          console.error("Enquiry email failed (lead still saved to leads.json):", mailErr);
+        }
+      } else {
+        console.log("SMTP not configured — enquiry saved to leads.json only.");
+      }
 
       res.json({ success: true, message: "Message sent successfully!" });
     } catch (error) {

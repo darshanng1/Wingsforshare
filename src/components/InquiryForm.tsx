@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { Send, CheckCircle } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
@@ -178,7 +178,7 @@ export default function InquiryForm({ productName }: InquiryFormProps) {
                       ? 'border-red-500 bg-red-500/5' 
                       : 'border-transparent focus:border-black/10 dark:focus:border-white/10'
                   }`}
-                  placeholder="+91 86187 64541"
+                  placeholder="Phone (optional)"
                 />
                 {errors.phone && touched.phone && (
                   <p id="phone-error" className="text-[10px] text-red-500 font-bold uppercase tracking-widest ml-1 mt-1" role="alert">

@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+﻿import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { 
   Send, CheckCircle, User, Building2, Briefcase, Sparkles, 
@@ -95,7 +95,7 @@ export default function ProjectIntakeForm() {
       setIsSubmitted(true);
     } catch (err: any) {
       setSubmitError(
-        err?.message || 'Could not submit right now. Please email info@wingsforshare.com or WhatsApp +91 86187 64541.'
+        err?.message || 'Could not submit right now. Please email info@wingsforshare.com .'
       );
     } finally {
       setSubmitting(false);
@@ -510,7 +510,7 @@ export default function ProjectIntakeForm() {
             disabled={submitting}
             className="flex items-center gap-4 bg-accent text-bg px-12 py-6 rounded-[1.5rem] text-[11px] font-black uppercase tracking-[0.3em] hover:scale-[1.05] active:scale-[0.95] transition-all shadow-[0_32px_64px_-16px_rgba(0,255,157,0.3)] group disabled:opacity-60 disabled:cursor-not-allowed"
           >
-            {submitting ? 'Sending…' : 'Submit Project'}
+            {submitting ? 'Sendingâ€¦' : 'Submit Project'}
             {submitting ? (
               <Loader2 size={20} className="animate-spin" />
             ) : (

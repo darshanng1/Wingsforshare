@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+﻿import { Link } from 'react-router-dom';
 import { ExternalLink, Lock, ArrowUpRight, Sparkles } from 'lucide-react';
 import { Product } from '../types';
 import { motion } from 'motion/react';
@@ -10,7 +10,7 @@ interface ProductCardProps {
 
 export default function ProductCard({ product }: ProductCardProps) {
   const whatsappNumber = "918618764541";
-  const bookDemoUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(`Hi, I'm interested in booking a demo for ${product.name}`)}`;
+  const bookDemoUrl = '/contact';
 
   return (
     <motion.div 

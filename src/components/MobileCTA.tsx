@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import { MessageCircle, Phone } from 'lucide-react';
@@ -26,7 +26,7 @@ export default function MobileCTA() {
         >
           <div className="flex items-center space-x-3">
             <a
-              href="https://wa.me/918618764541"
+              href="/contact"
               target="_blank"
               rel="noopener noreferrer"
               className="flex-1 flex items-center justify-center space-x-2 bg-[#25D366] text-white py-3.5 rounded-xl font-bold shadow-lg shadow-emerald-500/20 active:scale-95 transition-transform"

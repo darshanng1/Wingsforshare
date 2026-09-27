@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { MessageCircle, Play, Share2, X, Link as LinkIcon, Linkedin, CheckCircle } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Link } from 'react-router-dom';
@@ -89,7 +89,7 @@ export default function FloatingActions() {
 
           {/* WhatsApp Button */}
           <motion.a
-            href="https://wa.me/918618764541"
+            href="/contact"
             target="_blank"
             rel="noopener noreferrer"
             whileHover={{ scale: 1.1 }}

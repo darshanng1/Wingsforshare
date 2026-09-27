@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { motion } from 'motion/react';
 import { Phone, MessageSquare, Mail, ArrowRight } from 'lucide-react';
 
@@ -7,15 +7,15 @@ export default function QuickContactBar() {
     {
       icon: <Phone size={20} />,
       label: 'Call Us',
-      value: '+91 86187 64541',
-      link: 'tel:+918618764541',
+      value: 'info@wingsforshare.com',
+      link: 'mailto:info@wingsforshare.com',
       color: 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400'
     },
     {
       icon: <MessageSquare size={20} />,
       label: 'WhatsApp',
-      value: '+91 86187 64541',
-      link: 'https://wa.me/918618764541',
+      value: 'info@wingsforshare.com',
+      link: '/contact',
       color: 'bg-[#25D366]/10 text-[#25D366]'
     },
     {

@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { motion } from 'motion/react';
 import { ArrowRight, MessageCircle } from 'lucide-react';
 
@@ -32,7 +32,7 @@ export default function FinalCTA() {
               Get Free Consultation
               <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
             </a>
-            <a href="https://wa.me/918618764541" target="_blank" rel="noopener noreferrer" className="btn-outline border-text-primary/20 text-text-primary hover:bg-text-primary hover:text-bg px-12 py-6 text-lg flex items-center justify-center gap-3">
+            <a href="/contact" target="_blank" rel="noopener noreferrer" className="btn-outline border-text-primary/20 text-text-primary hover:bg-text-primary hover:text-bg px-12 py-6 text-lg flex items-center justify-center gap-3">
               <MessageCircle size={20} />
               Talk to Expert
             </a>

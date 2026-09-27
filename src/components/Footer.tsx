@@ -63,7 +63,7 @@ export default function Footer() {
             </div>
           </motion.div>
 
-          <div className="lg:col-span-7 grid grid-cols-1 md:grid-cols-3 gap-12 pt-8">
+          <div className="lg:col-span-7 grid grid-cols-1 md:grid-cols-2 gap-12 pt-8">
             {/* Services Link Map */}
             <div className="space-y-10">
               <h4 className="text-[11px] font-black uppercase tracking-[0.4em] text-accent">Capabilities</h4>
@@ -82,32 +82,19 @@ export default function Footer() {
               </ul>
             </div>
 
-            {/* Direct Connect */}
+            {/* Contact — all contact details live on the Contact page */}
             <div className="space-y-10">
-              <h4 className="text-[11px] font-black uppercase tracking-[0.4em] text-accent">Connect</h4>
-              <div className="space-y-10">
-                <a href="mailto:info@wingsforshare.com" className="block group">
-                  <p className="text-[10px] font-black uppercase tracking-[0.3em] text-text-secondary/60 mb-2">Direct Mail</p>
-                  <p className="text-[16px] font-bold text-text-primary group-hover:text-accent transition-colors">info@wingsforshare.com</p>
-                </a>
-                <a href="tel:+918618764541" className="block group">
-                  <p className="text-[10px] font-black uppercase tracking-[0.3em] text-text-secondary/60 mb-2">Global Comms</p>
-                  <p className="text-[16px] font-bold text-text-primary group-hover:text-accent transition-colors">+91 86187 64541</p>
-                </a>
-              </div>
-            </div>
-
-            {/* HQ Node */}
-            <div className="space-y-10">
-              <h4 className="text-[11px] font-black uppercase tracking-[0.4em] text-accent">HQ Node</h4>
-              <div className="p-8 rounded-[2rem] bg-card-bg/40 border border-card-border">
-            <MapPin size={24} className="text-accent mb-6" />
-            <p className="text-[14px] font-medium text-text-secondary leading-loose">
-              15, A.K Max Layout,<br />
-              Kuduregere, Bangalore<br />
-              KA - 562162, India
-            </p>
-              </div>
+              <h4 className="text-[11px] font-black uppercase tracking-[0.4em] text-accent">Contact</h4>
+              <p className="text-[15px] font-medium text-text-secondary leading-relaxed max-w-xs">
+                Have a project or a question? Every enquiry goes straight to our inbox — all our contact details are on the contact page.
+              </p>
+              <Link
+                to="/contact"
+                className="inline-flex items-center gap-3 text-[15px] font-bold text-text-primary hover:text-accent transition-colors group"
+              >
+                Go to Contact
+                <ArrowUpRight size={16} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+              </Link>
             </div>
           </div>
         </div>

@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { motion } from 'motion/react';
 import { 
   Rocket, 
@@ -122,10 +122,10 @@ export const ContactSection = () => {
                     <Phone size={28} strokeWidth={1.5} />
                   </div>
                   <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-text-secondary mb-3">Direct Consultation</h4>
-                  <p className="text-2xl md:text-3xl font-black text-text-primary mb-8 tracking-tighter">+91 86187 64541</p>
+                  <p className="text-2xl md:text-3xl font-black text-text-primary mb-8 tracking-tighter">info@wingsforshare.com</p>
                   <motion.a
                     whileTap={{ scale: 0.95 }}
-                    href="tel:+918618764541"
+                    href="mailto:info@wingsforshare.com"
                     className="inline-flex items-center justify-center space-x-3 bg-accent text-white px-8 py-4 rounded-xl font-black uppercase tracking-[0.1em] text-[12px] shadow-lg shadow-accent/20 hover:shadow-accent/40 transition-all duration-500 w-full"
                   >
                     <span>Call Now</span>
@@ -142,7 +142,7 @@ export const ContactSection = () => {
                   <p className="text-2xl md:text-3xl font-black text-text-primary mb-8 tracking-tighter">Quick Sync</p>
                   <motion.a
                     whileTap={{ scale: 0.95 }}
-                    href="https://wa.me/918618764541"
+                    href="/contact"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center justify-center space-x-3 bg-accent text-white px-8 py-4 rounded-xl font-black uppercase tracking-[0.1em] text-[12px] shadow-lg shadow-accent/20 hover:shadow-accent/40 transition-all duration-500 w-full"

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import SEO from '../components/SEO';
 import { 
@@ -27,11 +27,11 @@ const CONTACT_METHODS = [
   {
     id: 'call',
     title: 'Direct Consultation',
-    value: '+91 86187 64541',
+    value: 'info@wingsforshare.com',
     description: 'Instant response for urgent technical scoping.',
     icon: <Phone size={24} />,
     color: 'emerald',
-    link: 'tel:+918618764541',
+    link: 'mailto:info@wingsforshare.com',
     features: ['Instant response', 'Technical guidance', 'Project scoping']
   },
   {
@@ -41,7 +41,7 @@ const CONTACT_METHODS = [
     description: '24/7 availability for quick queries and updates.',
     icon: <MessageSquare size={24} />,
     color: 'emerald',
-    link: 'https://wa.me/918618764541',
+    link: '/contact',
     features: ['24/7 Availability', 'Quick queries', 'Portfolio sharing']
   },
   {

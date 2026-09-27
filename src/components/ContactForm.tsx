@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { motion } from 'motion/react';
 import { Send, CheckCircle2, Loader2 } from 'lucide-react';
@@ -142,7 +142,7 @@ export default function ContactForm() {
                 message: 'Please enter a valid phone number'
               }
             })}
-            placeholder="+91 86187 64541"
+            placeholder="Phone (optional)"
             aria-invalid={errors.phone ? 'true' : 'false'}
             aria-describedby={errors.phone ? 'phone-error' : undefined}
             className={`w-full px-6 py-4 bg-zinc-50 dark:bg-zinc-800/50 border ${

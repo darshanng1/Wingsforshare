@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { Send, CheckCircle, MessageSquare, Phone, User, Building2, Briefcase, Sparkles, Mail, AlertCircle, Loader2 } from 'lucide-react';
 
@@ -49,8 +49,7 @@ export function ProjectInquiryForm() {
         if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim())) return 'Please enter a valid email';
         break;
       case 'phone':
-        if (!value.trim()) return 'Phone number is required';
-        if (value.replace(/\D/g, '').length < 8) return 'Please enter a valid phone number';
+        if (value.trim() && value.replace(/\D/g, '').length < 8) return 'Please enter a valid phone number';
         break;
       case 'businessType':
         if (!value.trim()) return 'Business type is required';
@@ -114,7 +113,7 @@ export function ProjectInquiryForm() {
     } catch (err: any) {
       setSubmitError(
         err?.message ||
-          'We could not send your request right now. Please email info@wingsforshare.com or WhatsApp +91 86187 64541.'
+          'We could not send your request right now. Please email info@wingsforshare.com.'
       );
     } finally {
       setSubmitting(false);
@@ -217,7 +216,7 @@ export function ProjectInquiryForm() {
 
           <div className="space-y-2">
             <label htmlFor="consult-phone" className="text-[10px] font-bold uppercase tracking-widest text-text-secondary ml-4">
-              Phone / WhatsApp <span aria-label="required">*</span>
+              Phone / WhatsApp (optional)
             </label>
             <div className="relative">
               <Phone className="absolute left-4 top-1/2 -translate-y-1/2 text-text-secondary opacity-50" size={18} aria-hidden="true" />
@@ -226,7 +225,7 @@ export function ProjectInquiryForm() {
                 onChange={(e) => handleChange('phone', e.target.value)}
                 onBlur={() => handleBlur('phone')}
                 aria-invalid={!!errors.phone} aria-describedby={errors.phone ? 'phone-error' : undefined}
-                placeholder="+91 86187 64541" className={inputClass('phone')}
+                placeholder="Phone (optional)" className={inputClass('phone')}
               />
             </div>
             {errText('phone')}
@@ -300,12 +299,11 @@ export function ProjectInquiryForm() {
           className="btn-primary w-full justify-center disabled:opacity-60 disabled:cursor-not-allowed"
         >
           {submitting ? <Loader2 size={20} className="animate-spin" aria-hidden="true" /> : <Send size={20} aria-hidden="true" />}
-          <span>{submitting ? 'Sending…' : 'Submit Request'}</span>
+          <span>{submitting ? 'Sendingâ€¦' : 'Submit Request'}</span>
         </button>
 
         <p className="text-[11px] text-text-secondary/50 text-center leading-relaxed">
-          Prefer instant? WhatsApp <a href="https://wa.me/918618764541" className="text-accent hover:underline">+91 86187 64541</a> or email{' '}
-          <a href="mailto:info@wingsforshare.com" className="text-accent hover:underline">info@wingsforshare.com</a>.
+          Every enquiry goes straight to <a href="mailto:info@wingsforshare.com" className="text-accent hover:underline">info@wingsforshare.com</a> â€” we reply within 24 hours.
         </p>
       </form>
     </motion.div>

@@ -1,4 +1,4 @@
-// Build Sync Marker: 2026-05-04
+﻿// Build Sync Marker: 2026-05-04
 import React, { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, useSpring, useMotionValue, AnimatePresence } from 'framer-motion';
 import {
@@ -129,7 +129,7 @@ export default function Home() {
     "url": "https://wingsforshare.com",
     "logo": "https://wingsforshare.com/logo.png",
     "image": "https://wingsforshare.com/og-image.jpg",
-    "telephone": "+91-86187-64541",
+    
     "email": "contact@wingsforshare.com",
     "priceRange": "$$",
     "address": {

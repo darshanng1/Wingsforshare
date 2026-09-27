@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { motion } from 'motion/react';
 import { Mail, Phone, MessageSquare, MapPin, Globe } from 'lucide-react';
 
@@ -13,14 +13,14 @@ export default function ContactDetails() {
     {
       icon: <Phone className="text-emerald-500" />,
       label: 'Phone',
-      value: '+91 86187 64541',
-      link: 'tel:+918618764541'
+      value: 'info@wingsforshare.com',
+      link: 'mailto:info@wingsforshare.com'
     },
     {
       icon: <MessageSquare className="text-emerald-500" />,
       label: 'WhatsApp',
-      value: '+91 86187 64541',
-      link: 'https://wa.me/918618764541'
+      value: 'info@wingsforshare.com',
+      link: '/contact'
     },
     {
       icon: <MapPin className="text-emerald-500" />,
