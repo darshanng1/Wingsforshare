@@ -57,7 +57,7 @@ export const services: Service[] = [
       { title: 'Built for speed', desc: 'Core Web Vitals tuning that cuts bounce rate and lifts conversion.' }
     ],
     keywords:
-      'web development agency, web development services, custom website development, react development, next.js development, ecommerce website development, responsive web design, hire web developer',
+      'web development agency, web development services, custom website development, react development, next.js development, ecommerce website development, responsive web design, hire web developer, enterprise web development, progressive web app development, web development cost',
     faqs: [
       { q: 'How long does a website take to build?', a: 'A marketing site typically ships in 2–4 weeks; larger web apps and ecommerce stores run 4–10 weeks depending on scope. You get a fixed timeline before we start.' },
       { q: 'Do you build SEO-friendly websites?', a: 'Yes. Every site ships with semantic HTML, clean URLs, optimised metadata, sitemap and schema markup — technical SEO is part of the build, not an add-on.' },
@@ -90,7 +90,7 @@ export const services: Service[] = [
       { title: 'Measurable ROI', desc: 'Transparent reports tying rankings and traffic to leads and revenue.' }
     ],
     keywords:
-      'seo services, seo agency, search engine optimization agency, technical seo, on-page seo, local seo, seo audit, rank on google, international seo agency',
+      'seo agency, seo services, search engine optimization, technical seo, on-page seo, local seo, seo audit, rank on google, international seo agency, link building agency, seo for startups',
     faqs: [
       { q: 'How long until I see SEO results?', a: 'Technical wins can move in weeks; competitive keyword rankings usually build over 3–6 months. We report progress monthly from day one.' },
       { q: 'Do you do international / global SEO?', a: 'Yes. We handle hreflang, multi-region keyword targeting and global content strategy for businesses ranking worldwide.' },
@@ -123,7 +123,7 @@ export const services: Service[] = [
       { title: 'ROI on spend', desc: 'Paid and organic campaigns measured against real business outcomes.' }
     ],
     keywords:
-      'social media marketing agency, smm services, social media management, instagram marketing, linkedin marketing, paid social campaigns, content marketing agency',
+      'social media marketing agency, smm services, social media management, instagram marketing, linkedin marketing agency, paid social campaigns, content marketing agency, b2b social media strategy',
     faqs: [
       { q: 'Which platforms do you manage?', a: 'Instagram, LinkedIn, Facebook, YouTube and X — we recommend the mix based on where your buyers actually spend time.' },
       { q: 'Do you create the content?', a: 'Yes — strategy, copy, graphics and short-form video are all handled by our team.' },
@@ -156,7 +156,7 @@ export const services: Service[] = [
       { title: 'Secure & reliable', desc: 'Enterprise-grade security and performance from day one.' }
     ],
     keywords:
-      'mobile app development agency, app development services, ios app development, android app development, react native app development, flutter app development, custom mobile apps',
+      'app development agency, mobile app development company, ios app development, android app development, react native app development, flutter app development, custom mobile apps, app development cost, mvp app development',
     faqs: [
       { q: 'Native or cross-platform — which should I choose?', a: 'Cross-platform (React Native/Flutter) is faster and cheaper for most products; native is worth it for heavy graphics or platform-specific features. We recommend the best fit in a free consult.' },
       { q: 'Will you publish the app to the stores?', a: 'Yes — we handle App Store and Play Store submission, plus ongoing release management.' },
@@ -189,7 +189,7 @@ export const services: Service[] = [
       { title: 'Market edge', desc: 'Catch emerging trends early and act before competitors do.' }
     ],
     keywords:
-      'business analytics services, business intelligence solutions, data analytics for business, power bi dashboard development, predictive analytics, data dashboard development, kpi reporting',
+      'business analytics services, business intelligence consulting, data analytics services, power bi development, predictive analytics, dashboard development, kpi reporting, business intelligence for smb',
     faqs: [
       { q: 'What tools do you build dashboards in?', a: 'Power BI, Looker Studio, Metabase and custom React dashboards — chosen to match your data stack and budget.' },
       { q: 'Can you connect to our existing data?', a: 'Yes — we connect to SQL databases, spreadsheets, CRMs, ERPs and SaaS APIs to build a single source of truth.' },

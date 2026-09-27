@@ -55,7 +55,7 @@ export default function Services() {
       <SEO
         title="Services | Web Development, SEO, SMM, App Development & Business Analytics | WingsForShare"
         description="WingsForShare delivers web development, SEO, social media marketing (SMM), mobile app development, business analytics and custom software — global digital services engineered for growth."
-        keywords="web development services, seo services, social media marketing services, app development services, business analytics services, custom software development, digital agency"
+        keywords="digital services, web development agency, seo agency, social media marketing agency, app development agency, business analytics services, custom software development agency, full service digital agency, digital transformation"}
         canonical={url}
         schemaMarkup={itemListSchema}
       />

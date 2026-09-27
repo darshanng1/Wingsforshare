@@ -62,7 +62,7 @@ export default function Portfolio() {
       <SEO
         title="Portfolio: Web, Mobile & BI Projects Delivered | WingsForShare"
         description="Explore the WingsForShare portfolio of delivered projects: architecture portfolio sites, ecommerce stores, digital vCards, pest-control BI systems, and custom web applications built for measurable business results."
-        keywords="web development portfolio, ecommerce development portfolio, BI dashboard case studies, custom software projects India, WingsForShare portfolio"
+        keywords="web development portfolio, app development portfolio, seo case studies, ecommerce development portfolio, business intelligence case studies, digital agency portfolio"
         canonical="https://wingsforshare.com/portfolio"
         schemaMarkup={{
           "@context": "https://schema.org",

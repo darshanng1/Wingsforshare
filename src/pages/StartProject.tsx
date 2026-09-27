@@ -9,7 +9,8 @@ export default function StartProject() {
     <div className="pt-20 pb-12">
       <SEO 
         title="Start Your Project – Custom Software Development & Digital Solutions"
-        description="Ready to scale your business? Start your project with WingsForShare. Fill out our intake form for custom software development, business automation, or SEO services."
+        description="Ready to scale your business? Start your project with WingsForShare. Fill out our intake form for web development, SEO, app development, business analytics or custom software."
+        keywords="start a web project, software development quote, website project enquiry, app development brief, digital agency proposal"
         keywords="start project, custom software development, business automation, SEO services, digital solutions, WingsForShare"
         canonical="https://wingsforshare.com/start-project"
       />

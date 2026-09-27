@@ -88,7 +88,8 @@ export default function Contact() {
     <div className="min-h-screen bg-bg pt-32 pb-20 relative overflow-hidden">
       <SEO
         title="Contact WingsForShare | Free Consultation for Web, App & SEO Projects"
-        description="Talk to WingsForShare. Talk to us for a free consultation on website development, mobile apps, custom software, and SEO. Fast quotes, clear pricing, no jargon."
+        description="Talk to WingsForShare. Talk to us for a free consultation on web development, SEO, social media marketing, mobile apps and business analytics. Fast quotes, clear pricing, no jargon."
+        keywords="contact digital agency, hire web development agency, seo consultation, app development quote, free seo audit, digital agency enquiry"
         keywords="contact web development agency, hire website developer India, free website consultation, WingsForShare contact"
         canonical="https://wingsforshare.com/contact"
         schemaType="ContactPage"
