@@ -1,5 +1,6 @@
 // Post-build prerender: writes a per-route index.html with that page's own
-// <title>, meta description/keywords, canonical, OG/Twitter tags and <h1>.
+// <title>, meta description/keywords, canonical, OG/Twitter tags and <h1>,
+// and generates a complete sitemap.xml covering every public page.
 // Non-JS crawlers (Bing, social link previews) then see correct per-page meta.
 import fs from 'node:fs';
 import path from 'node:path';
@@ -7,7 +8,9 @@ import path from 'node:path';
 const dist = path.resolve(process.env.PRERENDER_DIR || 'dist');
 const shellPath = path.join(dist, 'index.html');
 const SITE = 'https://wingsforshare.com';
+const LAST_MOD = new Date().toISOString().slice(0, 10);
 
+/* ---------- static routes ---------- */
 const ROUTES = [
   { p: '/services', h1: 'Digital services that drive revenue', t: 'Digital Services | Web Development, SEO, SMM, App Development & Analytics | WingsForShare', d: 'WingsForShare delivers web development, SEO, social media marketing, app development, business analytics and custom software - global digital services engineered for growth.', k: 'digital services, web development agency, seo agency, social media marketing agency, app development agency, business analytics services, digital agency' },
   { p: '/services/web-development', h1: 'Web Development Agency', t: 'Web Development Agency | Custom Websites & Web Apps | WingsForShare', d: 'Custom web development - fast, secure, SEO-ready websites and web apps built with React and Next.js. Global web development agency for startups and enterprises.', k: 'web development agency, web development services, custom website development, react development, next.js development, ecommerce website development, web development cost' },
@@ -23,6 +26,47 @@ const ROUTES = [
   { p: '/contact', h1: 'Contact WingsForShare', t: 'Contact WingsForShare | Free Consultation for Web, App & SEO Projects', d: 'Talk to WingsForShare for a free consultation on web development, SEO, social media marketing, mobile apps and business analytics. Fast quotes, clear pricing, no jargon.', k: 'contact digital agency, hire web development agency, seo consultation, app development quote, free seo audit' },
   { p: '/start-project', h1: 'Start your project', t: 'Start Your Project | Web, SEO, App & Analytics | WingsForShare', d: 'Ready to scale? Start your project with WingsForShare. Tell us your goals for web development, SEO, app development, business analytics or custom software.', k: 'start a web project, software development quote, website project enquiry, app development brief' }
 ];
+
+/* ---------- parse data files for dynamic routes (products, blog posts) ---------- */
+function readData(file) {
+  try { return fs.readFileSync(path.resolve('src/data', file), 'utf8'); }
+  catch { return ''; }
+}
+const str = (chunk, key) => {
+  const m = chunk.match(new RegExp(key + ":\\s*\\n?\\s*'((?:[^'\\\\]|\\\\.)*)'"));
+  return m ? m[1].replace(/\\'/g, "'").replace(/\\\\/g, '\\') : '';
+};
+
+// products.ts -> /product/:slug
+const productChunks = readData('products.ts').split(/\n  \{/).slice(1);
+const PRODUCTS = productChunks
+  .map((c) => ({ slug: str(c, 'slug'), name: str(c, 'name'), short: str(c, 'shortDescription'), desc: str(c, 'description') }))
+  .filter((p) => p.slug && p.name);
+
+// blogs.ts -> /blog/:slug
+const blogChunks = readData('blogs.ts').split(/\n  \{/).slice(1);
+const POSTS = blogChunks
+  .map((c) => ({ slug: str(c, 'slug'), title: str(c, 'title'), excerpt: str(c, 'excerpt') }))
+  .filter((b) => b.slug && b.title);
+
+for (const p of PRODUCTS) {
+  ROUTES.push({
+    p: '/product/' + p.slug,
+    h1: p.name + ' - Case Study',
+    t: p.name + ' | WingsForShare Case Study',
+    d: p.short || p.desc || 'Case study by WingsForShare.',
+    k: p.name + ', case study, WingsForShare project'
+  });
+}
+for (const b of POSTS) {
+  ROUTES.push({
+    p: '/blog/' + b.slug,
+    h1: b.title,
+    t: b.title + ' | WingsForShare Blog',
+    d: b.excerpt || b.title,
+    k: b.title + ', WingsForShare blog'
+  });
+}
 
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
@@ -52,4 +96,27 @@ for (const r of ROUTES) {
   count++;
 }
 
-console.log(`prerender: wrote ${count} route HTML files`);
+/* ---------- complete sitemap ---------- */
+const priorityOf = (p) => {
+  if (p === '/') return { pri: '1.0', freq: 'weekly' };
+  if (p.startsWith('/services/')) return { pri: '0.9', freq: 'monthly' };
+  if (p === '/services' || p === '/portfolio') return { pri: '0.9', freq: 'monthly' };
+  if (p.startsWith('/product/')) return { pri: '0.8', freq: 'monthly' };
+  if (p.startsWith('/blog/') || p === '/blog') return { pri: '0.7', freq: 'weekly' };
+  if (p === '/contact' || p === '/start-project') return { pri: '0.8', freq: 'monthly' };
+  return { pri: '0.6', freq: 'monthly' };
+};
+const urls = ['/', ...ROUTES.map((r) => r.p)];
+const sitemap =
+  '<?xml version="1.0" encoding="UTF-8"?>\n' +
+  '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
+  urls
+    .map((u) => {
+      const { pri, freq } = priorityOf(u);
+      return `  <url>\n    <loc>${SITE}${u}</loc>\n    <lastmod>${LAST_MOD}</lastmod>\n    <changefreq>${freq}</changefreq>\n    <priority>${pri}</priority>\n  </url>`;
+    })
+    .join('\n') +
+  '\n</urlset>\n';
+fs.writeFileSync(path.join(dist, 'sitemap.xml'), sitemap);
+
+console.log(`prerender: wrote ${count} route HTML files; sitemap: ${urls.length} URLs (${PRODUCTS.length} products, ${POSTS.length} posts)`);
