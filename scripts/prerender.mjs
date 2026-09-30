@@ -4,7 +4,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
-const dist = path.resolve('dist');
+const dist = path.resolve(process.env.PRERENDER_DIR || 'dist');
 const shellPath = path.join(dist, 'index.html');
 const SITE = 'https://wingsforshare.com';
 
