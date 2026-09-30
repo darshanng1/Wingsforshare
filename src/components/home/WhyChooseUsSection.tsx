@@ -1,8 +1,4 @@
-﻿
-
-cd D:\Wingsforshare--Attendance-App
-git push
-import React from 'react';
+﻿import React from 'react';
 import { motion } from 'motion/react';
 import { CheckCircle, Zap, TrendingUp, Network, Cpu, Smartphone } from 'lucide-react';
 
