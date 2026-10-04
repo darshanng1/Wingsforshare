@@ -1,0 +1,45 @@
+# WingsForShare
+
+> WingsForShare is a global digital agency that designs and builds websites, e-commerce stores, mobile apps and business intelligence systems, and runs SEO and social media marketing for growing businesses worldwide. Contact: info@wingsforshare.com
+
+## Services
+- [Digital Services Overview](https://wingsforshare.com/services): Web development, SEO, social media marketing, app development, business analytics, custom software, digital transformation and SaaS development.
+- [Web Development](https://wingsforshare.com/services/web-development): Custom, fast, SEO-ready websites and web applications built with React and modern tooling.
+- [SEO Services](https://wingsforshare.com/services/seo): Technical SEO audits, on-page optimisation, keyword strategy, content and link building.
+- [Social Media Marketing (SMM)](https://wingsforshare.com/services/social-media-marketing): Strategy, content, paid campaigns and community growth across Instagram, LinkedIn, Facebook, YouTube and X.
+- [App Development](https://wingsforshare.com/services/app-development): iOS, Android and cross-platform mobile apps built with React Native and Flutter, including App Store optimization.
+- [Business Analytics & BI](https://wingsforshare.com/services/business-analytics): Dashboards, predictive models, data warehousing and reporting for real-time business visibility.
+- [Custom Software Development](https://wingsforshare.com/services/custom-software): Tailored applications, APIs and platforms with full IP ownership for the client.
+- [Digital Transformation](https://wingsforshare.com/services/digital-transformation): Cloud migration, process automation and modern tooling for faster, leaner operations.
+- [SaaS Development](https://wingsforshare.com/services/saas-development): Product strategy, MVP builds, multi-tenant architecture, subscription billing and scaling.
+
+## Case Studies (Portfolio)
+- [Portfolio Overview](https://wingsforshare.com/portfolio): Selected websites, e-commerce stores, apps and BI systems delivered by WingsForShare.
+- [Architecture Portfolio Website](https://wingsforshare.com/product/architect-portfolio): Premium portfolio platform for architecture studios to showcase projects and attract high-value clients.
+- [Digital Business vCard](https://wingsforshare.com/product/digital-vcard-website): Digital business card website for professionals and small businesses.
+- [Garment Ecommerce Store (Vastra)](https://wingsforshare.com/product/garment-ecommerce): E-commerce store for a garment brand with catalogue, cart and checkout.
+- [Pest Management Business Intelligence System](https://wingsforshare.com/product/pest-management-app): Operations and business intelligence system for pest-control companies (job scheduling, reporting, analytics). Live demo available.
+- [GardenWalla Nursery Ecommerce](https://wingsforshare.com/product/gardenwalla-nursery): Online plant nursery store with product catalogue and ordering.
+- [Green Nest – Refurbished Electronics](https://wingsforshare.com/product/green-nest-electronics): E-commerce website for a refurbished electronics business.
+- [Enterprise Attendance & Workforce App](https://wingsforshare.com/product/attendance-app): Attendance, HR, work reports, team management, group chat and live tracking app for teams. Live demo available.
+- [Ice Cream Brand Website](https://wingsforshare.com/product/icecream-brand): Brand website for an ice cream business with menu and store information.
+- [Wooden Door Manufacturing Website](https://wingsforshare.com/product/wooden-door): Product showcase website for a wooden door manufacturer.
+
+## Blog
+- [Blog Overview](https://wingsforshare.com/blog): Practical guides on web development, SEO, social media marketing, app development and business analytics.
+- [Why a Modern Manufacturing Business Website Is Essential in 2025](https://wingsforshare.com/blog/why-modern-manufacturing-business-website-essential-2025)
+- [How Much Does a Business Website Cost in India in 2026?](https://wingsforshare.com/blog/website-development-cost-india-2026)
+- [Custom Software vs Off-the-Shelf: Which Saves You Money?](https://wingsforshare.com/blog/custom-software-vs-off-the-shelf)
+- [SEO for Small Business: The 90-Day Playbook](https://wingsforshare.com/blog/seo-for-small-business-90-day-playbook)
+- [Social Media Marketing in 2026: The Strategy That Converts](https://wingsforshare.com/blog/social-media-marketing-strategy-2026)
+- [How Much Does It Cost to Build a Mobile App in 2026?](https://wingsforshare.com/blog/mobile-app-development-cost-guide-2026)
+- [Website Development Cost in 2026: What You Should Pay](https://wingsforshare.com/blog/website-development-cost-2026)
+- [How to Choose a Digital Agency in 2026](https://wingsforshare.com/blog/how-to-choose-a-digital-agency-2026)
+- [SEO or Social Media Marketing: Where Should You Invest First?](https://wingsforshare.com/blog/seo-vs-social-media-marketing)
+
+## Company
+- [Contact](https://wingsforshare.com/contact): Email info@wingsforshare.com or chat on WhatsApp at +91 86187 64541.
+- [Start a Project](https://wingsforshare.com/start-project): Project enquiry form for web, SEO, app and analytics projects.
+
+## Optional
+- [Sitemap](https://wingsforshare.com/sitemap.xml): XML sitemap of all public pages.

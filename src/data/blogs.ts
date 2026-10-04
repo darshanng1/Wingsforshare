@@ -1,4 +1,4 @@
-﻿// Define the structure of a blog post (optional but recommended)
+// Define the structure of a blog post (optional but recommended)
 export interface Blog {
   id: string;
   slug: string;
@@ -96,7 +96,7 @@ One of the biggest fears small and mid-sized manufacturers have is that they can
 
 But here is the beautiful secret of the internet: Google does not care how big your factory is. It cares about relevance.
 
-When a buyer searches for a highly specific productâ€”say, "custom injection molded polypropylene clips"â€”Google wants to show them the most relevant result. A giant corporation might have a massive website, but if their page is generic, they won't rank for that specific term.
+When a buyer searches for a highly specific product—say, "custom injection molded polypropylene clips"—Google wants to show them the most relevant result. A giant corporation might have a massive website, but if their page is generic, they won't rank for that specific term.
 
 A small manufacturer with a focused, SEO-optimized website can easily outrank them.
 
@@ -106,7 +106,7 @@ Your smaller size is actually an advantage online. You can pivot faster, update 
 
 If you want to harness this advantage, exploring professional **website development services** can help you structure your site to target the exact niches where you win.
 
-Furthermore, smaller manufacturers often provide better, more personalized customer service. A well-crafted B2B manufacturing website can highlight this agility and dedication, making buyers prefer you over a slow-moving corporate giant. Combine this with smart **SEO services**, and you won't just compete with the big brandsâ€”you'll steal their clients.
+Furthermore, smaller manufacturers often provide better, more personalized customer service. A well-crafted B2B manufacturing website can highlight this agility and dedication, making buyers prefer you over a slow-moving corporate giant. Combine this with smart **SEO services**, and you won't just compete with the big brands—you'll steal their clients.
 
 ## Building Customer Trust and Business Credibility Online
 
@@ -226,7 +226,7 @@ You should review your manufacturing business website regularly. At a minimum, u
 
 Every day you wait to build or upgrade your website, you are losing ground. Your competitors are not waiting. They are building their online visibility, capturing your potential clients, and establishing their authority on Google.
 
-The old excusesâ€”the myth that websites are too expensive, too complicated, or unnecessary for B2B manufacturingâ€”no longer hold up. A modern manufacturing business website is the most cost-effective, hardest-working asset you can add to your business today. It builds business credibility. It generates high-quality manufacturing leads. It creates customer trust. And it grows your revenue while you sleep.
+The old excuses—the myth that websites are too expensive, too complicated, or unnecessary for B2B manufacturing—no longer hold up. A modern manufacturing business website is the most cost-effective, hardest-working asset you can add to your business today. It builds business credibility. It generates high-quality manufacturing leads. It creates customer trust. And it grows your revenue while you sleep.
 
 If you want to thrive in 2025 and beyond, you must make the shift. You must take your physical excellence and give it the digital storefront it deserves.
 
@@ -478,7 +478,7 @@ A converting account is not a random feed. It runs a mix:
 
 - **Authority content (40%):** tips, how-tos, industry insight. This is what earns follows and shares.
 - **Proof content (30%):** case studies, before/after, testimonials, behind-the-scenes. This is what earns trust.
-- **Offer content (30%):** clear calls to action â€” book a call, download the guide, get a quote.
+- **Offer content (30%):** clear calls to action — book a call, download the guide, get a quote.
 
 Most businesses post 90% authority and wonder why nobody buys. The proof and offer layers are not optional; they are the ones that convert.
 
@@ -500,7 +500,7 @@ Stop reporting likes. Report:
 - Cost per lead (efficiency)
 - Leads to revenue (the truth)
 
-If you cannot connect social activity to leads, you cannot defend the budget â€” and you should not.
+If you cannot connect social activity to leads, you cannot defend the budget — and you should not.
 
 ## How long does it take?
 
@@ -510,7 +510,7 @@ Organic traction on a focused account typically starts in 60 to 90 days. Paid ca
 
 Social media marketing works when it is a system: right platform, layered content, a real funnel, honest measurement, and paid budget applied only to proven messages. That is the whole game.
 
-At **[WingsForShare](https://wingsforshare.com/services/social-media-marketing)**, we build and run that system for brands selling across India and globally â€” strategy, content, campaigns and reporting in one place. **[Book a free consultation](https://wingsforshare.com/contact)** and we will audit your current social presence and show you exactly where the funnel is leaking.
+At **[WingsForShare](https://wingsforshare.com/services/social-media-marketing)**, we build and run that system for brands selling across India and globally — strategy, content, campaigns and reporting in one place. **[Book a free consultation](https://wingsforshare.com/contact)** and we will audit your current social presence and show you exactly where the funnel is leaking.
 `
   },
   {
@@ -566,7 +566,7 @@ Shipping is not the finish line. Budget roughly 15-20% of build cost per year fo
 
 A solid MVP in 2026 sits between Rs 2,00,000 and Rs 6,00,000, and a serious product between Rs 6,00,000 and Rs 15,00,000. Anyone quoting dramatically less is estimating optimistically; anyone quoting dramatically more had better be able to explain exactly why.
 
-At **[WingsForShare](https://wingsforshare.com/services/app-development)**, we scope apps honestly, build cross-platform to save you money, and hand over full code ownership. **[Talk to us](https://wingsforshare.com/contact)** before you sign anywhere else â€” a free consultation now is cheaper than a rebuild later.
+At **[WingsForShare](https://wingsforshare.com/services/app-development)**, we scope apps honestly, build cross-platform to save you money, and hand over full code ownership. **[Talk to us](https://wingsforshare.com/contact)** before you sign anywhere else — a free consultation now is cheaper than a rebuild later.
 `
   },
   {

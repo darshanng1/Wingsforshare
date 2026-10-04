@@ -1,4 +1,4 @@
-﻿import React, { useRef } from 'react';
+import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'motion/react';
 import { CheckCircle, ExternalLink, ArrowRight, Camera, Layout, Smartphone, Search, Mail, Sparkles, Zap, Shield, Globe } from 'lucide-react';
 import InquiryForm from '../components/InquiryForm';
@@ -89,7 +89,7 @@ export default function ArchitectPortfolio() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             {[
               { icon: <Camera />, title: 'Project Gallery', desc: 'High-resolution image galleries with lightbox support for every project.' },
-              { icon: <Layout />, title: 'Architect Profile', desc: 'Dedicated pages for your firmâ€™s history, vision, and team members.' },
+              { icon: <Layout />, title: 'Architect Profile', desc: 'Dedicated pages for your firm’s history, vision, and team members.' },
               { icon: <Smartphone />, title: 'Mobile Responsive', desc: 'Perfectly optimized for tablets and smartphones for on-site presentations.' },
               { icon: <Search />, title: 'SEO Visibility', desc: 'Built-in SEO structure to help local clients find your firm easily.' },
               { icon: <Mail />, title: 'Inquiry Form', desc: 'Direct client inquiry form to capture leads straight to your inbox.' },

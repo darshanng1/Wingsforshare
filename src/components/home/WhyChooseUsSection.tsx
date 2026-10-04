@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { motion } from 'motion/react';
 import { CheckCircle, Zap, TrendingUp, Network, Cpu, Smartphone } from 'lucide-react';
 
@@ -141,7 +141,7 @@ export const WhyChooseUsSection = () => {
           </div>
         </div>
 
-        {/* How we work â€” honest, verifiable commitments (no fabricated metrics) */}
+        {/* How we work — honest, verifiable commitments (no fabricated metrics) */}
         <div className="pt-14 border-t border-card-border/50">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
             {[

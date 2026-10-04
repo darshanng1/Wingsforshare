@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
 import { Mail, Phone, MessageSquare, MapPin, Globe, Linkedin, ArrowUpRight } from 'lucide-react';
@@ -82,11 +82,11 @@ export default function Footer() {
               </ul>
             </div>
 
-            {/* Contact â€” all contact details live on the Contact page */}
+            {/* Contact — all contact details live on the Contact page */}
             <div className="space-y-10">
               <h4 className="text-[11px] font-black uppercase tracking-[0.4em] text-accent">Contact</h4>
               <p className="text-[15px] font-medium text-text-secondary leading-relaxed max-w-xs">
-                Have a project or a question? Every enquiry goes straight to our inbox â€” all our contact details are on the contact page.
+                Have a project or a question? Every enquiry goes straight to our inbox — all our contact details are on the contact page.
               </p>
               <Link
                 to="/contact"

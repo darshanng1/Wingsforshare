@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { Send, CheckCircle, MessageSquare, Phone, User, Building2, Briefcase, Sparkles, Mail, AlertCircle, Loader2 } from 'lucide-react';
 
@@ -299,11 +299,11 @@ export function ProjectInquiryForm() {
           className="btn-primary w-full justify-center disabled:opacity-60 disabled:cursor-not-allowed"
         >
           {submitting ? <Loader2 size={20} className="animate-spin" aria-hidden="true" /> : <Send size={20} aria-hidden="true" />}
-          <span>{submitting ? 'Sendingâ€¦' : 'Submit Request'}</span>
+          <span>{submitting ? 'Sending…' : 'Submit Request'}</span>
         </button>
 
         <p className="text-[11px] text-text-secondary/50 text-center leading-relaxed">
-          Every enquiry goes straight to <a href="mailto:info@wingsforshare.com" className="text-accent hover:underline">info@wingsforshare.com</a> â€” we reply within 24 hours.
+          Every enquiry goes straight to <a href="mailto:info@wingsforshare.com" className="text-accent hover:underline">info@wingsforshare.com</a> — we reply within 24 hours.
         </p>
       </form>
     </motion.div>

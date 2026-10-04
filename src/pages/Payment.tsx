@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Smartphone, CheckCircle, Upload, MessageCircle, ArrowRight, CreditCard, ShieldCheck, Zap } from 'lucide-react';
 import SEO from '../components/SEO';
@@ -45,7 +45,7 @@ export default function Payment() {
   return (
     <div className="pt-20 md:pt-32 pb-12 md:pb-32 bg-white dark:bg-[#0a0a0a] min-h-screen transition-colors duration-300">
       <SEO 
-        title="Secure Payment â€“ WingsForShare Digital Solutions"
+        title="Secure Payment – WingsForShare Digital Solutions"
         description="Complete your payment securely for custom software development, business automation tools, or SEO services from WingsForShare."
         keywords="secure payment, digital solutions payment, WingsForShare payment"
         canonical="https://wingsforshare.com/payment"

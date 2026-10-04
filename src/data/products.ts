@@ -1,4 +1,4 @@
-﻿import { Product } from '../types';
+import { Product } from '../types';
 export type { Product };
 
 export const products: Product[] = [
@@ -130,7 +130,7 @@ export const products: Product[] = [
   {
     id: '6',
     slug: 'green-nest-electronics',
-    name: 'Green Nest â€“ Refurbished Electronics',
+    name: 'Green Nest – Refurbished Electronics',
     description:
       'A modern ecommerce platform for selling refurbished electronics with a focus on trust and conversion.',
     shortDescription:

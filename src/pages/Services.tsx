@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 import {
@@ -54,7 +54,7 @@ export default function Services() {
     <div className="pt-24 md:pt-32 pb-16 md:pb-32 bg-bg transition-colors duration-300">
       <SEO
         title="Services | Web Development, SEO, SMM, App Development & Business Analytics | WingsForShare"
-        description="WingsForShare delivers web development, SEO, social media marketing (SMM), mobile app development, business analytics and custom software â€” global digital services engineered for growth."
+        description="WingsForShare delivers web development, SEO, social media marketing (SMM), mobile app development, business analytics and custom software — global digital services engineered for growth."
         keywords="digital services, web development agency, seo agency, social media marketing agency, app development agency, business analytics services, custom software development agency, full service digital agency, digital transformation"
         canonical={url}
         schemaMarkup={itemListSchema}
@@ -71,7 +71,7 @@ export default function Services() {
           </h1>
           <p className="text-lg md:text-xl text-text-secondary leading-relaxed">
             From high-performance websites and search rankings to mobile apps, social campaigns and
-            business analytics â€” everything you need to grow online, in one place.
+            business analytics — everything you need to grow online, in one place.
           </p>
         </div>
 
