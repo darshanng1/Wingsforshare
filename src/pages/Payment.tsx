@@ -14,7 +14,7 @@ export default function Payment() {
   const [paymentMethod, setPaymentMethod] = React.useState<'upi' | 'gateway' | null>(null);
   const upiId = "darshanng@okicici";
   const upiLink = `upi://pay?pa=${upiId}&pn=Darshan%20N%20G&cu=INR`;
-  // For testing â‚¹1 payment: upi://pay?pa=darshanng@okicici&pn=Darshan%20N%20G&am=1&cu=INR
+  // For testing ₹1 payment: upi://pay?pa=darshanng@okicici&pn=Darshan%20N%20G&am=1&cu=INR
 
   const handleRazorpay = () => {
     const options = {

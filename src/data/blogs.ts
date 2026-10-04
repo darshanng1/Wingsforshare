@@ -243,7 +243,7 @@ Visit **[www.wingsforshare.com](https://www.wingsforshare.com)** today. Let us h
     id: 'website-development-cost-india-2026',
     slug: 'website-development-cost-india-2026',
     title: 'How Much Does a Business Website Cost in India in 2026? A Transparent Pricing Guide',
-    excerpt: 'From â‚¹15,000 brochure sites to â‚¹10 lakh custom platforms, here is exactly what drives website pricing in India, what you should never pay for, and how to budget without getting overcharged.',
+    excerpt: 'From ₹15,000 brochure sites to ₹10 lakh custom platforms, here is exactly what drives website pricing in India, what you should never pay for, and how to budget without getting overcharged.',
     category: 'Website Planning',
     author: 'WingsForShare',
     date: '2026-08-18',
@@ -258,23 +258,23 @@ This guide fixes that. By the end, you will know what each price band actually b
 
 ## The Four Real Price Bands (India, 2026)
 
-### 1. Template Landing Page: â‚¹8,000 to â‚¹25,000
+### 1. Template Landing Page: ₹8,000 to ₹25,000
 
 A single-page site built on a template or no-code builder. Fine for a freelancer validating an idea or a local shop that just needs a Google presence. You get a contact form, a WhatsApp button, and basic SEO.
 
 What it will not do: rank for competitive keywords, handle complex products, or scale with your business. If your revenue depends on the website, stop reading this band and move up.
 
-### 2. Professional Small-Business Website: â‚¹25,000 to â‚¹1,00,000
+### 2. Professional Small-Business Website: ₹25,000 to ₹1,00,000
 
 This is the band most established businesses actually need: 5 to 15 custom-designed pages, a proper SEO foundation, schema markup, fast load times, a blog you can actually update, and integrations like payment links, CRM capture, and analytics.
 
 The agencies worth hiring in this band will talk about your sales process before they talk about colors. A website at this price should generate inquiries, not just display them.
 
-### 3. Ecommerce or Web Application: â‚¹1,00,000 to â‚¹5,00,000
+### 3. Ecommerce or Web Application: ₹1,00,000 to ₹5,00,000
 
-Real product catalogs, payment gateways, order flows, customer accounts, admin dashboards, inventory sync. The price is driven by integrations and edge cases, not page count. Ask any ecommerce owner burned by a cheap build: the difference between a â‚¹60,000 store and a â‚¹2,00,000 store shows up the first festive season, when one survives traffic and the other crashes.
+Real product catalogs, payment gateways, order flows, customer accounts, admin dashboards, inventory sync. The price is driven by integrations and edge cases, not page count. Ask any ecommerce owner burned by a cheap build: the difference between a ₹60,000 store and a ₹2,00,000 store shows up the first festive season, when one survives traffic and the other crashes.
 
-### 4. Custom Platform / SaaS / BI Systems: â‚¹5,00,000+
+### 4. Custom Platform / SaaS / BI Systems: ₹5,00,000+
 
 Multi-role systems, business intelligence dashboards, automation engines, anything with users, permissions, and real-time data. At this level you are not buying a website; you are hiring a software team. Pricing is scoped in phases, and a competent partner will show you a roadmap before an invoice.
 
@@ -290,7 +290,7 @@ Forget page counts. Four things move the number:
 ## Costs You Should Never Pay
 
 - **"Search engine submission" fees.** Google indexes sites for free. This is a 2009 scam that still works on first-time owners.
-- **Mandatory multi-year hosting lock-ins** sold as "website insurance." Hosting costs â‚¹3,000 to â‚¹15,000 a year for most business sites. Anything beyond that needs justification in writing.
+- **Mandatory multi-year hosting lock-ins** sold as "website insurance." Hosting costs ₹3,000 to ₹15,000 a year for most business sites. Anything beyond that needs justification in writing.
 - **Per-page pricing beyond a sane point.** Paying per page made sense in 2010. Today the work is in features and content, not page count.
 
 ## The Maintenance Truth Nobody Mentions
@@ -306,7 +306,7 @@ A website is not a one-time purchase. Budget 10 to 20 percent of the build cost 
 
 ## The Bottom Line
 
-A serious website for a serious business in India sits between â‚¹50,000 and â‚¹2,00,000 in 2026, with maintenance you can predict. Below that band, you are buying a digital visiting card. Above it, you are buying software, and the rules of software budgeting apply.
+A serious website for a serious business in India sits between ₹50,000 and ₹2,00,000 in 2026, with maintenance you can predict. Below that band, you are buying a digital visiting card. Above it, you are buying software, and the rules of software budgeting apply.
 
 At **[WingsForShare](https://wingsforshare.com)**, we quote fixed prices after a free consultation, ship with technical SEO included, and hand you full ownership of every account and asset. If you are planning a website this year, **[talk to us](https://wingsforshare.com/contact)** before you sign anything. The consultation costs nothing, and it may save you a very expensive mistake.
 `
@@ -328,9 +328,9 @@ Both instincts are right. Off-the-shelf tools are cheaper to start. Custom softw
 
 ## The Hidden Cost Structure of Off-the-Shelf Tools
 
-SaaS pricing is designed to feel small. â‚¹2,000 per user per month sounds like coffee money. Now do the math that most owners never do:
+SaaS pricing is designed to feel small. ₹2,000 per user per month sounds like coffee money. Now do the math that most owners never do:
 
-- 15 employees using 4 to 6 different tools = â‚¹1.5 to â‚¹3 lakh per year, forever, and rising. Most SaaS companies raise prices 5 to 10 percent annually.
+- 15 employees using 4 to 6 different tools = ₹1.5 to ₹3 lakh per year, forever, and rising. Most SaaS companies raise prices 5 to 10 percent annually.
 - Every tool holds YOUR data in THEIR format. Migrating out later is expensive, which is exactly how they keep you.
 - When tools do not talk to each other, someone on your payroll becomes the human API. That manual copy-paste work is a salary you pay every month and never see on any invoice.
 
@@ -352,11 +352,11 @@ Build custom when:
 - **Your process IS your advantage.** The pest-control company that dispatches technicians 40 percent faster than competitors does not get that from a generic CRM. That speed is their moat, and moats should be owned, not rented.
 - **You are paying for workarounds.** If your team maintains spreadsheets, WhatsApp groups, and manual reports to compensate for tool gaps, you are already paying for custom software, just getting it in the worst possible form.
 - **Data reporting matters.** Off-the-shelf tools report what they decide to report. Custom BI systems report what YOUR decisions need.
-- **Scale breaks the per-user math.** 50 users on 5 tools can easily cross â‚¹8 lakh a year. A custom platform replacing three of those tools pays for itself within 2 to 3 years, then it is nearly pure savings for the rest of its life.
+- **Scale breaks the per-user math.** 50 users on 5 tools can easily cross ₹8 lakh a year. A custom platform replacing three of those tools pays for itself within 2 to 3 years, then it is nearly pure savings for the rest of its life.
 
 ## The Real Cost Math
 
-A realistic example from our client work: a service business with 25 field staff was using separate tools for scheduling, customer records, and reporting, about â‚¹2.8 lakh per year combined, plus roughly 90 minutes of daily manual data juggling across the team.
+A realistic example from our client work: a service business with 25 field staff was using separate tools for scheduling, customer records, and reporting, about ₹2.8 lakh per year combined, plus roughly 90 minutes of daily manual data juggling across the team.
 
 We built them a custom BI and operations platform. The build cost roughly equivalent to 3 years of those subscriptions. It now costs a fraction of that in annual maintenance, the manual work is gone, and the reporting they always wanted but no tool offered is standard.
 
@@ -388,7 +388,7 @@ Off-the-shelf software is rent. Custom software is ownership. Rent the commodity
     id: 'seo-for-small-business-90-day-playbook',
     slug: 'seo-for-small-business-90-day-playbook',
     title: 'SEO for Small Business: The 90-Day Playbook to Rank on Google',
-    excerpt: 'No agency jargon, no â‚¹50,000-a-month mystery. A practical 90-day SEO plan small businesses can actually execute, week by week, with the priorities that move rankings fastest.',
+    excerpt: 'No agency jargon, no ₹50,000-a-month mystery. A practical 90-day SEO plan small businesses can actually execute, week by week, with the priorities that move rankings fastest.',
     category: 'SEO & Growth',
     author: 'WingsForShare',
     date: '2026-06-15',

@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence, MotionValue } from 'motion/react';
 import { 
   Smartphone, Search, BarChart3, Globe, Activity, Cpu, Zap, 
@@ -242,7 +242,7 @@ const BIPreview = () => (
     </div>
     <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 md:gap-3">
       {[
-        { l: 'Revenue', v: 'â‚¹12.4L', g: '+18%', c: 'text-orange-500' },
+        { l: 'Revenue', v: '₹12.4L', g: '+18%', c: 'text-orange-500' },
         { l: 'Conv.', v: '4.2%', g: '+0.8%', c: 'text-emerald-500' },
         { l: 'Users', v: '8.4k', g: '+12%', c: 'text-blue-500' },
         { l: 'Session', v: '4m 12s', g: '+24%', c: 'text-purple-500' }
@@ -281,9 +281,9 @@ const BIPreview = () => (
         <p className="text-[8px] font-black text-white/30 uppercase tracking-widest mb-6">Live Feed</p>
         <div className="space-y-4">
           {[
-            { u: 'R. Sharma', a: 'Premium', v: 'â‚¹14,999' },
-            { u: 'A. Gupta', a: 'Enterprise', v: 'â‚¹49,999' },
-            { u: 'S. Verma', a: 'Basic', v: 'â‚¹4,999' }
+            { u: 'R. Sharma', a: 'Premium', v: '₹14,999' },
+            { u: 'A. Gupta', a: 'Enterprise', v: '₹49,999' },
+            { u: 'S. Verma', a: 'Basic', v: '₹4,999' }
           ].map((item, i) => (
             <div key={i} className="flex items-center justify-between">
               <div className="flex items-center gap-2">
@@ -327,13 +327,13 @@ const MobilePreview = () => (
           </div>
           <div className="space-y-0.5 overflow-hidden">
             <p className="text-[8px] text-white/60 font-bold uppercase">Balance</p>
-            <p className="text-sm md:text-base font-black text-white truncate">â‚¹2,84,500</p>
+            <p className="text-sm md:text-base font-black text-white truncate">₹2,84,500</p>
           </div>
         </div>
         <div className="space-y-3">
           {[
-            { label: 'Payment Received', amount: '+â‚¹12,400', color: 'text-emerald-400' },
-            { label: 'Cloud Services', amount: '-â‚¹4,200', color: 'text-white/60' }
+            { label: 'Payment Received', amount: '+₹12,400', color: 'text-emerald-400' },
+            { label: 'Cloud Services', amount: '-₹4,200', color: 'text-white/60' }
           ].map((item, i) => (
             <div key={i} className="flex items-center gap-3 p-3 bg-white/5 rounded-xl border border-white/5">
               <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center">
