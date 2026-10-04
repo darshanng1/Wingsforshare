@@ -1,6 +1,6 @@
-﻿// Build Sync Marker: 2026-05-04
-import React, { useRef, useState, useEffect } from 'react';
-import { motion, useScroll, useTransform, useSpring, useMotionValue, AnimatePresence } from 'framer-motion';
+// Build Sync Marker: 2026-05-04
+import React, { useRef, useState, useEffect, lazy, Suspense } from 'react';
+import { motion, useScroll, useTransform, useSpring, useMotionValue, AnimatePresence } from 'motion/react';
 import {
   ArrowRight, Sparkles, Zap, Globe, Star, TrendingUp,
   BarChart3, Rocket, Building2, ShoppingCart, HardHat, CheckCircle2
@@ -23,7 +23,7 @@ import { WhyChooseUsSection } from '@/components/home/WhyChooseUsSection';
 import { ProjectPlanningSection } from '@/components/home/ProjectPlanningSection';
 import { ContactSection } from '@/components/home/ContactSection';
 import { TestimonialsSection } from '@/components/home/TestimonialsSection';
-import { LatestBlogs } from '@/components/home/LatestBlogs';
+const LatestBlogs = lazy(() => import('@/components/home/LatestBlogs').then((m) => ({ default: m.LatestBlogs })));
 import { FaqSection } from '@/components/home/FaqSection';
 
 export default function Home() {
@@ -432,7 +432,7 @@ export default function Home() {
       <TestimonialsSection />
 
       {/* Blog Section */}
-      <LatestBlogs />
+      <Suspense fallback={<div className="min-h-[240px]" />}><LatestBlogs /></Suspense>
 
       {/* Consultation & Meeting Section */}
       <ProjectPlanningSection />

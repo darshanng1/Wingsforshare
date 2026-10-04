@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import SEO from '../components/SEO';
 import { 
@@ -100,8 +100,7 @@ export default function Contact() {
       <SEO
         title="Contact WingsForShare | Free Consultation for Web, App & SEO Projects"
         description="Talk to WingsForShare. Talk to us for a free consultation on web development, SEO, social media marketing, mobile apps and business analytics. Fast quotes, clear pricing, no jargon."
-        keywords="contact digital agency, hire web development agency, seo consultation, app development quote, free seo audit, digital agency enquiry"
-        keywords="contact web development agency, hire website developer India, free website consultation, WingsForShare contact"
+        keywords="contact digital agency, hire web development agency, seo consultation, app development quote, free seo audit, digital agency enquiry, contact web development agency, hire website developer India, free website consultation, WingsForShare contact"
         canonical="https://wingsforshare.com/contact"
         schemaType="ContactPage"
       />
