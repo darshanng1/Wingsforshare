@@ -1,4 +1,4 @@
-// Post-build prerender: writes a per-route index.html with that page's own
+﻿// Post-build prerender: writes a per-route index.html with that page's own
 // <title>, meta description/keywords, canonical, OG/Twitter tags and <h1>,
 // and generates a complete sitemap.xml covering every public page.
 // Non-JS crawlers (Bing, social link previews) then see correct per-page meta.
@@ -71,7 +71,7 @@ for (const b of POSTS) {
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
 const shell = fs.readFileSync(shellPath, 'utf8');
-const setMeta = (html, re, value) => html.replace(re, (_m, a, b) => a + esc(value) + b);
+const setMeta = (html, re, value) => html.replace(re, (_m, a, _old, b) => a + esc(value) + b); // fix: 3 capture groups - _old is the previous value, b is the closing quote/slash
 
 let count = 0;
 for (const r of ROUTES) {
@@ -90,6 +90,43 @@ for (const r of ROUTES) {
   // First <h1> in the shell is the noscript heading - make it page-specific.
   html = html.replace(/<h1>[\s\S]*?<\/h1>/, `<h1>${esc(r.h1)} - WingsForShare</h1>`);
 
+  // Per-route structured data injected right before </head>.
+  const ldBlocks = [];
+  if (r.p.startsWith('/services')) {
+    const crumbs = [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: SITE + '/' },
+      { '@type': 'ListItem', position: 2, name: 'Services', item: SITE + '/services' }
+    ];
+    if (r.p !== '/services') {
+      crumbs.push({ '@type': 'ListItem', position: 3, name: r.h1, item: SITE + r.p });
+      ldBlocks.push({
+        '@context': 'https://schema.org',
+        '@type': 'Service',
+        name: r.h1,
+        serviceType: r.h1,
+        url: SITE + r.p,
+        description: r.d,
+        areaServed: 'Worldwide',
+        provider: { '@type': 'Organization', name: 'WingsForShare', url: SITE }
+      });
+    }
+    ldBlocks.push({ '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: crumbs });
+  } else if (r.p.startsWith('/blog/')) {
+    ldBlocks.push({
+      '@context': 'https://schema.org',
+      '@type': 'Article',
+      headline: r.t.replace(' | WingsForShare Blog', ''),
+      description: r.d,
+      url: SITE + r.p,
+      mainEntityOfPage: SITE + r.p,
+      author: { '@type': 'Organization', name: 'WingsForShare', url: SITE },
+      publisher: { '@type': 'Organization', name: 'WingsForShare', url: SITE, logo: { '@type': 'ImageObject', url: SITE + '/logo.png' } }
+    });
+  }
+  if (ldBlocks.length) {
+    const ld = ldBlocks.map((o) => '<script type="application/ld+json">' + JSON.stringify(o) + '</script>').join('\n    ');
+    html = html.replace('</head>', ld + '\n  </head>');
+  }
   const dir = path.join(dist, r.p.replace(/^\/+/, ''));
   fs.mkdirSync(dir, { recursive: true });
   fs.writeFileSync(path.join(dir, 'index.html'), html);
