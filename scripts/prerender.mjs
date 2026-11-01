@@ -4,6 +4,7 @@
 // Non-JS crawlers (Bing, social link previews) then see correct per-page meta.
 import fs from 'node:fs';
 import path from 'node:path';
+import { loadContent, renderStaticPage } from './static-content.mjs';
 
 const dist = path.resolve(process.env.PRERENDER_DIR || 'dist');
 const shellPath = path.join(dist, 'index.html');
@@ -70,28 +71,33 @@ for (const b of POSTS) {
 
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
-const CORE_LINKS = [
-  ['/services', 'All services'],
-  ['/services/web-development', 'Web development'],
-  ['/services/seo', 'SEO'],
-  ['/services/app-development', 'App development'],
-  ['/services/business-analytics', 'Business analytics'],
-  ['/portfolio', 'Portfolio'],
-  ['/blog', 'Blog'],
-  ['/contact', 'Contact'],
-];
-
-// Static first-wave HTML for crawlers (also a usable no-JS fallback).
-// React's createRoot() replaces this as soon as the app boots.
-const fallbackBody = (r) => {
-  const links = CORE_LINKS.map(
-    ([href, label]) =>
-      `<a href="${href}" style="display:inline-block;padding:10px 16px;border:1px solid #312e81;border-radius:999px;color:#c7d2fe;text-decoration:none;font-size:14px">${label}</a>`
-  ).join('');
-  return `<div id="root"><div style="min-height:100vh;background:#020203;color:#fafafa;font-family:Inter,system-ui,-apple-system,'Segoe UI',sans-serif;display:flex;align-items:center;justify-content:center;padding:48px 24px;box-sizing:border-box"><main style="width:100%;max-width:860px"><p style="margin:0 0 18px;font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#818cf8">WingsForShare</p><h1 style="margin:0 0 20px;font-size:clamp(32px,6vw,56px);line-height:1.05;letter-spacing:-.02em">${esc(r.h1)}</h1><p style="margin:0 0 28px;max-width:680px;font-size:18px;line-height:1.65;color:#a1a1aa">${esc(r.d)}</p><nav style="display:flex;flex-wrap:wrap;gap:10px">${links}</nav><p style="margin:32px 0 0;font-size:13px;color:#52525b">Loading the full interactive site. If it does not load, email <a href="mailto:info@wingsforshare.com" style="color:#a5b4fc">info@wingsforshare.com</a>.</p></main></div></div>`;
-};
-
 const shell = fs.readFileSync(shellPath, 'utf8');
+
+const content = await loadContent();
+const { services, products, blogs } = content;
+
+function routeInfo(p) {
+  if (p === '/') return { kind: 'home' };
+  if (p === '/services') return { kind: 'services-index' };
+  if (p.startsWith('/services/')) {
+    const service = services.find((s) => '/services/' + s.slug === p);
+    return service ? { kind: 'service', service } : { kind: 'generic' };
+  }
+  if (p === '/portfolio') return { kind: 'portfolio' };
+  if (p.startsWith('/product/')) {
+    const product = products.find((x) => '/product/' + x.slug === p);
+    return product ? { kind: 'product', product } : { kind: 'generic' };
+  }
+  if (p === '/blog') return { kind: 'blog-index' };
+  if (p.startsWith('/blog/')) {
+    const blog = blogs.find((x) => '/blog/' + x.slug === p);
+    return blog ? { kind: 'blog-post', blog } : { kind: 'generic' };
+  }
+  if (p === '/contact') return { kind: 'contact' };
+  if (p === '/start-project') return { kind: 'start-project' };
+  return { kind: 'generic' };
+}
+
 const setMeta = (html, re, value) => html.replace(re, (_m, a, _old, b) => a + esc(value) + b); // fix: 3 capture groups - _old is the previous value, b is the closing quote/slash
 
 let count = 0;
@@ -110,7 +116,7 @@ for (const r of ROUTES) {
   html = setMeta(html, /(<meta name="twitter:url" content=")([\s\S]*?)(" \/>)/, SITE + r.p);
   // Replace the empty SPA shell with crawlable first-wave content.
   html = html.replace(/<noscript>[\s\S]*?<\/noscript>/, '');
-  html = html.replace('<div id="root"></div>', fallbackBody(r));
+  html = html.replace('<div id="root"></div>', renderStaticPage({ ...routeInfo(r.p), route: r, ...content }));
 
   // Per-route structured data injected right before </head>.
   const ldBlocks = [];
@@ -131,6 +137,19 @@ for (const r of ROUTES) {
         areaServed: 'Worldwide',
         provider: { '@type': 'Organization', name: 'WingsForShare', url: SITE }
       });
+
+      const svc = services.find((s) => '/services/' + s.slug === r.p);
+      if (svc) {
+        ldBlocks.push({
+          '@context': 'https://schema.org',
+          '@type': 'FAQPage',
+          mainEntity: svc.faqs.map((f) => ({
+            '@type': 'Question',
+            name: f.q,
+            acceptedAnswer: { '@type': 'Answer', text: f.a }
+          }))
+        });
+      }
     }
     ldBlocks.push({ '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: crumbs });
   } else if (r.p.startsWith('/blog/')) {
@@ -144,6 +163,11 @@ for (const r of ROUTES) {
       author: { '@type': 'Organization', name: 'WingsForShare', url: SITE },
       publisher: { '@type': 'Organization', name: 'WingsForShare', url: SITE, logo: { '@type': 'ImageObject', url: SITE + '/logo.png' } }
     });
+    const post = blogs.find((b) => '/blog/' + b.slug === r.p);
+    if (post?.date) {
+      ldBlocks[ldBlocks.length - 1].datePublished = post.date;
+      ldBlocks[ldBlocks.length - 1].dateModified = post.date;
+    }
   }
   if (ldBlocks.length) {
     const ld = ldBlocks.map((o) => '<script type="application/ld+json">' + JSON.stringify(o) + '</script>').join('\n    ');
@@ -163,7 +187,7 @@ const HOME = {
 };
 let homeHtml = fs.readFileSync(shellPath, 'utf8');
 homeHtml = homeHtml.replace(/<noscript>[\s\S]*?<\/noscript>/, '');
-homeHtml = homeHtml.replace('<div id="root"></div>', fallbackBody(HOME));
+homeHtml = homeHtml.replace('<div id="root"></div>', renderStaticPage({ kind: 'home', route: HOME, ...content }));
 fs.writeFileSync(shellPath, homeHtml);
 
 /* ---------- complete sitemap ---------- */
