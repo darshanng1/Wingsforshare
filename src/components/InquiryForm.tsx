@@ -14,6 +14,7 @@ interface FormErrors {
 interface TouchedFields {
   fullName?: boolean;
   phone?: boolean;
+  message?: boolean;
 }
 
 export default function InquiryForm({ productName }: InquiryFormProps) {

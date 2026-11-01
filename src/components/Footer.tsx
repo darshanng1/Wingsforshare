@@ -103,7 +103,7 @@ export default function Footer() {
         <div className="pt-16 border-t border-card-border flex flex-col md:flex-row items-center justify-between gap-10">
           <div className="flex flex-col gap-2">
             <p className="text-[12px] font-medium text-text-secondary/60">
-              Â© {currentYear} WingsForShare Digital Solutions. All parameters secured.
+              © {currentYear} WingsForShare Digital Solutions. All parameters secured.
             </p>
             <p className="text-[10px] font-black uppercase tracking-[0.5em] text-emerald-500/80">System Status: Optimal</p>
           </div>

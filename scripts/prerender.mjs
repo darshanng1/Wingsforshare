@@ -70,6 +70,27 @@ for (const b of POSTS) {
 
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
+const CORE_LINKS = [
+  ['/services', 'All services'],
+  ['/services/web-development', 'Web development'],
+  ['/services/seo', 'SEO'],
+  ['/services/app-development', 'App development'],
+  ['/services/business-analytics', 'Business analytics'],
+  ['/portfolio', 'Portfolio'],
+  ['/blog', 'Blog'],
+  ['/contact', 'Contact'],
+];
+
+// Static first-wave HTML for crawlers (also a usable no-JS fallback).
+// React's createRoot() replaces this as soon as the app boots.
+const fallbackBody = (r) => {
+  const links = CORE_LINKS.map(
+    ([href, label]) =>
+      `<a href="${href}" style="display:inline-block;padding:10px 16px;border:1px solid #312e81;border-radius:999px;color:#c7d2fe;text-decoration:none;font-size:14px">${label}</a>`
+  ).join('');
+  return `<div id="root"><div style="min-height:100vh;background:#020203;color:#fafafa;font-family:Inter,system-ui,-apple-system,'Segoe UI',sans-serif;display:flex;align-items:center;justify-content:center;padding:48px 24px;box-sizing:border-box"><main style="width:100%;max-width:860px"><p style="margin:0 0 18px;font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#818cf8">WingsForShare</p><h1 style="margin:0 0 20px;font-size:clamp(32px,6vw,56px);line-height:1.05;letter-spacing:-.02em">${esc(r.h1)}</h1><p style="margin:0 0 28px;max-width:680px;font-size:18px;line-height:1.65;color:#a1a1aa">${esc(r.d)}</p><nav style="display:flex;flex-wrap:wrap;gap:10px">${links}</nav><p style="margin:32px 0 0;font-size:13px;color:#52525b">Loading the full interactive site. If it does not load, email <a href="mailto:info@wingsforshare.com" style="color:#a5b4fc">info@wingsforshare.com</a>.</p></main></div></div>`;
+};
+
 const shell = fs.readFileSync(shellPath, 'utf8');
 const setMeta = (html, re, value) => html.replace(re, (_m, a, _old, b) => a + esc(value) + b); // fix: 3 capture groups - _old is the previous value, b is the closing quote/slash
 
@@ -87,8 +108,9 @@ for (const r of ROUTES) {
   html = setMeta(html, /(<meta name="twitter:title" content=")([\s\S]*?)(" \/>)/, r.t);
   html = setMeta(html, /(<meta name="twitter:description" content=")([\s\S]*?)(" \/>)/, r.d);
   html = setMeta(html, /(<meta name="twitter:url" content=")([\s\S]*?)(" \/>)/, SITE + r.p);
-  // First <h1> in the shell is the noscript heading - make it page-specific.
-  html = html.replace(/<h1>[\s\S]*?<\/h1>/, `<h1>${esc(r.h1)} - WingsForShare</h1>`);
+  // Replace the empty SPA shell with crawlable first-wave content.
+  html = html.replace(/<noscript>[\s\S]*?<\/noscript>/, '');
+  html = html.replace('<div id="root"></div>', fallbackBody(r));
 
   // Per-route structured data injected right before </head>.
   const ldBlocks = [];
@@ -132,6 +154,17 @@ for (const r of ROUTES) {
   fs.writeFileSync(path.join(dir, 'index.html'), html);
   count++;
 }
+
+/* ---------- homepage: same static first-wave treatment ---------- */
+const HOME = {
+  p: '/',
+  h1: 'Web Development, SEO, Apps & Business Analytics',
+  d: 'WingsForShare is a global web development, SEO, social media marketing (SMM), app development and business analytics agency. We build websites, apps and data systems that drive revenue.'
+};
+let homeHtml = fs.readFileSync(shellPath, 'utf8');
+homeHtml = homeHtml.replace(/<noscript>[\s\S]*?<\/noscript>/, '');
+homeHtml = homeHtml.replace('<div id="root"></div>', fallbackBody(HOME));
+fs.writeFileSync(shellPath, homeHtml);
 
 /* ---------- complete sitemap ---------- */
 const priorityOf = (p) => {

@@ -6,7 +6,8 @@ export type SchemaType =
   | 'LocalBusiness' 
   | 'WebSite' 
   | 'WebPage' 
-  | 'Article' 
+  | 'Article'
+  | 'Blog'
   | 'Service' 
   | 'Product' 
   | 'FAQPage' 
@@ -93,14 +94,7 @@ const SEO: React.FC<SEOProps> = ({
     "@type": "WebSite",
     "name": "WingsForShare",
     "url": "https://wingsforshare.com",
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": {
-        "@type": "EntryPoint",
-        "urlTemplate": "https://wingsforshare.com/search?q={search_term_string}"
-      },
-      "query-input": "required name=search_term_string"
-    }
+    "inLanguage": "en"
   };
 
   // LocalBusiness Schema

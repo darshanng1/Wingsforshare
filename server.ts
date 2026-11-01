@@ -48,6 +48,15 @@ async function startServer() {
 
   app.use(express.json());
 
+  // Canonical host: 301 www.* -> apex so Google only ever sees one hostname.
+  app.use((req, res, next) => {
+    const host = String(req.headers.host || "").toLowerCase();
+    if (host.startsWith("www.")) {
+      return res.redirect(301, `https://wingsforshare.com${req.originalUrl}`);
+    }
+    next();
+  });
+
   // Serve static files from public or dist/logos
   const publicPath = path.resolve(process.cwd(), "public");
   const distPath = path.resolve(process.cwd(), "dist");
