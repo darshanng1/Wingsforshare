@@ -9,8 +9,6 @@
     toggles.forEach(function (button) {
       button.setAttribute('aria-pressed', light ? 'true' : 'false');
       button.setAttribute('aria-label', light ? 'Switch to dark mode' : 'Switch to light mode');
-      var label = button.querySelector('.toggle-label');
-      if (label) label.textContent = light ? 'Dark' : 'Light';
     });
     var meta = document.querySelector('meta[name="theme-color"]');
     if (meta) meta.setAttribute('content', light ? '#F3F1EA' : '#080A08');
@@ -62,4 +60,7 @@
   } else {
     revealItems.forEach(function (item) { item.classList.add('is-in'); });
   }
+  setTimeout(function () {
+    revealItems.forEach(function (item) { item.classList.add('is-in'); });
+  }, 2500);
 })();
