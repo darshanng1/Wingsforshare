@@ -67,6 +67,12 @@ async function startServer() {
     express.static(path.resolve(process.cwd(), "preview-site"), { index: "index.html" })
   );
 
+  // New static SEO homepage (React app still handles inner/app routes).
+  app.get("/", (_req, res) => {
+    res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+    res.sendFile(path.resolve(process.cwd(), "public", "home.html"));
+  });
+
   // Serve static files from public or dist/logos
   const publicPath = path.resolve(process.cwd(), "public");
   const distPath = path.resolve(process.cwd(), "dist");
