@@ -517,3 +517,112 @@ export function renderStaticPage({ kind, route, service, product, blog, services
       return page(`<main class="wf-main"><h1>${esc(route?.h1 || 'WingsForShare')}</h1><p>${esc(route?.d || '')}</p><p><a href="/">Return to the homepage</a></p></main>`);
   }
 }
+
+/* ------------------------------------------------------------------ */
+/* Legal pages (standalone, no React shell)                            */
+/* ------------------------------------------------------------------ */
+const PRIVACY_BODY = `
+<p>WingsForShare Digital Solutions ("WingsForShare", "we", "us") respects your privacy. This policy explains what information we collect when you use wingsforshare.com, how we use it, and the choices you have.</p>
+<h2>Who we are</h2>
+<p>WingsForShare is a digital agency providing web development, SEO, social media marketing, app development, business analytics and custom software services. You can contact us at <a href="mailto:info@wingsforshare.com">info@wingsforshare.com</a>.</p>
+<h2>Information we collect</h2>
+<ul>
+<li><strong>Information you give us:</strong> your name, email address, phone number, company, service interest and project details when you submit a contact or project form.</li>
+<li><strong>Information collected automatically:</strong> IP address, browser type, device information, pages visited, referring URL and approximate location, collected through server logs and analytics.</li>
+<li><strong>Cookies and similar technologies:</strong> we use cookies for site functionality and, where enabled, Google Analytics 4 to understand how visitors use the site.</li>
+</ul>
+<h2>How we use information</h2>
+<ul>
+<li>To respond to enquiries, prepare proposals and deliver requested services.</li>
+<li>To operate, maintain and improve the website and its performance.</li>
+<li>To measure marketing effectiveness and understand which pages are useful.</li>
+<li>To comply with legal obligations and prevent misuse of the site.</li>
+</ul>
+<h2>Legal basis</h2>
+<p>Where applicable, we process personal information on the basis of your consent, our legitimate interest in operating and improving our business, the performance of a contract, or compliance with legal obligations.</p>
+<h2>Cookies and analytics</h2>
+<p>The site uses Google Analytics 4 (measurement ID G-3CVFN4Z15E) to collect aggregated usage information. You can block or delete cookies in your browser settings. Blocking cookies may affect some site features. We do not use cookies to sell personal information.</p>
+<h2>Sharing information</h2>
+<p>We do not sell personal information. We may share information with service providers that help us run the site and our business, such as hosting, email, analytics and project-management providers. These providers are expected to protect the information and use it only for the services they provide to us. We may also disclose information where required by law.</p>
+<h2>Data retention</h2>
+<p>We keep enquiry and project information for as long as needed to respond, deliver services, maintain business records and meet legal requirements. Analytics data is retained according to the settings of our analytics provider.</p>
+<h2>Your rights</h2>
+<p>Depending on where you live, you may have the right to access, correct, delete, restrict or object to the processing of your personal information, and to withdraw consent. To make a request, email <a href="mailto:info@wingsforshare.com">info@wingsforshare.com</a>. We may need to verify your identity before acting.</p>
+<h2>International transfers</h2>
+<p>We work with clients and service providers in different countries. Information may be processed outside your country of residence. Where required, we use appropriate safeguards for those transfers.</p>
+<h2>Security</h2>
+<p>We use reasonable technical and organisational measures to protect information. No method of transmission or storage is completely secure, so we cannot guarantee absolute security.</p>
+<h2>Children</h2>
+<p>The website is intended for businesses and professionals. We do not knowingly collect personal information from children.</p>
+<h2>Changes to this policy</h2>
+<p>We may update this policy from time to time. The "last updated" date at the top of this page shows when it was last revised.</p>
+<h2>Contact</h2>
+<p>Questions about this policy? Email <a href="mailto:info@wingsforshare.com">info@wingsforshare.com</a> or message us on <a href="https://wa.me/918618764541">WhatsApp</a>.</p>
+`;
+
+const TERMS_BODY = `
+<p>These terms govern your use of wingsforshare.com. By using the site, you agree to these terms. If you do not agree, please do not use the site.</p>
+<h2>Use of the website</h2>
+<p>You may use the website for lawful business and informational purposes. You must not attempt to disrupt the site, gain unauthorised access, scrape it at scale, upload malicious code, or use it to send spam or unlawful content.</p>
+<h2>Intellectual property</h2>
+<p>The site content, design, code, text, graphics and branding are owned by WingsForShare or its licensors and are protected by applicable intellectual property laws. You may not copy, reproduce, modify or redistribute the content without written permission, except for normal browsing and sharing links.</p>
+<h2>Enquiries and proposals</h2>
+<p>Submitting a contact or project form does not create a client relationship. Any proposal, scope, timeline or price we provide is an invitation to discuss and is not binding until a written agreement is signed by both parties.</p>
+<h2>Project engagements</h2>
+<p>Paid project work is governed by a separate written agreement or statement of work. That agreement will define the deliverables, timeline, payment terms, intellectual property ownership, confidentiality and support arrangements for the project.</p>
+<h2>Payments</h2>
+<p>Unless a separate agreement says otherwise, fees, milestones, taxes and refund terms are set out in the applicable proposal or statement of work. Work may pause if invoices are overdue.</p>
+<h2>Third-party links and services</h2>
+<p>The site may link to third-party websites or use third-party services. We are not responsible for their content, availability, security or privacy practices. Your use of those services is governed by their own terms.</p>
+<h2>No warranties</h2>
+<p>The website is provided on an "as is" and "as available" basis. We aim to keep information accurate and the site available, but we do not warrant that the site will be error-free, uninterrupted or complete. Case studies and examples are illustrative, not a guarantee of results.</p>
+<h2>Limitation of liability</h2>
+<p>To the maximum extent permitted by law, WingsForShare is not liable for indirect, incidental, special or consequential losses, or for loss of profits, revenue, data or business opportunity, arising from your use of the website. Nothing in these terms limits liability that cannot be limited by law.</p>
+<h2>Governing law</h2>
+<p>These terms are governed by the laws of India. Any dispute relating to the website will be subject to the jurisdiction of the courts of India, unless a separate written agreement says otherwise.</p>
+<h2>Changes to these terms</h2>
+<p>We may update these terms from time to time. The "last updated" date at the top of this page shows when they were last revised. Continued use of the site after changes means you accept the updated terms.</p>
+<h2>Contact</h2>
+<p>Questions about these terms? Email <a href="mailto:info@wingsforshare.com">info@wingsforshare.com</a> or message us on <a href="https://wa.me/918618764541">WhatsApp</a>.</p>
+`;
+
+export function legalDocument(kind) {
+  const isPrivacy = kind === 'privacy';
+  const title = isPrivacy ? 'Privacy Policy' : 'Terms of Service';
+  const description = isPrivacy
+    ? 'How WingsForShare collects, uses, stores and protects personal information when you use wingsforshare.com.'
+    : 'The terms that apply when you use the WingsForShare website, submit an enquiry or engage us for a project.';
+  const canonical = `https://wingsforshare.com/${kind}`;
+  const body = isPrivacy ? PRIVACY_BODY : TERMS_BODY;
+
+  return `<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>${title} | WingsForShare</title>
+<meta name="description" content="${esc(description)}" />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="${canonical}" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="${title} | WingsForShare" />
+<meta property="og:description" content="${esc(description)}" />
+<meta property="og:url" content="${canonical}" />
+<meta property="og:image" content="https://wingsforshare.com/og-image.jpg" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<style>${CSS}.wf-static .wf-legal{max-width:820px}</style>
+</head>
+<body>
+<div class="wf-static">
+${header()}
+<main class="wf-main wf-legal">
+<p class="wf-kicker">Legal</p>
+<h1>${title}</h1>
+<p class="wf-meta">Last updated: 1 November 2026</p>
+${body}
+</main>
+${footer()}
+</div>
+</body>
+</html>`;
+}

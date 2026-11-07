@@ -110,13 +110,13 @@ export default function Footer() {
           
           <div className="flex items-center gap-10">
             {['Blog', 'Privacy', 'Terms', 'Sitemap'].map((item) => (
-              <Link 
+              <a
                 key={item}
-                to={`/${item.toLowerCase()}`} 
+                href={item === 'Sitemap' ? '/sitemap.xml' : `/${item.toLowerCase()}`}
                 className="text-[11px] font-black uppercase tracking-[0.3em] text-text-secondary/60 hover:text-text-primary transition-all underline-offset-8 hover:underline"
               >
                 {item}
-              </Link>
+              </a>
             ))}
           </div>
         </div>

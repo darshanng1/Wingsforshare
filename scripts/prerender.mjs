@@ -4,7 +4,7 @@
 // Non-JS crawlers (Bing, social link previews) then see correct per-page meta.
 import fs from 'node:fs';
 import path from 'node:path';
-import { loadContent, renderStaticPage } from './static-content.mjs';
+import { loadContent, renderStaticPage, legalDocument } from './static-content.mjs';
 
 const dist = path.resolve(process.env.PRERENDER_DIR || 'dist');
 const shellPath = path.join(dist, 'index.html');
@@ -179,6 +179,13 @@ for (const r of ROUTES) {
   count++;
 }
 
+/* ---------- standalone legal pages ---------- */
+for (const kind of ['privacy', 'terms']) {
+  const dir = path.join(dist, kind);
+  fs.mkdirSync(dir, { recursive: true });
+  fs.writeFileSync(path.join(dir, 'index.html'), legalDocument(kind));
+}
+
 /* ---------- homepage: same static first-wave treatment ---------- */
 const HOME = {
   p: '/',
@@ -200,7 +207,7 @@ const priorityOf = (p) => {
   if (p === '/contact' || p === '/start-project') return { pri: '0.8', freq: 'monthly' };
   return { pri: '0.6', freq: 'monthly' };
 };
-const urls = ['/', ...ROUTES.map((r) => r.p)];
+const urls = ['/', ...ROUTES.map((r) => r.p), '/privacy', '/terms'];
 const sitemap =
   '<?xml version="1.0" encoding="UTF-8"?>\n' +
   '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +

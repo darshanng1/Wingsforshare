@@ -219,6 +219,22 @@ async function startServer() {
       "/services/analytics": "/services/business-analytics",
       "/services/smm": "/services/social-media-marketing",
       "/service": "/services",
+      // URLs indexed before the 2026 redesign - 301s preserve their equity.
+      "/about": "/",
+      "/team": "/",
+      "/careers": "/contact",
+      "/industries": "/portfolio",
+      "/industries/healthcare": "/portfolio",
+      "/industries/finance": "/portfolio",
+      "/industries/ecommerce": "/portfolio",
+      "/industries/real-estate": "/portfolio",
+      "/industries/manufacturing": "/portfolio",
+      "/industries/education": "/portfolio",
+      "/services/mobile-apps": "/services/app-development",
+      "/services/business-automation": "/services/digital-transformation",
+      "/privacy-policy": "/privacy",
+      "/terms-of-service": "/terms",
+      "/cookie-policy": "/privacy",
     };
 
     app.get("*", (req, res) => {
