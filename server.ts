@@ -57,6 +57,16 @@ async function startServer() {
     next();
   });
 
+  // Static preview of the new marketing site (noindex until approved).
+  app.use(
+    "/preview",
+    (_req, res, next) => {
+      res.setHeader("X-Robots-Tag", "noindex, nofollow");
+      next();
+    },
+    express.static(path.resolve(process.cwd(), "preview-site"), { index: "index.html" })
+  );
+
   // Serve static files from public or dist/logos
   const publicPath = path.resolve(process.cwd(), "public");
   const distPath = path.resolve(process.cwd(), "dist");

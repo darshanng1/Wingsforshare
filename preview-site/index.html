@@ -1,0 +1,556 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WingsForShare — Digital systems that move business forward</title>
+<meta name="description" content="WingsForShare is a global digital studio building websites, apps, SEO systems and business intelligence platforms for ambitious companies.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#F3EFE6">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F3EFE6;
+  --paper-2:#EAE4D6;
+  --white:#FFFDF7;
+  --ink:#101310;
+  --muted:#62685F;
+  --line:#D2CBBC;
+  --green:#0B5C43;
+  --green-2:#0E7354;
+  --lime:#B7F171;
+  --body:"Instrument Sans",ui-sans-serif,system-ui,sans-serif;
+  --display:"Bricolage Grotesque",ui-sans-serif,system-ui,sans-serif;
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit}
+::selection{background:var(--green);color:var(--paper)}
+:focus-visible{outline:2px solid var(--green);outline-offset:4px}
+.skip{position:fixed;left:12px;top:-60px;z-index:200;background:var(--ink);color:var(--paper);padding:10px 14px;font-size:13px}
+.skip:focus{top:12px}
+.wrap{width:min(1280px,calc(100% - 72px));margin-inline:auto}
+.eyebrow{display:flex;align-items:center;gap:10px;margin:0 0 20px;font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.eyebrow::before{content:"";width:24px;height:1px;background:var(--green);display:block}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 22px;border:1px solid var(--ink);background:var(--ink);color:var(--paper);font-size:13px;font-weight:600;letter-spacing:.02em;transition:background .3s var(--ease),color .3s var(--ease),border-color .3s var(--ease);cursor:pointer}
+.btn:hover{background:var(--green);border-color:var(--green);color:var(--white)}
+.btn-outline{background:transparent;color:var(--ink)}
+.btn-outline:hover{background:var(--ink);color:var(--paper)}
+.btn .arr{font-size:15px;line-height:1}
+
+/* header */
+.site-header{position:sticky;top:0;z-index:60;background:rgba(243,239,230,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.header-inner{height:74px;display:flex;align-items:center;gap:32px}
+.logo{display:flex;align-items:center;flex:0 0 auto}
+.logo img{height:28px;width:auto}
+.nav{display:flex;align-items:center;gap:28px;margin-left:auto}
+.nav a{font-size:14px;font-weight:500;position:relative;color:var(--ink)}
+.nav a::after{content:"";position:absolute;left:0;right:100%;bottom:-6px;height:1px;background:var(--green);transition:right .35s var(--ease)}
+.nav a:hover::after{right:0}
+.header-cta{margin-left:10px}
+.menu-btn{display:none;width:44px;height:44px;border:1px solid var(--line);background:transparent;align-items:center;justify-content:center;flex-direction:column;gap:6px;cursor:pointer;margin-left:auto}
+.menu-btn span{display:block;width:18px;height:1px;background:var(--ink);transition:transform .3s var(--ease),opacity .3s}
+.menu-btn[aria-expanded="true"] span:nth-child(1){transform:translateY(3.5px) rotate(45deg)}
+.menu-btn[aria-expanded="true"] span:nth-child(2){transform:translateY(-3.5px) rotate(-45deg)}
+
+.mobile-menu{position:fixed;inset:0;z-index:55;background:var(--paper);padding:96px 22px 28px;display:flex;flex-direction:column;transform:translateY(-102%);visibility:hidden;overflow-y:auto;transition:transform .55s var(--ease),visibility .55s}
+.mobile-menu.is-open{transform:none;visibility:visible}
+body.menu-open{overflow:hidden}
+.mobile-menu .m-link{display:flex;align-items:baseline;justify-content:space-between;gap:18px;padding:14px 0;border-bottom:1px solid var(--line);font-family:var(--display);font-size:clamp(2rem,9vw,3.2rem);font-weight:600;letter-spacing:-.04em;line-height:1}
+.mobile-menu .m-link small{font-family:var(--body);font-size:10px;letter-spacing:.14em;color:var(--muted)}
+.mobile-menu .btn{margin-top:22px;align-self:flex-start}
+.mobile-menu .m-contact{margin-top:auto;padding-top:28px;font-size:12px;color:var(--muted);display:grid;gap:6px}
+.mobile-menu .m-contact a{color:var(--ink)}
+
+/* hero */
+.hero{position:relative;padding:clamp(48px,7vw,94px) 0 clamp(34px,5vw,58px);overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background-image:linear-gradient(to right,var(--line) 1px,transparent 1px);background-size:calc(100% / 6) 100%;opacity:.38;pointer-events:none;-webkit-mask-image:linear-gradient(to bottom,#000 0%,transparent 92%);mask-image:linear-gradient(to bottom,#000 0%,transparent 92%)}
+.hero-grid{position:relative;display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:clamp(36px,6vw,86px);align-items:end}
+.hero h1{font-family:var(--display);font-size:clamp(2.9rem,7.3vw,6.9rem);line-height:.93;letter-spacing:-.055em;font-weight:600;margin:0 0 26px;max-width:14ch;text-wrap:balance}
+.hero h1 em{font-style:normal;color:var(--green);position:relative}
+.hero h1 em::after{content:"";position:absolute;left:0;right:0;bottom:.04em;height:.06em;background:var(--green);opacity:.22}
+.hero-sub{max-width:54ch;margin:0 0 30px;font-size:clamp(1rem,1.35vw,1.16rem);line-height:1.62;color:var(--muted)}
+.hero-actions{display:flex;flex-wrap:wrap;gap:10px}
+.hero-meta{display:flex;flex-wrap:wrap;gap:14px 24px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:11px;letter-spacing:.04em;color:var(--muted)}
+.hero-meta span{display:flex;align-items:center;gap:8px}
+.hero-meta i{width:5px;height:5px;border-radius:50%;background:var(--green);display:block}
+.hero-visual{position:relative;min-width:0}
+.system-card{position:relative;background:var(--white);border:1px solid var(--ink);box-shadow:10px 10px 0 rgba(16,19,16,.07);max-width:520px;margin-left:auto}
+.system-top{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:13px 15px;border-bottom:1px solid var(--line);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.live{display:flex;align-items:center;gap:6px;color:var(--green);font-weight:600}
+.live i{width:6px;height:6px;border-radius:50%;background:var(--green);display:block;animation:pulse 2s infinite}
+.system-grid{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--line)}
+.cell{padding:17px 15px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);min-width:0}
+.cell:nth-child(2n){border-right:0}
+.cell:nth-last-child(-n+2){border-bottom:0}
+.cell span{display:block;font-size:9px;letter-spacing:.14em;color:var(--muted);margin-bottom:9px}
+.cell strong{display:block;font-family:var(--display);font-size:clamp(1.05rem,1.7vw,1.3rem);font-weight:600;line-height:1.05;letter-spacing:-.02em}
+.cell small{display:block;margin-top:6px;font-size:10.5px;line-height:1.4;color:var(--muted)}
+.system-chart{padding:15px}
+.chart-head{display:flex;justify-content:space-between;gap:12px;margin-bottom:11px;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.chart-head b{color:var(--green);font-weight:600}
+.bars{display:flex;align-items:flex-end;gap:5px;height:78px}
+.bars i{display:block;flex:1;height:var(--h);background:var(--paper-2);border-top:2px solid var(--ink)}
+.bars i:nth-child(6){background:var(--green);border-color:var(--green)}
+.bars i:nth-child(7){background:var(--green-2);border-color:var(--green-2)}
+.bars i:nth-child(8){background:var(--lime);border-color:var(--green)}
+.system-foot{display:flex;justify-content:space-between;gap:12px;border-top:1px solid var(--line);padding:11px 15px;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.stamp{position:absolute;right:-30px;top:-34px;width:104px;height:104px;background:var(--green);border-radius:50%;color:var(--paper);display:grid;place-items:center;box-shadow:0 8px 24px rgba(11,92,67,.18)}
+.stamp svg{position:absolute;inset:0;width:100%;height:100%;animation:spin 24s linear infinite}
+.stamp text{font-family:var(--body);font-size:8.6px;letter-spacing:.18em;text-transform:uppercase;fill:currentColor}
+.stamp b{font-family:var(--display);font-size:22px;font-weight:500;line-height:1;transform:translateY(-1px)}
+.hero .eyebrow,.hero h1,.hero-sub,.hero-actions,.hero-meta,.hero-visual{animation:rise .9s var(--ease) both}
+.hero h1{animation-delay:.05s}.hero-sub{animation-delay:.12s}.hero-actions{animation-delay:.18s}.hero-meta{animation-delay:.24s}.hero-visual{animation-delay:.16s}
+
+/* marquee */
+.marquee{border-block:1px solid var(--line);background:var(--paper-2);overflow:hidden;padding:13px 0}
+.marquee-track{display:flex;width:max-content;animation:marquee 32s linear infinite}
+.marquee-track:hover{animation-play-state:paused}
+.marquee span{display:flex;align-items:center;gap:18px;padding:0 18px;white-space:nowrap;font-family:var(--display);font-size:13px;font-weight:500;letter-spacing:.08em;text-transform:uppercase}
+.marquee span::after{content:"";width:5px;height:5px;border-radius:50%;background:var(--green);display:block}
+
+/* sections */
+.section{padding:clamp(56px,8vw,102px) 0}
+.section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;border-top:1px solid var(--line);padding-top:16px;margin-bottom:38px}
+.section-head h2{font-family:var(--display);font-size:clamp(2rem,4.2vw,3.6rem);font-weight:600;line-height:1;letter-spacing:-.045em;margin:0;max-width:15ch}
+.section-head p{max-width:38ch;margin:0;color:var(--muted);font-size:14px;line-height:1.6}
+
+/* work */
+.work-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(16px,2.4vw,28px)}
+.work-card{grid-column:span 6;display:block;min-width:0}
+.work-card:nth-child(1){grid-column:span 7}
+.work-card:nth-child(2){grid-column:span 5}
+.work-card:nth-child(3){grid-column:span 12}
+.work-media{overflow:hidden;background:var(--paper-2);border:1px solid var(--line);aspect-ratio:4/3}
+.work-card:nth-child(3) .work-media{aspect-ratio:21/9}
+.work-media img{width:100%;height:100%;object-fit:cover;transition:transform .85s var(--ease),filter .5s;filter:saturate(.88)}
+.work-card:hover .work-media img{transform:scale(1.035);filter:saturate(1)}
+.work-info{display:flex;justify-content:space-between;align-items:flex-start;gap:18px;padding-top:14px}
+.work-info h3{font-family:var(--display);font-size:clamp(1.12rem,1.9vw,1.46rem);font-weight:600;line-height:1.1;letter-spacing:-.025em;margin:0 0 5px}
+.work-info p{margin:0;font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted)}
+.work-arrow{font-size:19px;line-height:1;transition:transform .35s var(--ease);flex:0 0 auto;padding-top:3px}
+.work-card:hover .work-arrow{transform:translate(3px,-3px)}
+.work-all{margin-top:30px;display:flex;justify-content:flex-end}
+
+/* services */
+.service-list{border-top:1px solid var(--ink)}
+.service-row{display:grid;grid-template-columns:56px minmax(0,1.05fr) minmax(0,1.35fr) 190px 28px;gap:24px;align-items:start;padding:21px 0;border-bottom:1px solid var(--line);min-width:0;transition:background .35s var(--ease),color .35s var(--ease),padding .35s var(--ease),border-color .35s}
+.service-row:hover{background:var(--ink);color:var(--paper);padding-inline:18px;border-color:var(--ink)}
+.service-num{font-size:10px;letter-spacing:.12em;color:var(--muted);padding-top:6px}
+.service-row:hover .service-num{color:var(--lime)}
+.service-title{font-family:var(--display);font-size:clamp(1.25rem,2.1vw,1.65rem);font-weight:600;line-height:1.08;letter-spacing:-.03em}
+.service-desc{font-size:13.5px;line-height:1.55;color:var(--muted);max-width:44ch}
+.service-row:hover .service-desc{color:#C8CEC7}
+.service-tags{display:flex;flex-wrap:wrap;gap:6px}
+.service-tags span{font-size:9px;letter-spacing:.08em;text-transform:uppercase;border:1px solid var(--line);padding:5px 7px;color:var(--muted);white-space:nowrap}
+.service-row:hover .service-tags span{border-color:#3A453F;color:#C8CEC7}
+.service-arrow{justify-self:end;font-size:17px;line-height:1;transition:transform .3s var(--ease)}
+.service-row:hover .service-arrow{transform:translate(3px,-3px);color:var(--lime)}
+
+/* process */
+.process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(18px,3vw,32px)}
+.process-step{border-top:1px solid var(--ink);padding-top:15px}
+.process-step .n{font-family:var(--display);font-size:clamp(2.4rem,4.8vw,3.8rem);font-weight:500;line-height:.9;letter-spacing:-.05em;color:var(--green)}
+.process-step h3{font-family:var(--display);font-size:1.25rem;font-weight:600;letter-spacing:-.02em;margin:14px 0 8px}
+.process-step p{margin:0;font-size:13.5px;line-height:1.58;color:var(--muted);max-width:28ch}
+
+/* proof */
+.proof{background:var(--ink);color:var(--paper);padding:clamp(48px,7vw,86px) 0}
+.proof-top{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;margin-bottom:36px}
+.proof-top h2{font-family:var(--display);font-size:clamp(2rem,4vw,3.4rem);font-weight:600;line-height:1;letter-spacing:-.045em;margin:0;max-width:14ch}
+.proof-top p{max-width:32ch;margin:0;color:#A9B1AA;font-size:13.5px;line-height:1.6}
+.proof-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.proof-item strong{display:block;font-family:var(--display);font-size:clamp(2.5rem,4.8vw,4.4rem);font-weight:500;line-height:.85;letter-spacing:-.055em;color:var(--lime)}
+.proof-item span{display:block;margin-top:12px;max-width:17ch;font-size:10px;line-height:1.5;letter-spacing:.1em;text-transform:uppercase;color:#A9B1AA}
+
+/* quote */
+.quote{display:grid;grid-template-columns:190px minmax(0,1fr);gap:32px;align-items:start}
+.quote .eyebrow{margin-top:8px}
+.quote blockquote{margin:0;font-family:var(--display);font-size:clamp(1.9rem,4.2vw,3.7rem);font-weight:500;line-height:1.02;letter-spacing:-.045em;text-wrap:balance}
+.quote blockquote em{font-style:normal;color:var(--green)}
+.quote cite{display:block;margin-top:22px;font-style:normal;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+
+/* faq */
+.faq-grid{display:grid;grid-template-columns:260px minmax(0,1fr);gap:48px;align-items:start}
+.faq-grid h2{font-family:var(--display);font-size:clamp(1.9rem,3.4vw,2.8rem);font-weight:600;line-height:1;letter-spacing:-.04em;margin:0 0 14px}
+.faq-grid .faq-note{margin:0;color:var(--muted);font-size:13.5px;line-height:1.6;max-width:26ch}
+.faq-list{border-top:1px solid var(--ink)}
+details{border-bottom:1px solid var(--line)}
+summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:flex-start;gap:24px;padding:17px 0;font-family:var(--display);font-size:clamp(1.02rem,1.7vw,1.28rem);font-weight:500;line-height:1.25;letter-spacing:-.015em}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-family:var(--body);font-size:21px;font-weight:400;color:var(--green);line-height:1;transition:transform .3s var(--ease);flex:0 0 auto}
+details[open] summary::after{transform:rotate(45deg)}
+details p{margin:0;padding:0 36px 18px 0;max-width:70ch;color:var(--muted);font-size:13.5px;line-height:1.65}
+
+/* cta */
+.cta{position:relative;overflow:hidden;background:var(--green);color:var(--paper);padding:clamp(56px,8vw,96px) 0}
+.cta::after{content:"";position:absolute;right:-120px;bottom:-190px;width:520px;height:520px;border:1px solid rgba(243,239,230,.25);border-radius:50%;pointer-events:none}
+.cta::before{content:"";position:absolute;right:-40px;bottom:-110px;width:360px;height:360px;border:1px solid rgba(243,239,230,.16);border-radius:50%;pointer-events:none}
+.cta-inner{position:relative;z-index:1;max-width:900px}
+.cta h2{font-family:var(--display);font-size:clamp(2.6rem,6vw,5.5rem);font-weight:600;line-height:.94;letter-spacing:-.055em;margin:0 0 22px;max-width:12ch}
+.cta p{max-width:52ch;margin:0;color:#D5E4DB;font-size:15.5px;line-height:1.62}
+.cta-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.cta .btn{background:var(--paper);border-color:var(--paper);color:var(--ink)}
+.cta .btn:hover{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.cta .btn-outline{background:transparent;border-color:rgba(243,239,230,.42);color:var(--paper)}
+.cta .btn-outline:hover{background:var(--paper);border-color:var(--paper);color:var(--ink)}
+.cta .eyebrow::before{background:rgba(243,239,230,.55)}
+.cta-small{margin-top:20px;font-size:11px;letter-spacing:.04em;color:#B9CCC1}
+.cta-small a{color:var(--paper);text-decoration:underline;text-underline-offset:4px}
+
+/* footer */
+.footer{padding:52px 0 24px;border-top:1px solid var(--line)}
+.footer-grid{display:grid;grid-template-columns:1.5fr .8fr .8fr .8fr;gap:32px}
+.footer-brand img{height:28px;width:auto;margin-bottom:14px}
+.footer-brand p{max-width:32ch;margin:0;color:var(--muted);font-size:12.5px;line-height:1.6}
+.footer h4{margin:0 0 12px;font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted)}
+.footer ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.footer li a{font-size:12.5px;color:var(--ink)}
+.footer li a:hover{color:var(--green)}
+.footer-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;border-top:1px solid var(--line);margin-top:38px;padding-top:16px;font-size:10.5px;color:var(--muted)}
+.preview-badge{position:fixed;left:14px;bottom:14px;z-index:80;display:flex;align-items:center;gap:8px;padding:8px 11px;background:var(--ink);border:1px solid #333;color:var(--paper);font-size:9px;letter-spacing:.12em;text-transform:uppercase}
+.preview-badge i{width:5px;height:5px;border-radius:50%;background:var(--lime);display:block}
+
+/* reveal */
+[data-reveal]{opacity:0;transform:translateY(18px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+[data-reveal].is-in{opacity:1;transform:none}
+
+@keyframes rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+@keyframes marquee{to{transform:translateX(-50%)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.75)}}
+
+@media (max-width:1000px){
+  .nav,.header-cta{display:none}
+  .menu-btn{display:flex}
+  .hero-grid{grid-template-columns:1fr;gap:46px}
+  .hero h1{max-width:13ch}
+  .hero-visual{max-width:540px}
+  .system-card{margin-left:0;max-width:100%}
+  .stamp{right:6px;top:-28px;width:90px;height:90px}
+  .section-head,.proof-top{flex-direction:column;align-items:flex-start;gap:16px}
+  .work-card,.work-card:nth-child(1),.work-card:nth-child(2),.work-card:nth-child(3){grid-column:span 12}
+  .work-card:nth-child(3) .work-media{aspect-ratio:4/3}
+  .service-row{grid-template-columns:38px minmax(0,1fr) 24px;gap:12px;padding:18px 0}
+  .service-desc{grid-column:2 / 4;font-size:13px}
+  .service-tags{display:none}
+  .service-arrow{grid-column:3;grid-row:1}
+  .process-grid{grid-template-columns:1fr 1fr}
+  .proof-grid{grid-template-columns:1fr 1fr;gap:28px}
+  .quote{grid-template-columns:1fr;gap:14px}
+  .faq-grid{grid-template-columns:1fr;gap:22px}
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:640px){
+  .wrap{width:calc(100% - 36px)}
+  section[id]{scroll-margin-top:86px}
+  .header-inner{height:64px}
+  .logo img{height:24px}
+  .hero{padding-top:34px}
+  .hero h1{font-size:clamp(2.55rem,11.6vw,3.9rem);max-width:none}
+  .hero-sub{font-size:14.5px}
+  .hero-meta{gap:10px 16px;font-size:10px}
+  .system-top,.system-foot{font-size:8px;padding-inline:12px}
+  .cell{padding:14px 12px}
+  .cell strong{font-size:1.02rem}
+  .cell small{font-size:9.5px}
+  .system-chart{padding:12px}
+  .bars{height:64px}
+  .stamp{width:78px;height:78px;right:2px;top:-24px}
+  .stamp text{font-size:6.2px;letter-spacing:.1em}
+  .stamp b{font-size:17px}
+  .process-grid{grid-template-columns:1fr}
+  .proof-grid{grid-template-columns:1fr 1fr}
+  .proof-item strong{font-size:2.7rem}
+  .faq-grid h2{font-size:1.9rem}
+  .cta h2{font-size:clamp(2.25rem,10.8vw,3.4rem)}
+  .footer-grid{grid-template-columns:1fr}
+  .footer-bottom{flex-direction:column}
+  .preview-badge{font-size:8px;padding:7px 9px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
+  [data-reveal]{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="/" aria-label="WingsForShare home">
+      <img src="/static/images/logo-dark.png" alt="WingsForShare" width="120" height="30">
+    </a>
+    <nav class="nav" aria-label="Primary">
+      <a href="/portfolio">Work</a>
+      <a href="/services">Services</a>
+      <a href="#process">Process</a>
+      <a href="/blog">Insights</a>
+      <a href="/contact">Contact</a>
+    </nav>
+    <a class="btn header-cta" href="/start-project">Start a project <span class="arr">↗</span></a>
+    <button class="menu-btn" type="button" aria-label="Open menu" aria-controls="mobile-menu" aria-expanded="false" data-menu-btn>
+      <span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+  <a class="m-link" href="/portfolio">Work <small>01</small></a>
+  <a class="m-link" href="/services">Services <small>02</small></a>
+  <a class="m-link" href="#process">Process <small>03</small></a>
+  <a class="m-link" href="/blog">Insights <small>04</small></a>
+  <a class="m-link" href="/contact">Contact <small>05</small></a>
+  <a class="btn" href="/start-project">Start a project <span class="arr">↗</span></a>
+  <div class="m-contact">
+    <a href="mailto:info@wingsforshare.com">info@wingsforshare.com</a>
+    <a href="https://wa.me/918618764541">WhatsApp: +91 86187 64541</a>
+  </div>
+</div>
+
+<main id="main">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow">Independent digital studio — India / Global</p>
+        <h1>We build digital systems that <em>move business forward.</em></h1>
+        <p class="hero-sub">Strategy, design and engineering for websites, apps and platforms. Fixed scope, senior engineers, and work you actually own.</p>
+        <div class="hero-actions">
+          <a class="btn" href="/start-project">Start a project <span class="arr">↗</span></a>
+          <a class="btn btn-outline" href="#work">See selected work</a>
+        </div>
+        <div class="hero-meta">
+          <span><i></i> 24h reply</span>
+          <span><i></i> 100% code ownership</span>
+          <span><i></i> Global delivery</span>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="stamp" aria-hidden="true">
+          <svg viewBox="0 0 120 120">
+            <defs><path id="stampPath" d="M60,60 m-44,0 a44,44 0 1,1 88,0 a44,44 0 1,1 -88,0"/></defs>
+            <text><textPath href="#stampPath">SHIP · MEASURE · ITERATE · SHIP · MEASURE · </textPath></text>
+          </svg>
+          <b>↗</b>
+        </div>
+        <div class="system-card" role="img" aria-label="WingsForShare delivery system: strategy, design, build, grow">
+          <div class="system-top"><span>WINGS / SYSTEM 01</span><span class="live"><i></i> Live</span></div>
+          <div class="system-grid">
+            <div class="cell"><span>01</span><strong>Strategy</strong><small>Positioning, scope, roadmap.</small></div>
+            <div class="cell"><span>02</span><strong>Design</strong><small>Systems, not one-off screens.</small></div>
+            <div class="cell"><span>03</span><strong>Build</strong><small>Senior engineers, weekly reviews.</small></div>
+            <div class="cell"><span>04</span><strong>Grow</strong><small>Measure, fix, improve.</small></div>
+          </div>
+          <div class="system-chart">
+            <div class="chart-head"><span>Growth signal</span><b>+38%</b></div>
+            <div class="bars" aria-hidden="true">
+              <i style="--h:28%"></i><i style="--h:38%"></i><i style="--h:34%"></i><i style="--h:52%"></i><i style="--h:48%"></i><i style="--h:72%"></i><i style="--h:84%"></i><i style="--h:100%"></i>
+            </div>
+          </div>
+          <div class="system-foot"><span>Ship / measure / iterate</span><span>Est. 2020</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>Web development</span><span>SEO systems</span><span>Brand websites</span><span>Apps</span><span>Analytics</span><span>Custom software</span><span>SaaS</span><span>Digital transformation</span>
+      <span>Web development</span><span>SEO systems</span><span>Brand websites</span><span>Apps</span><span>Analytics</span><span>Custom software</span><span>SaaS</span><span>Digital transformation</span>
+    </div>
+  </div>
+
+  <section class="section" id="work">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Selected work / 01</p>
+          <h2>Proof, not promises.</h2>
+        </div>
+        <p>A sample of the websites, stores and systems we have shipped. Every project was scoped, designed and built in-house.</p>
+      </div>
+      <div class="work-grid">
+        <a class="work-card" href="/product/architect-portfolio" data-reveal>
+          <div class="work-media"><img src="assets/work-architecture.webp" alt="Architecture portfolio website" width="1200" height="900" loading="lazy" decoding="async"></div>
+          <div class="work-info"><div><h3>Architecture Portfolio Website</h3><p>Website / Architecture</p></div><span class="work-arrow">↗</span></div>
+        </a>
+        <a class="work-card" href="/product/garment-ecommerce" data-reveal>
+          <div class="work-media"><img src="assets/work-ecommerce.webp" alt="Garment ecommerce store" width="1200" height="900" loading="lazy" decoding="async"></div>
+          <div class="work-info"><div><h3>Garment Ecommerce Store</h3><p>Ecommerce / Fashion</p></div><span class="work-arrow">↗</span></div>
+        </a>
+        <a class="work-card" href="/product/pest-management-app" data-reveal>
+          <div class="work-media"><img src="assets/work-bi.webp" alt="Business intelligence dashboard" width="1200" height="900" loading="lazy" decoding="async"></div>
+          <div class="work-info"><div><h3>Pest Management BI System</h3><p>BI &amp; Automation / Service</p></div><span class="work-arrow">↗</span></div>
+        </a>
+      </div>
+      <div class="work-all"><a class="btn btn-outline" href="/portfolio">View all work <span class="arr">↗</span></a></div>
+    </div>
+  </section>
+
+  <section class="section" id="services">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Capabilities / 02</p>
+          <h2>Eight ways we move the needle.</h2>
+        </div>
+        <p>One team across strategy, design, engineering and growth. No hand-offs to juniors after the sales call.</p>
+      </div>
+      <div class="service-list">
+        <a class="service-row" href="/services/web-development" data-reveal><span class="service-num">01</span><span class="service-title">Web Development</span><span class="service-desc">High-performance websites and web apps that convert.</span><span class="service-tags"><span>React</span><span>Next.js</span><span>Ecommerce</span></span><span class="service-arrow">↗</span></a>
+        <a class="service-row" href="/services/seo" data-reveal><span class="service-num">02</span><span class="service-title">SEO</span><span class="service-desc">Technical, on-page and content SEO that compounds.</span><span class="service-tags"><span>Technical</span><span>Content</span><span>Local</span></span><span class="service-arrow">↗</span></a>
+        <a class="service-row" href="/services/social-media-marketing" data-reveal><span class="service-num">03</span><span class="service-title">Social Media Marketing</span><span class="service-desc">Strategy, content and paid social that builds demand.</span><span class="service-tags"><span>Instagram</span><span>LinkedIn</span><span>Paid</span></span><span class="service-arrow">↗</span></a>
+        <a class="service-row" href="/services/app-development" data-reveal><span class="service-num">04</span><span class="service-title">App Development</span><span class="service-desc">iOS, Android and cross-platform apps users keep.</span><span class="service-tags"><span>React Native</span><span>Flutter</span><span>PWA</span></span><span class="service-arrow">↗</span></a>
+        <a class="service-row" href="/services/business-analytics" data-reveal><span class="service-num">05</span><span class="service-title">Business Analytics</span><span class="service-desc">Dashboards and data systems that make decisions clear.</span><span class="service-tags"><span>BI</span><span>Dashboards</span><span>Data</span></span><span class="service-arrow">↗</span></a>
+        <a class="service-row" href="/services/custom-software" data-reveal><span class="service-num">06</span><span class="service-title">Custom Software</span><span class="service-desc">Software built around your workflow, owned by you.</span><span class="service-tags"><span>APIs</span><span>Platforms</span><span>Automation</span></span><span class="service-arrow">↗</span></a>
+        <a class="service-row" href="/services/digital-transformation" data-reveal><span class="service-num">07</span><span class="service-title">Digital Transformation</span><span class="service-desc">Modernise legacy systems without stopping the business.</span><span class="service-tags"><span>Cloud</span><span>Migration</span><span>Process</span></span><span class="service-arrow">↗</span></a>
+        <a class="service-row" href="/services/saas-development" data-reveal><span class="service-num">08</span><span class="service-title">SaaS Development</span><span class="service-desc">From MVP to multi-tenant product, built to scale.</span><span class="service-tags"><span>MVP</span><span>Billing</span><span>Architecture</span></span><span class="service-arrow">↗</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="process">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Process / 03</p>
+          <h2>A short path from idea to shipped.</h2>
+        </div>
+        <p>A written scope before we start. Weekly reviews while we build. No mystery invoices.</p>
+      </div>
+      <div class="process-grid">
+        <div class="process-step" data-reveal><div class="n">01</div><h3>Scope</h3><p>We agree the outcome, the pages and the price in writing.</p></div>
+        <div class="process-step" data-reveal><div class="n">02</div><h3>Design</h3><p>We design the system, not just the screen — hierarchy, components and states.</p></div>
+        <div class="process-step" data-reveal><div class="n">03</div><h3>Build</h3><p>A senior engineer ships in weekly review cycles, with no junior hand-offs.</p></div>
+        <div class="process-step" data-reveal><div class="n">04</div><h3>Grow</h3><p>We measure, fix and improve after launch — against leads, traffic and revenue.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="proof">
+    <div class="wrap">
+      <div class="proof-top">
+        <h2>The standards you can hold us to.</h2>
+        <p>No lock-in. No hostage repos. No surprise invoices. These are the terms on every project.</p>
+      </div>
+      <div class="proof-grid">
+        <div class="proof-item" data-reveal><strong>24h</strong><span>Typical reply time on every enquiry</span></div>
+        <div class="proof-item" data-reveal><strong>100%</strong><span>Code and IP ownership on delivery</span></div>
+        <div class="proof-item" data-reveal><strong>Fixed</strong><span>Scope and price agreed before we start</span></div>
+        <div class="proof-item" data-reveal><strong>Global</strong><span>Clients across five regions</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap quote">
+      <p class="eyebrow">Point of view / 04</p>
+      <div>
+        <blockquote>We don't just ship websites. We build the <em>systems</em> behind them.</blockquote>
+        <cite>WingsForShare — Digital Solutions</cite>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap faq-grid">
+      <div>
+        <h2>Questions, answered.</h2>
+        <p class="faq-note">The things clients ask before they start. If yours isn't here, email us.</p>
+      </div>
+      <div class="faq-list">
+        <details><summary>What does WingsForShare do?</summary><p>We are a global digital agency. We deliver web development, SEO, social media marketing, mobile app development and business analytics — everything you need to grow online, under one roof.</p></details>
+        <details><summary>Do you work with clients worldwide?</summary><p>Yes. We work with businesses across the US, UK, Europe, Australia, the Middle East and India, and we optimise for global as well as local search rankings.</p></details>
+        <details><summary>How long does a project take?</summary><p>A marketing website typically ships in 2–4 weeks; web apps and ecommerce in 4–10 weeks; mobile apps and SaaS MVPs in 6–12 weeks. You get a fixed timeline before we start.</p></details>
+        <details><summary>How much does a website cost?</summary><p>Every project is scoped in writing. A brochure site and a custom platform are different investments. After a short discovery call, we give you a fixed quote with the scope attached.</p></details>
+        <details><summary>Do you work with existing teams?</summary><p>Yes. We can lead the build, embed with your in-house team, or take a defined slice of the work. The scope and handover are agreed up front.</p></details>
+        <details><summary>How do we get started?</summary><p>Send a brief through the project form or email info@wingsforshare.com. We reply within one working day with a plan, timeline and fixed quote — no obligation.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="wrap cta-inner">
+      <p class="eyebrow" style="color:#B9CCC1">Next step</p>
+      <h2>Let's build something that works.</h2>
+      <p>Tell us what you're trying to achieve. We'll reply within one business day with a clear plan, timeline and fixed price.</p>
+      <div class="cta-actions">
+        <a class="btn" href="/start-project">Start a project <span class="arr">↗</span></a>
+        <a class="btn btn-outline" href="mailto:info@wingsforshare.com">Email us</a>
+      </div>
+      <p class="cta-small">Prefer WhatsApp? <a href="https://wa.me/918618764541">+91 86187 64541</a></p>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="/static/images/logo-dark.png" alt="WingsForShare" width="120" height="30">
+        <p>Global web development, SEO, social media marketing, app development and business analytics agency.</p>
+      </div>
+      <div><h4>Services</h4><ul><li><a href="/services/web-development">Web Development</a></li><li><a href="/services/seo">SEO</a></li><li><a href="/services/app-development">App Development</a></li><li><a href="/services/business-analytics">Analytics</a></li><li><a href="/services/custom-software">Custom Software</a></li></ul></div>
+      <div><h4>Company</h4><ul><li><a href="/portfolio">Work</a></li><li><a href="/blog">Insights</a></li><li><a href="/contact">Contact</a></li><li><a href="/start-project">Start a project</a></li></ul></div>
+      <div><h4>Legal</h4><ul><li><a href="/privacy">Privacy</a></li><li><a href="/terms">Terms</a></li><li><a href="/sitemap.xml">Sitemap</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><span>© 2026 WingsForShare Digital Solutions. All rights reserved.</span><span>New design preview — not indexed.</span></div>
+  </div>
+</footer>
+
+<div class="preview-badge"><i></i> New design preview</div>
+
+<script>
+(function () {
+  var body = document.body;
+  var menu = document.getElementById('mobile-menu');
+  var btn = document.querySelector('[data-menu-btn]');
+
+  function setMenu(open) {
+    if (!menu || !btn) return;
+    menu.classList.toggle('is-open', open);
+    menu.setAttribute('aria-hidden', open ? 'false' : 'true');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    body.classList.toggle('menu-open', open);
+  }
+
+  if (btn && menu) {
+    btn.addEventListener('click', function () {
+      setMenu(!menu.classList.contains('is-open'));
+    });
+    menu.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () { setMenu(false); });
+    });
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') setMenu(false);
+    });
+  }
+
+  var revealItems = document.querySelectorAll('[data-reveal]');
+  if ('IntersectionObserver' in window) {
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-in');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -36px 0px' });
+    revealItems.forEach(function (item) { observer.observe(item); });
+  } else {
+    revealItems.forEach(function (item) { item.classList.add('is-in'); });
+  }
+})();
+</script>
+<noscript><style>[data-reveal]{opacity:1;transform:none}</style></noscript>
+</body>
+</html>
