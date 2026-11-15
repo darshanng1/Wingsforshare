@@ -1,0 +1,21 @@
+{
+  "name": "WingsForShare",
+  "short_name": "WingsForShare",
+  "description": "Websites, apps and search visibility engineered for growth.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#050F0A",
+  "theme_color": "#050F0A",
+  "icons": [
+    {
+      "src": "/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}

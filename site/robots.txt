@@ -1,0 +1,7 @@
+# WingsForShare — robots
+User-agent: *
+Allow: /
+Disallow: /404.html
+
+# Blocks nothing on production; the staging build is excluded with <meta name="robots" content="noindex">.
+Sitemap: https://wingsforshare.com/sitemap.xml
