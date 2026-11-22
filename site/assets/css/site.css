@@ -261,7 +261,7 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 0; }
   height: var(--header-h);
 }
 .brand { display: flex; align-items: center; gap: 10px; flex: none; }
-.brand img { height: 34px; width: auto; }
+.brand img { height: 40px; width: auto; }
 .logo-on-light { display: none; }
 [data-theme="light"] .logo-on-dark { display: none; }
 [data-theme="light"] .logo-on-light { display: block; }
