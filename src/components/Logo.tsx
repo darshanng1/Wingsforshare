@@ -15,13 +15,13 @@ export const Logo: React.FC<LogoProps> = ({ className }) => {
   return (
     <div className="flex items-center">
       <img
-        src="/static/images/logo-dark.png"
+        src="/static/images/logo-light.png"
         alt="WingsForShare"
         className={cn('logo-on-light w-auto object-contain', className)}
         referrerPolicy="no-referrer"
       />
       <img
-        src="/static/images/logo-white.png"
+        src="/static/images/logo-dark.png"
         alt=""
         aria-hidden="true"
         className={cn('logo-on-dark w-auto object-contain', className)}
