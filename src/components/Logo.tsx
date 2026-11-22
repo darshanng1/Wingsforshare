@@ -21,7 +21,7 @@ export const Logo: React.FC<LogoProps> = ({ className }) => {
         referrerPolicy="no-referrer"
       />
       <img
-        src="/static/images/logo-light.png"
+        src="/static/images/logo-white.png"
         alt=""
         aria-hidden="true"
         className={cn('logo-on-dark w-auto object-contain', className)}
