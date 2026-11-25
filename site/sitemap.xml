@@ -190,7 +190,34 @@
     </image:image>
   </url>
   <url>
+    <loc>https://wingsforshare.com/services/amazon-seo/</loc>
+    <lastmod>2026-11-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://wingsforshare.com/og-image.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://wingsforshare.com/services/animated-video/</loc>
+    <lastmod>2026-11-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://wingsforshare.com/og-image.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
     <loc>https://wingsforshare.com/services/app-development/</loc>
+    <lastmod>2026-11-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://wingsforshare.com/og-image.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://wingsforshare.com/services/branding/</loc>
     <lastmod>2026-11-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
@@ -209,6 +236,15 @@
   </url>
   <url>
     <loc>https://wingsforshare.com/services/custom-software/</loc>
+    <lastmod>2026-11-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://wingsforshare.com/og-image.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://wingsforshare.com/services/digital-marketing/</loc>
     <lastmod>2026-11-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
